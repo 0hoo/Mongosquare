@@ -24,16 +24,6 @@ final class WindowController: NSWindowController {
         return sidebarController
     }()
     
-    lazy var collectionOutlineViewController: CollectionOutlineViewController = {
-        let collectionOutlineViewController = CollectionOutlineViewController()
-        return collectionOutlineViewController
-    }()
-    
-    lazy var collectionViewController: CollectionViewController = {
-       let collectionViewController = CollectionViewController()
-        return collectionViewController
-    }()
-    
     lazy var tabViewController: TabViewController = {
        let tabViewController = TabViewController()
         return tabViewController
@@ -77,6 +67,12 @@ final class WindowController: NSWindowController {
         }
         if let image = sender.image(forSegment: sender.selectedSegment) {
             sender.setImage(image.tinted(color: .white), forSegment: sender.selectedSegment)
+        }
+        
+        if sender.selectedSegment == 0 {
+            self.tabViewController.activeCollectionViewController?.showOutlineViewController()
+        } else {
+            self.tabViewController.activeCollectionViewController?.showTableViewController()
         }
     }
     

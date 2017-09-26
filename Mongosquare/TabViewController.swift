@@ -33,9 +33,8 @@ final class TabViewController: NSViewController {
     var items: [TabItem] = []
     var itemsByCollections: [String: TabItem] = [:]
     
-    var selectedItem: TabItem? = nil
     var activeCollectionViewController: CollectionViewController? {
-        return selectedItem?.viewController
+        return tabView?.selectedTabViewItem?.viewController as? CollectionViewController
     }
     
     override func viewDidLoad() {
