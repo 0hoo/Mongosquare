@@ -46,6 +46,7 @@ final class TabViewController: NSViewController {
         tabBar?.setButtonMinWidth(100)
         tabBar?.setButtonMaxWidth(280)
         tabBar?.setAllowsBackgroundTabClosing(true)
+        tabBar?.setHideForSingleTab(true)
     }
     
     func add(viewController: CollectionViewController) {
