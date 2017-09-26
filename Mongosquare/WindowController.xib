@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="WindowController" customModule="Mongosquare" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionViewModeSegmentedControl" destination="1ps-Gz-56W" id="p4I-NP-JRJ"/>
+                <outlet property="splitWrapperView" destination="F52-Ri-S7a" id="iaD-J5-ezI"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Mongosquare" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="926" height="557"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="926" height="557"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="F52-Ri-S7a">
+                        <rect key="frame" x="0.0" y="32" width="926" height="525"/>
+                    </customView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E49-Hy-Ei3">
+                        <rect key="frame" x="497" y="3" width="120" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Hco-Gb-Kgw"/>
+                        </constraints>
+                        <buttonCell key="cell" type="roundTextured" title="Filter - find()" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5v4-tZ-Cbs">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1ps-Gz-56W">
+                        <rect key="frame" x="841" y="4" width="71" height="23"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="DuE-He-DbL">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment image="icons8-genealogy" width="32"/>
+                                <segment image="icons8-table" width="32" selected="YES" tag="1"/>
+                            </segments>
+                        </segmentedCell>
+                        <connections>
+                            <action selector="collectionViewModeChanged:" target="-2" id="Xvc-Fk-LO7"/>
+                        </connections>
+                    </segmentedControl>
+                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R1q-Sz-GAb">
+                        <rect key="frame" x="625" y="4" width="208" height="23"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="momentary" id="abh-BM-nYR">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment image="NSGoLeftTemplate" width="30">
+                                    <nil key="label"/>
+                                </segment>
+                                <segment label="0-50 of 150" width="140" tag="1"/>
+                                <segment image="NSGoRightTemplate" width="30">
+                                    <nil key="label"/>
+                                </segment>
+                            </segments>
+                        </segmentedCell>
+                    </segmentedControl>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="R1q-Sz-GAb" firstAttribute="top" secondItem="F52-Ri-S7a" secondAttribute="bottom" constant="5" id="3KH-pH-hw1"/>
+                    <constraint firstAttribute="trailing" secondItem="F52-Ri-S7a" secondAttribute="trailing" id="QAK-vX-y8o"/>
+                    <constraint firstAttribute="bottom" secondItem="1ps-Gz-56W" secondAttribute="bottom" constant="5" id="SLW-og-26a"/>
+                    <constraint firstItem="R1q-Sz-GAb" firstAttribute="leading" secondItem="E49-Hy-Ei3" secondAttribute="trailing" constant="8" id="iwx-Ex-4Tr"/>
+                    <constraint firstAttribute="bottom" secondItem="R1q-Sz-GAb" secondAttribute="bottom" constant="5" id="pff-PY-rQr"/>
+                    <constraint firstItem="F52-Ri-S7a" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="qTc-P3-iSb"/>
+                    <constraint firstAttribute="trailing" secondItem="1ps-Gz-56W" secondAttribute="trailing" constant="14" id="s0u-uR-tFC"/>
+                    <constraint firstItem="1ps-Gz-56W" firstAttribute="top" secondItem="F52-Ri-S7a" secondAttribute="bottom" constant="5" id="smP-0q-BYO"/>
+                    <constraint firstItem="E49-Hy-Ei3" firstAttribute="top" secondItem="F52-Ri-S7a" secondAttribute="bottom" constant="5" id="tTL-6O-1db"/>
+                    <constraint firstItem="F52-Ri-S7a" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="uga-WA-VqV"/>
+                    <constraint firstAttribute="bottom" secondItem="E49-Hy-Ei3" secondAttribute="bottom" constant="5" id="x4c-F6-taa"/>
+                    <constraint firstItem="1ps-Gz-56W" firstAttribute="leading" secondItem="R1q-Sz-GAb" secondAttribute="trailing" constant="8" id="y0s-D5-JmD"/>
+                </constraints>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="E3A05CE7-57B9-45DA-B418-B1015D486059" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="piu-GZ-TcO">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="Tug-WV-bH2"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="m7v-S7-GFO"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="Xju-ea-vQm"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="qMg-5F-E83"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="JSX-Qc-rkO"/>
+                    <toolbarItem implicitItemIdentifier="1E4CCF52-3AF4-492B-998F-C642E3FFC8AB" label="Refresh" paletteLabel="Refresh" tag="-1" image="icons8-data_backup" id="1l3-wg-EMR">
+                        <connections>
+                            <action selector="sample:" target="-2" id="fju-Oh-xnb"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="368078EF-A064-48EE-9AE3-B912540B51FF" label="System" paletteLabel="System" tag="-1" image="icons8-system_information" id="h0A-We-C8b">
+                        <connections>
+                            <action selector="sample:" target="-2" id="63R-9H-p7l"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C0050E76-0B0B-4E29-B5A2-C5FCF368A4E0" label="Report" paletteLabel="Report" tag="-1" image="icons8-news" id="lbi-R0-91d">
+                        <connections>
+                            <action selector="sample:" target="-2" id="xbO-pn-rSr"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="1E0A8E8C-0D4A-4538-B73D-BEA5793A28C5" label="Import" paletteLabel="Import" tag="-1" image="icons8-import" id="g5h-ch-PXU">
+                        <connections>
+                            <action selector="sample:" target="-2" id="ouv-19-rN1"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C178BC77-4F44-4939-B42A-897524821405" label="Export" paletteLabel="Export" tag="-1" image="icons8-export" id="BrZ-px-Gzp">
+                        <connections>
+                            <action selector="sample:" target="-2" id="gtP-Yh-cKd"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="78BCEEE8-3B55-4065-8CB5-408E1C2A4C65" label="Log" paletteLabel="Log" tag="-1" image="icons8-edit_file" id="FAa-g6-l8U">
+                        <connections>
+                            <action selector="sample:" target="-2" id="jTV-ol-iwh"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="1l3-wg-EMR"/>
+                    <toolbarItem reference="h0A-We-C8b"/>
+                    <toolbarItem reference="g5h-ch-PXU"/>
+                    <toolbarItem reference="BrZ-px-Gzp"/>
+                    <toolbarItem reference="JSX-Qc-rkO"/>
+                    <toolbarItem reference="lbi-R0-91d"/>
+                    <toolbarItem reference="FAa-g6-l8U"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <contentBorderThickness minY="32"/>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="363" y="163.5"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="NSGoLeftTemplate" width="9" height="12"/>
+        <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="icons8-data_backup" width="75" height="75"/>
+        <image name="icons8-edit_file" width="75" height="75"/>
+        <image name="icons8-export" width="75" height="75"/>
+        <image name="icons8-genealogy" width="32" height="32"/>
+        <image name="icons8-import" width="75" height="75"/>
+        <image name="icons8-news" width="75" height="75"/>
+        <image name="icons8-system_information" width="75" height="75"/>
+        <image name="icons8-table" width="32" height="32"/>
+    </resources>
+</document>
