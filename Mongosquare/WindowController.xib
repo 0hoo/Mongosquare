@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="WindowController" customModule="Mongosquare" customModuleProvider="target">
             <connections>
                 <outlet property="collectionViewModeSegmentedControl" destination="1ps-Gz-56W" id="p4I-NP-JRJ"/>
+                <outlet property="skipLimitSegmentedControl" destination="R1q-Sz-GAb" id="6H3-y3-cpK"/>
                 <outlet property="splitWrapperView" destination="F52-Ri-S7a" id="iaD-J5-ezI"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -64,6 +65,9 @@
                                 </segment>
                             </segments>
                         </segmentedCell>
+                        <connections>
+                            <action selector="skipLimitedChanged:" target="-2" id="q88-qg-tV7"/>
+                        </connections>
                     </segmentedControl>
                 </subviews>
                 <constraints>

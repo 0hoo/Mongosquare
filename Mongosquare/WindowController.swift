@@ -13,6 +13,7 @@ final class WindowController: NSWindowController {
     
     @IBOutlet weak var splitWrapperView: NSView?
     @IBOutlet weak var collectionViewModeSegmentedControl: NSSegmentedControl?
+    @IBOutlet weak var skipLimitSegmentedControl: NSSegmentedControl?
     
     lazy var sidebarController: OutlineViewController = {
         let sidebarController = OutlineViewController()
@@ -73,6 +74,14 @@ final class WindowController: NSWindowController {
             self.tabViewController.activeCollectionViewController?.showOutlineViewController()
         } else {
             self.tabViewController.activeCollectionViewController?.showTableViewController()
+        }
+    }
+    
+    @IBAction func skipLimitedChanged(_ sender: NSSegmentedControl) {
+        if sender.selectedSegment == 0 {
+            self.tabViewController.activeCollectionViewController?.previous()
+        } else if sender.selectedSegment == 2 {
+            self.tabViewController.activeCollectionViewController?.next()
         }
     }
     

@@ -66,31 +66,30 @@ final class CollectionOutlineViewController: NSViewController {
         return "CollectionOutlineViewController"
     }
     
-    var collection: MongoKitten.Collection? {
-        didSet {
-            guard let collection = collection else { return }
-            
-            items.removeAll()
-            do  {
-                var i = 0
-                for document in try collection.find(limitedTo: 50) {
-                    let keys = "{ \(document.keys.count) fields }"
-                    items.append(DocumentOutlineItem(key: "\(i)", value: keys, type: "Object", document: document, isDocument: true))
-                    i += 1
-                }
-            } catch {
-                print(error)
-            
-            }
-            outlineView?.reloadData()
-        }
-    }
-    var items: [DocumentOutlineItem] = []
-    
     @IBOutlet var outlineView: NSOutlineView?
 
+    weak var collectionViewController: CollectionViewController?
+
+    fileprivate var items: [DocumentOutlineItem] = []
+    
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        
+        reload()
+    }
+}
+
+extension CollectionOutlineViewController: DocumentSkippable {
+    func reload() {
+        guard let collectionViewController = collectionViewController else { return }
+        items.removeAll()
+        
+        for (i, document) in collectionViewController.documents.enumerated() {
+            let keys = "{ \(document.keys.count) fields }"
+            items.append(DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: keys, type: "Object", document: document, isDocument: true))
+        }
+        
+        outlineView?.reloadData()
     }
 }
 

@@ -9,8 +9,17 @@
 import Cocoa
 import MongoKitten
 
-final class CollectionViewController: NSViewController, MMTabBarItem {
-    var hasCloseButton = true
+protocol DocumentSkippable {
+    func reload()
+}
+
+final class CollectionViewController: NSViewController {
+    final class SkipLimit {
+        var skip = 0
+        var limit = 50
+    }
+    
+    var skipLimit = SkipLimit()
     
     override var nibName: String? {
         return "CollectionViewController"
@@ -21,13 +30,22 @@ final class CollectionViewController: NSViewController, MMTabBarItem {
     var collection: MongoKitten.Collection? {
         didSet {
             title = collection?.name
-            outlineViewController?.collection = collection
-            tableViewController?.collection = collection
+        }
+    }
+    
+    var documents: [Document] {
+        do {
+            guard let documents = try collection?.find(skipping: skipLimit.skip, limitedTo: skipLimit.limit) else { return [] }
+            return documents.map { $0 }
+        } catch {
+            print(error)
+            return []
         }
     }
     
     var outlineViewController: CollectionOutlineViewController?
     var tableViewController: CollectionTableViewController?
+    var activeViewController: (NSViewController & DocumentSkippable)?
 
     @IBAction func segmentUpdated(_ sender: NSSegmentedControl) {
         if sender.selectedSegment == 0 {
@@ -41,9 +59,27 @@ final class CollectionViewController: NSViewController, MMTabBarItem {
         super.viewDidLoad()
         
         outlineViewController = CollectionOutlineViewController()
+        outlineViewController?.collectionViewController = self
         tableViewController = CollectionTableViewController()
+        tableViewController?.collectionViewController = self
         
         showOutlineViewController()
+    }
+    
+    func previous() {
+        if skipLimit.skip == 0 {
+            return
+        }
+        
+        skipLimit.skip = max(0, skipLimit.skip - skipLimit.limit)
+        
+        activeViewController?.reload()
+    }
+    
+    func next() {
+        skipLimit.skip += skipLimit.limit
+        
+        activeViewController?.reload()
     }
     
     func showOutlineViewController() {
@@ -51,7 +87,7 @@ final class CollectionViewController: NSViewController, MMTabBarItem {
             subviews.forEach { $0.removeFromSuperview() }
         }
         
-        outlineViewController?.collection = collection
+        activeViewController = outlineViewController
         outlineViewController?.view.autoresizingMask = [.viewHeightSizable, .viewWidthSizable]
         if let view = outlineViewController?.view {
             view.frame = collectionView?.bounds ?? .zero
@@ -64,11 +100,15 @@ final class CollectionViewController: NSViewController, MMTabBarItem {
             subviews.forEach { $0.removeFromSuperview() }
         }
         
-        tableViewController?.collection = collection
+        activeViewController = tableViewController
         tableViewController?.view.autoresizingMask = [.viewHeightSizable, .viewWidthSizable]
         if let view = tableViewController?.view {
             view.frame = collectionView?.bounds ?? .zero
             collectionView?.addSubview(view)
         }
     }
+}
+
+extension CollectionViewController: MMTabBarItem {
+    
 }
