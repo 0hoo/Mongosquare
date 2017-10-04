@@ -29,7 +29,8 @@ final class CollectionViewController: NSViewController {
     
     var collection: MongoKitten.Collection? {
         didSet {
-            title = collection?.name
+            guard let collection = collection else { return }
+            title = collection.name
         }
     }
     
@@ -86,7 +87,19 @@ final class CollectionViewController: NSViewController {
     }
     
     func next() {
-        skipLimit.skip += skipLimit.limit
+        guard let collection = collection else { return }
+        
+        let newSkip = skipLimit.skip + skipLimit.limit
+        do {
+            let count = try collection.count()
+            if newSkip > count {
+                return
+            }
+        } catch {
+            print(error)
+        }
+
+        skipLimit.skip = newSkip
         
         activeViewController?.reload()
         updateWindowStatusBar()
@@ -125,7 +138,15 @@ final class CollectionViewController: NSViewController {
         
         do {
             let count = try collection.count()
-            let label = "\(skipLimit.skip) - \(skipLimit.skip + skipLimit.limit) of \(count)"
+            
+            var limitToDisplay = skipLimit.skip + skipLimit.limit - 1
+            do {
+                limitToDisplay = min(limitToDisplay, try collection.count() - 1)
+            } catch {
+                print(error)
+            }
+            
+            let label = "\(skipLimit.skip) - \(limitToDisplay) of \(count)"
             skipLimitSegmentedControl.setLabel(label, forSegment: 1)
         } catch {
             print(error)

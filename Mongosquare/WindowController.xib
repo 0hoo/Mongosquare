@@ -29,7 +29,7 @@
                         <rect key="frame" x="0.0" y="32" width="926" height="525"/>
                     </customView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E49-Hy-Ei3">
-                        <rect key="frame" x="497" y="3" width="120" height="25"/>
+                        <rect key="frame" x="563" y="3" width="120" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Hco-Gb-Kgw"/>
                         </constraints>
@@ -52,17 +52,13 @@
                         </connections>
                     </segmentedControl>
                     <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R1q-Sz-GAb">
-                        <rect key="frame" x="625" y="4" width="208" height="23"/>
+                        <rect key="frame" x="691" y="4" width="142" height="23"/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="momentary" id="abh-BM-nYR">
                             <font key="font" metaFont="system"/>
                             <segments>
-                                <segment image="NSGoLeftTemplate" width="30">
-                                    <nil key="label"/>
-                                </segment>
-                                <segment label="0-50 of 150" width="140" tag="1"/>
-                                <segment image="NSGoRightTemplate" width="30">
-                                    <nil key="label"/>
-                                </segment>
+                                <segment image="NSGoLeftTemplate" width="30"/>
+                                <segment label="               " tag="1"/>
+                                <segment image="NSGoRightTemplate" width="30"/>
                             </segments>
                         </segmentedCell>
                         <connections>
