@@ -132,9 +132,13 @@ final class CollectionViewController: NSViewController {
     }
     
     private func updateWindowStatusBar() {
+        updateSkipLimitSegmentedControl()
+        updateCollectionViewModeSegmentedControl()
+    }
+    
+    private func updateSkipLimitSegmentedControl() {
         guard let collection = collection else { return }
-        guard let windowController = windowController else { return }
-        guard let skipLimitSegmentedControl = windowController.skipLimitSegmentedControl else { return }
+        guard let skipLimitSegmentedControl = windowController?.skipLimitSegmentedControl else { return }
         
         do {
             let count = try collection.count()
@@ -151,7 +155,18 @@ final class CollectionViewController: NSViewController {
         } catch {
             print(error)
         }
-        
+    }
+    
+    private func updateCollectionViewModeSegmentedControl() {
+        guard let collectionViewModeSegmentedControl = windowController?.collectionViewModeSegmentedControl else { return }
+
+        if activeViewController == outlineViewController && collectionViewModeSegmentedControl.selectedSegment != 0 {
+            collectionViewModeSegmentedControl.selectedSegment = 0
+            windowController?.collectionViewModeChanged(collectionViewModeSegmentedControl)
+        } else if activeViewController == tableViewController && collectionViewModeSegmentedControl.selectedSegment != 1 {
+            collectionViewModeSegmentedControl.selectedSegment = 1
+            windowController?.collectionViewModeChanged(collectionViewModeSegmentedControl)
+        }
     }
 }
 
