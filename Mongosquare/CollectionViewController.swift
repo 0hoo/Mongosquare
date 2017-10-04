@@ -18,7 +18,7 @@ final class CollectionViewController: NSViewController {
         var skip = 0
         var limit = 50
     }
-    
+
     var skipLimit = SkipLimit()
     
     override var nibName: String? {
@@ -43,18 +43,12 @@ final class CollectionViewController: NSViewController {
         }
     }
     
+    weak var windowController: WindowController?
+    
     var outlineViewController: CollectionOutlineViewController?
     var tableViewController: CollectionTableViewController?
     var activeViewController: (NSViewController & DocumentSkippable)?
 
-    @IBAction func segmentUpdated(_ sender: NSSegmentedControl) {
-        if sender.selectedSegment == 0 {
-            showOutlineViewController()
-        } else {
-            showTableViewController()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,6 +60,20 @@ final class CollectionViewController: NSViewController {
         showOutlineViewController()
     }
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        updateWindowStatusBar()
+    }
+    
+    @IBAction func segmentUpdated(_ sender: NSSegmentedControl) {
+        if sender.selectedSegment == 0 {
+            showOutlineViewController()
+        } else {
+            showTableViewController()
+        }
+    }
+    
     func previous() {
         if skipLimit.skip == 0 {
             return
@@ -74,12 +82,14 @@ final class CollectionViewController: NSViewController {
         skipLimit.skip = max(0, skipLimit.skip - skipLimit.limit)
         
         activeViewController?.reload()
+        updateWindowStatusBar()
     }
     
     func next() {
         skipLimit.skip += skipLimit.limit
         
         activeViewController?.reload()
+        updateWindowStatusBar()
     }
     
     func showOutlineViewController() {
@@ -106,6 +116,21 @@ final class CollectionViewController: NSViewController {
             view.frame = collectionView?.bounds ?? .zero
             collectionView?.addSubview(view)
         }
+    }
+    
+    private func updateWindowStatusBar() {
+        guard let collection = collection else { return }
+        guard let windowController = windowController else { return }
+        guard let skipLimitSegmentedControl = windowController.skipLimitSegmentedControl else { return }
+        
+        do {
+            let count = try collection.count()
+            let label = "\(skipLimit.skip) - \(skipLimit.skip + skipLimit.limit) of \(count)"
+            skipLimitSegmentedControl.setLabel(label, forSegment: 1)
+        } catch {
+            print(error)
+        }
+        
     }
 }
 

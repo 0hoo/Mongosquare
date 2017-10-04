@@ -20,6 +20,7 @@ final class WindowController: NSWindowController {
         sidebarController.didSelectCollection = { collection in
             let collectionViewController = CollectionViewController()
             collectionViewController.collection = collection
+            collectionViewController.windowController = self
             self.tabViewController.add(viewController: collectionViewController)
         }
         return sidebarController

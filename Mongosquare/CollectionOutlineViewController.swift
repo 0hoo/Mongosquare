@@ -18,7 +18,7 @@ extension MongoKitten.ElementType: CustomStringConvertible {
             case .arrayDocument: return "Array Document";
             case .binary: return "Binary";
             case .objectId: return "objectId";
-            case .boolean: return "boolean";
+            case .boolean: return "Boolean";
             case .utcDateTime: return "Datetime";
             case .nullValue: return "null";
             case .regex: return "regex";
