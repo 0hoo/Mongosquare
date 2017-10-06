@@ -58,7 +58,7 @@ final class CollectionViewController: NSViewController {
         tableViewController = CollectionTableViewController()
         tableViewController?.collectionViewController = self
         
-        showOutlineViewController()
+        showTableViewController()
     }
     
     override func viewWillAppear() {

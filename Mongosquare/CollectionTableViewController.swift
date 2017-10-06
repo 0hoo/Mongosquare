@@ -25,6 +25,7 @@ final class CollectionTableViewController: NSViewController {
     @IBOutlet var tableView: NSTableView?
     
     weak var collectionViewController: CollectionViewController?
+    var setupColumn = true
 
     fileprivate var items: [DocumentItem] = []
 
@@ -40,24 +41,31 @@ extension CollectionTableViewController: DocumentSkippable {
         guard let tableView = tableView else { return }
         guard let collectionViewController = collectionViewController else { return }
         
-        while tableView.tableColumns.last != nil {
-            if let last = tableView.tableColumns.last {
-                tableView.removeTableColumn(last)
+        if setupColumn {
+            while tableView.tableColumns.last != nil {
+                if let last = tableView.tableColumns.last {
+                    tableView.removeTableColumn(last)
+                }
             }
+            
+            if collectionViewController.documents.count == 0 {
+                return
+            }
+            
+            let document = collectionViewController.documents[0]
+            for key in document.keys {
+                let column = NSTableColumn(identifier: key)
+                column.headerCell.stringValue = key
+                tableView.addTableColumn(column)
+            }
+            if let lastColumn = tableView.tableColumns.last {
+                lastColumn.width += 100
+            }
+            
+            setupColumn = false
         }
-        
-        if collectionViewController.documents.count == 0 {
-            return
-        }
-        
-        let document = collectionViewController.documents[0]
-        for key in document.keys {
-            let column = NSTableColumn(identifier: key)
-            column.headerCell.stringValue = key
-            tableView.addTableColumn(column)
-        }
+
         items = collectionViewController.documents.map { DocumentItem(document: $0) }
-        
         tableView.reloadData()
     }
 }

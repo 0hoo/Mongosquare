@@ -43,8 +43,8 @@
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="DuE-He-DbL">
                             <font key="font" metaFont="system"/>
                             <segments>
-                                <segment image="icons8-genealogy" width="32" selected="YES"/>
-                                <segment image="icons8-table" width="32" tag="1"/>
+                                <segment image="icons8-genealogy" width="32"/>
+                                <segment image="icons8-table" width="32" selected="YES" tag="1"/>
                             </segments>
                         </segmentedCell>
                         <connections>
