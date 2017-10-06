@@ -12,13 +12,12 @@ final class TabItem: NSObject, MMTabBarItem {
     var title: String = ""
     var viewController: CollectionViewController
     var hasCloseButton = true
-    
+
     init(title: String, viewController: CollectionViewController) {
         self.title = title
         self.viewController = viewController
     }
 }
-
 
 final class TabViewController: NSViewController {
     static let tabHeight = CGFloat(26)
@@ -29,9 +28,6 @@ final class TabViewController: NSViewController {
 
     @IBOutlet weak var tabView: NSTabView?
     @IBOutlet weak var tabBar: MMTabBarView?
-    
-    private var items: [TabItem] = []
-    private var itemsByCollections: [String: TabItem] = [:]
     
     var didSelectViewController: ((CollectionViewController) -> Void)?
     
@@ -51,15 +47,9 @@ final class TabViewController: NSViewController {
     }
     
     func add(viewController: CollectionViewController) {
-        guard let collectionName = viewController.collection?.name else { return }
-        
-        if let item = itemsByCollections[collectionName], let index = items.index(where: { $0.title == item.title }) {
+        if let index = tabView?.tabViewItems.index(where: { ($0.viewController as? CollectionViewController)?.collection?.key == viewController.collection?.key }) {
             tabView?.selectTabViewItem(at: index)
         } else {
-            let tabItem = TabItem(title: collectionName, viewController: viewController)
-            items.append(tabItem)
-            itemsByCollections[collectionName] = tabItem
-
             let tabViewItem = NSTabViewItem(viewController: viewController)
             tabViewItem.hasCloseButton = true
             tabView?.addTabViewItem(tabViewItem)

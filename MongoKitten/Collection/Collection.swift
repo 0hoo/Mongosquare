@@ -715,3 +715,9 @@ extension Collection: CustomStringConvertible {
         return "MongoKitten.Collection<\(database.server.hostname)/\(self.fullName)>"
     }
 }
+
+extension Collection {
+    public var key: String {
+        return "\(database.server.hostname)/\(database.name)/\(self.fullName)"
+    }
+}
