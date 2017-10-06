@@ -30,8 +30,10 @@ final class TabViewController: NSViewController {
     @IBOutlet weak var tabView: NSTabView?
     @IBOutlet weak var tabBar: MMTabBarView?
     
-    var items: [TabItem] = []
-    var itemsByCollections: [String: TabItem] = [:]
+    private var items: [TabItem] = []
+    private var itemsByCollections: [String: TabItem] = [:]
+    
+    var didSelectViewController: ((CollectionViewController) -> Void)?
     
     var activeCollectionViewController: CollectionViewController? {
         return tabView?.selectedTabViewItem?.viewController as? CollectionViewController
@@ -71,5 +73,8 @@ final class TabViewController: NSViewController {
 }
 
 extension TabViewController: MMTabBarViewDelegate {
-    
+    func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
+        guard let collectonViewController = tabViewItem?.viewController as? CollectionViewController else { return }
+        didSelectViewController?(collectonViewController)
+    }
 }

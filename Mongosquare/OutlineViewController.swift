@@ -9,6 +9,21 @@
 import Cocoa
 import MongoKitten
 
+extension NSOutlineView {
+    func selectItem(_ item: Any?, _ parentItem: Any? = nil) {
+        var index = self.row(forItem: item)
+        if index < 0 {
+            self.expandItem(parentItem)
+            index = self.row(forItem: item)
+            if index < 0 {
+                return
+            }
+        }
+        
+        selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+    }
+}
+
 final class OutlineTableCellView: NSTableCellView {
     @IBOutlet weak var iconImageView: NSImageView?
     @IBOutlet weak var countField: NSTextField?
@@ -82,6 +97,34 @@ final class OutlineViewController: NSViewController {
         }
         outlineView?.reloadData()
         outlineView?.expandItem(local, expandChildren: true)
+    }
+    
+    func selectBy(_ collection: MongoKitten.Collection) {
+        guard let outlineView = outlineView else { return }
+        
+        var currentItem: Any? = nil
+        var parentItem: Any? = nil
+        var stack: [OutlineItem] = []
+        repeat {
+            currentItem = stack.popLast()
+            let numberOfChildren = self.outlineView(outlineView, numberOfChildrenOfItem: currentItem)
+            var i = 0
+            while i < numberOfChildren {
+                parentItem = currentItem
+                if let item = self.outlineView(outlineView, child: i, ofItem: currentItem) as? OutlineItem {
+                    stack.append(item)
+                }
+                i += 1
+            }
+            
+            if let item = currentItem as? OutlineItem {
+                if let c = item.collection, c.name == collection.name {
+                    outlineView.selectItem(item, parentItem)
+                    break
+                }
+            }
+            
+        } while stack.count > 0
     }
 }
 

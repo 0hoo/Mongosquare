@@ -28,6 +28,11 @@ final class WindowController: NSWindowController {
     
     lazy var tabViewController: TabViewController = {
        let tabViewController = TabViewController()
+        tabViewController.didSelectViewController = { collectionViewController in
+            if let collection = collectionViewController.collection {
+                self.sidebarController.selectBy(collection)
+            }
+        }
         return tabViewController
     }()
     
