@@ -80,7 +80,11 @@ extension CollectionTableViewController: NSTableViewDataSource {
         for (key, val) in item.document {
             if key == tableColumn?.identifier {
                 if let view = tableView.make(withIdentifier: "DocumentCellView", owner: self) as? NSTableCellView {
-                    view.textField?.stringValue = "\(val)"
+                    if let subDocument = val as? Document {
+                        view.textField?.stringValue = "{ \(subDocument.keys.count) fields }"
+                    } else {
+                        view.textField?.stringValue = "\(val)"
+                    }
                     return view
                 }
             }
