@@ -54,7 +54,13 @@ final class DocumentOutlineItem {
         if fields.count == 0 {
             for (key, val) in document {
                 let valueType = document.type(at: key)?.description ?? ""
-                let fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
+                let fieldItem: DocumentOutlineItem
+                if let subDocument = val as? Document {
+                    let fields = "{ \(subDocument.keys.count) fields }"
+                    fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
+                } else {
+                    fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
+                }
                 fields.append(fieldItem)
             }
         }
@@ -85,8 +91,8 @@ extension CollectionOutlineViewController: DocumentSkippable {
         items.removeAll()
         
         for (i, document) in collectionViewController.documents.enumerated() {
-            let keys = "{ \(document.keys.count) fields }"
-            items.append(DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: keys, type: "Object", document: document, isDocument: true))
+            let fields = "{ \(document.keys.count) fields }"
+            items.append(DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: fields, type: "Object", document: document, isDocument: true))
         }
         
         outlineView?.reloadData()
