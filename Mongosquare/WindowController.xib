@@ -28,12 +28,12 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="F52-Ri-S7a">
                         <rect key="frame" x="0.0" y="32" width="926" height="525"/>
                     </customView>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E49-Hy-Ei3">
-                        <rect key="frame" x="563" y="3" width="120" height="25"/>
+                    <button verticalHuggingPriority="750" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E49-Hy-Ei3">
+                        <rect key="frame" x="595" y="3" width="88" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Hco-Gb-Kgw"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="Hco-Gb-Kgw"/>
                         </constraints>
-                        <buttonCell key="cell" type="roundTextured" title="Filter - find()" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5v4-tZ-Cbs">
+                        <buttonCell key="cell" type="roundTextured" title="Filter" bezelStyle="texturedRounded" image="NSRevealFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5v4-tZ-Cbs">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -46,8 +46,8 @@
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="DuE-He-DbL">
                             <font key="font" metaFont="system"/>
                             <segments>
-                                <segment image="icons8-genealogy" width="32" selected="YES"/>
-                                <segment image="icons8-table" width="32" tag="1"/>
+                                <segment image="NSListViewTemplate" width="32" selected="YES"/>
+                                <segment image="NSColumnViewTemplate" width="32" tag="1"/>
                             </segments>
                         </segmentedCell>
                         <connections>
@@ -140,15 +140,16 @@
         </window>
     </objects>
     <resources>
+        <image name="NSColumnViewTemplate" width="16" height="10"/>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="NSListViewTemplate" width="14" height="10"/>
+        <image name="NSRevealFreestandingTemplate" width="14" height="14"/>
         <image name="icons8-data_backup" width="75" height="75"/>
         <image name="icons8-edit_file" width="75" height="75"/>
         <image name="icons8-export" width="75" height="75"/>
-        <image name="icons8-genealogy" width="32" height="32"/>
         <image name="icons8-import" width="75" height="75"/>
         <image name="icons8-news" width="75" height="75"/>
         <image name="icons8-system_information" width="75" height="75"/>
-        <image name="icons8-table" width="32" height="32"/>
     </resources>
 </document>

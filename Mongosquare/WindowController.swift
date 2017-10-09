@@ -69,14 +69,14 @@ final class WindowController: NSWindowController {
     }
     
     @IBAction func collectionViewModeChanged(_ sender: NSSegmentedControl) {
-        let unselected = sender.selectedSegment == 0 ? 1 : 0
-        
-        if let image = sender.image(forSegment: unselected) {
-            sender.setImage(image.tinted(color: .darkGray), forSegment: unselected)
-        }
-        if let image = sender.image(forSegment: sender.selectedSegment) {
-            sender.setImage(image.tinted(color: .white), forSegment: sender.selectedSegment)
-        }
+//        let unselected = sender.selectedSegment == 0 ? 1 : 0
+//
+//        if let image = sender.image(forSegment: unselected) {
+//            sender.setImage(image.tinted(color: .darkGray), forSegment: unselected)
+//        }
+//        if let image = sender.image(forSegment: sender.selectedSegment) {
+//            sender.setImage(image.tinted(color: .white), forSegment: sender.selectedSegment)
+//        }
         
         if sender.selectedSegment == 0 {
             self.tabViewController.activeCollectionViewController?.showOutlineViewController()
@@ -97,7 +97,7 @@ final class WindowController: NSWindowController {
         guard let collectionViewController = self.tabViewController.activeCollectionViewController else { return }
         queryWindowController = QueryWindowController()
         queryWindowController?.collectionViewController = collectionViewController
-        queryWindowController?.didSave = { [weak self] fields in
+        queryWindowController?.didSave = { fields in
             collectionViewController.projectingFields = fields
         }
         queryWindowController?.showWindow(self)
