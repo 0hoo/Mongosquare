@@ -81,12 +81,12 @@ final class CollectionOutlineViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reload()
+        reload(fieldsUpdated: true)
     }
 }
 
 extension CollectionOutlineViewController: DocumentSkippable {
-    func reload() {
+    func reload(fieldsUpdated: Bool) {
         guard let collectionViewController = collectionViewController else { return }
         items.removeAll()
         

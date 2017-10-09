@@ -15,6 +15,8 @@ final class WindowController: NSWindowController {
     @IBOutlet weak var collectionViewModeSegmentedControl: NSSegmentedControl?
     @IBOutlet weak var skipLimitSegmentedControl: NSSegmentedControl?
     
+    var queryWindowController: QueryWindowController?
+    
     lazy var sidebarController: OutlineViewController = {
         let sidebarController = OutlineViewController()
         sidebarController.didSelectCollection = { collection in
@@ -89,6 +91,16 @@ final class WindowController: NSWindowController {
         } else if sender.selectedSegment == 2 {
             self.tabViewController.activeCollectionViewController?.next()
         }
+    }
+    
+    @IBAction func showQueryWindow(_ sender: NSButton) {
+        guard let collectionViewController = self.tabViewController.activeCollectionViewController else { return }
+        queryWindowController = QueryWindowController()
+        queryWindowController?.collectionViewController = collectionViewController
+        queryWindowController?.didSave = { [weak self] fields in
+            collectionViewController.projectingFields = fields
+        }
+        queryWindowController?.showWindow(self)
     }
     
     @IBAction func sample(_ sender: Any?) {

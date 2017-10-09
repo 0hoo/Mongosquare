@@ -10,7 +10,7 @@ import Cocoa
 import MongoKitten
 
 protocol DocumentSkippable {
-    func reload()
+    func reload(fieldsUpdated: Bool)
 }
 
 final class CollectionViewController: NSViewController {
@@ -34,9 +34,23 @@ final class CollectionViewController: NSViewController {
         }
     }
     
+    var projectingFields: [String] = [] {
+        didSet {
+            outlineViewController?.reload(fieldsUpdated: true)
+            tableViewController?.reload(fieldsUpdated: true)
+            updateWindowStatusBar()
+        }
+    }
+    
     var documents: [Document] {
         do {
-            guard let documents = try collection?.find(skipping: skipLimit.skip, limitedTo: skipLimit.limit) else { return [] }
+            var projection: Projection?
+            if projectingFields.count > 0 {
+                projection = Projection(Document(dictionaryElements: projectingFields.map {
+                    return ($0, true)
+                }).flattened())
+            }
+            guard let documents = try collection?.find(projecting: projection, skipping: skipLimit.skip, limitedTo: skipLimit.limit) else { return [] }
             return documents.map { $0 }
         } catch {
             print(error)
@@ -58,7 +72,7 @@ final class CollectionViewController: NSViewController {
         tableViewController = CollectionTableViewController()
         tableViewController?.collectionViewController = self
         
-        showTableViewController()
+        showOutlineViewController()
     }
     
     override func viewWillAppear() {
@@ -82,7 +96,7 @@ final class CollectionViewController: NSViewController {
         
         skipLimit.skip = max(0, skipLimit.skip - skipLimit.limit)
         
-        activeViewController?.reload()
+        activeViewController?.reload(fieldsUpdated: false)
         updateWindowStatusBar()
     }
     
@@ -101,7 +115,7 @@ final class CollectionViewController: NSViewController {
 
         skipLimit.skip = newSkip
         
-        activeViewController?.reload()
+        activeViewController?.reload(fieldsUpdated: false)
         updateWindowStatusBar()
     }
     
@@ -116,6 +130,7 @@ final class CollectionViewController: NSViewController {
             view.frame = collectionView?.bounds ?? .zero
             collectionView?.addSubview(view)
         }
+        outlineViewController?.reload(fieldsUpdated: false)
     }
     
     func showTableViewController() {
@@ -129,6 +144,7 @@ final class CollectionViewController: NSViewController {
             view.frame = collectionView?.bounds ?? .zero
             collectionView?.addSubview(view)
         }
+        outlineViewController?.reload(fieldsUpdated: false)
     }
     
     private func updateWindowStatusBar() {

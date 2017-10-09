@@ -37,14 +37,17 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="showQueryWindow:" target="-1" id="VFw-Sv-ExA"/>
+                        </connections>
                     </button>
                     <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1ps-Gz-56W">
                         <rect key="frame" x="841" y="4" width="71" height="23"/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="DuE-He-DbL">
                             <font key="font" metaFont="system"/>
                             <segments>
-                                <segment image="icons8-genealogy" width="32"/>
-                                <segment image="icons8-table" width="32" selected="YES" tag="1"/>
+                                <segment image="icons8-genealogy" width="32" selected="YES"/>
+                                <segment image="icons8-table" width="32" tag="1"/>
                             </segments>
                         </segmentedCell>
                         <connections>

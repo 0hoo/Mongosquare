@@ -25,23 +25,22 @@ final class CollectionTableViewController: NSViewController {
     @IBOutlet var tableView: NSTableView?
     
     weak var collectionViewController: CollectionViewController?
-    var setupColumn = true
 
     fileprivate var items: [DocumentItem] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        reload()
+        reload(fieldsUpdated: true)
     }
 }
 
 extension CollectionTableViewController: DocumentSkippable {
-    func reload() {
+    func reload(fieldsUpdated: Bool) {
         guard let tableView = tableView else { return }
         guard let collectionViewController = collectionViewController else { return }
         
-        if setupColumn {
+        if fieldsUpdated {
             while tableView.tableColumns.last != nil {
                 if let last = tableView.tableColumns.last {
                     tableView.removeTableColumn(last)
@@ -61,8 +60,6 @@ extension CollectionTableViewController: DocumentSkippable {
             if let lastColumn = tableView.tableColumns.last {
                 lastColumn.width += 100
             }
-            
-            setupColumn = false
         }
 
         items = collectionViewController.documents.map { DocumentItem(document: $0) }
