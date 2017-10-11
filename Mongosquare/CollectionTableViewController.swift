@@ -51,8 +51,7 @@ extension CollectionTableViewController: DocumentSkippable {
                 return
             }
             
-            let document = collectionViewController.documents[0]
-            for key in document.keys {
+            for key in collectionViewController.visibleFieldsKey {
                 let column = NSTableColumn(identifier: key)
                 column.headerCell.stringValue = key
                 tableView.addTableColumn(column)

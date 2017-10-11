@@ -58,6 +58,14 @@ final class CollectionViewController: NSViewController {
         }
     }
     
+    var visibleFieldsKey: [String] {
+        if projectingFields.count > 0 {
+            return projectingFields
+        } else {
+            return documents[0].keys
+        }
+    }
+    
     weak var windowController: WindowController?
     
     var outlineViewController: CollectionOutlineViewController?

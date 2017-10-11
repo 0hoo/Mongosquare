@@ -21,6 +21,9 @@ final class QueryWindowController: NSWindowController {
     var didSave: (([String]) -> Void)?
 
     typealias QueryField = (name: String, type: String)
+    
+    var selectedRows = NSMutableOrderedSet()
+    
     var fields: [QueryField] = []
     var selectedFields: [QueryField] = [] {
         didSet {
@@ -86,9 +89,19 @@ extension QueryWindowController: NSTableViewDataSource {
 }
 
 extension QueryWindowController: NSTableViewDelegate {
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        selectedRows.add(row)
+        return true
+    }
+
     func tableViewSelectionDidChange(_ notification: Notification) {
         guard let fieldsTableView = fieldsTableView else { return }
         let rowIndexes = fieldsTableView.selectedRowIndexes
-        selectedFields = rowIndexes.map { fields[$0] }
+        let rowsToDelete = selectedRows.flatMap { $0 as? Int }.filter { rowIndexes.contains($0) == false }
+        for row in rowsToDelete {
+            selectedRows.remove(row)
+        }
+        
+        selectedFields = selectedRows.flatMap { $0 as? Int }.map { fields[$0] }
     }
 }
