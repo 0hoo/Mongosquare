@@ -30,6 +30,18 @@ final class QueryWindowController: NSWindowController {
             fieldsSearchField?.stringValue = "{ " + selectedFields.map { "\"\($0.name): 1\"" }.joined(separator: ", ") + " }"
         }
     }
+    var projectingFields: [String]? = nil {
+        didSet {
+            guard let projectingFields = projectingFields else { return }
+            guard let fieldsTableView = fieldsTableView else { return }
+            let selectedRows: [Int] = projectingFields.flatMap { projectingField in fields.index(where: { projectingField == $0.name }) }
+            if selectedRows.count > 0 {
+                let indices: IndexSet = IndexSet(selectedRows)
+                selectedRows.forEach { let _ = self.tableView(fieldsTableView, shouldSelectRow: $0) }
+                fieldsTableView.selectRowIndexes(indices, byExtendingSelection: false)
+            }
+        }
+    }
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -38,6 +50,7 @@ final class QueryWindowController: NSWindowController {
         window?.title = "Filter - \(collectionName)"
         
         scan()
+        projectingFields = collectionViewController?.projectingFields
     }
     
     func scan() {
@@ -101,7 +114,7 @@ extension QueryWindowController: NSTableViewDelegate {
         for row in rowsToDelete {
             selectedRows.remove(row)
         }
-        
+
         selectedFields = selectedRows.flatMap { $0 as? Int }.map { fields[$0] }
     }
 }

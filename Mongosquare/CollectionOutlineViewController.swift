@@ -90,7 +90,7 @@ extension CollectionOutlineViewController: DocumentSkippable {
         guard let collectionViewController = collectionViewController else { return }
         items.removeAll()
         
-        for (i, document) in collectionViewController.documents.enumerated() {
+        for (i, document) in collectionViewController.queriedDocuments.enumerated() {
             let fields = "{ \(document.keys.count) fields }"
             items.append(DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: fields, type: "Object", document: document, isDocument: true))
         }

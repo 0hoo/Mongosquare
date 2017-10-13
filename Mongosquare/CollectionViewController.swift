@@ -44,6 +44,16 @@ final class CollectionViewController: NSViewController {
     
     var documents: [Document] {
         do {
+            guard let documents = try collection?.find(skipping: skipLimit.skip, limitedTo: skipLimit.limit) else { return [] }
+            return documents.map { $0 }
+        } catch {
+            print(error)
+            return []
+        }
+    }
+    
+    var queriedDocuments: [Document] {
+        do {
             var projection: Projection?
             if projectingFields.count > 0 {
                 projection = Projection(Document(dictionaryElements: projectingFields.map {
@@ -62,7 +72,7 @@ final class CollectionViewController: NSViewController {
         if projectingFields.count > 0 {
             return projectingFields
         } else {
-            return documents[0].keys
+            return queriedDocuments[0].keys
         }
     }
     

@@ -47,7 +47,7 @@ extension CollectionTableViewController: DocumentSkippable {
                 }
             }
             
-            if collectionViewController.documents.count == 0 {
+            if collectionViewController.queriedDocuments.count == 0 {
                 return
             }
             
@@ -61,7 +61,7 @@ extension CollectionTableViewController: DocumentSkippable {
             }
         }
 
-        items = collectionViewController.documents.map { DocumentItem(document: $0) }
+        items = collectionViewController.queriedDocuments.map { DocumentItem(document: $0) }
         tableView.reloadData()
     }
 }
