@@ -46,6 +46,8 @@ final class QueryWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
+        fieldsSearchField?.delegate = self
+        
         let collectionName = collectionViewController?.collection?.fullName ?? ""
         window?.title = "Filter - \(collectionName)"
         
@@ -116,5 +118,13 @@ extension QueryWindowController: NSTableViewDelegate {
         }
 
         selectedFields = selectedRows.flatMap { $0 as? Int }.map { fields[$0] }
+    }
+}
+
+extension QueryWindowController: NSSearchFieldDelegate {
+    func searchFieldDidEndSearching(_ sender: NSSearchField) {
+        selectedFields = []
+        projectingFields = nil
+        fieldsTableView?.deselectAll(self)
     }
 }
