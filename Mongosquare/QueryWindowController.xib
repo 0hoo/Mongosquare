@@ -9,8 +9,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="QueryWindowController" customModule="Mongosquare" customModuleProvider="target">
             <connections>
+                <outlet property="dataSource" destination="97u-NS-w4c" id="qDS-6g-haS"/>
                 <outlet property="fieldsScanButton" destination="aSW-cf-RKY" id="iD4-p0-Myw"/>
-                <outlet property="fieldsSearchField" destination="fsD-Km-RWg" id="gxL-g7-TaM"/>
+                <outlet property="fieldsSearchField" destination="fsD-Km-RWg" id="TDV-BN-V2X"/>
                 <outlet property="fieldsSegmentedControl" destination="Rah-EC-pDU" id="Wm7-yi-wVf"/>
                 <outlet property="fieldsTableView" destination="ZXW-Dx-OLr" id="KPT-3j-W18"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -125,8 +126,8 @@
                                                             </tableColumn>
                                                         </tableColumns>
                                                         <connections>
-                                                            <outlet property="dataSource" destination="-2" id="4cP-uY-WSS"/>
-                                                            <outlet property="delegate" destination="-2" id="eJZ-jK-8ed"/>
+                                                            <outlet property="dataSource" destination="97u-NS-w4c" id="J5l-w2-9VC"/>
+                                                            <outlet property="delegate" destination="97u-NS-w4c" id="lsG-mX-RdR"/>
                                                         </connections>
                                                     </tableView>
                                                 </subviews>
@@ -293,6 +294,7 @@ Gw
             </connections>
             <point key="canvasLocation" x="93" y="176"/>
         </window>
+        <customObject id="97u-NS-w4c" customClass="QueryFieldsTableViewDataSource" customModule="Mongosquare" customModuleProvider="target"/>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
