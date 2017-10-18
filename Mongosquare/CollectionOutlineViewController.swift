@@ -41,6 +41,7 @@ final class DocumentOutlineItem {
     let document: MongoKitten.Document
     let isDocument: Bool
     var fields: [DocumentOutlineItem] = []
+    var visibleFieldsKey: [String] = []
     
     init(key: String, value: String, type: String, document: MongoKitten.Document, isDocument: Bool) {
         self.key = key
@@ -52,16 +53,32 @@ final class DocumentOutlineItem {
     
     func fillFields() {
         if fields.count == 0 {
-            for (key, val) in document {
-                let valueType = document.type(at: key)?.description ?? ""
-                let fieldItem: DocumentOutlineItem
-                if let subDocument = val as? Document {
-                    let fields = "{ \(subDocument.keys.count) fields }"
-                    fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
-                } else {
-                    fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
+            if visibleFieldsKey.count > 0 {
+                for key in visibleFieldsKey {
+                    if let val = document[key] {
+                        let valueType = document.type(at: key)?.description ?? ""
+                        let fieldItem: DocumentOutlineItem
+                        if let subDocument = val as? Document {
+                            let fields = "{ \(subDocument.keys.count) fields }"
+                            fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
+                        } else {
+                            fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
+                        }
+                        fields.append(fieldItem)
+                    }
                 }
-                fields.append(fieldItem)
+            } else {
+                for (key, val) in document {
+                    let valueType = document.type(at: key)?.description ?? ""
+                    let fieldItem: DocumentOutlineItem
+                    if let subDocument = val as? Document {
+                        let fields = "{ \(subDocument.keys.count) fields }"
+                        fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
+                    } else {
+                        fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
+                    }
+                    fields.append(fieldItem)
+                }
             }
         }
     }
@@ -91,7 +108,7 @@ extension CollectionOutlineViewController: DocumentSkippable {
         items.removeAll()
         
         for (i, document) in collectionViewController.queriedDocuments.enumerated() {
-            let fields = "{ \(document.keys.count) fields }"
+            let fields = "{ \(collectionViewController.visibleFieldsKey.count > 0 ? collectionViewController.visibleFieldsKey.count : document.keys.count) fields }"
             items.append(DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: fields, type: "Object", document: document, isDocument: true))
         }
         
@@ -110,6 +127,9 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if let item = item as? DocumentOutlineItem, item.isDocument {
+            if let collectionViewController = collectionViewController {
+                item.visibleFieldsKey = collectionViewController.visibleFieldsKey
+            }
             item.fillFields()
             return item.fields.count
         }
