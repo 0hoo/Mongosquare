@@ -8,7 +8,48 @@
 
 import Cocoa
 
-typealias QueryField = (name: String, type: String)
+struct QueryField {
+    var name: String
+    var type: String
+    var ordering: Int?
+    
+    init(name: String, type: String, ordering: Int?) {
+        self.name = name
+        self.type = type
+        self.ordering = ordering
+    }
+    
+    init(name: String, type: String) {
+        self.init(name: name, type: type, ordering: nil)
+    }
+}
+
+final class SortTableViewDataSource: NSObject {
+    var fields: [QueryField] = []
+}
+
+extension SortTableViewDataSource: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return fields.count
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let tableColumn = tableColumn else { return nil }
+        
+        let field = fields[row]
+        let view = tableView.make(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
+        if tableColumn.identifier == "DocumentColumnField" {
+            view.textField?.stringValue = field.name
+        } else if tableColumn.identifier == "DocumentColumnType" {
+            view.textField?.stringValue = field.type
+        }
+        return view
+    }
+}
+
+extension SortTableViewDataSource: NSTableViewDelegate {
+    
+}
 
 final class QueryFieldsTableViewDataSource: NSObject {
     
@@ -68,7 +109,11 @@ final class QueryWindowController: NSWindowController {
     @IBOutlet weak var fieldsScanButton: NSButton?
     @IBOutlet weak var fieldsSearchField: NSSearchField?
     
-    @IBOutlet var dataSource: QueryFieldsTableViewDataSource?
+    @IBOutlet weak var sortTableView: NSTableView?
+    @IBOutlet weak var sortSearchField: NSSearchField?
+    
+    @IBOutlet var fieldsDataSource: QueryFieldsTableViewDataSource?
+    @IBOutlet var sortDataSource: SortTableViewDataSource?
     
     weak var collectionViewController: CollectionViewController?
     
@@ -76,7 +121,7 @@ final class QueryWindowController: NSWindowController {
     
     var projectingFields: [String]? = nil {
         didSet {
-            guard let dataSource = dataSource else { return }
+            guard let dataSource = fieldsDataSource else { return }
             guard let projectingFields = projectingFields else { return }
             guard let fieldsTableView = fieldsTableView else { return }
             let selectedRows: [Int] = projectingFields.flatMap { projectingField in dataSource.fields.index(where: { projectingField == $0.name }) }
@@ -95,7 +140,7 @@ final class QueryWindowController: NSWindowController {
         window?.title = "Filter - \(collectionName)"
 
         fieldsSearchField?.delegate = self
-        dataSource?.didSetSelectedFields = { [weak self] selectedFields in
+        fieldsDataSource?.didSetSelectedFields = { [weak self] selectedFields in
             self?.fieldsSearchField?.stringValue = "{ " + selectedFields.map { "\"\($0.name): 1\"" }.joined(separator: ", ") + " }"
         }
         
@@ -106,17 +151,21 @@ final class QueryWindowController: NSWindowController {
     func scan() {
         guard let collectionViewController = collectionViewController else { return }
         
-        dataSource?.fields.removeAll()
+        fieldsDataSource?.fields.removeAll()
+        sortDataSource?.fields.removeAll()
         let document = collectionViewController.documents[0]
         for key in document.keys {
             let valueType = document.type(at: key)?.description ?? ""
-            dataSource?.fields.append((name: key, type: valueType))
+            let queryField = QueryField(name: key, type: valueType)
+            fieldsDataSource?.fields.append(queryField)
+            sortDataSource?.fields.append(queryField)
         }
         fieldsTableView?.reloadData()
+        sortTableView?.reloadData()
     }
     
     @IBAction func save(_ sender: NSButton) {
-        guard let selectedFields = dataSource?.selectedFields else { return }
+        guard let selectedFields = fieldsDataSource?.selectedFields else { return }
         close()
         didSave?(selectedFields.map { $0.name })
     }
@@ -128,7 +177,7 @@ final class QueryWindowController: NSWindowController {
 
 extension QueryWindowController: NSSearchFieldDelegate {
     func searchFieldDidEndSearching(_ sender: NSSearchField) {
-        dataSource?.selectedFields = []
+        fieldsDataSource?.selectedFields = []
         projectingFields = nil
         fieldsTableView?.deselectAll(self)
     }
