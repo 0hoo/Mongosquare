@@ -236,13 +236,13 @@
                                     <rect key="frame" x="10" y="33" width="526" height="342"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huA-PP-fsi">
+                                        <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huA-PP-fsi">
                                             <rect key="frame" x="16" y="48" width="494" height="282"/>
                                             <clipView key="contentView" id="rtS-nA-xPU">
                                                 <rect key="frame" x="1" y="0.0" width="492" height="281"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="icl-rk-qGI" viewBased="YES" id="Vtz-5I-9N2">
+                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" headerView="icl-rk-qGI" viewBased="YES" id="Vtz-5I-9N2">
                                                         <rect key="frame" x="0.0" y="0.0" width="492" height="258"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
@@ -328,22 +328,33 @@
                                                                 </textFieldCell>
                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 <prototypeCellViews>
-                                                                    <tableCellView id="Clg-Vg-c3r">
-                                                                        <rect key="frame" x="248" y="1" width="166" height="17"/>
+                                                                    <tableCellView identifier="OrderingTableCellView" id="Clg-Vg-c3r" customClass="OrderingTableCellView" customModule="Mongosquare" customModuleProvider="target">
+                                                                        <rect key="frame" x="248" y="1" width="166" height="20"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
-                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U5F-JW-aQ2">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="166" height="17"/>
-                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="7Ww-t0-hXE">
-                                                                                    <font key="font" metaFont="system"/>
-                                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                                </textFieldCell>
-                                                                            </textField>
+                                                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZfH-rW-rOi">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="166" height="19"/>
+                                                                                <popUpButtonCell key="cell" type="recessed" title="-" bezelStyle="recessed" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="ZcL-Ga-Uon" id="5VO-Vp-i1T">
+                                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                                                    <font key="font" metaFont="systemBold" size="12"/>
+                                                                                    <menu key="menu" id="U0I-c1-N4M">
+                                                                                        <items>
+                                                                                            <menuItem title="-" state="on" id="ZcL-Ga-Uon"/>
+                                                                                            <menuItem title="Ascending" id="e6U-Hi-BTC"/>
+                                                                                            <menuItem title="Descending" id="eGd-Gh-mJL"/>
+                                                                                        </items>
+                                                                                    </menu>
+                                                                                </popUpButtonCell>
+                                                                            </popUpButton>
                                                                         </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="bottom" secondItem="ZfH-rW-rOi" secondAttribute="bottom" constant="1" id="1sR-8E-c8b"/>
+                                                                            <constraint firstItem="ZfH-rW-rOi" firstAttribute="top" secondItem="Clg-Vg-c3r" secondAttribute="top" constant="1" id="Tji-dY-a2z"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="ZfH-rW-rOi" secondAttribute="trailing" id="bJH-TZ-oRo"/>
+                                                                            <constraint firstItem="ZfH-rW-rOi" firstAttribute="leading" secondItem="Clg-Vg-c3r" secondAttribute="leading" id="eaB-y0-XfD"/>
+                                                                        </constraints>
                                                                         <connections>
-                                                                            <outlet property="textField" destination="U5F-JW-aQ2" id="aw1-Tg-zzF"/>
+                                                                            <outlet property="popUpButton" destination="ZfH-rW-rOi" id="tYU-MP-n4F"/>
                                                                         </connections>
                                                                     </tableCellView>
                                                                 </prototypeCellViews>

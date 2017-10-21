@@ -8,6 +8,10 @@
 
 import Cocoa
 
+final class OrderingTableCellView: NSTableCellView {
+    @IBOutlet weak var popUpButton: NSPopUpButton?
+}
+
 struct QueryField {
     var name: String
     var type: String
@@ -37,13 +41,20 @@ extension SortTableViewDataSource: NSTableViewDataSource {
         guard let tableColumn = tableColumn else { return nil }
         
         let field = fields[row]
-        let view = tableView.make(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
-        if tableColumn.identifier == "DocumentColumnField" {
-            view.textField?.stringValue = field.name
-        } else if tableColumn.identifier == "DocumentColumnType" {
-            view.textField?.stringValue = field.type
+        
+        if tableColumn.identifier == "DocumentColumnOrdering" {
+            let view = tableView.make(withIdentifier: "OrderingTableCellView", owner: self) as! OrderingTableCellView
+            view.popUpButton?.selectItem(at: 1)
+            return view
+        } else {
+            let view = tableView.make(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
+            if tableColumn.identifier == "DocumentColumnField" {
+                view.textField?.stringValue = field.name
+            } else if tableColumn.identifier == "DocumentColumnType" {
+                view.textField?.stringValue = field.type
+            }
+            return view
         }
-        return view
     }
 }
 
