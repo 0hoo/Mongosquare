@@ -64,6 +64,9 @@ extension SortTableViewDataSource: NSTableViewDataSource {
             view.popUpButton?.tag = row
             view.popUpButton?.target = self
             view.popUpButton?.action = #selector(popUpButtonChanged(_:))
+            if let ordering = field.ordering {
+                view.popUpButton?.selectItem(withTag: ordering)
+            }
             return view
         } else {
             let view = tableView.make(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
@@ -189,6 +192,9 @@ final class QueryWindowController: NSWindowController {
             let queryField = QueryField(name: key, type: valueType)
             fieldsDataSource?.fields.append(queryField)
             sortDataSource?.fields.append(queryField)
+            if let sortingField = collectionViewController.queryOption.sortingFields.first(where: { $0.name == queryField.name }) {
+                queryField.ordering = sortingField.ordering
+            }
         }
         fieldsTableView?.reloadData()
         sortTableView?.reloadData()

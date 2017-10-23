@@ -340,8 +340,8 @@
                                                                                     <menu key="menu" id="U0I-c1-N4M">
                                                                                         <items>
                                                                                             <menuItem title="-" state="on" id="ZcL-Ga-Uon"/>
-                                                                                            <menuItem title="Ascending" id="e6U-Hi-BTC"/>
-                                                                                            <menuItem title="Descending" id="eGd-Gh-mJL"/>
+                                                                                            <menuItem title="Ascending" tag="1" id="e6U-Hi-BTC"/>
+                                                                                            <menuItem title="Descending" tag="-1" id="eGd-Gh-mJL"/>
                                                                                         </items>
                                                                                     </menu>
                                                                                 </popUpButtonCell>
