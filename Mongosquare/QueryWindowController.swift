@@ -8,11 +8,16 @@
 
 import Cocoa
 
+struct QueryOption {
+    var projectingFields: [String] = []
+    var sortingFields: [QueryField] = []
+}
+
 final class OrderingTableCellView: NSTableCellView {
     @IBOutlet weak var popUpButton: NSPopUpButton?
 }
 
-struct QueryField {
+final class QueryField {
     var name: String
     var type: String
     var ordering: Int?
@@ -23,13 +28,25 @@ struct QueryField {
         self.ordering = ordering
     }
     
-    init(name: String, type: String) {
+    convenience init(name: String, type: String) {
         self.init(name: name, type: type, ordering: nil)
     }
 }
 
 final class SortTableViewDataSource: NSObject {
     var fields: [QueryField] = []
+    
+    func popUpButtonChanged(_ sender: NSPopUpButton) {
+        let row = sender.tag
+        let field = fields[row]
+        if sender.selectedItem?.title == "-" {
+            field.ordering = nil
+        } else if sender.selectedItem?.title.lowercased() == "ascending" {
+            field.ordering = 1
+        } else if sender.selectedItem?.title.lowercased() == "descending" {
+            field.ordering = -1
+        }
+    }
 }
 
 extension SortTableViewDataSource: NSTableViewDataSource {
@@ -44,7 +61,9 @@ extension SortTableViewDataSource: NSTableViewDataSource {
         
         if tableColumn.identifier == "DocumentColumnOrdering" {
             let view = tableView.make(withIdentifier: "OrderingTableCellView", owner: self) as! OrderingTableCellView
-            view.popUpButton?.selectItem(at: 1)
+            view.popUpButton?.tag = row
+            view.popUpButton?.target = self
+            view.popUpButton?.action = #selector(popUpButtonChanged(_:))
             return view
         } else {
             let view = tableView.make(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
@@ -128,7 +147,7 @@ final class QueryWindowController: NSWindowController {
     
     weak var collectionViewController: CollectionViewController?
     
-    var didSave: (([String]) -> Void)?
+    var didSave: ((QueryOption) -> Void)?
     
     var projectingFields: [String]? = nil {
         didSet {
@@ -156,7 +175,7 @@ final class QueryWindowController: NSWindowController {
         }
         
         scan()
-        projectingFields = collectionViewController?.projectingFields
+        projectingFields = collectionViewController?.queryOption.projectingFields
     }
     
     func scan() {
@@ -177,8 +196,11 @@ final class QueryWindowController: NSWindowController {
     
     @IBAction func save(_ sender: NSButton) {
         guard let selectedFields = fieldsDataSource?.selectedFields else { return }
+        guard let sortingFields = sortDataSource?.fields else { return }
+        
+        let queryOption = QueryOption(projectingFields: selectedFields.map { $0.name }, sortingFields: sortingFields.filter {$0.ordering != nil })
+        didSave?(queryOption)
         close()
-        didSave?(selectedFields.map { $0.name })
     }
     
     @IBAction func close(_ sender: NSButton) {

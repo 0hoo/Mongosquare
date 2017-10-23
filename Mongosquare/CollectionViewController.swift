@@ -8,6 +8,7 @@
 
 import Cocoa
 import MongoKitten
+import Cheetah
 
 protocol DocumentSkippable {
     func reload(fieldsUpdated: Bool)
@@ -34,7 +35,7 @@ final class CollectionViewController: NSViewController {
         }
     }
     
-    var projectingFields: [String] = [] {
+    var queryOption: QueryOption = QueryOption() {
         didSet {
             outlineViewController?.reload(fieldsUpdated: true)
             tableViewController?.reload(fieldsUpdated: true)
@@ -55,12 +56,24 @@ final class CollectionViewController: NSViewController {
     var queriedDocuments: [Document] {
         do {
             var projection: Projection?
-            if projectingFields.count > 0 {
-                projection = Projection(Document(dictionaryElements: projectingFields.map {
+            if queryOption.projectingFields.count > 0 {
+                projection = Projection(Document(dictionaryElements: queryOption.projectingFields.map {
                     return ($0, true)
                 }).flattened())
             }
-            guard let documents = try collection?.find(projecting: projection, skipping: skipLimit.skip, limitedTo: skipLimit.limit) else { return [] }
+            
+            var sort: Sort?
+            if queryOption.sortingFields.count > 0 {
+                sort = Sort(Document(dictionaryElements: queryOption.sortingFields.map {
+                    return ($0.name, $0.ordering)
+                }))
+            }
+            
+            //let d = Document(try JSONObject(from: "{\"code\": \"082640\", \"exchange\": \"코스피\"}"))
+            //let d = Document(try JSONObject(from: "{\"$or\": [{\"code\": \"082640\"}, {\"exchange\": \"코스닥\"}]}"))
+            //let query = Query(d)
+            
+            guard let documents = try collection?.find(sortedBy: sort, projecting: projection, skipping: skipLimit.skip, limitedTo: skipLimit.limit) else { return [] }
             return documents.map { $0 }
         } catch {
             print(error)
@@ -69,8 +82,8 @@ final class CollectionViewController: NSViewController {
     }
     
     var visibleFieldsKey: [String] {
-        if projectingFields.count > 0 {
-            return projectingFields
+        if queryOption.projectingFields.count > 0 {
+            return queryOption.projectingFields
         } else {
             return queriedDocuments[0].keys
         }

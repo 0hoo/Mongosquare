@@ -97,8 +97,8 @@ final class WindowController: NSWindowController {
         guard let collectionViewController = self.tabViewController.activeCollectionViewController else { return }
         queryWindowController = QueryWindowController()
         queryWindowController?.collectionViewController = collectionViewController
-        queryWindowController?.didSave = { fields in
-            collectionViewController.projectingFields = fields
+        queryWindowController?.didSave = { option in
+            collectionViewController.queryOption = option
         }
         queryWindowController?.showWindow(self)
     }
