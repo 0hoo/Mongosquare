@@ -82,7 +82,7 @@
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="75U-SD-uBu">
+                    <tableHeaderView key="headerView" id="75U-SD-uBu" customClass="DocumentHeaderView" customModule="Mongosquare" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>

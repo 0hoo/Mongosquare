@@ -9,6 +9,9 @@
 import Cocoa
 import MongoKitten
 
+final class DocumentHeaderView: NSTableHeaderView {
+}
+
 final class DocumentItem {
     let document: MongoKitten.Document
     
@@ -54,13 +57,20 @@ extension CollectionTableViewController: DocumentSkippable {
             for key in collectionViewController.visibleFieldsKey {
                 let column = NSTableColumn(identifier: key)
                 column.headerCell.stringValue = key
+                column.sortDescriptorPrototype = NSSortDescriptor(key: "key", ascending: true)
+                
+                if let sortingField = collectionViewController.queryOption.sortingFields.first(where: {$0.name == key}) {
+                    let arrow = sortingField.ordering == 1 ? "▲" : "▼"
+                    column.title = "\(arrow) \(key)"
+                }
+                
                 tableView.addTableColumn(column)
             }
             if let lastColumn = tableView.tableColumns.last {
                 lastColumn.width += 100
             }
         }
-
+        
         items = collectionViewController.queriedDocuments.map { DocumentItem(document: $0) }
         tableView.reloadData()
     }
