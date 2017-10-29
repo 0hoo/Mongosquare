@@ -57,7 +57,7 @@ extension CollectionTableViewController: DocumentSkippable {
             for key in collectionViewController.visibleFieldsKey {
                 let column = NSTableColumn(identifier: key)
                 column.headerCell.stringValue = key
-                column.sortDescriptorPrototype = NSSortDescriptor(key: "key", ascending: true)
+                column.sortDescriptorPrototype = NSSortDescriptor(key: key, ascending: true)
                 
                 if let sortingField = collectionViewController.queryOption.sortingFields.first(where: {$0.name == key}) {
                     let arrow = sortingField.ordering == 1 ? "▲" : "▼"
@@ -96,6 +96,19 @@ extension CollectionTableViewController: NSTableViewDataSource {
             }
         }
         return nil
+    }
+    
+    func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+        guard let queryOption = collectionViewController?.queryOption else { return }
+        if tableView.sortDescriptors.count > 0 {
+            var newQueryOption = queryOption
+            if let key = tableView.sortDescriptors[0].key {
+                newQueryOption.sortingFields.append(QueryField(name: key, ordering: 1))
+            }
+            collectionViewController?.queryOption = newQueryOption
+        }
+        print("oldDescriptors:\(oldDescriptors) new:\(tableView.sortDescriptors)")
+        tableView.sortDescriptors = []
     }
 }
 

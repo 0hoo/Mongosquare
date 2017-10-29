@@ -19,10 +19,10 @@ final class OrderingTableCellView: NSTableCellView {
 
 final class QueryField {
     var name: String
-    var type: String
+    var type: String?
     var ordering: Int?
     
-    init(name: String, type: String, ordering: Int?) {
+    init(name: String, type: String?, ordering: Int?) {
         self.name = name
         self.type = type
         self.ordering = ordering
@@ -30,6 +30,10 @@ final class QueryField {
     
     convenience init(name: String, type: String) {
         self.init(name: name, type: type, ordering: nil)
+    }
+    
+    convenience init(name: String, ordering: Int) {
+        self.init(name: name, type: nil, ordering: ordering)
     }
 }
 
@@ -73,7 +77,7 @@ extension SortTableViewDataSource: NSTableViewDataSource {
             if tableColumn.identifier == "DocumentColumnField" {
                 view.textField?.stringValue = field.name
             } else if tableColumn.identifier == "DocumentColumnType" {
-                view.textField?.stringValue = field.type
+                view.textField?.stringValue = field.type ?? ""
             }
             return view
         }
@@ -109,7 +113,7 @@ extension QueryFieldsTableViewDataSource: NSTableViewDataSource {
         if tableColumn.identifier == "DocumentColumnField" {
             view.textField?.stringValue = field.name
         } else if tableColumn.identifier == "DocumentColumnType" {
-            view.textField?.stringValue = field.type
+            view.textField?.stringValue = field.type ?? ""
         }
         return view
     }
