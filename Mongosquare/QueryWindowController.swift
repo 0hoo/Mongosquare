@@ -32,7 +32,7 @@ final class QueryField {
         self.init(name: name, type: type, ordering: nil)
     }
     
-    convenience init(name: String, ordering: Int) {
+    convenience init(name: String, ordering: Int?) {
         self.init(name: name, type: nil, ordering: ordering)
     }
 }

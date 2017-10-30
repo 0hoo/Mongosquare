@@ -103,11 +103,19 @@ extension CollectionTableViewController: NSTableViewDataSource {
         if tableView.sortDescriptors.count > 0 {
             var newQueryOption = queryOption
             if let key = tableView.sortDescriptors[0].key {
-                newQueryOption.sortingFields.append(QueryField(name: key, ordering: 1))
+                var ordering: Int? = 1
+                if let exist = queryOption.sortingFields.first(where: {$0.name == key}) {
+                    if exist.ordering == 1 {
+                        ordering = -1
+                    } else if exist.ordering == -1 {
+                        ordering = nil
+                    }
+                }
+                newQueryOption.sortingFields.removeAll()
+                newQueryOption.sortingFields.append(QueryField(name: key, ordering: ordering))
             }
             collectionViewController?.queryOption = newQueryOption
         }
-        print("oldDescriptors:\(oldDescriptors) new:\(tableView.sortDescriptors)")
         tableView.sortDescriptors = []
     }
 }
