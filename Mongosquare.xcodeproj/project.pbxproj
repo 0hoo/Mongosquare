@@ -1390,14 +1390,14 @@
 			);
 			dependencies = (
 				C5D8B35B1F57251900AE0E25 /* PBXTargetDependency */,
-				C5D8B3771F57258200AE0E25 /* PBXTargetDependency */,
-				C5D8B3CC1F57262C00AE0E25 /* PBXTargetDependency */,
 				C5D8B3EB1F57268200AE0E25 /* PBXTargetDependency */,
 				C5D8B4101F5726B500AE0E25 /* PBXTargetDependency */,
-				C5D8B4231F5726E300AE0E25 /* PBXTargetDependency */,
+				C5D8B3771F57258200AE0E25 /* PBXTargetDependency */,
+				C5D8B3CC1F57262C00AE0E25 /* PBXTargetDependency */,
 				C5D8B4B91F57275D00AE0E25 /* PBXTargetDependency */,
-				C5D8B4D01F57278100AE0E25 /* PBXTargetDependency */,
 				C5D8B5111F5727FF00AE0E25 /* PBXTargetDependency */,
+				C5D8B4D01F57278100AE0E25 /* PBXTargetDependency */,
+				C5D8B4231F5726E300AE0E25 /* PBXTargetDependency */,
 			);
 			name = Mongosquare;
 			productName = Mongosquare;
