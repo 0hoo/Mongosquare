@@ -271,6 +271,10 @@
 		C5D8B58E1F57284500AE0E25 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8B5511F57284500AE0E25 /* Connection.swift */; };
 		C5EDC9291F5DBDEE00C46F93 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EDC9271F5DBDEE00C46F93 /* TabViewController.swift */; };
 		C5EDC92A1F5DBDEE00C46F93 /* TabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5EDC9281F5DBDEE00C46F93 /* TabViewController.xib */; };
+		FA0AA2F71FCDA20900DA765D /* ConnectionWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */; };
+		FA0AA2F81FCDA20900DA765D /* ConnectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0AA2F61FCDA20900DA765D /* ConnectionWindowController.xib */; };
+		FA62581B1FD283E300A1BF26 /* DBConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62581A1FD283E300A1BF26 /* DBConnection.swift */; };
+		FA6258201FD2D43500A1BF26 /* InteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62581F1FD2D43500A1BF26 /* InteractionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -673,6 +677,10 @@
 		C5D8B5511F57284500AE0E25 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		C5EDC9271F5DBDEE00C46F93 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		C5EDC9281F5DBDEE00C46F93 /* TabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabViewController.xib; sourceTree = "<group>"; };
+		FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionWindowController.swift; sourceTree = "<group>"; };
+		FA0AA2F61FCDA20900DA765D /* ConnectionWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionWindowController.xib; sourceTree = "<group>"; };
+		FA62581A1FD283E300A1BF26 /* DBConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DBConnection.swift; path = Models/DBConnection.swift; sourceTree = "<group>"; };
+		FA62581F1FD2D43500A1BF26 /* InteractionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InteractionView.swift; path = Views/InteractionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1018,6 +1026,8 @@
 		C5D8B1E91F5715DB00AE0E25 /* Mongosquare */ = {
 			isa = PBXGroup;
 			children = (
+				FA62581C1FD2D3FD00A1BF26 /* Views */,
+				FA6258191FD279CD00A1BF26 /* Models */,
 				C5DD77A71F6FBF5600EB8523 /* Library */,
 				C51E420A1F698E82009C8ED5 /* Extensions */,
 				C5D8B1EA1F5715DB00AE0E25 /* AppDelegate.swift */,
@@ -1035,6 +1045,8 @@
 				C5D8B1FC1F5716B500AE0E25 /* WindowController.xib */,
 				C59ED15F1F89C3FA00EA1F26 /* QueryWindowController.swift */,
 				C59ED1601F89C3FA00EA1F26 /* QueryWindowController.xib */,
+				FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */,
+				FA0AA2F61FCDA20900DA765D /* ConnectionWindowController.xib */,
 				C5D8B1EE1F5715DB00AE0E25 /* Assets.xcassets */,
 				C5D8B1F31F5715DB00AE0E25 /* Info.plist */,
 				C5D8B1F91F57163000AE0E25 /* MainMenu.xib */,
@@ -1305,6 +1317,22 @@
 				C5233BCC1F7A566B00B32B16 /* MMTabBarView */,
 			);
 			name = Library;
+			sourceTree = "<group>";
+		};
+		FA6258191FD279CD00A1BF26 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA62581A1FD283E300A1BF26 /* DBConnection.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FA62581C1FD2D3FD00A1BF26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA62581F1FD2D43500A1BF26 /* InteractionView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1721,6 +1749,7 @@
 				C5233CA11F7A5A1500B32B16 /* AquaTabNew.png in Resources */,
 				C5233CA21F7A5A1500B32B16 /* AquaTabNew@2x.png in Resources */,
 				C5233CA31F7A5A1500B32B16 /* AquaTabNewPressed.png in Resources */,
+				FA0AA2F81FCDA20900DA765D /* ConnectionWindowController.xib in Resources */,
 				C5233CA41F7A5A1500B32B16 /* AquaTabNewPressed@2x.png in Resources */,
 				C5233CA51F7A5A1500B32B16 /* AquaTabNewRollover.png in Resources */,
 				C5233CA61F7A5A1500B32B16 /* AquaTabNewRollover@2x.png in Resources */,
@@ -1849,6 +1878,7 @@
 				C5233C7D1F7A56B400B32B16 /* MMRolloverButton.m in Sources */,
 				C5233C7E1F7A56B400B32B16 /* MMRolloverButtonCell.m in Sources */,
 				C5233C7F1F7A56B400B32B16 /* MMSlideButtonsAnimation.m in Sources */,
+				FA0AA2F71FCDA20900DA765D /* ConnectionWindowController.swift in Sources */,
 				C5233C801F7A56B400B32B16 /* MMTabBarButton.m in Sources */,
 				C5233C811F7A56B400B32B16 /* MMTabBarButtonCell.m in Sources */,
 				C5233C821F7A56B400B32B16 /* MMTabBarController.m in Sources */,
@@ -1873,11 +1903,13 @@
 				C5233C941F7A56B400B32B16 /* MMUnifiedTabStyle.m in Sources */,
 				C5233C951F7A56B400B32B16 /* MMYosemiteTabStyle.m in Sources */,
 				C5233C961F7A56B400B32B16 /* MMSafariTabStyle.m in Sources */,
+				FA62581B1FD283E300A1BF26 /* DBConnection.swift in Sources */,
 				C5EDC9291F5DBDEE00C46F93 /* TabViewController.swift in Sources */,
 				C5298EF91F5BA77A00908D4C /* CollectionTableViewController.swift in Sources */,
 				C5BF0A191F584DCC00C95EA8 /* OutlineViewController.swift in Sources */,
 				C5D8B1FD1F5716B500AE0E25 /* WindowController.swift in Sources */,
 				C51E420C1F698E9B009C8ED5 /* NSImage+Mongosquare.swift in Sources */,
+				FA6258201FD2D43500A1BF26 /* InteractionView.swift in Sources */,
 				C5298EFD1F5BAA6800908D4C /* CollectionViewController.swift in Sources */,
 				C5D8B1EB1F5715DB00AE0E25 /* AppDelegate.swift in Sources */,
 				C5BF0A211F584F2E00C95EA8 /* CollectionOutlineViewController.swift in Sources */,

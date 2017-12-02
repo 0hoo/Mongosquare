@@ -16,6 +16,7 @@ final class WindowController: NSWindowController {
     @IBOutlet weak var skipLimitSegmentedControl: NSSegmentedControl?
     
     var queryWindowController: QueryWindowController?
+    var connectionWindowController: ConnectionWindowController?
     
     lazy var sidebarController: OutlineViewController = {
         let sidebarController = OutlineViewController()
@@ -66,6 +67,8 @@ final class WindowController: NSWindowController {
         if let collectionViewModeSegmentedControl = collectionViewModeSegmentedControl {
             collectionViewModeChanged(collectionViewModeSegmentedControl)
         }
+        
+        showConnectionWindow()
     }
     
     @IBAction func collectionViewModeChanged(_ sender: NSSegmentedControl) {
@@ -105,5 +108,19 @@ final class WindowController: NSWindowController {
     
     @IBAction func sample(_ sender: Any?) {
         
+    }
+    
+    private func showConnectionWindow() {
+        if connectionWindowController == nil {
+            connectionWindowController = ConnectionWindowController(windowNibName: "ConnectionWindowController")
+        }
+        
+        connectionWindowController?.parentWindow = window
+        
+        guard let connectionWindow = connectionWindowController?.window else { return }
+        
+        window?.beginSheet(connectionWindow, completionHandler: { (response) in
+            
+        })
     }
 }
