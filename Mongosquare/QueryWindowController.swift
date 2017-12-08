@@ -88,7 +88,7 @@ extension SortTableViewDataSource: NSTableViewDelegate {
     
 }
 
-final class QueryFieldsTableViewDataSource: NSObject {
+final class FieldsTableViewDataSource: NSObject {
     
     var didSetSelectedFields: (([QueryField]) -> Void)?
     var selectedRows = NSMutableOrderedSet()
@@ -100,7 +100,7 @@ final class QueryFieldsTableViewDataSource: NSObject {
     }
 }
 
-extension QueryFieldsTableViewDataSource: NSTableViewDataSource {
+extension FieldsTableViewDataSource: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return fields.count
     }
@@ -119,7 +119,7 @@ extension QueryFieldsTableViewDataSource: NSTableViewDataSource {
     }
 }
 
-extension QueryFieldsTableViewDataSource: NSTableViewDelegate {
+extension FieldsTableViewDataSource: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         selectedRows.add(row)
         return true
@@ -138,6 +138,7 @@ extension QueryFieldsTableViewDataSource: NSTableViewDelegate {
     }
 }
 
+
 final class QueryWindowController: NSWindowController {
     override var windowNibName: String? { return "QueryWindowController" }
     
@@ -148,9 +149,11 @@ final class QueryWindowController: NSWindowController {
     
     @IBOutlet weak var sortTableView: NSTableView?
     @IBOutlet weak var sortSearchField: NSSearchField?
+    @IBOutlet weak var queryTableView: NSTableView?
     
-    @IBOutlet var fieldsDataSource: QueryFieldsTableViewDataSource?
+    @IBOutlet var fieldsDataSource: FieldsTableViewDataSource?
     @IBOutlet var sortDataSource: SortTableViewDataSource?
+    @IBOutlet var queryDataSource: QueryTableViewDataSource?
     
     weak var collectionViewController: CollectionViewController?
     

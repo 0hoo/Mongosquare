@@ -68,7 +68,7 @@ final class WindowController: NSWindowController {
             collectionViewModeChanged(collectionViewModeSegmentedControl)
         }
         
-        showConnectionWindow()
+        //showConnectionWindow()
     }
     
     @IBAction func collectionViewModeChanged(_ sender: NSSegmentedControl) {

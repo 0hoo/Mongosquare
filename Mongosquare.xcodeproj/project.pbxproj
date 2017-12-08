@@ -142,6 +142,8 @@
 		C5298EFA1F5BA77A00908D4C /* CollectionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5298EF81F5BA77A00908D4C /* CollectionTableViewController.xib */; };
 		C5298EFD1F5BAA6800908D4C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5298EFB1F5BAA6800908D4C /* CollectionViewController.swift */; };
 		C5298EFE1F5BAA6800908D4C /* CollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5298EFC1F5BAA6800908D4C /* CollectionViewController.xib */; };
+		C54D57641FDA61E1006DBF37 /* QueryTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D57631FDA61E1006DBF37 /* QueryTableCellView.swift */; };
+		C54D57661FDA6301006DBF37 /* QueryTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */; };
 		C59ED1611F89C3FA00EA1F26 /* QueryWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59ED15F1F89C3FA00EA1F26 /* QueryWindowController.swift */; };
 		C59ED1621F89C3FA00EA1F26 /* QueryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59ED1601F89C3FA00EA1F26 /* QueryWindowController.xib */; };
 		C5BF0A191F584DCC00C95EA8 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF0A171F584DCC00C95EA8 /* OutlineViewController.swift */; };
@@ -547,6 +549,8 @@
 		C5298EF81F5BA77A00908D4C /* CollectionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionTableViewController.xib; sourceTree = "<group>"; };
 		C5298EFB1F5BAA6800908D4C /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C5298EFC1F5BAA6800908D4C /* CollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewController.xib; sourceTree = "<group>"; };
+		C54D57631FDA61E1006DBF37 /* QueryTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableCellView.swift; sourceTree = "<group>"; };
+		C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableViewDataSource.swift; sourceTree = "<group>"; };
 		C59ED15F1F89C3FA00EA1F26 /* QueryWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryWindowController.swift; sourceTree = "<group>"; };
 		C59ED1601F89C3FA00EA1F26 /* QueryWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryWindowController.xib; sourceTree = "<group>"; };
 		C59FFCAE1F87DED600971FCB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -980,6 +984,14 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		C54D57621FDA619C006DBF37 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C54D57631FDA61E1006DBF37 /* QueryTableCellView.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		C59FFCAD1F87DED500971FCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1026,6 +1038,7 @@
 		C5D8B1E91F5715DB00AE0E25 /* Mongosquare */ = {
 			isa = PBXGroup;
 			children = (
+				C54D57621FDA619C006DBF37 /* Cells */,
 				FA62581C1FD2D3FD00A1BF26 /* Views */,
 				FA6258191FD279CD00A1BF26 /* Models */,
 				C5DD77A71F6FBF5600EB8523 /* Library */,
@@ -1045,6 +1058,7 @@
 				C5D8B1FC1F5716B500AE0E25 /* WindowController.xib */,
 				C59ED15F1F89C3FA00EA1F26 /* QueryWindowController.swift */,
 				C59ED1601F89C3FA00EA1F26 /* QueryWindowController.xib */,
+				C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */,
 				FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */,
 				FA0AA2F61FCDA20900DA765D /* ConnectionWindowController.xib */,
 				C5D8B1EE1F5715DB00AE0E25 /* Assets.xcassets */,
@@ -1895,6 +1909,7 @@
 				C5233C8C1F7A56B400B32B16 /* NSString+MMTabBarViewExtensions.m in Sources */,
 				C5233C8D1F7A56B400B32B16 /* NSTabViewItem+MMTabBarViewExtensions.m in Sources */,
 				C5233C8E1F7A56B400B32B16 /* NSView+MMTabBarViewExtensions.m in Sources */,
+				C54D57661FDA6301006DBF37 /* QueryTableViewDataSource.swift in Sources */,
 				C5233C8F1F7A56B400B32B16 /* MMAdiumTabStyle.m in Sources */,
 				C5233C901F7A56B400B32B16 /* MMAquaTabStyle.m in Sources */,
 				C5233C911F7A56B400B32B16 /* MMCardTabStyle.m in Sources */,
@@ -1906,6 +1921,7 @@
 				FA62581B1FD283E300A1BF26 /* DBConnection.swift in Sources */,
 				C5EDC9291F5DBDEE00C46F93 /* TabViewController.swift in Sources */,
 				C5298EF91F5BA77A00908D4C /* CollectionTableViewController.swift in Sources */,
+				C54D57641FDA61E1006DBF37 /* QueryTableCellView.swift in Sources */,
 				C5BF0A191F584DCC00C95EA8 /* OutlineViewController.swift in Sources */,
 				C5D8B1FD1F5716B500AE0E25 /* WindowController.swift in Sources */,
 				C51E420C1F698E9B009C8ED5 /* NSImage+Mongosquare.swift in Sources */,
