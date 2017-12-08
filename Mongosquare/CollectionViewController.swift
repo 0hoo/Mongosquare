@@ -69,11 +69,12 @@ final class CollectionViewController: NSViewController {
                 }))
             }
             
-            //let d = Document(try JSONObject(from: "{\"code\": \"082640\", \"exchange\": \"코스피\"}"))
-            //let d = Document(try JSONObject(from: "{\"$or\": [{\"code\": \"082640\"}, {\"exchange\": \"코스닥\"}]}"))
-            //let query = Query(d)
+            var query: Query? = nil
+            if let queryString = queryOption.query {
+                query = Query(Document(try JSONObject(from: queryString)))
+            }
             
-            guard let documents = try collection?.find(sortedBy: sort, projecting: projection, skipping: skipLimit.skip, limitedTo: skipLimit.limit) else { return [] }
+            guard let documents = try collection?.find(query, sortedBy: sort, projecting: projection, skipping: skipLimit.skip, limitedTo: skipLimit.limit) else { return [] }
             return documents.map { $0 }
         } catch {
             print(error)

@@ -11,6 +11,7 @@ import Cocoa
 struct QueryOption {
     var projectingFields: [String] = []
     var sortingFields: [QueryField] = []
+    var query: String?
 }
 
 final class OrderingTableCellView: NSTableCellView {
@@ -149,11 +150,10 @@ final class QueryWindowController: NSWindowController {
     
     @IBOutlet weak var sortTableView: NSTableView?
     @IBOutlet weak var sortSearchField: NSSearchField?
-    @IBOutlet weak var queryTableView: NSTableView?
+    @IBOutlet weak var queryTextView: NSTextView?
     
     @IBOutlet var fieldsDataSource: FieldsTableViewDataSource?
     @IBOutlet var sortDataSource: SortTableViewDataSource?
-    @IBOutlet var queryDataSource: QueryTableViewDataSource?
     
     weak var collectionViewController: CollectionViewController?
     
@@ -178,7 +178,12 @@ final class QueryWindowController: NSWindowController {
         
         let collectionName = collectionViewController?.collection?.fullName ?? ""
         window?.title = "Filter - \(collectionName)"
-
+        
+        queryTextView?.isAutomaticQuoteSubstitutionEnabled = false
+        if let queryString = collectionViewController?.queryOption.query {
+            queryTextView?.string = queryString
+        }
+        
         fieldsSearchField?.delegate = self
         fieldsDataSource?.didSetSelectedFields = { [weak self] selectedFields in
             self?.fieldsSearchField?.stringValue = "{ " + selectedFields.map { "\"\($0.name): 1\"" }.joined(separator: ", ") + " }"
@@ -210,8 +215,9 @@ final class QueryWindowController: NSWindowController {
     @IBAction func save(_ sender: NSButton) {
         guard let selectedFields = fieldsDataSource?.selectedFields else { return }
         guard let sortingFields = sortDataSource?.fields else { return }
+        guard let queryString = queryTextView?.string else { return }
         
-        let queryOption = QueryOption(projectingFields: selectedFields.map { $0.name }, sortingFields: sortingFields.filter {$0.ordering != nil })
+        let queryOption = QueryOption(projectingFields: selectedFields.map { $0.name }, sortingFields: sortingFields.filter {$0.ordering != nil }, query: queryString)
         didSave?(queryOption)
         close()
     }
