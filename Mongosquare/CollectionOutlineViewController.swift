@@ -38,7 +38,7 @@ final class DocumentOutlineItem {
     let key: String
     let value: String
     let type: String
-    let document: MongoKitten.Document
+    var document: MongoKitten.Document
     let isDocument: Bool
     var fields: [DocumentOutlineItem] = []
     var visibleFieldsKey: [String] = []
@@ -117,6 +117,30 @@ extension CollectionOutlineViewController: DocumentSkippable {
 }
 
 extension CollectionOutlineViewController: NSOutlineViewDataSource {
+    func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
+        guard let outlineView = outlineView else { return true }
+        let row = outlineView.row(for: control)
+        let column = outlineView.column(for: control)
+        let valueToUpdate = fieldEditor.string
+        guard let item = outlineView.item(atRow: row) as? DocumentOutlineItem else { return true }
+        
+        if column == 1 {
+            item.document[item.key] = valueToUpdate
+            if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
+                print(updatedCount)
+            } else {
+                //Do revert
+            }
+        } else {
+            fieldEditor.string = item.key
+            return true
+        }
+        
+        print("row:\(row) column:\(column) valueToUpdate:\(String(describing: valueToUpdate))")
+        
+        return true
+    }
+    
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if let item = item as? DocumentOutlineItem, item.isDocument {
             item.fillFields()
@@ -174,15 +198,6 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
 }
 
 extension CollectionOutlineViewController: NSOutlineViewDelegate {
-    override func controlTextDidEndEditing(_ obj: Notification) {
-        super.controlTextDidEndEditing(obj)
-        print("controlTextDidEndEditing")
-    }
-    
-    override func controlTextDidBeginEditing(_ obj: Notification) {
-        super.controlTextDidBeginEditing(obj)
-        print("controlTextDidBeginEditing")
-    }
 }
 
 extension CollectionOutlineViewController: NSTextFieldDelegate {
