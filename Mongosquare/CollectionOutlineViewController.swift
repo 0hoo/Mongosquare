@@ -141,13 +141,23 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
         guard let documentItem = item as? DocumentOutlineItem else { return nil }
         
         let view = outlineView.make(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
+        view.textField?.delegate = self
+        
         if tableColumn.identifier == "DocumentColumnKey" {
+            view.textField?.isEditable = documentItem.key != "_id"
             view.textField?.stringValue = documentItem.key
         } else if tableColumn.identifier == "DocumentColumnValue" {
+            view.textField?.isEditable = documentItem.key != "_id"
             view.textField?.stringValue = documentItem.value
         } else if tableColumn.identifier == "DocumentColumnType" {
+            view.textField?.isEditable = false
             view.textField?.stringValue = documentItem.type
         }
+        
+        if documentItem.type == "Object" {
+            view.textField?.isEditable = false
+        }
+        
         return view
     }
     
@@ -164,5 +174,17 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
 }
 
 extension CollectionOutlineViewController: NSOutlineViewDelegate {
+    override func controlTextDidEndEditing(_ obj: Notification) {
+        super.controlTextDidEndEditing(obj)
+        print("controlTextDidEndEditing")
+    }
+    
+    override func controlTextDidBeginEditing(_ obj: Notification) {
+        super.controlTextDidBeginEditing(obj)
+        print("controlTextDidBeginEditing")
+    }
+}
+
+extension CollectionOutlineViewController: NSTextFieldDelegate {
     
 }
