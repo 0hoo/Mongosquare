@@ -38,7 +38,7 @@ final class DocumentOutlineItem {
     let key: String
     let value: String
     let type: String
-    let document: MongoKitten.Document
+    var document: MongoKitten.Document
     let isDocument: Bool
     var fields: [DocumentOutlineItem] = []
     var visibleFieldsKey: [String] = []
@@ -117,6 +117,30 @@ extension CollectionOutlineViewController: DocumentSkippable {
 }
 
 extension CollectionOutlineViewController: NSOutlineViewDataSource {
+    func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
+        guard let outlineView = outlineView else { return true }
+        let row = outlineView.row(for: control)
+        let column = outlineView.column(for: control)
+        let valueToUpdate = fieldEditor.string
+        guard let item = outlineView.item(atRow: row) as? DocumentOutlineItem else { return true }
+        
+        if column == 1 {
+            item.document[item.key] = valueToUpdate
+            if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
+                print(updatedCount)
+            } else {
+                //Do revert
+            }
+        } else {
+            fieldEditor.string = item.key
+            return true
+        }
+        
+        print("row:\(row) column:\(column) valueToUpdate:\(String(describing: valueToUpdate))")
+        
+        return true
+    }
+    
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if let item = item as? DocumentOutlineItem, item.isDocument {
             item.fillFields()
@@ -141,13 +165,23 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
         guard let documentItem = item as? DocumentOutlineItem else { return nil }
         
         let view = outlineView.make(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
+        view.textField?.delegate = self
+        
         if tableColumn.identifier == "DocumentColumnKey" {
+            view.textField?.isEditable = documentItem.key != "_id"
             view.textField?.stringValue = documentItem.key
         } else if tableColumn.identifier == "DocumentColumnValue" {
+            view.textField?.isEditable = documentItem.key != "_id"
             view.textField?.stringValue = documentItem.value
         } else if tableColumn.identifier == "DocumentColumnType" {
+            view.textField?.isEditable = false
             view.textField?.stringValue = documentItem.type
         }
+        
+        if documentItem.type == "Object" {
+            view.textField?.isEditable = false
+        }
+        
         return view
     }
     
@@ -164,5 +198,8 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
 }
 
 extension CollectionOutlineViewController: NSOutlineViewDelegate {
+}
+
+extension CollectionOutlineViewController: NSTextFieldDelegate {
     
 }
