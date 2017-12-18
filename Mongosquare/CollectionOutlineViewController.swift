@@ -160,18 +160,23 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
             
             if tryUpdate {
                 if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
-                    print("!updated:\(updatedCount)")
+                    print("value updated:\(updatedCount)")
                     return true
                 }
             }
             fieldEditor.string = item.value
             return true
-        } else {
-            fieldEditor.string = item.key
+        } else if column == 0 {
+            item.document[valueToUpdate] = item.document[item.key]
+            if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
+                print("key updated:\(updatedCount)")
+                item.document.removeValue(forKey: item.key)
+                let _ = try? collectionViewController?.collection?.update(to: item.document)
+            } else {
+                fieldEditor.string = item.key
+            }
             return true
         }
-        
-        print("row:\(row) column:\(column) valueToUpdate:\(String(describing: valueToUpdate))")
         
         return true
     }
