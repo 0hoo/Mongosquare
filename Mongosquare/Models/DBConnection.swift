@@ -9,7 +9,7 @@
 import Foundation
 import MongoKitten
 
-struct DBConnection {
+final class DBConnection: Codable {
     var name: String
     let username: String
     let password: String
@@ -18,8 +18,12 @@ struct DBConnection {
     
     let databaseName: String?
     
-    var server: Server?
-    var databases: [Database]?
+    var isFavorite: Bool = false
+    var shouldAutoConnect: Bool = false
+    
+    var server: Server? = nil
+    var databases: [Database]? = nil
+    
     
     init(name: String = "", username: String, password: String, host: String, port: Int, dbName: String?) {
         self.name = name
@@ -32,12 +36,17 @@ struct DBConnection {
         //let authentication = MongoCredentials(username: username, password: password, database: dbName ?? "admin", authenticationMechanism: AuthenticationMechanism.SCRAM_SHA_1)
         
         //let clientSettings = ClientSettings(host: MongoHost(hostname:host, port:UInt16(port)), sslSettings: nil, credentials: authentication, maxConnectionsPerServer: 100)
+        setup()
+    }
+    
+    func setup() {
+        
         if let clientSettings = try? ClientSettings(host) {
             self.server = try? Server(clientSettings)
         }
     }
     
-    mutating func connect() -> Bool {
+    func connect() -> Bool {
         guard let server = server else { return false }
         if server.isConnected {
             return true
@@ -45,5 +54,38 @@ struct DBConnection {
         
         databases = try? server.getDatabases()
         return databases != nil
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case username
+        case password
+        case host
+        case port
+        case databaseName
+        case isFavorite
+        case shouldAutoConnect
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.name = try values.decode(String.self, forKey: .name)
+        self.username = try values.decode(String.self, forKey: .username)
+        self.password = try values.decode(String.self, forKey: .password)
+        self.host = try values.decode(String.self, forKey: .host)
+        self.port = try values.decode(Int.self, forKey: .port)
+        self.databaseName = try values.decode(String.self, forKey: .databaseName)
+        
+        setup()
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(username, forKey: .username)
+        try container.encode(password, forKey: .password)
+        try container.encode(host, forKey: .host)
+        try container.encode(port, forKey: .port)
+        try container.encode(databaseName, forKey: .databaseName)
     }
 }
