@@ -35,7 +35,7 @@ extension MongoKitten.ElementType: CustomStringConvertible {
 }
 
 final class DocumentOutlineItem {
-    let key: String
+    var key: String
     let value: String
     let type: MongoKitten.ElementType
     var typeString: String {
@@ -167,17 +167,20 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
             fieldEditor.string = item.value
             return true
         } else if column == 0 {
-            item.document[valueToUpdate] = item.document[item.key]
-            if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
-                print("key updated:\(updatedCount)")
-                item.document.removeValue(forKey: item.key)
-                let _ = try? collectionViewController?.collection?.update(to: item.document)
-            } else {
-                fieldEditor.string = item.key
+            let keys = item.document.keys.filter { $0 != item.key }
+            if keys.index(of: valueToUpdate) == nil {
+                item.document[valueToUpdate] = item.document[item.key]
+                if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
+                    print("key updated:\(updatedCount)")
+                    item.document.removeValue(forKey: item.key)
+                    item.key = valueToUpdate
+                    let _ = try? collectionViewController?.collection?.update(to: item.document)
+                    return true
+                }
             }
+            fieldEditor.string = item.key
             return true
         }
-        
         return true
     }
     
