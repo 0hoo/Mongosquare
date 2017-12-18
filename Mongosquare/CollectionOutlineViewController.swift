@@ -37,13 +37,16 @@ extension MongoKitten.ElementType: CustomStringConvertible {
 final class DocumentOutlineItem {
     let key: String
     let value: String
-    let type: String
+    let type: MongoKitten.ElementType
+    var typeString: String {
+        return type.description
+    }
     var document: MongoKitten.Document
     let isDocument: Bool
     var fields: [DocumentOutlineItem] = []
     var visibleFieldsKey: [String] = []
     
-    init(key: String, value: String, type: String, document: MongoKitten.Document, isDocument: Bool) {
+    init(key: String, value: String, type: MongoKitten.ElementType, document: MongoKitten.Document, isDocument: Bool) {
         self.key = key
         self.value = value
         self.type = type
@@ -55,8 +58,7 @@ final class DocumentOutlineItem {
         if fields.count == 0 {
             if visibleFieldsKey.count > 0 {
                 for key in visibleFieldsKey {
-                    if let val = document[key] {
-                        let valueType = document.type(at: key)?.description ?? ""
+                    if let val = document[key], let valueType = document.type(at: key) {
                         let fieldItem: DocumentOutlineItem
                         if let subDocument = val as? Document {
                             let fields = "{ \(subDocument.keys.count) fields }"
@@ -69,15 +71,16 @@ final class DocumentOutlineItem {
                 }
             } else {
                 for (key, val) in document {
-                    let valueType = document.type(at: key)?.description ?? ""
-                    let fieldItem: DocumentOutlineItem
-                    if let subDocument = val as? Document {
-                        let fields = "{ \(subDocument.keys.count) fields }"
-                        fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
-                    } else {
-                        fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
+                    if let valueType = document.type(at: key) {
+                        let fieldItem: DocumentOutlineItem
+                        if let subDocument = val as? Document {
+                            let fields = "{ \(subDocument.keys.count) fields }"
+                            fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
+                        } else {
+                            fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
+                        }
+                        fields.append(fieldItem)
                     }
-                    fields.append(fieldItem)
                 }
             }
         }
@@ -109,7 +112,7 @@ extension CollectionOutlineViewController: DocumentSkippable {
         
         for (i, document) in collectionViewController.queriedDocuments.enumerated() {
             let fields = "{ \(collectionViewController.visibleFieldsKey.count > 0 ? collectionViewController.visibleFieldsKey.count : document.keys.count) fields }"
-            items.append(DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: fields, type: "Object", document: document, isDocument: true))
+            items.append(DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: fields, type: .document, document: document, isDocument: true))
         }
         
         outlineView?.reloadData()
@@ -121,16 +124,48 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
         guard let outlineView = outlineView else { return true }
         let row = outlineView.row(for: control)
         let column = outlineView.column(for: control)
-        let valueToUpdate = fieldEditor.string
+        guard let valueToUpdate = fieldEditor.string else { return true }
         guard let item = outlineView.item(atRow: row) as? DocumentOutlineItem else { return true }
         
         if column == 1 {
-            item.document[item.key] = valueToUpdate
-            if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
-                print(updatedCount)
-            } else {
-                //Do revert
+            var tryUpdate = false
+            switch item.type {
+                case .double:
+                    if let value = Double(valueToUpdate) {
+                        item.document[item.key] = value
+                        tryUpdate = true
+                    }
+                case .string:
+                    item.document[item.key] = valueToUpdate
+                    tryUpdate = true
+                case .boolean:
+                    if let value = Bool(valueToUpdate) {
+                        let booleanPrimitive: Primitive = value
+                        item.document[item.key] = booleanPrimitive
+                        tryUpdate = true
+                    }
+                case .int32:
+                    if let value = Int32(valueToUpdate) {
+                        item.document[item.key] = value
+                        tryUpdate = true
+                    }
+                case .int64:
+                    if let value = Double(valueToUpdate) {
+                        item.document[item.key] = value
+                        tryUpdate = true
+                    }
+                default:
+                    tryUpdate = false
             }
+            
+            if tryUpdate {
+                if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
+                    print("!updated:\(updatedCount)")
+                    return true
+                }
+            }
+            fieldEditor.string = item.value
+            return true
         } else {
             fieldEditor.string = item.key
             return true
@@ -175,10 +210,10 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
             view.textField?.stringValue = documentItem.value
         } else if tableColumn.identifier == "DocumentColumnType" {
             view.textField?.isEditable = false
-            view.textField?.stringValue = documentItem.type
+            view.textField?.stringValue = documentItem.typeString
         }
         
-        if documentItem.type == "Object" {
+        if documentItem.type == .document {
             view.textField?.isEditable = false
         }
         
