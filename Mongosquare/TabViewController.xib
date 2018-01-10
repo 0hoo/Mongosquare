@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,18 +19,19 @@
             <rect key="frame" x="0.0" y="0.0" width="533" height="632"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxd-ZG-qyF" customClass="MMTabBarView">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="hxd-ZG-qyF" customClass="MMTabBarView">
                     <rect key="frame" x="0.0" y="607" width="533" height="25"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="gnq-u1-IjM"/>
+                    </constraints>
                     <connections>
                         <outlet property="delegate" destination="-2" id="hYs-fv-sWY"/>
                         <outlet property="partnerView" destination="A3f-My-SY6" id="zPR-T0-jqO"/>
                         <outlet property="tabView" destination="A3f-My-SY6" id="KbN-f9-crz"/>
                     </connections>
                 </customView>
-                <tabView focusRingType="none" fixedFrame="YES" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="A3f-My-SY6">
+                <tabView focusRingType="none" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="A3f-My-SY6">
                     <rect key="frame" x="0.0" y="0.0" width="533" height="607"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems/>
                     <connections>
@@ -38,6 +39,15 @@
                     </connections>
                 </tabView>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hxd-ZG-qyF" secondAttribute="trailing" id="4uu-pG-tpE"/>
+                <constraint firstAttribute="trailing" secondItem="A3f-My-SY6" secondAttribute="trailing" id="HJq-4r-1cp"/>
+                <constraint firstItem="hxd-ZG-qyF" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="WxK-Dx-65b"/>
+                <constraint firstItem="A3f-My-SY6" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="eVT-6k-Nom"/>
+                <constraint firstItem="hxd-ZG-qyF" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="iAp-NB-Foi"/>
+                <constraint firstAttribute="bottom" secondItem="A3f-My-SY6" secondAttribute="bottom" id="m5h-2x-Cxx"/>
+                <constraint firstItem="A3f-My-SY6" firstAttribute="top" secondItem="hxd-ZG-qyF" secondAttribute="bottom" id="uBj-xc-t5h"/>
+            </constraints>
             <point key="canvasLocation" x="138.5" y="169"/>
         </customView>
     </objects>
