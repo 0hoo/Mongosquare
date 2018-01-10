@@ -88,8 +88,8 @@ final class DocumentOutlineItem {
 }
 
 final class CollectionOutlineViewController: NSViewController {
-    override var nibName: String? {
-        return "CollectionOutlineViewController"
+    override var nibName: NSNib.Name? {
+        return NSNib.Name("CollectionOutlineViewController")
     }
     
     @IBOutlet var outlineView: NSOutlineView?
@@ -124,7 +124,7 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
         guard let outlineView = outlineView else { return true }
         let row = outlineView.row(for: control)
         let column = outlineView.column(for: control)
-        guard let valueToUpdate = fieldEditor.string else { return true }
+        let valueToUpdate = fieldEditor.string
         guard let item = outlineView.item(atRow: row) as? DocumentOutlineItem else { return true }
         
         if column == 1 {
@@ -207,16 +207,16 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
         guard let tableColumn = tableColumn else { return nil }
         guard let documentItem = item as? DocumentOutlineItem else { return nil }
         
-        let view = outlineView.make(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
+        let view = outlineView.makeView(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
         view.textField?.delegate = self
         
-        if tableColumn.identifier == "DocumentColumnKey" {
+        if tableColumn.identifier.rawValue == "DocumentColumnKey" {
             view.textField?.isEditable = documentItem.key != "_id"
             view.textField?.stringValue = documentItem.key
-        } else if tableColumn.identifier == "DocumentColumnValue" {
+        } else if tableColumn.identifier.rawValue == "DocumentColumnValue" {
             view.textField?.isEditable = documentItem.key != "_id"
             view.textField?.stringValue = documentItem.value
-        } else if tableColumn.identifier == "DocumentColumnType" {
+        } else if tableColumn.identifier.rawValue == "DocumentColumnType" {
             view.textField?.isEditable = false
             view.textField?.stringValue = documentItem.typeString
         }

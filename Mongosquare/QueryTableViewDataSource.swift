@@ -18,7 +18,7 @@ extension QueryTableViewDataSource: NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let view = tableView.make(withIdentifier: "QueryTableCellView", owner: self) as! QueryTableCellView
+        let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("QueryTableCellView"), owner: self) as! QueryTableCellView
         return view
     }
 }

@@ -12,7 +12,7 @@ import MongoKitten
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
     static var shared: AppDelegate {
-        return NSApplication.shared().delegate as! AppDelegate
+        return NSApplication.shared.delegate as! AppDelegate
     }
     
     let windowController = WindowController()

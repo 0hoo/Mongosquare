@@ -23,8 +23,8 @@ final class CollectionViewController: NSViewController {
 
     var skipLimit = SkipLimit()
     
-    override var nibName: String? {
-        return "CollectionViewController"
+    override var nibName: NSNib.Name? {
+        return NSNib.Name("CollectionViewController")
     }
     
     @IBOutlet var collectionView: NSView?
@@ -158,7 +158,7 @@ final class CollectionViewController: NSViewController {
         }
         
         activeViewController = outlineViewController
-        outlineViewController?.view.autoresizingMask = [.viewHeightSizable, .viewWidthSizable]
+        outlineViewController?.view.autoresizingMask = [.height, .width]
         if let view = outlineViewController?.view {
             view.frame = collectionView?.bounds ?? .zero
             collectionView?.addSubview(view)
@@ -172,7 +172,7 @@ final class CollectionViewController: NSViewController {
         }
         
         activeViewController = tableViewController
-        tableViewController?.view.autoresizingMask = [.viewHeightSizable, .viewWidthSizable]
+        tableViewController?.view.autoresizingMask = [.height, .width]
         if let view = tableViewController?.view {
             view.frame = collectionView?.bounds ?? .zero
             collectionView?.addSubview(view)

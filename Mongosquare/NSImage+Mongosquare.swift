@@ -16,7 +16,7 @@ extension NSImage {
         
         copiedImage.lockFocus()
         color.set()
-        NSRectFillUsingOperation(imageBounds, .sourceAtop)
+        __NSRectFillUsingOperation(imageBounds, .sourceAtop)
         copiedImage.unlockFocus()
         
         return copiedImage

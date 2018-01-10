@@ -22,8 +22,8 @@ final class TabItem: NSObject, MMTabBarItem {
 final class TabViewController: NSViewController {
     static let tabHeight = CGFloat(26)
     
-    override var nibName: String? {
-        return "TabViewController"
+    override var nibName: NSNib.Name? {
+        return NSNib.Name("TabViewController")
     }
 
     @IBOutlet weak var tabView: NSTabView?

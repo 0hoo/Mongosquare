@@ -21,8 +21,8 @@ final class DocumentItem {
 }
 
 final class CollectionTableViewController: NSViewController {
-    override var nibName: String? {
-        return "CollectionTableViewController"
+    override var nibName: NSNib.Name? {
+        return NSNib.Name("CollectionTableViewController")
     }
     
     @IBOutlet var tableView: NSTableView?
@@ -55,7 +55,7 @@ extension CollectionTableViewController: DocumentSkippable {
             }
             
             for key in collectionViewController.visibleFieldsKey {
-                let column = NSTableColumn(identifier: key)
+                let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(key))
                 column.headerCell.stringValue = key
                 column.sortDescriptorPrototype = NSSortDescriptor(key: key, ascending: true)
                 
@@ -84,8 +84,8 @@ extension CollectionTableViewController: NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let item = items[row]
         for (key, val) in item.document {
-            if key == tableColumn?.identifier {
-                if let view = tableView.make(withIdentifier: "DocumentCellView", owner: self) as? NSTableCellView {
+            if key == tableColumn?.identifier.rawValue {
+                if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("DocumentCellView"), owner: self) as? NSTableCellView {
                     if let subDocument = val as? Document {
                         view.textField?.stringValue = "{ \(subDocument.keys.count) fields }"
                     } else {

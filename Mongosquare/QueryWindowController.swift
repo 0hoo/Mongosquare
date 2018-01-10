@@ -41,7 +41,7 @@ final class QueryField {
 final class SortTableViewDataSource: NSObject {
     var fields: [QueryField] = []
     
-    func popUpButtonChanged(_ sender: NSPopUpButton) {
+    @objc func popUpButtonChanged(_ sender: NSPopUpButton) {
         let row = sender.tag
         let field = fields[row]
         if sender.selectedItem?.title == "-" {
@@ -64,8 +64,8 @@ extension SortTableViewDataSource: NSTableViewDataSource {
         
         let field = fields[row]
         
-        if tableColumn.identifier == "DocumentColumnOrdering" {
-            let view = tableView.make(withIdentifier: "OrderingTableCellView", owner: self) as! OrderingTableCellView
+        if tableColumn.identifier.rawValue == "DocumentColumnOrdering" {
+            let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("OrderingTableCellView"), owner: self) as! OrderingTableCellView
             view.popUpButton?.tag = row
             view.popUpButton?.target = self
             view.popUpButton?.action = #selector(popUpButtonChanged(_:))
@@ -74,10 +74,10 @@ extension SortTableViewDataSource: NSTableViewDataSource {
             }
             return view
         } else {
-            let view = tableView.make(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
-            if tableColumn.identifier == "DocumentColumnField" {
+            let view = tableView.makeView(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
+            if tableColumn.identifier.rawValue == "DocumentColumnField" {
                 view.textField?.stringValue = field.name
-            } else if tableColumn.identifier == "DocumentColumnType" {
+            } else if tableColumn.identifier.rawValue == "DocumentColumnType" {
                 view.textField?.stringValue = field.type ?? ""
             }
             return view
@@ -110,10 +110,10 @@ extension FieldsTableViewDataSource: NSTableViewDataSource {
         guard let tableColumn = tableColumn else { return nil }
         
         let field = fields[row]
-        let view = tableView.make(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
-        if tableColumn.identifier == "DocumentColumnField" {
+        let view = tableView.makeView(withIdentifier: tableColumn.identifier, owner: self) as! NSTableCellView
+        if tableColumn.identifier.rawValue == "DocumentColumnField" {
             view.textField?.stringValue = field.name
-        } else if tableColumn.identifier == "DocumentColumnType" {
+        } else if tableColumn.identifier.rawValue == "DocumentColumnType" {
             view.textField?.stringValue = field.type ?? ""
         }
         return view
@@ -141,7 +141,7 @@ extension FieldsTableViewDataSource: NSTableViewDelegate {
 
 
 final class QueryWindowController: NSWindowController {
-    override var windowNibName: String? { return "QueryWindowController" }
+    override var windowNibName: NSNib.Name? { return NSNib.Name("QueryWindowController") }
     
     @IBOutlet weak var fieldsTableView: NSTableView?
     @IBOutlet weak var fieldsSegmentedControl: NSSegmentedControl?

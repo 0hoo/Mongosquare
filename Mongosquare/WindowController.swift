@@ -9,7 +9,7 @@
 import Cocoa
 
 final class WindowController: NSWindowController {
-    override var windowNibName: String? { return "WindowController" }
+    override var windowNibName: NSNib.Name? { return NSNib.Name("WindowController") }
     
     @IBOutlet weak var splitWrapperView: NSView?
     @IBOutlet weak var collectionViewModeSegmentedControl: NSSegmentedControl?
@@ -43,7 +43,7 @@ final class WindowController: NSWindowController {
         let splitViewController = NSSplitViewController()
         
         let sidebarSplitViewItem = NSSplitViewItem(sidebarWithViewController: self.sidebarController)
-        sidebarSplitViewItem.holdingPriority = NSLayoutPriorityDefaultLow
+        sidebarSplitViewItem.holdingPriority = NSLayoutConstraint.Priority.defaultLow
         sidebarSplitViewItem.maximumThickness = 200
         splitViewController.addSplitViewItem(sidebarSplitViewItem)
         
@@ -61,7 +61,7 @@ final class WindowController: NSWindowController {
         }
         
         splitViewController.view.setFrameSize(splitWrapperView?.bounds.size ?? .zero)
-        splitViewController.view.autoresizingMask = [.viewHeightSizable, .viewWidthSizable]
+        splitViewController.view.autoresizingMask = [.height, .width]
         splitWrapperView?.addSubview(splitViewController.view)
         
         if let collectionViewModeSegmentedControl = collectionViewModeSegmentedControl {
@@ -112,7 +112,7 @@ final class WindowController: NSWindowController {
     
     private func showConnectionWindow() {
         if connectionWindowController == nil {
-            connectionWindowController = ConnectionWindowController(windowNibName: "ConnectionWindowController")
+            connectionWindowController = ConnectionWindowController(windowNibName: NSNib.Name("ConnectionWindowController"))
         }
         
         connectionWindowController?.parentWindow = window

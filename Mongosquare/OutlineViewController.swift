@@ -46,8 +46,8 @@ final class OutlineItem {
 }
 
 final class OutlineViewController: NSViewController {
-    override var nibName: String? {
-        return "OutlineViewController"
+    override var nibName: NSNib.Name? {
+        return NSNib.Name("OutlineViewController")
     }
     
     static let headerCellIdentifier = "HeaderCell"
@@ -148,11 +148,11 @@ extension OutlineViewController: NSOutlineViewDataSource {
         guard let item = item as? OutlineItem else { return nil }
         
         if item.isHeader {
-            let view = outlineView.make(withIdentifier: OutlineViewController.headerCellIdentifier, owner: self) as! NSTableCellView
+            let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(OutlineViewController.headerCellIdentifier), owner: self) as! NSTableCellView
             view.textField?.stringValue = item.title
             return view
         } else {
-            let view = outlineView.make(withIdentifier: OutlineViewController.itemCellIdentifier, owner: self) as! OutlineTableCellView
+            let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(OutlineViewController.itemCellIdentifier), owner: self) as! OutlineTableCellView
             view.textField?.stringValue = item.title
             view.iconImageView?.image = item.isDatabase ? #imageLiteral(resourceName: "icons8-database-blue"): #imageLiteral(resourceName: "icons8-document")
             if item.count > 0 {
