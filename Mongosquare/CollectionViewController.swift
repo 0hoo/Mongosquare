@@ -8,6 +8,7 @@
 
 import Cocoa
 import MongoKitten
+import ExtendedJSON
 import Cheetah
 
 protocol DocumentSkippable {

@@ -47,7 +47,7 @@ final class TabViewController: NSViewController {
     }
     
     func add(viewController: CollectionViewController) {
-        if let index = tabView?.tabViewItems.index(where: { ($0.viewController as? CollectionViewController)?.collection?.key == viewController.collection?.key }) {
+        if let index = tabView?.tabViewItems.index(where: { ($0.viewController as? CollectionViewController)?.collection?.name == viewController.collection?.name }) {
             tabView?.selectTabViewItem(at: index)
         } else {
             let tabViewItem = NSTabViewItem(viewController: viewController)
