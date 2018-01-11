@@ -20,14 +20,13 @@ final class TabItem: NSObject, MMTabBarItem {
 }
 
 final class TabViewController: NSViewController {
-    static let tabHeight = CGFloat(26)
-    
     override var nibName: NSNib.Name? {
         return NSNib.Name("TabViewController")
     }
 
     @IBOutlet weak var tabView: NSTabView?
     @IBOutlet weak var tabBar: MMTabBarView?
+    @IBOutlet weak var tabHeightConstraint: NSLayoutConstraint?
     
     var didSelectViewController: ((CollectionViewController) -> Void)?
     
@@ -43,10 +42,12 @@ final class TabViewController: NSViewController {
         tabBar?.setButtonMinWidth(100)
         tabBar?.setButtonMaxWidth(280)
         tabBar?.setAllowsBackgroundTabClosing(true)
-        tabBar?.setHideForSingleTab(true)
+        tabHeightConstraint?.constant = 0
     }
     
     func add(viewController: CollectionViewController) {
+        adjustTabBarHeight()
+        
         if let index = tabView?.tabViewItems.index(where: { ($0.viewController as? CollectionViewController)?.collection?.name == viewController.collection?.name }) {
             tabView?.selectTabViewItem(at: index)
         } else {
@@ -57,12 +58,19 @@ final class TabViewController: NSViewController {
         }
     }
     
-    fileprivate func show(tabItem: TabItem) {
-
+    private func adjustTabBarHeight(closing: Bool = false) {
+        let countToHide = closing ? 1 : 0
+        tabHeightConstraint?.constant = tabView?.numberOfTabViewItems == countToHide ? 0 : 25
+        tabBar?.needsLayout = true
+        tabBar?.layoutSubtreeIfNeeded()
     }
 }
 
 extension TabViewController: MMTabBarViewDelegate {
+    func tabView(_ aTabView: NSTabView!, didClose tabViewItem: NSTabViewItem!) {
+        adjustTabBarHeight(closing: true)
+    }
+    
     func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
         guard let collectonViewController = tabViewItem?.viewController as? CollectionViewController else { return }
         didSelectViewController?(collectonViewController)

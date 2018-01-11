@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TabViewController" customModule="Mongosquare" customModuleProvider="target">
             <connections>
                 <outlet property="tabBar" destination="hxd-ZG-qyF" id="Psy-X8-beC"/>
+                <outlet property="tabHeightConstraint" destination="gnq-u1-IjM" id="7VQ-cO-gto"/>
                 <outlet property="tabView" destination="A3f-My-SY6" id="u2Z-sF-KvZ"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
