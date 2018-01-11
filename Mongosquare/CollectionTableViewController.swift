@@ -13,7 +13,11 @@ final class DocumentHeaderView: NSTableHeaderView {
 }
 
 final class DocumentItem {
-    let document: MongoKitten.Document
+    var document: MongoKitten.Document
+    
+    var types: [MongoKitten.ElementType] {
+        return document.keys.flatMap { document.type(at: $0) }
+    }
     
     init(document: MongoKitten.Document) {
         self.document = document
@@ -86,10 +90,15 @@ extension CollectionTableViewController: NSTableViewDataSource {
         for (key, val) in item.document {
             if key == tableColumn?.identifier.rawValue {
                 if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("DocumentCellView"), owner: self) as? NSTableCellView {
+                    view.textField?.delegate = self
+                    view.textField?.isEditable = false
                     if let subDocument = val as? Document {
                         view.textField?.stringValue = "{ \(subDocument.keys.count) fields }"
                     } else {
                         view.textField?.stringValue = "\(val)"
+                        if key != "_id" {
+                            view.textField?.isEditable = true
+                        }
                     }
                     return view
                 }
@@ -120,6 +129,62 @@ extension CollectionTableViewController: NSTableViewDataSource {
     }
 }
 
+extension CollectionTableViewController: NSControlTextEditingDelegate {
+    func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
+        guard let tableView = tableView else { return true }
+        let row = tableView.row(for: control)
+        let column = tableView.column(for: control)
+        let valueToUpdate = fieldEditor.string
+        let item = items[row]
+        let columnKey = item.document.keys[column]
+        var tryUpdate = false
+        
+        switch item.types[column] {
+        case .double:
+            if let value = Double(valueToUpdate) {
+                item.document[columnKey] = value
+                tryUpdate = true
+            }
+        case .string:
+            item.document[columnKey] = valueToUpdate
+            tryUpdate = true
+        case .boolean:
+            if let value = Bool(valueToUpdate) {
+                let booleanPrimitive: Primitive = value
+                item.document[columnKey] = booleanPrimitive
+                tryUpdate = true
+            }
+        case .int32:
+            if let value = Int32(valueToUpdate) {
+                item.document[columnKey] = value
+                tryUpdate = true
+            }
+        case .int64:
+            if let value = Double(valueToUpdate) {
+                item.document[columnKey] = value
+                tryUpdate = true
+            }
+        default:
+            tryUpdate = false
+        }
+        
+        if tryUpdate {
+            if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
+                print("value updated:\(updatedCount)")
+                return true
+            }
+        }
+        if let value = item.document[columnKey] {
+            fieldEditor.string = "\(value)"
+        }
+        return true
+    }
+}
+
 extension CollectionTableViewController: NSTableViewDelegate {
+    
+}
+
+extension CollectionTableViewController: NSTextFieldDelegate {
     
 }
