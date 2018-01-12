@@ -50,7 +50,15 @@ final class WindowController: NSWindowController {
         let contentSplitViewItem = NSSplitViewItem(viewController: self.tabViewController)
         splitViewController.addSplitViewItem(contentSplitViewItem)
         
+        let jsonSplitViewItem = NSSplitViewItem(viewController: self.jsonViewController)
+        splitViewController.addSplitViewItem(jsonSplitViewItem)
+        
         return splitViewController
+    }()
+    
+    lazy var jsonViewController: JsonViewController = {
+        let jsonViewController = JsonViewController()
+        return jsonViewController
     }()
     
     override func windowDidLoad() {

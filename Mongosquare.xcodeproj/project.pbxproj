@@ -138,6 +138,11 @@
 		C5233CF71F7A5A6200B32B16 /* SafariIWITLeftCap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5233C731F7A566B00B32B16 /* SafariIWITLeftCap@2x.png */; };
 		C5233CF81F7A5A6200B32B16 /* SafariIWITRightCap.png in Resources */ = {isa = PBXBuildFile; fileRef = C5233C741F7A566B00B32B16 /* SafariIWITRightCap.png */; };
 		C5233CF91F7A5A6200B32B16 /* SafariIWITRightCap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5233C751F7A566B00B32B16 /* SafariIWITRightCap@2x.png */; };
+		C523C04E200841AA003CA1B0 /* SupplementaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C04C200841AA003CA1B0 /* SupplementaryViewController.swift */; };
+		C523C04F200841AA003CA1B0 /* SupplementaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C523C04D200841AA003CA1B0 /* SupplementaryViewController.xib */; };
+		C523C052200841F2003CA1B0 /* JsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C050200841F2003CA1B0 /* JsonViewController.swift */; };
+		C523C053200841F2003CA1B0 /* JsonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C523C051200841F2003CA1B0 /* JsonViewController.xib */; };
+		C523C0572008A4D2003CA1B0 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C523C0582008A4D2003CA1B0 /* MGSFragaria.framework */; };
 		C5298EF91F5BA77A00908D4C /* CollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5298EF71F5BA77A00908D4C /* CollectionTableViewController.swift */; };
 		C5298EFA1F5BA77A00908D4C /* CollectionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5298EF81F5BA77A00908D4C /* CollectionTableViewController.xib */; };
 		C5298EFD1F5BAA6800908D4C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5298EFB1F5BAA6800908D4C /* CollectionViewController.swift */; };
@@ -355,6 +360,11 @@
 		C5233C751F7A566B00B32B16 /* SafariIWITRightCap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SafariIWITRightCap@2x.png"; sourceTree = "<group>"; };
 		C5233C761F7A566B00B32B16 /* MMSafariTabStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSafariTabStyle.h; sourceTree = "<group>"; };
 		C5233C771F7A566B00B32B16 /* MMSafariTabStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSafariTabStyle.m; sourceTree = "<group>"; };
+		C523C04C200841AA003CA1B0 /* SupplementaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryViewController.swift; sourceTree = "<group>"; };
+		C523C04D200841AA003CA1B0 /* SupplementaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupplementaryViewController.xib; sourceTree = "<group>"; };
+		C523C050200841F2003CA1B0 /* JsonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonViewController.swift; sourceTree = "<group>"; };
+		C523C051200841F2003CA1B0 /* JsonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JsonViewController.xib; sourceTree = "<group>"; };
+		C523C0582008A4D2003CA1B0 /* MGSFragaria.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGSFragaria.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5298EF71F5BA77A00908D4C /* CollectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTableViewController.swift; sourceTree = "<group>"; };
 		C5298EF81F5BA77A00908D4C /* CollectionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionTableViewController.xib; sourceTree = "<group>"; };
 		C5298EFB1F5BAA6800908D4C /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -389,6 +399,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C523C0572008A4D2003CA1B0 /* MGSFragaria.framework in Frameworks */,
 				C54391922005A5B500F08511 /* Package.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -621,6 +632,7 @@
 		C59FFCAD1F87DED500971FCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C523C0582008A4D2003CA1B0 /* MGSFragaria.framework */,
 				C54391932005A5B500F08511 /* Package.framework */,
 				C59FFCAE1F87DED600971FCB /* QuartzCore.framework */,
 			);
@@ -670,6 +682,10 @@
 				C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */,
 				FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */,
 				FA0AA2F61FCDA20900DA765D /* ConnectionWindowController.xib */,
+				C523C04C200841AA003CA1B0 /* SupplementaryViewController.swift */,
+				C523C04D200841AA003CA1B0 /* SupplementaryViewController.xib */,
+				C523C050200841F2003CA1B0 /* JsonViewController.swift */,
+				C523C051200841F2003CA1B0 /* JsonViewController.xib */,
 				C5D8B1EE1F5715DB00AE0E25 /* Assets.xcassets */,
 				C5D8B1F31F5715DB00AE0E25 /* Info.plist */,
 				C5D8B1F91F57163000AE0E25 /* MainMenu.xib */,
@@ -793,6 +809,7 @@
 				C5233CE31F7A5A6200B32B16 /* SafariIWAddTabButton.png in Resources */,
 				C5233CE41F7A5A6200B32B16 /* SafariIWATClose.png in Resources */,
 				C5233CE51F7A5A6200B32B16 /* SafariIWATClose@2x.png in Resources */,
+				C523C053200841F2003CA1B0 /* JsonViewController.xib in Resources */,
 				C5233CE61F7A5A6200B32B16 /* SafariIWATClosePressed.png in Resources */,
 				C5233CE71F7A5A6200B32B16 /* SafariIWATClosePressed@2x.png in Resources */,
 				C5233CE81F7A5A6200B32B16 /* SafariIWATCloseRollover.png in Resources */,
@@ -863,6 +880,7 @@
 				C5233CC51F7A5A1500B32B16 /* YosemiteTabClose_Front_Rollover.png in Resources */,
 				C5233CC61F7A5A1500B32B16 /* YosemiteTabClose_Front_Rollover@2x.png in Resources */,
 				C5233CC71F7A5A1500B32B16 /* YosemiteTabNew.png in Resources */,
+				C523C04F200841AA003CA1B0 /* SupplementaryViewController.xib in Resources */,
 				C5233CC81F7A5A1500B32B16 /* YosemiteTabNew@2x.png in Resources */,
 				C5D8B1EF1F5715DB00AE0E25 /* Assets.xcassets in Resources */,
 				C5298EFA1F5BA77A00908D4C /* CollectionTableViewController.xib in Resources */,
@@ -884,6 +902,7 @@
 			files = (
 				C5233C781F7A56B400B32B16 /* MMAttachedTabBarButton.m in Sources */,
 				C5233C791F7A56B400B32B16 /* MMAttachedTabBarButtonCell.m in Sources */,
+				C523C052200841F2003CA1B0 /* JsonViewController.swift in Sources */,
 				C5233C7A1F7A56B400B32B16 /* MMOverflowPopUpButton.m in Sources */,
 				C5233C7B1F7A56B400B32B16 /* MMOverflowPopUpButtonCell.m in Sources */,
 				C5233C7C1F7A56B400B32B16 /* MMProgressIndicator.m in Sources */,
@@ -924,6 +943,7 @@
 				C5D8B1FD1F5716B500AE0E25 /* WindowController.swift in Sources */,
 				C51E420C1F698E9B009C8ED5 /* NSImage+Mongosquare.swift in Sources */,
 				FA6258201FD2D43500A1BF26 /* InteractionView.swift in Sources */,
+				C523C04E200841AA003CA1B0 /* SupplementaryViewController.swift in Sources */,
 				C5298EFD1F5BAA6800908D4C /* CollectionViewController.swift in Sources */,
 				C5D8B1EB1F5715DB00AE0E25 /* AppDelegate.swift in Sources */,
 				C5BF0A211F584F2E00C95EA8 /* CollectionOutlineViewController.swift in Sources */,

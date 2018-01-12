@@ -3,3 +3,4 @@
 #import "MMTabBarItem.h"
 #import "MMSafariTabStyle.h"
 #import "NSTabViewItem+MMTabBarViewExtensions.h"
+#import "MGSFragaria/MGSFragaria.h"
