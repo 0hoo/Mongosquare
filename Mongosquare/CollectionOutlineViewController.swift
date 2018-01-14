@@ -96,7 +96,7 @@ final class CollectionOutlineViewController: NSViewController {
 
     weak var collectionViewController: CollectionViewController?
 
-    fileprivate var items: [DocumentOutlineItem] = []
+    private var items: [DocumentOutlineItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -241,6 +241,11 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
 }
 
 extension CollectionOutlineViewController: NSOutlineViewDelegate {
+    func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+        guard let item = item as? DocumentOutlineItem else { return false }
+        collectionViewController?.didSelectDocument?(item.document)
+        return true
+    }
 }
 
 extension CollectionOutlineViewController: NSTextFieldDelegate {

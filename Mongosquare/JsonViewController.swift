@@ -7,18 +7,32 @@
 //
 
 import Cocoa
+import MongoKitten
 
 class JsonViewController: NSViewController {
 
-    let fragaria = MGSFragaria()
+    private let fragaria = MGSFragaria()
+    
+    var document: MongoKitten.Document? {
+        didSet {
+            guard let document = document else {
+                fragaria.setString("")
+                return
+            }
+            var documentString = "\(document)"
+            documentString = documentString.replacingOccurrences(of: "{", with: "{\n\t")
+            documentString = documentString.replacingOccurrences(of: ",", with: ",\n\t")
+            documentString = documentString.replacingOccurrences(of: "}", with: "\n}")
+            fragaria.setString(documentString)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fragaria.setObject(self, forKey: MGSFODelegate)
         fragaria.embed(in: view)
+        fragaria.setObject("JavaScript", forKey: MGSFOSyntaxDefinitionName)
         fragaria.setString("// We don't need the future.")
-        // Do view setup here.
     }
-    
 }
