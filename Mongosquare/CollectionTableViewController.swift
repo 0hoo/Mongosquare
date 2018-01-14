@@ -182,7 +182,11 @@ extension CollectionTableViewController: NSControlTextEditingDelegate {
 }
 
 extension CollectionTableViewController: NSTableViewDelegate {
-    
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        let item = items[row]
+        collectionViewController?.didSelectDocument?(item.document)
+        return true
+    }
 }
 
 extension CollectionTableViewController: NSTextFieldDelegate {

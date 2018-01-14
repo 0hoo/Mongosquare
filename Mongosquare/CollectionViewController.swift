@@ -22,8 +22,8 @@ final class CollectionViewController: NSViewController {
     }
 
     var skipLimit = SkipLimit()
-    var didSelectDocument: ((MongoKitten.Document) -> ())? = { document in
-        AppDelegate.shared.windowController.jsonViewController.document = document //.fragaria.setString("\(doc)")
+    var didSelectDocument: ((MongoKitten.Document) -> ())? = {
+        AppDelegate.shared.windowController.jsonViewController.document = $0
     }
     
     override var nibName: NSNib.Name? {

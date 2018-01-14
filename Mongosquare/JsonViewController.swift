@@ -33,6 +33,5 @@ class JsonViewController: NSViewController {
         fragaria.setObject(self, forKey: MGSFODelegate)
         fragaria.embed(in: view)
         fragaria.setObject("JavaScript", forKey: MGSFOSyntaxDefinitionName)
-        fragaria.setString("// We don't need the future.")
     }
 }
