@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,7 +31,7 @@
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="245" minWidth="16" maxWidth="1000" id="2YS-Nb-EAB">
+                                    <tableColumn identifier="" width="245" minWidth="16" maxWidth="1000" id="2YS-Nb-EAB">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -57,7 +56,7 @@
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icons8-system_task" id="gGp-Fo-LXR"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxE-LI-uW1">
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QxE-LI-uW1">
                                                         <rect key="frame" x="22" y="4" width="91" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="dlB-c3-fXr">
                                                             <font key="font" metaFont="system"/>
@@ -89,7 +88,7 @@
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icons8-database-blue" id="GZy-6C-2wb"/>
                                                     </imageView>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFd-XC-VvD">
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AFd-XC-VvD">
                                                         <rect key="frame" x="230" y="4" width="9" height="13"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="1" id="QEz-nR-t6e">
                                                             <font key="font" metaFont="system" size="10"/>
@@ -97,8 +96,8 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92K-9R-OGc">
-                                                        <rect key="frame" x="18" y="1" width="97" height="17"/>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="92K-9R-OGc">
+                                                        <rect key="frame" x="18" y="1" width="96" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="lnC-Ci-kEv">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -141,8 +140,28 @@
                     </scroller>
                 </scrollView>
             </subviews>
+            <connections>
+                <outlet property="menu" destination="86P-Vb-Hgw" id="cey-gA-Yum"/>
+            </connections>
             <point key="canvasLocation" x="23" y="40"/>
         </customView>
+        <menu id="86P-Vb-Hgw">
+            <items>
+                <menuItem title="Add Database..." id="s5d-vz-f1W">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addDatabase:" target="-2" id="32N-qW-0mm"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Add Collection..." id="ocT-Wr-fBm">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addCollection:" target="-2" id="rKx-sl-Hl7"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="24" y="402"/>
+        </menu>
     </objects>
     <resources>
         <image name="icons8-database-blue" width="32" height="32"/>

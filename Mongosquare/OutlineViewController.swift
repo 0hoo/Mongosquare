@@ -36,8 +36,9 @@ final class OutlineItem {
     var isDatabase: Bool
     var items: [OutlineItem] = []
     var collection: MongoKitten.Collection?
+    var database: MongoKitten.Database?
     
-    init(title: String, _ isHeader: Bool = false, _ isDatabase: Bool = false, _ count: Int = 0) {
+    init(title: String, isHeader: Bool = false, isDatabase: Bool = false, count: Int = 0) {
         self.title = title
         self.isHeader = isHeader
         self.isDatabase = isDatabase
@@ -60,15 +61,16 @@ final class OutlineViewController: NSViewController {
     fileprivate var items: [OutlineItem] = []
 
     private var databases: [Database] = []
+    private var unsavedCollections: [MongoKitten.Collection] = []
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        reload()
+        reloadDatabases()
     }
     
-    func reload() {
+    func reloadDatabases() {
         do  {
             let server = try Server("mongodb://localhost")
             databases = try server.getDatabases()
@@ -76,20 +78,35 @@ final class OutlineViewController: NSViewController {
             print(error)
         }
         
+        reloadItems()
+    }
+    
+    func reloadItems() {
+        
         items.removeAll()
-        let local = OutlineItem(title: "Local", true, false, databases.count)
+        let local = OutlineItem(title: "Local", isHeader: true, isDatabase: false, count: databases.count)
         items.append(local)
         databases.forEach { db in
             do {
                 let collections = try db.listCollections()
-                let databaseItem = OutlineItem(title: db.name, false, true)
+                let databaseItem = OutlineItem(title: db.name, isHeader: false, isDatabase: true)
+                databaseItem.database = db
                 local.items.append(databaseItem)
                 
                 for collection in collections {
-                    let collectionItem = OutlineItem(title: collection.name, false, false)
+                    let collectionItem = OutlineItem(title: collection.name, isHeader: false, isDatabase: false)
                     collectionItem.collection = collection
                     databaseItem.items.append(collectionItem)
                     databaseItem.count += 1
+                }
+                
+                for newCollection in unsavedCollections {
+                    if newCollection.database.name == db.name {
+                        let collectionItem = OutlineItem(title: newCollection.name, isHeader: false, isDatabase: false)
+                        collectionItem.collection = newCollection
+                        databaseItem.items.append(collectionItem)
+                        databaseItem.count += 1
+                    }
                 }
             } catch {
                 print(error)
@@ -125,6 +142,51 @@ final class OutlineViewController: NSViewController {
             }
             
         } while stack.count > 0
+    }
+}
+
+extension OutlineViewController {
+    @IBAction func addDatabase(_ sender: NSMenuItem) {
+        let alert = NSAlert()
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        alert.messageText = "Add Database"
+        
+        let input = NSTextField(frame: CGRect(x: 0, y: 0, width: 360, height: 24))
+        input.placeholderString = "Enter database name here"
+        alert.accessoryView = input
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            do  {
+                let server = try Server("mongodb://localhost")
+                let newDatabase = MongoKitten.Database(named: input.stringValue, atServer: server)
+                databases.append(newDatabase)
+                reloadItems()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    @IBAction func addCollection(_ sender: NSMenuItem) {
+        guard let selectedRow = outlineView?.selectedRow else { return }
+        guard let item = outlineView?.item(atRow: selectedRow) as? OutlineItem else { return }
+        guard let database = item.database, item.isDatabase else { return }
+        
+        let alert = NSAlert()
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        alert.messageText = "Add Collection"
+        
+        let input = NSTextField(frame: CGRect(x: 0, y: 0, width: 360, height: 24))
+        input.placeholderString = "Enter collection name here"
+        alert.accessoryView = input
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            let newCollection = database[input.stringValue]
+            unsavedCollections.append(newCollection)
+            reloadItems()
+        }
     }
 }
 
