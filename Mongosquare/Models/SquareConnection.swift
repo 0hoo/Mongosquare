@@ -1,5 +1,5 @@
 //
-//  DBConnection.swift
+//  SquareConnection.swift
 //  Mongosquare
 //
 //  Created by Sehyun Park on 12/2/17.
@@ -9,7 +9,7 @@
 import Foundation
 import MongoKitten
 
-final class DBConnection: Codable {
+final class SquareConnection: Codable {
     var name: String
     let username: String
     let password: String
@@ -22,7 +22,7 @@ final class DBConnection: Codable {
     var shouldAutoConnect: Bool = false
     
     var server: Server? = nil
-    var databases: [Database]? = nil
+    var databases: [MSDatabase]? = nil
     
     
     init(name: String = "", username: String, password: String, host: String, port: Int, dbName: String?) {
@@ -36,6 +36,7 @@ final class DBConnection: Codable {
         //let authentication = MongoCredentials(username: username, password: password, database: dbName ?? "admin", authenticationMechanism: AuthenticationMechanism.SCRAM_SHA_1)
         
         //let clientSettings = ClientSettings(host: MongoHost(hostname:host, port:UInt16(port)), sslSettings: nil, credentials: authentication, maxConnectionsPerServer: 100)
+        
         setup()
     }
     

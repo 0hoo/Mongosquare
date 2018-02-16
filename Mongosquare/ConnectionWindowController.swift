@@ -20,7 +20,7 @@ final class ConnectionWindowController: NSWindowController {
     
     @IBOutlet weak var connectionView: InteractionView!
     
-    var dbConnection: DBConnection?
+    var connection: SquareConnection?
     weak var parentWindow: NSWindow?
     
     override func windowDidLoad() {
@@ -33,9 +33,9 @@ final class ConnectionWindowController: NSWindowController {
         // show progress
         indicator.isHidden = false
         connectionView.isEnabled = false
-        dbConnection = DBConnection(username: usernameField.stringValue, password: passwordField.stringValue, host: hostField.stringValue, port: Int(portField.stringValue) ?? 27017, dbName: databaseField.stringValue)
+        connection = SquareConnection(username: usernameField.stringValue, password: passwordField.stringValue, host: hostField.stringValue, port: Int(portField.stringValue) ?? 27017, dbName: databaseField.stringValue)
         
-        if let connected = dbConnection?.connect(), connected, let window = window {
+        if let connected = connection?.connect(), connected, let window = window {
             parentWindow?.endSheet(window)
         }
         indicator.isHidden = true

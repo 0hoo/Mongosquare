@@ -72,7 +72,7 @@ final class OutlineViewController: NSViewController {
     
     func reloadDatabases() {
         do  {
-            let server = try Server("mongodb://localhost")
+            let server = try Server("mongodb://ec2-18-219-64-54.us-east-2.compute.amazonaws.com")
             databases = try server.getDatabases()
         } catch {
             print(error)
@@ -158,7 +158,7 @@ extension OutlineViewController {
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
             do  {
-                let server = try Server("mongodb://localhost")
+                let server = try Server("mongodb://ec2-18-219-64-54.us-east-2.compute.amazonaws.com")
                 let newDatabase = MongoKitten.Database(named: input.stringValue, atServer: server)
                 databases.append(newDatabase)
                 reloadItems()
