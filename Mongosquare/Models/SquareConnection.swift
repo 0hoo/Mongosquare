@@ -10,6 +10,8 @@ import Foundation
 import MongoKitten
 
 final class SquareConnection: Codable {
+    static var connectionPool: [SquareConnection] = []
+    
     var name: String
     let username: String
     let password: String
@@ -22,8 +24,7 @@ final class SquareConnection: Codable {
     var shouldAutoConnect: Bool = false
     
     var server: Server? = nil
-    var databases: [MSDatabase]? = nil
-    
+    var databases: [SquareDatabase]? = nil
     
     init(name: String = "", username: String, password: String, host: String, port: Int, dbName: String?) {
         self.name = name
@@ -55,6 +56,10 @@ final class SquareConnection: Codable {
         
         databases = try? server.getDatabases()
         return databases != nil
+    }
+    
+    func reload() {
+        
     }
     
     enum CodingKeys: String, CodingKey {
