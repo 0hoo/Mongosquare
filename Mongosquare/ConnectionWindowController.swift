@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import MongoKitten
 
 final class ConnectionWindowController: NSWindowController {
 

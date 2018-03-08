@@ -11,6 +11,10 @@ import MongoKitten
 
 final class SquareConnection: Codable {
     static var connectionPool: [SquareConnection] = []
+    static var testConnection: SquareConnection = {
+        let connection = SquareConnection(username: "", password: "", host: "mongodb://ec2-18-219-64-54.us-east-2.compute.amazonaws.com")
+        return connection
+    }()
     
     var name: String
     let username: String
@@ -24,9 +28,9 @@ final class SquareConnection: Codable {
     var shouldAutoConnect: Bool = false
     
     var server: Server? = nil
-    var databases: [SquareDatabase]? = nil
+    var databases: [SquareDatabase] = []
     
-    init(name: String = "", username: String, password: String, host: String, port: Int, dbName: String?) {
+    init(name: String = "", username: String, password: String, host: String, port: Int = 27017, dbName: String? = nil) {
         self.name = name
         self.username = username
         self.password = password
@@ -54,12 +58,25 @@ final class SquareConnection: Codable {
             return true
         }
         
-        databases = try? server.getDatabases()
-        return databases != nil
+        return reloadDatabases()
+    }
+   
+    @discardableResult
+    func reloadDatabases() -> Bool {
+        guard let server = server else { return false }
+        
+        let kittenDatabases = (try? server.getDatabases()) ?? []
+        databases = kittenDatabases.map { SquareDatabase(database: $0) }
+        return !databases.isEmpty
     }
     
-    func reload() {
+    @discardableResult
+    func addDatabase(name: String) -> Bool {
+        guard let server = server else { return false }
         
+        let newDatabase = MongoKitten.Database(named: name, atServer: server)
+        databases.append(SquareDatabase(database: newDatabase))
+        return true
     }
     
     enum CodingKeys: String, CodingKey {

@@ -7,19 +7,18 @@
 //
 
 import Cocoa
-import MongoKitten
 
 final class DocumentHeaderView: NSTableHeaderView {
 }
 
 final class DocumentItem {
-    var document: MongoKitten.Document
+    var document: SquareDocument
     
-    var types: [MongoKitten.ElementType] {
+    var types: [SquareDocument.ElementType] {
         return document.keys.flatMap { document.type(at: $0) }
     }
     
-    init(document: MongoKitten.Document) {
+    init(document: SquareDocument) {
         self.document = document
     }
 }
@@ -87,21 +86,19 @@ extension CollectionTableViewController: NSTableViewDataSource {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let item = items[row]
-        for (key, val) in item.document {
-            if key == tableColumn?.identifier.rawValue {
-                if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("DocumentCellView"), owner: self) as? NSTableCellView {
-                    view.textField?.delegate = self
-                    view.textField?.isEditable = false
-                    if let subDocument = val as? Document {
-                        view.textField?.stringValue = "{ \(subDocument.keys.count) fields }"
-                    } else {
-                        view.textField?.stringValue = "\(val)"
-                        if key != "_id" {
-                            view.textField?.isEditable = true
-                        }
+        for (key, val, _) in item.document where key == tableColumn?.identifier.rawValue {
+            if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("DocumentCellView"), owner: self) as? NSTableCellView {
+                view.textField?.delegate = self
+                view.textField?.isEditable = false
+                if let subDocument = val as? SquareDocument {
+                    view.textField?.stringValue = "{ \(subDocument.keys.count) fields }"
+                } else {
+                    view.textField?.stringValue = "\(val)"
+                    if key != "_id" {
+                        view.textField?.isEditable = true
                     }
-                    return view
                 }
+                return view
             }
         }
         return nil
@@ -150,8 +147,8 @@ extension CollectionTableViewController: NSControlTextEditingDelegate {
             tryUpdate = true
         case .boolean:
             if let value = Bool(valueToUpdate) {
-                let booleanPrimitive: Primitive = value
-                item.document[columnKey] = booleanPrimitive
+                //let booleanPrimitive: Primitive = value
+                item.document[columnKey] = value
                 tryUpdate = true
             }
         case .int32:

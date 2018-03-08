@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import MongoKitten
 
 extension NSOutlineView {
     func selectItem(_ item: Any?, _ parentItem: Any? = nil) {
@@ -35,8 +34,8 @@ final class OutlineItem {
     var count: Int
     var isDatabase: Bool
     var items: [OutlineItem] = []
-    var collection: MongoKitten.Collection?
-    var database: MongoKitten.Database?
+    var collection: SquareCollection?
+    var database: SquareDatabase?
     
     init(title: String, isHeader: Bool = false, isDatabase: Bool = false, count: Int = 0) {
         self.title = title
@@ -56,12 +55,13 @@ final class OutlineViewController: NSViewController {
     
     @IBOutlet var outlineView: NSOutlineView?
     
-    var didSelectCollection: ((MongoKitten.Collection) -> ())?
+    var didSelectCollection: ((SquareCollection) -> ())?
 
     fileprivate var items: [OutlineItem] = []
 
-    private var databases: [Database] = []
-    private var unsavedCollections: [MongoKitten.Collection] = []
+    private var connection: SquareConnection = SquareConnection.testConnection
+    private var databases: [SquareDatabase] = []
+    private var unsavedCollections: [SquareCollection] = []
     
     override func viewDidLoad() {
         
@@ -71,12 +71,11 @@ final class OutlineViewController: NSViewController {
     }
     
     func reloadDatabases() {
-        do  {
-            let server = try Server("mongodb://ec2-18-219-64-54.us-east-2.compute.amazonaws.com")
-            databases = try server.getDatabases()
-        } catch {
-            print(error)
+        guard connection.reloadDatabases() else {
+            print("reloading DB failed")
+            return 
         }
+        databases = connection.databases
         
         reloadItems()
     }
@@ -87,36 +86,30 @@ final class OutlineViewController: NSViewController {
         let local = OutlineItem(title: "Local", isHeader: true, isDatabase: false, count: databases.count)
         items.append(local)
         databases.forEach { db in
-            do {
-                let collections = try db.listCollections()
-                let databaseItem = OutlineItem(title: db.name, isHeader: false, isDatabase: true)
-                databaseItem.database = db
-                local.items.append(databaseItem)
-                
-                for collection in collections {
-                    let collectionItem = OutlineItem(title: collection.name, isHeader: false, isDatabase: false)
-                    collectionItem.collection = collection
-                    databaseItem.items.append(collectionItem)
-                    databaseItem.count += 1
-                }
-                
-                for newCollection in unsavedCollections {
-                    if newCollection.database.name == db.name {
-                        let collectionItem = OutlineItem(title: newCollection.name, isHeader: false, isDatabase: false)
-                        collectionItem.collection = newCollection
-                        databaseItem.items.append(collectionItem)
-                        databaseItem.count += 1
-                    }
-                }
-            } catch {
-                print(error)
+            let collections = db.collections
+            let databaseItem = OutlineItem(title: db.name, isHeader: false, isDatabase: true)
+            databaseItem.database = db
+            local.items.append(databaseItem)
+            
+            for collection in collections {
+                let collectionItem = OutlineItem(title: collection.name, isHeader: false, isDatabase: false)
+                collectionItem.collection = collection
+                databaseItem.items.append(collectionItem)
+                databaseItem.count += 1
+            }
+            
+            for newCollection in unsavedCollections where newCollection.databaseName == db.name {
+                let collectionItem = OutlineItem(title: newCollection.name, isHeader: false, isDatabase: false)
+                collectionItem.collection = newCollection
+                databaseItem.items.append(collectionItem)
+                databaseItem.count += 1
             }
         }
         outlineView?.reloadData()
         outlineView?.expandItem(local, expandChildren: true)
     }
     
-    func selectBy(_ collection: MongoKitten.Collection) {
+    func selectBy(_ collection: SquareCollection) {
         guard let outlineView = outlineView else { return }
         
         var currentItem: Any? = nil
@@ -157,13 +150,10 @@ extension OutlineViewController {
         alert.accessoryView = input
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
-            do  {
-                let server = try Server("mongodb://ec2-18-219-64-54.us-east-2.compute.amazonaws.com")
-                let newDatabase = MongoKitten.Database(named: input.stringValue, atServer: server)
-                databases.append(newDatabase)
+            if connection.addDatabase(name: input.stringValue) {
                 reloadItems()
-            } catch {
-                print(error)
+            } else {
+                print("db add failed")
             }
         }
     }
