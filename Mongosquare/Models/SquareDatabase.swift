@@ -151,12 +151,18 @@ struct SquareDocument: Swift.Collection {
         return nil 
     }
     
-    subscript(key: String) -> Primitive? {
+    subscript(key: String) -> Any? {
         get {
-            return document[key.components(separatedBy: ".")]
+            let element: Any? = document[key.components(separatedBy: ".")]
+            if let element = element as? Document {
+                return SquareDocument(document: element)
+            }
+            return element
         }
         set {
-            document[key.components(separatedBy: ".")] = newValue
+            if let value = newValue as? Primitive {
+                document[key.components(separatedBy: ".")] = value
+            }
         }
     }
     
@@ -217,6 +223,12 @@ struct SquareDocument: Swift.Collection {
     }
     
     subscript(position: DocumentIndex) -> DocumentIndexIterationElement {
-        return DocumentIndexIterationElement(key: document[position].key, value: document[position].value, type: type(at: document[position].key))
+        let element = document[position]
+        var elementValue: Any = element.value
+        if let value = elementValue as? Document {
+            elementValue = SquareDocument(document: value)
+        }
+        
+        return DocumentIndexIterationElement(key: element.key, value: elementValue, type: type(at: element.key))
     }
 }

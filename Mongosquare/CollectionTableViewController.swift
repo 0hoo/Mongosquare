@@ -134,36 +134,7 @@ extension CollectionTableViewController: NSControlTextEditingDelegate {
         let valueToUpdate = fieldEditor.string
         let item = items[row]
         let columnKey = item.document.keys[column]
-        var tryUpdate = false
-        
-        switch item.types[column] {
-        case .double:
-            if let value = Double(valueToUpdate) {
-                item.document[columnKey] = value
-                tryUpdate = true
-            }
-        case .string:
-            item.document[columnKey] = valueToUpdate
-            tryUpdate = true
-        case .boolean:
-            if let value = Bool(valueToUpdate) {
-                //let booleanPrimitive: Primitive = value
-                item.document[columnKey] = value
-                tryUpdate = true
-            }
-        case .int32:
-            if let value = Int32(valueToUpdate) {
-                item.document[columnKey] = value
-                tryUpdate = true
-            }
-        case .int64:
-            if let value = Double(valueToUpdate) {
-                item.document[columnKey] = value
-                tryUpdate = true
-            }
-        default:
-            tryUpdate = false
-        }
+        let tryUpdate = item.document.set(value: valueToUpdate, forKey: columnKey, type: item.types[column])
         
         if tryUpdate {
             if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
