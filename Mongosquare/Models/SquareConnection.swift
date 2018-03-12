@@ -1,5 +1,5 @@
 //
-//  DBConnection.swift
+//  SquareConnection.swift
 //  Mongosquare
 //
 //  Created by Sehyun Park on 12/2/17.
@@ -9,7 +9,18 @@
 import Foundation
 import MongoKitten
 
-final class DBConnection: Codable {
+final class SquareConnection: Codable {
+    static var connectionPool: [SquareConnection] = []
+    static var testConnection: SquareConnection = {
+        let connection = SquareConnection(username: "", password: "", host: "mongodb://ec2-18-219-64-54.us-east-2.compute.amazonaws.com")
+        return connection
+    }()
+    
+    static var localConnection: SquareConnection = {
+        let connection = SquareConnection(username: "", password: "", host: "mongodb://localhost")
+        return connection
+    }()
+    
     var name: String
     let username: String
     let password: String
@@ -22,10 +33,9 @@ final class DBConnection: Codable {
     var shouldAutoConnect: Bool = false
     
     var server: Server? = nil
-    var databases: [Database]? = nil
+    var databases: [SquareDatabase] = []
     
-    
-    init(name: String = "", username: String, password: String, host: String, port: Int, dbName: String?) {
+    init(name: String = "", username: String, password: String, host: String, port: Int = 27017, dbName: String? = nil) {
         self.name = name
         self.username = username
         self.password = password
@@ -36,6 +46,7 @@ final class DBConnection: Codable {
         //let authentication = MongoCredentials(username: username, password: password, database: dbName ?? "admin", authenticationMechanism: AuthenticationMechanism.SCRAM_SHA_1)
         
         //let clientSettings = ClientSettings(host: MongoHost(hostname:host, port:UInt16(port)), sslSettings: nil, credentials: authentication, maxConnectionsPerServer: 100)
+        
         setup()
     }
     
@@ -52,8 +63,25 @@ final class DBConnection: Codable {
             return true
         }
         
-        databases = try? server.getDatabases()
-        return databases != nil
+        return reloadDatabases()
+    }
+   
+    @discardableResult
+    func reloadDatabases() -> Bool {
+        guard let server = server else { return false }
+        
+        let kittenDatabases = (try? server.getDatabases()) ?? []
+        databases = kittenDatabases.map { SquareDatabase(database: $0) }
+        return !databases.isEmpty
+    }
+    
+    @discardableResult
+    func addDatabase(name: String) -> Bool {
+        guard let server = server else { return false }
+        
+        let newDatabase = MongoKitten.Database(named: name, atServer: server)
+        databases.append(SquareDatabase(database: newDatabase))
+        return true
     }
     
     enum CodingKeys: String, CodingKey {

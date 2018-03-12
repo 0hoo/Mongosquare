@@ -7,13 +7,12 @@
 //
 
 import Cocoa
-import MongoKitten
 
 class JsonViewController: NSViewController {
 
     private let fragaria = MGSFragaria()
     
-    var document: MongoKitten.Document? {
+    var document: SquareDocument? {
         didSet {
             guard let document = document else {
                 fragaria.setString("")

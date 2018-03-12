@@ -7,46 +7,20 @@
 //
 
 import Cocoa
-import MongoKitten
-
-extension MongoKitten.ElementType: CustomStringConvertible {
-    public var description : String {
-        switch self {
-            case .double: return "Double";
-            case .string: return "String";
-            case .document: return "Document";
-            case .arrayDocument: return "Array Document";
-            case .binary: return "Binary";
-            case .objectId: return "objectId";
-            case .boolean: return "Boolean";
-            case .utcDateTime: return "Datetime";
-            case .nullValue: return "null";
-            case .regex: return "regex";
-            case .javascriptCode: return "JavaScript code";
-            case .javascriptCodeWithScope: return "JavaSCript code with Scope";
-            case .int32: return "Int32";
-            case .timestamp: return "Timestamp";
-            case .int64: return "Int64";
-            case .decimal128: return "Decimal";
-            case .minKey: return "Min Key";
-            case .maxKey: return "Max Key";
-        }
-    }
-}
 
 final class DocumentOutlineItem {
     var key: String
     let value: String
-    let type: MongoKitten.ElementType
+    let type: SquareDocument.ElementType
     var typeString: String {
         return type.description
     }
-    var document: MongoKitten.Document
+    var document: SquareDocument
     let isDocument: Bool
     var fields: [DocumentOutlineItem] = []
     var visibleFieldsKey: [String] = []
     
-    init(key: String, value: String, type: MongoKitten.ElementType, document: MongoKitten.Document, isDocument: Bool) {
+    init(key: String, value: String, type: SquareDocument.ElementType, document: SquareDocument, isDocument: Bool) {
         self.key = key
         self.value = value
         self.type = type
@@ -60,7 +34,7 @@ final class DocumentOutlineItem {
                 for key in visibleFieldsKey {
                     if let val = document[key], let valueType = document.type(at: key) {
                         let fieldItem: DocumentOutlineItem
-                        if let subDocument = val as? Document {
+                        if let subDocument = val as? SquareDocument {
                             let fields = "{ \(subDocument.keys.count) fields }"
                             fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
                         } else {
@@ -70,10 +44,10 @@ final class DocumentOutlineItem {
                     }
                 }
             } else {
-                for (key, val) in document {
-                    if let valueType = document.type(at: key) {
+                for (key, val, type) in document {
+                    if let valueType = type {
                         let fieldItem: DocumentOutlineItem
-                        if let subDocument = val as? Document {
+                        if let subDocument = val as? SquareDocument {
                             let fields = "{ \(subDocument.keys.count) fields }"
                             fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
                         } else {
@@ -128,37 +102,7 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
         guard let item = outlineView.item(atRow: row) as? DocumentOutlineItem else { return true }
         
         if column == 1 {
-            var tryUpdate = false
-            switch item.type {
-                case .double:
-                    if let value = Double(valueToUpdate) {
-                        item.document[item.key] = value
-                        tryUpdate = true
-                    }
-                case .string:
-                    item.document[item.key] = valueToUpdate
-                    tryUpdate = true
-                case .boolean:
-                    if let value = Bool(valueToUpdate) {
-                        let booleanPrimitive: Primitive = value
-                        item.document[item.key] = booleanPrimitive
-                        tryUpdate = true
-                    }
-                case .int32:
-                    if let value = Int32(valueToUpdate) {
-                        item.document[item.key] = value
-                        tryUpdate = true
-                    }
-                case .int64:
-                    if let value = Double(valueToUpdate) {
-                        item.document[item.key] = value
-                        tryUpdate = true
-                    }
-                default:
-                    tryUpdate = false
-            }
-            
-            if tryUpdate {
+            if item.document.set(value: valueToUpdate, forKey: item.key, type: item.type) {
                 if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
                     print("value updated:\(updatedCount)")
                     return true

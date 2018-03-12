@@ -7,9 +7,9 @@
 //
 
 import Cocoa
-import MongoKitten
 import ExtendedJSON
 import Cheetah
+import MongoKitten
 
 protocol DocumentSkippable {
     func reload(fieldsUpdated: Bool)
@@ -22,7 +22,7 @@ final class CollectionViewController: NSViewController {
     }
 
     var skipLimit = SkipLimit()
-    var didSelectDocument: ((MongoKitten.Document) -> ())? = {
+    var didSelectDocument: ((SquareDocument) -> ())? = {
         AppDelegate.shared.windowController.jsonViewController.document = $0
     }
     
@@ -32,7 +32,7 @@ final class CollectionViewController: NSViewController {
     
     @IBOutlet var collectionView: NSView?
     
-    var collection: MongoKitten.Collection? {
+    var collection: SquareCollection? {
         didSet {
             guard let collection = collection else { return }
             title = collection.name
@@ -47,17 +47,13 @@ final class CollectionViewController: NSViewController {
         }
     }
     
-    var documents: [Document] {
-        do {
-            guard let documents = try collection?.find(skipping: skipLimit.skip, limitedTo: skipLimit.limit) else { return [] }
-            return documents.map { $0 }
-        } catch {
-            print(error)
-            return []
-        }
+    var documents: [SquareDocument] {
+        guard let collection = collection else { return [] }
+       
+        return collection.find(skipping: skipLimit.skip, limitedTo: skipLimit.limit)
     }
     
-    var queriedDocuments: [Document] {
+    var queriedDocuments: [SquareDocument] {
         do {
             var projection: Projection?
             if queryOption.projectingFields.count > 0 {
@@ -78,8 +74,7 @@ final class CollectionViewController: NSViewController {
                 query = Query(Document(try JSONObject(from: queryString)))
             }
             
-            guard let documents = try collection?.find(query, sortedBy: sort, projecting: projection, skipping: skipLimit.skip, limitedTo: skipLimit.limit) else { return [] }
-            return documents.map { $0 }
+            return collection?.find(query, sortedBy: sort, projecting: projection, skipping: skipLimit.skip, limitedTo: skipLimit.limit) ?? []
         } catch {
             print(error)
             return []
@@ -140,15 +135,12 @@ final class CollectionViewController: NSViewController {
         guard let collection = collection else { return }
         
         let newSkip = skipLimit.skip + skipLimit.limit
-        do {
-            let count = try collection.count()
-            if newSkip > count {
-                return
-            }
-        } catch {
-            print(error)
+        
+        let count = collection.count()
+        if newSkip > count {
+            return
         }
-
+        
         skipLimit.skip = newSkip
         
         activeViewController?.reload(fieldsUpdated: false)
