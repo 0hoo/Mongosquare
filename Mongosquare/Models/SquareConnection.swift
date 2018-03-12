@@ -16,6 +16,11 @@ final class SquareConnection: Codable {
         return connection
     }()
     
+    static var localConnection: SquareConnection = {
+        let connection = SquareConnection(username: "", password: "", host: "mongodb://localhost")
+        return connection
+    }()
+    
     var name: String
     let username: String
     let password: String

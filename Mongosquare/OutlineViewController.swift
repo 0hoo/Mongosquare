@@ -59,7 +59,7 @@ final class OutlineViewController: NSViewController {
 
     fileprivate var items: [OutlineItem] = []
 
-    private var connection: SquareConnection = SquareConnection.testConnection
+    private var connection: SquareConnection = SquareConnection.localConnection
     private var databases: [SquareDatabase] = []
     private var unsavedCollections: [SquareCollection] = []
     
