@@ -164,6 +164,7 @@
 		C5EDC9291F5DBDEE00C46F93 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EDC9271F5DBDEE00C46F93 /* TabViewController.swift */; };
 		C5EDC92A1F5DBDEE00C46F93 /* TabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5EDC9281F5DBDEE00C46F93 /* TabViewController.xib */; };
 		CE2B2D37203689FA00A5392F /* SquareDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B2D36203689FA00A5392F /* SquareDatabase.swift */; };
+		CE50D84520563F9F003BA8F9 /* SquareDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50D84420563F9F003BA8F9 /* SquareDocument.swift */; };
 		FA0AA2F71FCDA20900DA765D /* ConnectionWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */; };
 		FA0AA2F81FCDA20900DA765D /* ConnectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0AA2F61FCDA20900DA765D /* ConnectionWindowController.xib */; };
 		FA62581B1FD283E300A1BF26 /* SquareConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62581A1FD283E300A1BF26 /* SquareConnection.swift */; };
@@ -390,6 +391,7 @@
 		C5EDC9271F5DBDEE00C46F93 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		C5EDC9281F5DBDEE00C46F93 /* TabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabViewController.xib; sourceTree = "<group>"; };
 		CE2B2D36203689FA00A5392F /* SquareDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SquareDatabase.swift; path = Models/SquareDatabase.swift; sourceTree = "<group>"; };
+		CE50D84420563F9F003BA8F9 /* SquareDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareDocument.swift; sourceTree = "<group>"; };
 		FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionWindowController.swift; sourceTree = "<group>"; };
 		FA0AA2F61FCDA20900DA765D /* ConnectionWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionWindowController.xib; sourceTree = "<group>"; };
 		FA62581A1FD283E300A1BF26 /* SquareConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SquareConnection.swift; path = Models/SquareConnection.swift; sourceTree = "<group>"; };
@@ -709,6 +711,7 @@
 			children = (
 				FA62581A1FD283E300A1BF26 /* SquareConnection.swift */,
 				CE2B2D36203689FA00A5392F /* SquareDatabase.swift */,
+				CE50D84420563F9F003BA8F9 /* SquareDocument.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -935,6 +938,7 @@
 				C5233C911F7A56B400B32B16 /* MMCardTabStyle.m in Sources */,
 				CE2B2D37203689FA00A5392F /* SquareDatabase.swift in Sources */,
 				C5233C921F7A56B400B32B16 /* MMLiveChatTabStyle.m in Sources */,
+				CE50D84520563F9F003BA8F9 /* SquareDocument.swift in Sources */,
 				C5233C931F7A56B400B32B16 /* MMMetalTabStyle.m in Sources */,
 				C5233C941F7A56B400B32B16 /* MMUnifiedTabStyle.m in Sources */,
 				C5233C951F7A56B400B32B16 /* MMYosemiteTabStyle.m in Sources */,
