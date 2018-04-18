@@ -55,10 +55,6 @@ struct SquareCollection {
         self.isSaved = true 
     }
     
-    func insert(document: SquareDocument) -> SquareDocument? {
-        return nil
-    }
-    
     func find(_ filter: Query? = nil, sortedBy sort: Sort? = nil, projecting projection: Projection? = nil, readConcern: ReadConcern? = nil, collation: Collation? = nil, skipping skip: Int? = nil, limitedTo limit: Int? = nil, withBatchSize batchSize: Int = 100) -> [SquareDocument] {
         precondition(batchSize < Int(Int32.max))
         precondition(skip ?? 0 < Int(Int32.max))
@@ -69,6 +65,11 @@ struct SquareCollection {
     
     func count(_ filter: Query? = nil, limitedTo limit: Int? = nil, skipping skip: Int? = nil, readConcern: ReadConcern? = nil, collation: Collation? = nil) -> Int {
         return (try? collection.count(filter, limitedTo: limit, skipping: skip, readConcern: readConcern, collation: collation)) ?? 0
+    }
+    
+    @discardableResult
+    public func insert(_ document: SquareDocument, stoppingOnError ordered: Bool? = nil, writeConcern: WriteConcern? = nil, timingOut afterTimeout: DispatchTimeInterval? = nil) throws -> BSON.Primitive {
+        return try collection.insert(document.document, stoppingOnError: ordered, writeConcern: writeConcern, timingOut: afterTimeout)
     }
     
     @discardableResult

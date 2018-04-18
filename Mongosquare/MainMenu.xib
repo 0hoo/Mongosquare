@@ -67,9 +67,6 @@
                                     <action selector="newDocument:" target="-1" id="4Si-XN-c54"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="New Document" keyEquivalent="n" id="MAy-sT-yyJ">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                            </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                 <connections>
                                     <action selector="openDocument:" target="-1" id="bVn-NM-KNZ"/>

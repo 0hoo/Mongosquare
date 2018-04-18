@@ -127,6 +127,10 @@ final class WindowController: NSWindowController {
         self.jsonViewController.save()
     }
     
+    @IBAction func newDocument(_ sender: Any?) {
+        self.jsonViewController.newDocument()
+    }
+    
     private func showConnectionWindow() {
         if connectionWindowController == nil {
             connectionWindowController = ConnectionWindowController(windowNibName: NSNib.Name("ConnectionWindowController"))
