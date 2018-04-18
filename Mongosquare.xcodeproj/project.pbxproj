@@ -150,6 +150,7 @@
 		C54391922005A5B500F08511 /* Package.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54391932005A5B500F08511 /* Package.framework */; };
 		C54D57641FDA61E1006DBF37 /* QueryTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D57631FDA61E1006DBF37 /* QueryTableCellView.swift */; };
 		C54D57661FDA6301006DBF37 /* QueryTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */; };
+		C584D936208703B700CAD61A /* NSOutlineView+Mongosquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C584D935208703B700CAD61A /* NSOutlineView+Mongosquare.swift */; };
 		C59ED1611F89C3FA00EA1F26 /* QueryWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59ED15F1F89C3FA00EA1F26 /* QueryWindowController.swift */; };
 		C59ED1621F89C3FA00EA1F26 /* QueryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59ED1601F89C3FA00EA1F26 /* QueryWindowController.xib */; };
 		C5BF0A191F584DCC00C95EA8 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF0A171F584DCC00C95EA8 /* OutlineViewController.swift */; };
@@ -374,6 +375,7 @@
 		C54391932005A5B500F08511 /* Package.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Package.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54D57631FDA61E1006DBF37 /* QueryTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableCellView.swift; sourceTree = "<group>"; };
 		C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableViewDataSource.swift; sourceTree = "<group>"; };
+		C584D935208703B700CAD61A /* NSOutlineView+Mongosquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSOutlineView+Mongosquare.swift"; sourceTree = "<group>"; };
 		C59ED15F1F89C3FA00EA1F26 /* QueryWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryWindowController.swift; sourceTree = "<group>"; };
 		C59ED1601F89C3FA00EA1F26 /* QueryWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryWindowController.xib; sourceTree = "<group>"; };
 		C59FFCAE1F87DED600971FCB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -415,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				C51E420B1F698E9B009C8ED5 /* NSImage+Mongosquare.swift */,
+				C584D935208703B700CAD61A /* NSOutlineView+Mongosquare.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -908,6 +911,7 @@
 			files = (
 				C5233C781F7A56B400B32B16 /* MMAttachedTabBarButton.m in Sources */,
 				C5233C791F7A56B400B32B16 /* MMAttachedTabBarButtonCell.m in Sources */,
+				C584D936208703B700CAD61A /* NSOutlineView+Mongosquare.swift in Sources */,
 				C523C052200841F2003CA1B0 /* JsonViewController.swift in Sources */,
 				C5233C7A1F7A56B400B32B16 /* MMOverflowPopUpButton.m in Sources */,
 				C5233C7B1F7A56B400B32B16 /* MMOverflowPopUpButtonCell.m in Sources */,

@@ -7,10 +7,14 @@
 //
 
 import Cocoa
+import ExtendedJSON
+import MongoKitten
 
 class JsonViewController: NSViewController {
 
     private let fragaria = MGSFragaria()
+    
+    weak var collectionViewController: CollectionViewController?
     
     var document: SquareDocument? {
         didSet {
@@ -32,5 +36,15 @@ class JsonViewController: NSViewController {
         fragaria.setObject(self, forKey: MGSFODelegate)
         fragaria.embed(in: view)
         fragaria.setObject("JavaScript", forKey: MGSFOSyntaxDefinitionName)
+    }
+    
+    func save() {
+        guard let _ = document else { return }
+        do {
+            let updated = SquareDocument(document: MongoKitten.Document(try JSONObject(from: fragaria.string())))
+            try collectionViewController?.collection?.update(to: updated)
+        } catch {
+            print(error)
+        }
     }
 }

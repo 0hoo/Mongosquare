@@ -152,7 +152,7 @@ extension CollectionTableViewController: NSControlTextEditingDelegate {
 extension CollectionTableViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         let item = items[row]
-        collectionViewController?.didSelectDocument?(item.document)
+        AppDelegate.shared.windowController.didSelectDocument(collectionViewController: collectionViewController, document: item.document)
         return true
     }
 }

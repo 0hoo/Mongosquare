@@ -187,7 +187,7 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
 extension CollectionOutlineViewController: NSOutlineViewDelegate {
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         guard let item = item as? DocumentOutlineItem else { return false }
-        collectionViewController?.didSelectDocument?(item.document)
+        AppDelegate.shared.windowController.didSelectDocument(collectionViewController: collectionViewController, document: item.document)
         return true
     }
 }

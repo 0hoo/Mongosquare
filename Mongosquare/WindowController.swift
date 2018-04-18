@@ -61,6 +61,11 @@ final class WindowController: NSWindowController {
         return jsonViewController
     }()
     
+    func didSelectDocument(collectionViewController: CollectionViewController?, document: SquareDocument) {
+        jsonViewController.collectionViewController = collectionViewController
+        jsonViewController.document = document
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
 
@@ -116,6 +121,10 @@ final class WindowController: NSWindowController {
     
     @IBAction func sample(_ sender: Any?) {
         
+    }
+    
+    @IBAction func saveDocument(_ sender: Any?) {
+        self.jsonViewController.save()
     }
     
     private func showConnectionWindow() {

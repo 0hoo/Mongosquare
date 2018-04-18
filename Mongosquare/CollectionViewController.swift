@@ -22,9 +22,9 @@ final class CollectionViewController: NSViewController {
     }
 
     var skipLimit = SkipLimit()
-    var didSelectDocument: ((SquareDocument) -> ())? = {
-        AppDelegate.shared.windowController.jsonViewController.document = $0
-    }
+//    var didSelectDocument: ((SquareDocument) -> ())? = {
+//        AppDelegate.shared.windowController.jsonViewController.document = $0
+//    }
     
     override var nibName: NSNib.Name? {
         return NSNib.Name("CollectionViewController")
