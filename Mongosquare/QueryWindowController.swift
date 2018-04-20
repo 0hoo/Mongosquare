@@ -198,7 +198,7 @@ final class QueryWindowController: NSWindowController {
         
         fieldsDataSource?.fields.removeAll()
         sortDataSource?.fields.removeAll()
-        let document = collectionViewController.documents[0]
+        let document = collectionViewController.documents.max(by: { $0.keys.count < $1.keys.count }) ?? collectionViewController.documents[0]
         for key in document.keys {
             let valueType = document.type(at: key)?.description ?? ""
             let queryField = QueryField(name: key, type: valueType)

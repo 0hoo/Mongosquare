@@ -70,7 +70,7 @@ final class CollectionViewController: NSViewController {
             }
             
             var query: Query? = nil
-            if let queryString = queryOption.query {
+            if let queryString = queryOption.query, !queryString.isEmpty {
                 query = Query(Document(try JSONObject(from: queryString)))
             }
             
@@ -85,7 +85,7 @@ final class CollectionViewController: NSViewController {
         if queryOption.projectingFields.count > 0 {
             return queryOption.projectingFields
         } else {
-            return queriedDocuments[0].keys
+            return queriedDocuments.max(by: { $0.keys.count < $1.keys.count })?.keys ?? queriedDocuments[0].keys
         }
     }
     

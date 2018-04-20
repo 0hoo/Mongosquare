@@ -29,33 +29,19 @@ final class DocumentOutlineItem {
     }
     
     func fillFields() {
-        if fields.count == 0 {
-            if visibleFieldsKey.count > 0 {
-                for key in visibleFieldsKey {
-                    if let val = document[key], let valueType = document.type(at: key) {
-                        let fieldItem: DocumentOutlineItem
-                        if let subDocument = val as? SquareDocument {
-                            let fields = "{ \(subDocument.keys.count) fields }"
-                            fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
-                        } else {
-                            fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
-                        }
-                        fields.append(fieldItem)
-                    }
+        if fields.count != 0 {
+            return
+        }
+        for (key, val, type) in document {
+            if let valueType = type {
+                let fieldItem: DocumentOutlineItem
+                if let subDocument = val as? SquareDocument {
+                    let fields = "{ \(subDocument.keys.count) fields }"
+                    fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
+                } else {
+                    fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
                 }
-            } else {
-                for (key, val, type) in document {
-                    if let valueType = type {
-                        let fieldItem: DocumentOutlineItem
-                        if let subDocument = val as? SquareDocument {
-                            let fields = "{ \(subDocument.keys.count) fields }"
-                            fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
-                        } else {
-                            fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
-                        }
-                        fields.append(fieldItem)
-                    }
-                }
+                fields.append(fieldItem)
             }
         }
     }
@@ -83,9 +69,9 @@ extension CollectionOutlineViewController: DocumentSkippable {
     func reload(fieldsUpdated: Bool) {
         guard let collectionViewController = collectionViewController else { return }
         items.removeAll()
-        
+
         for (i, document) in collectionViewController.queriedDocuments.enumerated() {
-            let fields = "{ \(collectionViewController.visibleFieldsKey.count > 0 ? collectionViewController.visibleFieldsKey.count : document.keys.count) fields }"
+            let fields = "\(document.keys.count) fields"
             items.append(DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: fields, type: .document, document: document, isDocument: true))
         }
         
