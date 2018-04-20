@@ -22,9 +22,6 @@ final class CollectionViewController: NSViewController {
     }
 
     var skipLimit = SkipLimit()
-//    var didSelectDocument: ((SquareDocument) -> ())? = {
-//        AppDelegate.shared.windowController.jsonViewController.document = $0
-//    }
     
     override var nibName: NSNib.Name? {
         return NSNib.Name("CollectionViewController")
@@ -120,6 +117,10 @@ final class CollectionViewController: NSViewController {
         }
     }
     
+    func reload() {
+        activeViewController?.reload(fieldsUpdated: true)
+    }
+    
     func previous() {
         if skipLimit.skip == 0 {
             return
@@ -184,21 +185,13 @@ final class CollectionViewController: NSViewController {
         guard let collection = collection else { return }
         guard let skipLimitSegmentedControl = windowController?.skipLimitSegmentedControl else { return }
         
-        do {
-            let count = try collection.count()
-            
-            var limitToDisplay = skipLimit.skip + skipLimit.limit - 1
-            do {
-                limitToDisplay = min(limitToDisplay, try collection.count() - 1)
-            } catch {
-                print(error)
-            }
-            
-            let label = "\(skipLimit.skip) - \(limitToDisplay) of \(count)"
-            skipLimitSegmentedControl.setLabel(label, forSegment: 1)
-        } catch {
-            print(error)
-        }
+        let count = collection.count()
+        
+        var limitToDisplay = skipLimit.skip + skipLimit.limit - 1
+        limitToDisplay = min(limitToDisplay, count - 1)
+        
+        let label = "\(skipLimit.skip) - \(limitToDisplay) of \(count)"
+        skipLimitSegmentedControl.setLabel(label, forSegment: 1)
     }
     
     private func updateCollectionViewModeSegmentedControl() {

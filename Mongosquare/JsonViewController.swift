@@ -39,16 +39,16 @@ class JsonViewController: NSViewController {
     }
     
     func save() {
-        guard let _ = document else { return }
         do {
             let updated = SquareDocument(document: MongoKitten.Document(try JSONObject(from: fragaria.string())))
             if updated["_id"] == nil {
                 let result = try collectionViewController?.collection?.insert(updated)
-                print("insert?: \(result)")
+                print("insert?: \(String(describing: result))")
             } else {
                 let result = try collectionViewController?.collection?.update(to: updated)
-                print("update?: \(result)")
+                print("update?: \(String(describing: result))")
             }
+            collectionViewController?.reload()
         } catch {
             print(error)
         }

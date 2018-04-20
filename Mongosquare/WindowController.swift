@@ -62,6 +62,7 @@ final class WindowController: NSWindowController {
     }()
     
     func didSelectDocument(collectionViewController: CollectionViewController?, document: SquareDocument) {
+        print(collectionViewController?.collection)
         jsonViewController.collectionViewController = collectionViewController
         jsonViewController.document = document
     }
