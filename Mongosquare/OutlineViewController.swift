@@ -48,6 +48,17 @@ final class OutlineViewController: NSViewController {
     private var databases: [SquareDatabase] = []
     private var unsavedCollections: [SquareCollection] = []
     
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let selectedRow = outlineView?.selectedRow else { return false }
+        guard let item = outlineView?.item(atRow: selectedRow) as? OutlineItem else { return false }
+        if menuItem.title.lowercased().contains("database") {
+            return item.isHeader && !item.isDatabase
+        } else if menuItem.title.lowercased().contains("collection") {
+            return item.isDatabase
+        }
+        return true
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
