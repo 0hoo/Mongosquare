@@ -32,6 +32,7 @@ final class WindowController: NSWindowController {
     lazy var tabViewController: TabViewController = {
        let tabViewController = TabViewController()
         tabViewController.didSelectViewController = { collectionViewController in
+            self.jsonViewController.collectionViewController = collectionViewController
             if let collection = collectionViewController.collection {
                 self.sidebarController.selectBy(collection)
             }
@@ -62,8 +63,6 @@ final class WindowController: NSWindowController {
     }()
     
     func didSelectDocument(collectionViewController: CollectionViewController?, document: SquareDocument) {
-        print(collectionViewController?.collection)
-        jsonViewController.collectionViewController = collectionViewController
         jsonViewController.document = document
     }
     
