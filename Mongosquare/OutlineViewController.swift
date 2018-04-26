@@ -136,6 +136,7 @@ extension OutlineViewController {
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
             if connection.addDatabase(name: input.stringValue) {
+                reloadDatabases()
                 reloadItems()
             } else {
                 print("db add failed")
