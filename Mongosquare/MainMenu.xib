@@ -100,6 +100,9 @@
                             </menuItem>
                             <menuItem title="Null to value" id="5we-Km-cl4">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="nullToValue:" target="-1" id="UBV-wZ-kiP"/>
+                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                             <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
