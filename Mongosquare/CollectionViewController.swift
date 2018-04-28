@@ -205,6 +205,20 @@ final class CollectionViewController: NSViewController {
             windowController?.collectionViewModeChanged(collectionViewModeSegmentedControl)
         }
     }
+    
+    func deleteDocument() {
+        if let document = outlineViewController?.selectedDocument, activeViewController == outlineViewController {
+            delete(document: document)
+        } else if let document = tableViewController?.selectedDocument, activeViewController == tableViewController {
+            delete(document: document)
+        }
+    }
+    
+    private func delete(document: SquareDocument) {
+        let _ = try? collection?.collection.remove(Query(document.document), limitedTo: 1)
+        reload()
+        AppDelegate.shared.windowController.jsonViewController.documentDeleted()
+    }
 }
 
 extension CollectionViewController: MMTabBarItem {

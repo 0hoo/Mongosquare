@@ -58,6 +58,13 @@ final class CollectionOutlineViewController: NSViewController {
 
     private var items: [DocumentOutlineItem] = []
     
+    var selectedDocument: SquareDocument? {
+        guard let row = outlineView?.selectedRow, let item = outlineView?.item(atRow: row) as? DocumentOutlineItem else {
+            return nil
+        }
+        return item.document
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -8,6 +8,16 @@
 
 import Cocoa
 
+func dialogOKCancel(question: String, text: String) -> Bool {
+    let alert = NSAlert()
+    alert.messageText = question
+    alert.informativeText = text
+    alert.alertStyle = .warning
+    alert.addButton(withTitle: "OK")
+    alert.addButton(withTitle: "Cancel")
+    return alert.runModal() == .alertFirstButtonReturn
+}
+
 final class WindowController: NSWindowController {
     override var windowNibName: NSNib.Name? { return NSNib.Name("WindowController") }
     
@@ -129,6 +139,12 @@ final class WindowController: NSWindowController {
     
     @IBAction func newDocument(_ sender: Any?) {
         self.jsonViewController.newDocument()
+    }
+    
+    @IBAction func deleteDocument(_ sender: Any?) {
+        if dialogOKCancel(question: "Delete this document?", text: "Are you sure delete this document?") {
+            self.tabViewController.activeCollectionViewController?.deleteDocument()
+        }
     }
     
     private func showConnectionWindow() {
