@@ -214,6 +214,16 @@ final class CollectionViewController: NSViewController {
         }
     }
     
+    func deleteKey() {
+        if var document = outlineViewController?.selectedDocument, activeViewController == outlineViewController {
+            if let key = outlineViewController?.selectedKey {
+                document.removeValue(forKey: key)
+                let _ = try? collection?.update(to: document)
+                reload()
+            }
+        }
+    }
+    
     private func delete(document: SquareDocument) {
         let _ = try? collection?.collection.remove(Query(document.document), limitedTo: 1)
         reload()

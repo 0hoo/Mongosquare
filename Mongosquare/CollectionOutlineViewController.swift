@@ -65,6 +65,13 @@ final class CollectionOutlineViewController: NSViewController {
         return item.document
     }
     
+    var selectedKey: String? {
+        guard let row = outlineView?.selectedRow, let item = outlineView?.item(atRow: row) as? DocumentOutlineItem, !item.isDocument else {
+            return nil
+        }
+        return item.key
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

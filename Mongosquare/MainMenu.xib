@@ -94,6 +94,9 @@
                             </menuItem>
                             <menuItem title="Delete Key" id="HWm-ro-NMw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="deleteKey:" target="-1" id="eTx-yU-EGm"/>
+                                </connections>
                             </menuItem>
                             <menuItem title="Null to value" id="5we-Km-cl4">
                                 <modifierMask key="keyEquivalentModifierMask"/>

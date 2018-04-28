@@ -147,6 +147,10 @@ final class WindowController: NSWindowController {
         }
     }
     
+    @IBAction func deleteKey(_ sender: Any?) {
+        self.tabViewController.activeCollectionViewController?.deleteKey()
+    }
+    
     private func showConnectionWindow() {
         if connectionWindowController == nil {
             connectionWindowController = ConnectionWindowController(windowNibName: NSNib.Name("ConnectionWindowController"))
