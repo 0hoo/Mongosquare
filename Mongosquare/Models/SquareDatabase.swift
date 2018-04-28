@@ -44,6 +44,10 @@ struct SquareCollection {
     let collection: MongoKitten.Collection // use MongoKitten Collection till CollectionQueryable is implemented
     var saved: Bool
     
+    var path: String {
+        return collection.database.description + "/" + collection.name
+    }
+    
     var databaseName: String {
         return collection.database.name
     }

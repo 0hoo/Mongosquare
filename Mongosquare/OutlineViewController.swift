@@ -124,7 +124,7 @@ final class OutlineViewController: NSViewController {
             }
             
             if let item = currentItem as? OutlineItem {
-                if item.collection?.name == collection.name {
+                if item.collection?.path == collection.path {
                     outlineView.selectItem(item, parentItem)
                     break
                 }
