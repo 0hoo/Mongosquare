@@ -54,6 +54,7 @@ final class SquareConnection: Codable {
         
         if let clientSettings = try? ClientSettings(host) {
             self.server = try? Server(clientSettings)
+            self.server?.logger = PrintLogger()
         }
     }
     
@@ -71,7 +72,8 @@ final class SquareConnection: Codable {
         guard let server = server else { return false }
         
         let kittenDatabases = (try? server.getDatabases()) ?? []
-        databases = kittenDatabases.map { SquareDatabase(database: $0) }
+        let unsaved = databases.filter { !$0.saved }
+        databases = kittenDatabases.map { SquareDatabase(database: $0) } + unsaved
         return !databases.isEmpty
     }
     
@@ -80,7 +82,7 @@ final class SquareConnection: Codable {
         guard let server = server else { return false }
         
         let newDatabase = MongoKitten.Database(named: name, atServer: server)
-        databases.append(SquareDatabase(database: newDatabase))
+        databases.append(SquareDatabase(database: newDatabase, saved: false))
         return true
     }
     

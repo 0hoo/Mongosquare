@@ -48,6 +48,17 @@ final class OutlineViewController: NSViewController {
     private var databases: [SquareDatabase] = []
     private var unsavedCollections: [SquareCollection] = []
     
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let selectedRow = outlineView?.selectedRow else { return false }
+        guard let item = outlineView?.item(atRow: selectedRow) as? OutlineItem else { return false }
+        if menuItem.title.lowercased().contains("database") {
+            return item.isHeader && !item.isDatabase
+        } else if menuItem.title.lowercased().contains("collection") {
+            return item.isDatabase
+        }
+        return true
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -113,7 +124,7 @@ final class OutlineViewController: NSViewController {
             }
             
             if let item = currentItem as? OutlineItem {
-                if item.collection?.name == collection.name {
+                if item.collection?.path == collection.path {
                     outlineView.selectItem(item, parentItem)
                     break
                 }
@@ -136,6 +147,7 @@ extension OutlineViewController {
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
             if connection.addDatabase(name: input.stringValue) {
+                reloadDatabases()
                 reloadItems()
             } else {
                 print("db add failed")

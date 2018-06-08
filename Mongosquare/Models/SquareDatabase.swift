@@ -10,16 +10,17 @@ import Foundation
 import MongoKitten
 
 struct SquareDatabase {
-    var isSaved: Bool = false
+    var saved: Bool = false
     var collections: [SquareCollection] = []
     let database: MongoKitten.Database
     let name: String
     
-    init(database: MongoKitten.Database) {
+    init(database: MongoKitten.Database, saved: Bool = true) {
         self.name = database.name
         self.database = database 
         let kittenCollections = (try? Array(database.listCollections())) ?? []
         self.collections = kittenCollections.map { SquareCollection(collection: $0) }
+        self.saved = saved
     }
     
     static func create(collection: String) -> SquareCollection? {
@@ -41,7 +42,11 @@ struct SquareCollection {
     var fullName: String
     
     let collection: MongoKitten.Collection // use MongoKitten Collection till CollectionQueryable is implemented
-    var isSaved: Bool
+    var saved: Bool
+    
+    var path: String {
+        return collection.database.description + "/" + collection.name
+    }
     
     var databaseName: String {
         return collection.database.name
@@ -52,7 +57,7 @@ struct SquareCollection {
         self.fullName = collection.fullName
         
         self.collection = collection 
-        self.isSaved = true 
+        self.saved = true
     }
     
     func find(_ filter: Query? = nil, sortedBy sort: Sort? = nil, projecting projection: Projection? = nil, readConcern: ReadConcern? = nil, collation: Collation? = nil, skipping skip: Int? = nil, limitedTo limit: Int? = nil, withBatchSize batchSize: Int = 100) -> [SquareDocument] {

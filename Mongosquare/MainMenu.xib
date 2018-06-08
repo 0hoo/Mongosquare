@@ -85,6 +85,25 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="7E4-ZG-Bvz"/>
+                            <menuItem title="Delete Document" id="e69-6a-2ZR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="deleteDocument:" target="-1" id="zVS-9U-67h"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Delete Key" id="HWm-ro-NMw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="deleteKey:" target="-1" id="eTx-yU-EGm"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Null to value" id="5we-Km-cl4">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="nullToValue:" target="-1" id="UBV-wZ-kiP"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                             <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
                                 <connections>

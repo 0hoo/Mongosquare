@@ -33,6 +33,11 @@ final class CollectionTableViewController: NSViewController {
     weak var collectionViewController: CollectionViewController?
 
     fileprivate var items: [DocumentItem] = []
+    
+    var selectedDocument: SquareDocument? {
+        guard let row = tableView?.selectedRow, items.count > row else { return nil }
+        return items[row].document
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

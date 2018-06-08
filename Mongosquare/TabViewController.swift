@@ -48,7 +48,7 @@ final class TabViewController: NSViewController {
     func add(viewController: CollectionViewController) {
         adjustTabBarHeight()
         
-        if let index = tabView?.tabViewItems.index(where: { ($0.viewController as? CollectionViewController)?.collection?.name == viewController.collection?.name }) {
+        if let index = tabView?.tabViewItems.index(where: { ($0.viewController as? CollectionViewController)?.collection?.path == viewController.collection?.path }) {
             tabView?.selectTabViewItem(at: index)
         } else {
             let tabViewItem = NSTabViewItem(viewController: viewController)

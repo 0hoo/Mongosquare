@@ -125,6 +125,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="-2" id="XoT-yk-WHk"/>
                                     <outlet property="delegate" destination="-2" id="z5O-db-x7n"/>
+                                    <outlet property="menu" destination="86P-Vb-Hgw" id="bpy-oF-aGd"/>
                                 </connections>
                             </outlineView>
                         </subviews>
@@ -140,9 +141,6 @@
                     </scroller>
                 </scrollView>
             </subviews>
-            <connections>
-                <outlet property="menu" destination="86P-Vb-Hgw" id="cey-gA-Yum"/>
-            </connections>
             <point key="canvasLocation" x="23" y="40"/>
         </customView>
         <menu id="86P-Vb-Hgw">

@@ -56,4 +56,9 @@ final class JsonViewController: NSViewController {
         document = SquareDocument(document: MongoKitten.Document())
         fragaria.setString("")
     }
+    
+    func documentDeleted() {
+        document = nil
+        fragaria.setString("")
+    }
 }

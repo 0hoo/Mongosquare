@@ -8,6 +8,16 @@
 
 import Cocoa
 
+func dialogOKCancel(question: String, text: String) -> Bool {
+    let alert = NSAlert()
+    alert.messageText = question
+    alert.informativeText = text
+    alert.alertStyle = .warning
+    alert.addButton(withTitle: "OK")
+    alert.addButton(withTitle: "Cancel")
+    return alert.runModal() == .alertFirstButtonReturn
+}
+
 final class WindowController: NSWindowController {
     override var windowNibName: NSNib.Name? { return NSNib.Name("WindowController") }
     
@@ -32,6 +42,7 @@ final class WindowController: NSWindowController {
     lazy var tabViewController: TabViewController = {
        let tabViewController = TabViewController()
         tabViewController.didSelectViewController = { collectionViewController in
+            self.jsonViewController.collectionViewController = collectionViewController
             if let collection = collectionViewController.collection {
                 self.sidebarController.selectBy(collection)
             }
@@ -62,8 +73,6 @@ final class WindowController: NSWindowController {
     }()
     
     func didSelectDocument(collectionViewController: CollectionViewController?, document: SquareDocument) {
-        print(collectionViewController?.collection)
-        jsonViewController.collectionViewController = collectionViewController
         jsonViewController.document = document
     }
     
@@ -130,6 +139,20 @@ final class WindowController: NSWindowController {
     
     @IBAction func newDocument(_ sender: Any?) {
         self.jsonViewController.newDocument()
+    }
+    
+    @IBAction func deleteDocument(_ sender: Any?) {
+        if dialogOKCancel(question: "Delete this document?", text: "Are you sure delete this document?") {
+            self.tabViewController.activeCollectionViewController?.deleteDocument()
+        }
+    }
+    
+    @IBAction func deleteKey(_ sender: Any?) {
+        self.tabViewController.activeCollectionViewController?.deleteKey()
+    }
+    
+    @IBAction func nullToValue(_ sender: Any?) {
+        self.tabViewController.activeCollectionViewController?.nullToValue()
     }
     
     private func showConnectionWindow() {
