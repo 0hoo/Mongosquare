@@ -7,10 +7,8 @@
 //
 
 import Cocoa
-import ExtendedJSON
-import MongoKitten
 
-class JsonViewController: NSViewController {
+final class JsonViewController: NSViewController {
 
     private let fragaria = MGSFragaria()
     

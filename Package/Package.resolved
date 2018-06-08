@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "BSON",
-        "repositoryURL": "https://github.com/OpenKitten/BSON.git",
+        "repositoryURL": "https://github.com/idiel/BSON.git",
         "state": {
-          "branch": null,
-          "revision": "3edad325da31095c9d54d04c6125f1fec1f3c5bf",
-          "version": "5.2.3"
+          "branch": "7206cc7",
+          "revision": "7206cc7e8326e4d05e4872b5b018892e1eb4df18",
+          "version": null
         }
       },
       {
@@ -21,20 +21,20 @@
       },
       {
         "package": "CryptoKitten",
-        "repositoryURL": "https://github.com/OpenKitten/CryptoKitten.git",
+        "repositoryURL": "https://github.com/idiel/CryptoKitten.git",
         "state": {
-          "branch": null,
-          "revision": "bf7a4d6dbd6f4bbd96ae620101239446d2cdd3f9",
-          "version": "0.2.3"
+          "branch": "5f65d65",
+          "revision": "5f65d657d7a8dd1e185bd5db4dbd4ebd49822304",
+          "version": null
         }
       },
       {
         "package": "MongoKitten",
-        "repositoryURL": "https://github.com/OpenKitten/MongoKitten.git",
+        "repositoryURL": "https://github.com/idiel/MongoKitten.git",
         "state": {
-          "branch": null,
-          "revision": "099b684b76402cf048ebf12bd5a11afe2979c7a3",
-          "version": "4.1.2"
+          "branch": "ac5aa7e",
+          "revision": "ac5aa7ef8c1fe45f80e784d541f8a9225809277a",
+          "version": null
         }
       },
       {
