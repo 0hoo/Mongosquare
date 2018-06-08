@@ -7,7 +7,4 @@
    <FileRef
       location = "group:Fragaria/Fragaria.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Package/Package.xcodeproj">
-   </FileRef>
 </Workspace>
