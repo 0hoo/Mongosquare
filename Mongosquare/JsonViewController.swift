@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Cheetah
 
 final class JsonViewController: NSViewController {
 
@@ -38,7 +39,7 @@ final class JsonViewController: NSViewController {
     
     func save() {
         do {
-            let updated = SquareDocument(document: MongoKitten.Document(try JSONObject(from: fragaria.string())))
+            let updated = SquareDocument(document: Document(try JSONObject(from: fragaria.string())))
             if updated["_id"] == nil {
                 let result = try collectionViewController?.collection?.insert(updated)
                 print("insert?: \(String(describing: result))")
@@ -53,7 +54,7 @@ final class JsonViewController: NSViewController {
     }
     
     func newDocument() {
-        document = SquareDocument(document: MongoKitten.Document())
+        document = SquareDocument(document: Document())
         fragaria.setString("")
     }
     

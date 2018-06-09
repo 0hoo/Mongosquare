@@ -9,7 +9,6 @@
 import Cocoa
 import ExtendedJSON
 import Cheetah
-import MongoKitten
 
 protocol DocumentSkippable {
     func reload(fieldsUpdated: Bool)

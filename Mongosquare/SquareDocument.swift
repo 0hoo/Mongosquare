@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MongoKitten
 
 typealias DocumentIndexIterationElement = (key: String, value: Any, type: SquareDocument.ElementType?)
 
@@ -57,12 +56,12 @@ struct SquareDocument: Swift.Collection {
         }
     }
     
-    var document: MongoKitten.Document
+    var document: Document
     var keys: [String] {
         return document.keys
     }
     
-    init(document: MongoKitten.Document) {
+    init(document: Document) {
         self.document = document
     }
     

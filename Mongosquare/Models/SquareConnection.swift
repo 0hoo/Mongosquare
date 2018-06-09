@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MongoKitten
 
 final class SquareConnection: Codable {
     static var connectionPool: [SquareConnection] = []
@@ -81,7 +80,7 @@ final class SquareConnection: Codable {
     func addDatabase(name: String) -> Bool {
         guard let server = server else { return false }
         
-        let newDatabase = MongoKitten.Database(named: name, atServer: server)
+        let newDatabase = Database(named: name, atServer: server)
         databases.append(SquareDatabase(database: newDatabase, saved: false))
         return true
     }

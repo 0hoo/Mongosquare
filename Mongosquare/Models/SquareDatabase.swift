@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import MongoKitten
 
 struct SquareDatabase {
     var saved: Bool = false
     var collections: [SquareCollection] = []
-    let database: MongoKitten.Database
+    let database: Database
     let name: String
     
-    init(database: MongoKitten.Database, saved: Bool = true) {
+    init(database: Database, saved: Bool = true) {
         self.name = database.name
         self.database = database 
         let kittenCollections = (try? Array(database.listCollections())) ?? []
@@ -41,7 +40,7 @@ struct SquareCollection {
     var name: String
     var fullName: String
     
-    let collection: MongoKitten.Collection // use MongoKitten Collection till CollectionQueryable is implemented
+    let collection: Collection // use MongoKitten Collection till CollectionQueryable is implemented
     var saved: Bool
     
     var path: String {
@@ -52,7 +51,7 @@ struct SquareCollection {
         return collection.database.name
     }
     
-    init(collection: MongoKitten.Collection) {
+    init(collection: Collection) {
         self.name = collection.name
         self.fullName = collection.fullName
         
