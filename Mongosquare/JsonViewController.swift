@@ -44,7 +44,7 @@ final class JsonViewController: NSViewController {
                 let result = try collectionViewController?.collection?.insert(updated)
                 print("insert?: \(String(describing: result))")
             } else {
-                let result = try collectionViewController?.collection?.update(to: updated)
+                let result = collectionViewController?.collection?.update(updated)
                 print("update?: \(String(describing: result))")
             }
             collectionViewController?.reload()

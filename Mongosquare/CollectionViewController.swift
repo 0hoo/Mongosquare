@@ -217,7 +217,8 @@ final class CollectionViewController: NSViewController {
         if var document = outlineViewController?.selectedDocument, activeViewController == outlineViewController {
             if let key = outlineViewController?.selectedKey {
                 document.removeValue(forKey: key)
-                let _ = try? collection?.update(to: document)
+                let updated = collection?.update(document)
+                print("deleteKey:\(String(describing: updated))")
                 reload()
             }
         }
@@ -226,10 +227,9 @@ final class CollectionViewController: NSViewController {
     func nullToValue() {
         if var document = outlineViewController?.selectedDocument, activeViewController == outlineViewController {
             if let key = outlineViewController?.selectedKey {
-                document[key] = AQT.AQTType.null
-                let updated = try? collection?.update(to: document)
-                
-                print(updated)
+                document[key] = NSNull()
+                let updated = collection?.update(document)
+                print("nullToValue: \(String(describing: updated))")
                 reload()
             }
         }

@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import ExtendedJSON
+import Cheetah
 
 final class DocumentOutlineItem {
     var key: String
@@ -103,10 +105,8 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
         
         if column == 1 {
             if item.document.set(value: valueToUpdate, forKey: item.key, type: item.type) {
-                if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
-                    print("value updated:\(updatedCount)")
-                    return true
-                }
+                let updatedCount = collectionViewController?.collection?.update(item.document)
+                print("value updated:\(String(describing: updatedCount))")
             }
             fieldEditor.string = item.value
             return true
@@ -114,11 +114,10 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
             let keys = item.document.keys.filter { $0 != item.key }
             if keys.index(of: valueToUpdate) == nil {
                 item.document[valueToUpdate] = item.document[item.key]
-                if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
-                    print("key updated:\(updatedCount)")
-                    item.document.removeValue(forKey: item.key)
+                item.document.removeValue(forKey: item.key)
+                if let updatedCount = collectionViewController?.collection?.update(item.document), updatedCount > 0 {
                     item.key = valueToUpdate
-                    let _ = try? collectionViewController?.collection?.update(to: item.document)
+                    print("key updated:\(updatedCount))")
                     return true
                 }
             }

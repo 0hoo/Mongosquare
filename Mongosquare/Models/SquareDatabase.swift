@@ -76,6 +76,18 @@ struct SquareCollection {
         return try collection.insert(document.document, stoppingOnError: ordered, writeConcern: writeConcern, timingOut: afterTimeout)
     }
     
+    func update(_ document: SquareDocument) -> Int {
+        var updated = document
+        let query = Query(["_id": updated["_id"] as? Primitive])
+        updated.removeValue(forKey: "_id")
+        do {
+            return try update(query, to: updated, stoppingOnError: true)
+        } catch {
+            print(error)
+            return 0
+        }
+    }
+    
     @discardableResult
     func update(_ filter: Query = [:], to updated: SquareDocument, upserting upsert: Bool = false, multiple multi: Bool = false, writeConcern: WriteConcern? = nil, stoppingOnError ordered: Bool? = nil) throws -> Int {
         
