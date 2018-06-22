@@ -59,6 +59,10 @@ struct SquareDocument: Swift.Collection {
     }
     
     var document: Document
+    var id: Primitive? {
+        return self["_id"] as? Primitive
+    }
+    
     var keys: [String] {
         return document.keys
     }
