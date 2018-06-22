@@ -12,6 +12,8 @@ typealias DocumentIndexIterationElement = (key: String, value: Any, type: Square
 
 struct SquareDocument: Swift.Collection {
     
+    static let didUpdate = Notification.Name(rawValue: "SquareDocument.didUpdate")
+    
     enum ElementType: Byte, CustomStringConvertible {
         case double = 0x01
         case string = 0x02

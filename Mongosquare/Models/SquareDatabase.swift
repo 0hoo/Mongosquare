@@ -77,11 +77,16 @@ struct SquareCollection {
     }
     
     func update(_ document: SquareDocument) -> Int {
+        print("org:\(document)")
         var updated = document
         let query = Query(["_id": updated["_id"] as? Primitive])
         updated.removeValue(forKey: "_id")
         do {
-            return try update(query, to: updated, stoppingOnError: true)
+            print("before:\(updated)")
+            let r = try update(query, to: updated, stoppingOnError: true)
+            print("after:\(updated)")
+            print("after org:\(document)")
+            return r
         } catch {
             print(error)
             return 0

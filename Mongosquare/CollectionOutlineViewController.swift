@@ -9,6 +9,7 @@
 import Cocoa
 import ExtendedJSON
 import Cheetah
+import BSON
 
 final class DocumentOutlineItem {
     var key: String
@@ -78,17 +79,38 @@ final class CollectionOutlineViewController: NSViewController {
         super.viewDidLoad()
         
         reload(fieldsUpdated: true)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(documentUpdated(_:)), name: SquareDocument.didUpdate, object: nil)
+    }
+    
+    @objc func documentUpdated(_ notification: Notification) {
+        guard let document = notification.object as? SquareDocument else { return }
+        guard let documentId = ObjectId(document["_id"] as? Primitive) else { return }
+        print("documentUpdated:\(document)")
+        for item in items {
+            if let oldId = ObjectId(item.document["_id"] as? Primitive), oldId == documentId {
+                //item.document = document
+            }
+            for fieldItem in item.fields {
+                if let oldId = ObjectId(item.document["_id"] as? Primitive), oldId == documentId {
+                    //fieldItem.document = document
+                }
+            }
+        }
     }
 }
 
 extension CollectionOutlineViewController: DocumentSkippable {
     func reload(fieldsUpdated: Bool) {
         guard let collectionViewController = collectionViewController else { return }
+        
         items.removeAll()
 
         for (i, document) in collectionViewController.queriedDocuments.enumerated() {
             let fields = "\(document.keys.count) fields"
-            items.append(DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: fields, type: .document, document: document, isDocument: true))
+            let item = DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: fields, type: .document, document: document, isDocument: true)
+            item.fillFields()
+            items.append(item)
         }
         
         outlineView?.reloadData()
@@ -105,10 +127,15 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
         
         if column == 1 {
             if item.document.set(value: valueToUpdate, forKey: item.key, type: item.type) {
+                print("set:\(item.document)")
                 let updatedCount = collectionViewController?.collection?.update(item.document)
+                fieldEditor.string = valueToUpdate
                 print("value updated:\(String(describing: updatedCount))")
+                print("send notification:\(item.document)")
+                NotificationCenter.default.post(name: SquareDocument.didUpdate, object: item.document)
+            } else {
+                fieldEditor.string = item.value
             }
-            fieldEditor.string = item.value
             return true
         } else if column == 0 {
             let keys = item.document.keys.filter { $0 != item.key }
@@ -117,11 +144,12 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
                 item.document.removeValue(forKey: item.key)
                 if let updatedCount = collectionViewController?.collection?.update(item.document), updatedCount > 0 {
                     item.key = valueToUpdate
+                    fieldEditor.string = valueToUpdate
                     print("key updated:\(updatedCount))")
-                    return true
+                } else {
+                    fieldEditor.string = item.key
                 }
             }
-            fieldEditor.string = item.key
             return true
         }
         return true
@@ -129,7 +157,6 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if let item = item as? DocumentOutlineItem, item.isDocument {
-            item.fillFields()
             return item.fields[index]
         }
         return items[index]
