@@ -53,6 +53,7 @@ final class JsonViewController: NSViewController {
                 let resourcePath = Bundle.main.resourcePath!
                 let baseURL = URL(fileURLWithPath: resourcePath + "/monaco/")
                 webView?.mainFrame.loadHTMLString(content, baseURL: baseURL)
+                webView?.mainFrame.frameView?.allowsScrolling = false
             } catch {
                 print(error)
             }
