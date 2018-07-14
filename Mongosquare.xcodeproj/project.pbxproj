@@ -147,6 +147,8 @@
 		C5298EFA1F5BA77A00908D4C /* CollectionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5298EF81F5BA77A00908D4C /* CollectionTableViewController.xib */; };
 		C5298EFD1F5BAA6800908D4C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5298EFB1F5BAA6800908D4C /* CollectionViewController.swift */; };
 		C5298EFE1F5BAA6800908D4C /* CollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5298EFC1F5BAA6800908D4C /* CollectionViewController.xib */; };
+		C52D228720FA39DE00474FDA /* monaco in Resources */ = {isa = PBXBuildFile; fileRef = C52D228620FA39DD00474FDA /* monaco */; };
+		C52D228920FA3A0400474FDA /* editor.html in Resources */ = {isa = PBXBuildFile; fileRef = C52D228820FA3A0400474FDA /* editor.html */; };
 		C54D57641FDA61E1006DBF37 /* QueryTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D57631FDA61E1006DBF37 /* QueryTableCellView.swift */; };
 		C54D57661FDA6301006DBF37 /* QueryTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */; };
 		C584D936208703B700CAD61A /* NSOutlineView+Mongosquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C584D935208703B700CAD61A /* NSOutlineView+Mongosquare.swift */; };
@@ -553,6 +555,8 @@
 		C5298EF81F5BA77A00908D4C /* CollectionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionTableViewController.xib; sourceTree = "<group>"; };
 		C5298EFB1F5BAA6800908D4C /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C5298EFC1F5BAA6800908D4C /* CollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewController.xib; sourceTree = "<group>"; };
+		C52D228620FA39DD00474FDA /* monaco */ = {isa = PBXFileReference; lastKnownFileType = folder; path = monaco; sourceTree = SOURCE_ROOT; };
+		C52D228820FA3A0400474FDA /* editor.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = editor.html; sourceTree = SOURCE_ROOT; };
 		C54391932005A5B500F08511 /* Package.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Package.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54D57631FDA61E1006DBF37 /* QueryTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableCellView.swift; sourceTree = "<group>"; };
 		C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -1069,7 +1073,9 @@
 				C5D8B1EE1F5715DB00AE0E25 /* Assets.xcassets */,
 				C5D8B1F31F5715DB00AE0E25 /* Info.plist */,
 				C5D8B1F91F57163000AE0E25 /* MainMenu.xib */,
+				C52D228820FA3A0400474FDA /* editor.html */,
 				C5233BCB1F7A529900B32B16 /* Mongosquare-Bridge-Header.h */,
+				C52D228620FA39DD00474FDA /* monaco */,
 			);
 			path = Mongosquare;
 			sourceTree = "<group>";
@@ -1682,6 +1688,7 @@
 				C59ED1621F89C3FA00EA1F26 /* QueryWindowController.xib in Resources */,
 				C5233CD91F7A5A6200B32B16 /* SafariAWITClose.png in Resources */,
 				C5233CDA1F7A5A6200B32B16 /* SafariAWITClose@2x.png in Resources */,
+				C52D228720FA39DE00474FDA /* monaco in Resources */,
 				C5233CDB1F7A5A6200B32B16 /* SafariAWITClosePressed.png in Resources */,
 				C5233CDC1F7A5A6200B32B16 /* SafariAWITClosePressed@2x.png in Resources */,
 				C5233CDD1F7A5A6200B32B16 /* SafariAWITCloseRollover.png in Resources */,
@@ -1730,6 +1737,7 @@
 				FA0AA2F81FCDA20900DA765D /* ConnectionWindowController.xib in Resources */,
 				C5233CA41F7A5A1500B32B16 /* AquaTabNewPressed@2x.png in Resources */,
 				C5233CA51F7A5A1500B32B16 /* AquaTabNewRollover.png in Resources */,
+				C52D228920FA3A0400474FDA /* editor.html in Resources */,
 				C5233CA61F7A5A1500B32B16 /* AquaTabNewRollover@2x.png in Resources */,
 				C5233CA71F7A5A1500B32B16 /* AquaTabsBackground.png in Resources */,
 				C5233CA81F7A5A1500B32B16 /* AquaTabsDown.png in Resources */,

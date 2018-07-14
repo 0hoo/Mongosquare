@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+            <link rel="stylesheet" data-name="vs/editor/editor.main" href="min/vs/editor/editor.main.css">
+                <style>
+                    .wrapper {
+                        display: flex;
+                        flex-direction: column;
+                        height: 100vh;
+                        margin: 0;
+                    }
+                
+                .wrapper #container {
+                    flex-grow: 1;
+                }
+                </style>
+    </head>
+    <body>
+        
+        <div class="wrapper">
+            <div id="container"></div>
+        </div>
+        
+        <script>var require = { paths: { 'vs': 'min/vs' } };</script>
+        <script src="min/vs/loader.js"></script>
+        <script src="min/vs/editor/editor.main.nls.js"></script>
+        <script src="min/vs/editor/editor.main.js"></script>
+        
+        <script>
+            var editor = monaco.editor.create(document.getElementById('container'), {
+                                              value: '',
+                                              language: 'json',
+                                              automaticLayout: true,
+                                              minimap: { enabled: false },
+                                              scrollBeyondLastLine: false
+                                              });
+            </script>
+        
+    </body>
+</html>
