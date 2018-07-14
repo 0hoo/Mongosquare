@@ -142,7 +142,6 @@
 		C523C04F200841AA003CA1B0 /* SupplementaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C523C04D200841AA003CA1B0 /* SupplementaryViewController.xib */; };
 		C523C052200841F2003CA1B0 /* JsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C523C050200841F2003CA1B0 /* JsonViewController.swift */; };
 		C523C053200841F2003CA1B0 /* JsonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C523C051200841F2003CA1B0 /* JsonViewController.xib */; };
-		C523C0572008A4D2003CA1B0 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C523C0582008A4D2003CA1B0 /* MGSFragaria.framework */; };
 		C5298EF91F5BA77A00908D4C /* CollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5298EF71F5BA77A00908D4C /* CollectionTableViewController.swift */; };
 		C5298EFA1F5BA77A00908D4C /* CollectionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5298EF81F5BA77A00908D4C /* CollectionTableViewController.xib */; };
 		C5298EFD1F5BAA6800908D4C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5298EFB1F5BAA6800908D4C /* CollectionViewController.swift */; };
@@ -710,7 +709,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C523C0572008A4D2003CA1B0 /* MGSFragaria.framework in Frameworks */,
 				CE5343CF20CBFDFB0027DAA1 /* CryptoKitten.framework in Frameworks */,
 				CE53444020CBFF120027DAA1 /* Schrodinger.framework in Frameworks */,
 				CE53441D20CBFEAA0027DAA1 /* Cheetah.framework in Frameworks */,
