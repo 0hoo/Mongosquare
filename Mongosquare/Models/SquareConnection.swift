@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class SquareConnection: Codable {
+final class SquareConnection: Codable, SquareModel {
     static var connectionPool: [SquareConnection] = []
     static var testConnection: SquareConnection = {
         let connection = SquareConnection(username: "", password: "", host: "mongodb://ec2-18-219-64-54.us-east-2.compute.amazonaws.com")

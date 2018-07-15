@@ -10,7 +10,7 @@ import Foundation
 
 typealias DocumentIndexIterationElement = (key: String, value: Any, type: SquareDocument.ElementType?)
 
-struct SquareDocument: Swift.Collection {
+struct SquareDocument: Swift.Collection, SquareModel {
     
     static let didUpdate = Notification.Name(rawValue: "SquareDocument.didUpdate")
     
