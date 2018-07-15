@@ -24,7 +24,7 @@ extension SquareModel {
     var subscriptionKey: String { return "" }
 }
 
-final class SquareStore {
+final class SquareStore { // maybe we need to create separate instances which belong to each connection
     private static var connectionSubscribers: [String: ConnectionSubscriber] = [:]
     private static var databaseSubscribers: [String: DatabaseSubscriber] = [:]
     private static var collectionSubscribers: [String: CollectionSubscriber] = [:]
@@ -63,6 +63,7 @@ final class SquareStore {
     }
     
     static func register(subscriber: ModelSubscriber, for model: SquareModel) {
+        guard !model.subscriptionKey.isEmpty else { return } // cannot subscribe with empty subscription key 
         switch (subscriber, model) {
         case (let subscriber as ConnectionSubscriber, let model as SquareConnection):
             connectionSubscribers["\(model.subscriptionKey)-\(subscriber.subscriptionKey)"] = subscriber

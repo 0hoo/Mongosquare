@@ -20,6 +20,10 @@ final class SquareConnection: Codable, SquareModel {
         return connection
     }()
     
+    var subscriptionKey: String {
+        return "\(name),\(host):\(port)"
+    }
+    
     var name: String
     let username: String
     let password: String
@@ -82,6 +86,8 @@ final class SquareConnection: Codable, SquareModel {
         
         let newDatabase = Database(named: name, atServer: server)
         databases.append(SquareDatabase(database: newDatabase, saved: false))
+        
+        SquareStore.modelUpdated(self, isSubtreeUpdated: true)
         return true
     }
     

@@ -15,6 +15,10 @@ struct SquareCollection: SquareModel {
     let collection: Collection // use MongoKitten Collection till CollectionQueryable is implemented
     var saved: Bool
     
+    var subscriptionKey: String {
+        return "\(collection.database.server.hostname)/\(collection.database.name)/\(fullName)"
+    }
+    
     var path: String {
         return collection.database.description + "/" + collection.name
     }
@@ -36,7 +40,11 @@ struct SquareCollection: SquareModel {
         precondition(skip ?? 0 < Int(Int32.max))
         precondition(limit ?? 0 < Int(Int32.max))
         guard let documents = try? collection.find(filter, sortedBy: sort, projecting: projection, readConcern: readConcern, collation: collation, skipping: skip, limitedTo: limit, withBatchSize: batchSize) else { return [] }
-        return documents.map { SquareDocument(document: $0) }
+        return documents.map {
+            var document = SquareDocument(document: $0)
+            document.collectionKey = subscriptionKey
+            return document
+        }
     }
     
     func count(_ filter: Query? = nil, limitedTo limit: Int? = nil, skipping skip: Int? = nil, readConcern: ReadConcern? = nil, collation: Collation? = nil) -> Int {
@@ -54,9 +62,12 @@ struct SquareCollection: SquareModel {
         let query = Query(["_id": updated.id])
         do {
             print("before:\(updated)")
+            
             let r = try update(query, to: updated, stoppingOnError: true)
+            
             print("after:\(updated)")
             print("after org:\(document)")
+            SquareStore.modelUpdated(updated)
             return r
         } catch {
             print(error)

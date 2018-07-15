@@ -58,6 +58,14 @@ struct SquareDocument: Swift.Collection, SquareModel {
         }
     }
     
+    var collectionKey: String = ""
+    var subscriptionKey: String {
+        if let leafID = id as? String {
+            return "\(collectionKey)-\(leafID)"
+        }
+        return ""
+    } 
+    
     var document: Document
     var id: Primitive? {
         return self["_id"] as? Primitive

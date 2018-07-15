@@ -14,6 +14,10 @@ struct SquareDatabase: SquareModel {
     let database: Database
     let name: String
     
+    var subscriptionKey: String {
+        return "\(database.server.hostname)/\(name)"
+    }
+    
     init(database: Database, saved: Bool = true) {
         self.name = database.name
         self.database = database 
