@@ -60,7 +60,7 @@ struct SquareDocument: Swift.Collection, SquareModel {
     
     var collectionKey: String = ""
     var subscriptionKey: String {
-        if let leafID = id as? String {
+        if let leafID = id {
             return "\(collectionKey)-\(leafID)"
         }
         return ""

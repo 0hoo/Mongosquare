@@ -16,7 +16,7 @@ struct SquareCollection: SquareModel {
     var saved: Bool
     
     var subscriptionKey: String {
-        return "\(collection.database.server.hostname)/\(collection.database.name)/\(fullName)"
+        return "\(collection.database.server.hostname)/\(fullName)"
     }
     
     var path: String {
