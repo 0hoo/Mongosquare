@@ -10,7 +10,7 @@ import Foundation
 
 typealias DocumentIndexIterationElement = (key: String, value: Any, type: SquareDocument.ElementType?)
 
-struct SquareDocument: Swift.Collection {
+struct SquareDocument: Swift.Collection, SquareModel {
     
     static let didUpdate = Notification.Name(rawValue: "SquareDocument.didUpdate")
     
@@ -57,6 +57,14 @@ struct SquareDocument: Swift.Collection {
             }
         }
     }
+    
+    var collectionKey: String = ""
+    var subscriptionKey: String {
+        if let leafID = id {
+            return "\(collectionKey)-\(leafID)"
+        }
+        return ""
+    } 
     
     var document: Document
     var id: Primitive? {

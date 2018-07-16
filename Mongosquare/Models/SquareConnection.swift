@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class SquareConnection: Codable {
+final class SquareConnection: Codable, SquareModel {
     static var connectionPool: [SquareConnection] = []
     static var testConnection: SquareConnection = {
         let connection = SquareConnection(username: "", password: "", host: "mongodb://ec2-18-219-64-54.us-east-2.compute.amazonaws.com")
@@ -19,6 +19,10 @@ final class SquareConnection: Codable {
         let connection = SquareConnection(username: "", password: "", host: "mongodb://localhost")
         return connection
     }()
+    
+    var subscriptionKey: String {
+        return "\(name),\(host):\(port)"
+    }
     
     var name: String
     let username: String
@@ -82,6 +86,8 @@ final class SquareConnection: Codable {
         
         let newDatabase = Database(named: name, atServer: server)
         databases.append(SquareDatabase(database: newDatabase, saved: false))
+        
+        SquareStore.modelUpdated(self, isSubtreeUpdated: true)
         return true
     }
     

@@ -289,6 +289,8 @@
 		CE63967920CA71200031D83B /* ValueConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963B20CA71200031D83B /* ValueConvertible.swift */; };
 		CE63967A20CA71200031D83B /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963D20CA71200031D83B /* Connection.swift */; };
 		CE63967B20CA71200031D83B /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963F20CA71200031D83B /* Deprecated.swift */; };
+		CE76073020FB32F200766C58 /* ModelUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76072F20FB32F200766C58 /* ModelUpdates.swift */; };
+		CE76073220FB33D700766C58 /* SquareCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76073120FB33D700766C58 /* SquareCollection.swift */; };
 		FA0AA2F71FCDA20900DA765D /* ConnectionWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */; };
 		FA0AA2F81FCDA20900DA765D /* ConnectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0AA2F61FCDA20900DA765D /* ConnectionWindowController.xib */; };
 		FA62581B1FD283E300A1BF26 /* SquareConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62581A1FD283E300A1BF26 /* SquareConnection.swift */; };
@@ -698,6 +700,8 @@
 		CE63963B20CA71200031D83B /* ValueConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueConvertible.swift; sourceTree = "<group>"; };
 		CE63963D20CA71200031D83B /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		CE63963F20CA71200031D83B /* Deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
+		CE76072F20FB32F200766C58 /* ModelUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelUpdates.swift; sourceTree = "<group>"; };
+		CE76073120FB33D700766C58 /* SquareCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareCollection.swift; sourceTree = "<group>"; };
 		FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionWindowController.swift; sourceTree = "<group>"; };
 		FA0AA2F61FCDA20900DA765D /* ConnectionWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionWindowController.xib; sourceTree = "<group>"; };
 		FA62581A1FD283E300A1BF26 /* SquareConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SquareConnection.swift; path = Models/SquareConnection.swift; sourceTree = "<group>"; };
@@ -1041,6 +1045,7 @@
 		C5D8B1E91F5715DB00AE0E25 /* Mongosquare */ = {
 			isa = PBXGroup;
 			children = (
+				CE76072E20FB32D500766C58 /* Protocols */,
 				C54D57621FDA619C006DBF37 /* Cells */,
 				FA62581C1FD2D3FD00A1BF26 /* Views */,
 				FA6258191FD279CD00A1BF26 /* Models */,
@@ -1353,11 +1358,20 @@
 			path = Deprecated;
 			sourceTree = "<group>";
 		};
+		CE76072E20FB32D500766C58 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE76072F20FB32F200766C58 /* ModelUpdates.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		FA6258191FD279CD00A1BF26 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				FA62581A1FD283E300A1BF26 /* SquareConnection.swift */,
 				CE2B2D36203689FA00A5392F /* SquareDatabase.swift */,
+				CE76073120FB33D700766C58 /* SquareCollection.swift */,
 				CE50D84420563F9F003BA8F9 /* SquareDocument.swift */,
 			);
 			name = Models;
@@ -1891,6 +1905,7 @@
 				CE63965C20CA71200031D83B /* SSLSettings.swift in Sources */,
 				C5233C911F7A56B400B32B16 /* MMCardTabStyle.m in Sources */,
 				CE2B2D37203689FA00A5392F /* SquareDatabase.swift in Sources */,
+				CE76073020FB32F200766C58 /* ModelUpdates.swift in Sources */,
 				C5233C921F7A56B400B32B16 /* MMLiveChatTabStyle.m in Sources */,
 				CE63965120CA71200031D83B /* Database+RoleManagement.swift in Sources */,
 				CE50D84520563F9F003BA8F9 /* SquareDocument.swift in Sources */,
@@ -1928,6 +1943,7 @@
 				CE63965A20CA71200031D83B /* Database+Authentication.swift in Sources */,
 				C5298EFD1F5BAA6800908D4C /* CollectionViewController.swift in Sources */,
 				CE63966420CA71200031D83B /* GridFS.swift in Sources */,
+				CE76073220FB33D700766C58 /* SquareCollection.swift in Sources */,
 				CE63967220CA71200031D83B /* Logging.swift in Sources */,
 				C5D8B1EB1F5715DB00AE0E25 /* AppDelegate.swift in Sources */,
 				CE63965E20CA71200031D83B /* ClientSettings.swift in Sources */,
