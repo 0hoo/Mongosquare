@@ -37,6 +37,12 @@
                                               minimap: { enabled: false },
                                               scrollBeyondLastLine: false
                                               });
+          document.body.addEventListener('click', function() {
+            if (!editor.isFocused()) {
+                console.log('unfocused');
+                editor.focus();
+            }
+         });
             </script>
         
     </body>
