@@ -61,28 +61,29 @@ final class JsonViewController: NSViewController {
     }
     
     func save() {
-//        do {
-//            let updated = SquareDocument(document: Document(try JSONObject(from: fragaria.string())))
-//            if updated["_id"] == nil {
-//                let result = try collectionViewController?.collection?.insert(updated)
-//                print("insert?: \(String(describing: result))")
-//            } else {
-//                let result = collectionViewController?.collection?.update(updated)
-//                print("update?: \(String(describing: result))")
-//            }
-//            collectionViewController?.reload()
-//        } catch {
-//            print(error)
-//        }
+        guard let content = webView?.stringByEvaluatingJavaScript(from: "editor.getValue()") else { return }
+        do {
+            let updated = SquareDocument(document: Document(try JSONObject(from: content)))
+            if updated["_id"] == nil {
+                let result = try collectionViewController?.collection?.insert(updated)
+                print("insert?: \(String(describing: result))")
+            } else {
+                let result = collectionViewController?.collection?.update(updated)
+                print("update?: \(String(describing: result))")
+            }
+            collectionViewController?.reload()
+        } catch {
+            print(error)
+        }
     }
     
     func newDocument() {
-//        document = SquareDocument(document: Document())
-//        fragaria.setString("")
+        document = SquareDocument(document: Document())
+        let _ = webView?.stringByEvaluatingJavaScript(from: "editor.setValue('')")
     }
     
     func documentDeleted() {
-//        document = nil
-//        fragaria.setString("")
+        document = nil
+        let _ = webView?.stringByEvaluatingJavaScript(from: "editor.setValue('')")
     }
 }
