@@ -35,6 +35,7 @@ final class JsonViewController: NSViewController {
             guard let document = document else {
                 return
             }
+            
             var documentString = "\(document)"
             documentString = documentString.replacingOccurrences(of: "{", with: "{\n\t")
             documentString = documentString.replacingOccurrences(of: ",", with: ",\n\t")
@@ -42,6 +43,11 @@ final class JsonViewController: NSViewController {
             documentString =  "\(documentString)".javascriptEscaped() ?? ""
             let call = "editor.setValue(\(documentString))"
             let _ = webView?.stringByEvaluatingJavaScript(from: call)
+            
+            if let oldDocument = oldValue {
+                SquareStore.unregister(subscriber: self, for: oldDocument)
+            }
+            SquareStore.register(subscriber: self, for: document)
         }
     }
     
@@ -86,5 +92,15 @@ final class JsonViewController: NSViewController {
     func documentDeleted() {
         document = nil
         let _ = webView?.stringByEvaluatingJavaScript(from: "editor.setValue('')")
+    }
+    
+    deinit {
+        SquareStore.unregister(subscriber: self)
+    }
+}
+
+extension JsonViewController: DocumentSubscriber {
+    func didUpdate(document: SquareDocument) {
+        self.document = document
     }
 }

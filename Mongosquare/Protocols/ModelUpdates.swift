@@ -78,7 +78,7 @@ final class SquareStore { // maybe we need to create separate instances which be
         }
     }
     
-    static func unregister(subscriber: ModelSubscriber, for model: SquareModel?) {
+    static func unregister(subscriber: ModelSubscriber, for model: SquareModel? = nil) {
         guard let model = model else { // when model is not specified, unsubscribe for all cases
             if let subscriber = subscriber as? ConnectionSubscriber {
                 unregister(connectionSubscriber: subscriber, for: nil)
