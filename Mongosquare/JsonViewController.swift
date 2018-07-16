@@ -37,13 +37,11 @@ final class JsonViewController: NSViewController {
             }
             
             var documentString = "\(document)"
-            documentString = documentString.replacingOccurrences(of: "{", with: "{\n\t")
-            documentString = documentString.replacingOccurrences(of: ",", with: ",\n\t")
-            documentString = documentString.replacingOccurrences(of: "}", with: "\n}")
             documentString =  "\(documentString)".javascriptEscaped() ?? ""
             let call = "editor.setValue(\(documentString))"
             let _ = webView?.stringByEvaluatingJavaScript(from: call)
-            
+            let formatCall = "editor.getAction('editor.action.formatDocument').run()"
+            let _ = webView?.stringByEvaluatingJavaScript(from: formatCall)
             if let oldDocument = oldValue {
                 SquareStore.unregister(subscriber: self, for: oldDocument)
             }
@@ -59,6 +57,7 @@ final class JsonViewController: NSViewController {
                 let content = try String(contentsOfFile: path)
                 let resourcePath = Bundle.main.resourcePath!
                 let baseURL = URL(fileURLWithPath: resourcePath + "/monaco/")
+                webView?.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/604.4.7 (KHTML, like Gecko) Version/11.0.2 Safari/604.4.7"
                 webView?.mainFrame.loadHTMLString(content, baseURL: baseURL)
                 webView?.mainFrame.frameView?.allowsScrolling = false
             } catch {

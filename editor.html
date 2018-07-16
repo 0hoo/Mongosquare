@@ -4,22 +4,21 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-            <link rel="stylesheet" data-name="vs/editor/editor.main" href="min/vs/editor/editor.main.css">
-                <style>
-                    .wrapper {
-                        display: flex;
-                        flex-direction: column;
-                        height: 100vh;
-                        margin: 0;
-                    }
+        <link rel="stylesheet" data-name="vs/editor/editor.main" href="min/vs/editor/editor.main.css">
+        <style>
+            .wrapper {
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+                margin: 0;
+            }
                 
-                .wrapper #container {
-                    flex-grow: 1;
-                }
-                </style>
+            .wrapper #container {
+                flex-grow: 1;
+            }
+        </style>
     </head>
     <body>
-        
         <div class="wrapper">
             <div id="container"></div>
         </div>
@@ -31,19 +30,18 @@
         
         <script>
             var editor = monaco.editor.create(document.getElementById('container'), {
-                                              value: '',
-                                              language: 'json',
-                                              automaticLayout: true,
-                                              minimap: { enabled: false },
-                                              scrollBeyondLastLine: false
-                                              });
-          document.body.addEventListener('click', function() {
-            if (!editor.isFocused()) {
-                console.log('unfocused');
-                editor.focus();
-            }
-         });
-            </script>
-        
+                value: '',
+                language: 'json',
+                automaticLayout: true,
+                minimap: { enabled: false },
+                scrollBeyondLastLine: true
+            });
+            document.body.addEventListener('click', function() {
+                if (!editor.isFocused()) {
+                    console.log('unfocused');
+                    editor.focus();
+                }
+            });
+        </script>
     </body>
 </html>
