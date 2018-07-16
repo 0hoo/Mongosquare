@@ -30,6 +30,8 @@ final class JsonViewController: NSViewController {
     
     weak var collectionViewController: CollectionViewController?
     
+    var ignoreFocus = false
+    
     var document: SquareDocument? {
         didSet {
             guard let document = document else {
@@ -40,6 +42,7 @@ final class JsonViewController: NSViewController {
             documentString =  "\(documentString)".javascriptEscaped() ?? ""
             let call = "editor.setValue(\(documentString))"
             let _ = webView?.stringByEvaluatingJavaScript(from: call)
+            ignoreFocus = true
             let formatCall = "editor.getAction('editor.action.formatDocument').run()"
             let _ = webView?.stringByEvaluatingJavaScript(from: formatCall)
             if let oldDocument = oldValue {
@@ -60,6 +63,8 @@ final class JsonViewController: NSViewController {
                 webView?.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/604.4.7 (KHTML, like Gecko) Version/11.0.2 Safari/604.4.7"
                 webView?.mainFrame.loadHTMLString(content, baseURL: baseURL)
                 webView?.mainFrame.frameView?.allowsScrolling = false
+                webView?.uiDelegate = self
+                webView.frameLoadDelegate = self
             } catch {
                 print(error)
             }
@@ -101,5 +106,41 @@ final class JsonViewController: NSViewController {
 extension JsonViewController: DocumentSubscriber {
     func didUpdate(document: SquareDocument) {
         self.document = document
+    }
+}
+
+extension JsonViewController: WebUIDelegate {
+    func webViewFocus(_ sender: WebView!) {
+        print(sender)
+    }
+    
+    func webView(_ sender: WebView!, makeFirstResponder responder: NSResponder!) {
+        if ignoreFocus {
+            ignoreFocus = false
+        } else {
+            AppDelegate.shared.windowController.window?.makeFirstResponder(webView)
+        }
+    }
+}
+
+extension JsonViewController: WebFrameLoadDelegate {
+    func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
+        let bridge = ScriptBridge()
+        bridge.webView = webView
+        webView.windowScriptObject.setValue(bridge, forKey: "bridge")
+    }
+}
+
+class ScriptBridge: NSObject {
+    weak var webView: WebView!
+    
+    @objc func focus() {
+        if let webView = webView {
+            AppDelegate.shared.windowController.window?.makeFirstResponder(webView)
+        }
+    }
+    
+    override class func isSelectorExcluded(fromWebScript selector: Selector!) -> Bool {
+        return false
     }
 }

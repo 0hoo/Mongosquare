@@ -37,8 +37,8 @@
                 scrollBeyondLastLine: true
             });
             document.body.addEventListener('click', function() {
+                window.bridge.focus()
                 if (!editor.isFocused()) {
-                    console.log('unfocused');
                     editor.focus();
                 }
             });

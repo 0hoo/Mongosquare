@@ -73,7 +73,6 @@ final class WindowController: NSWindowController {
     }()
     
     func didSelectDocument(collectionViewController: CollectionViewController?, document: SquareDocument) {
-        print(document)
         jsonViewController.document = document
     }
     
