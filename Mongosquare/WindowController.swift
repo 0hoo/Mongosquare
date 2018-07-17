@@ -155,6 +155,14 @@ final class WindowController: NSWindowController {
         self.tabViewController.activeCollectionViewController?.nullToValue()
     }
     
+    @IBAction func nextTab(_ sender: Any?) {
+        self.tabViewController.nextTab()
+    }
+    
+    @IBAction func previousTab(_ sender: Any?) {
+        self.tabViewController.previousTab()
+    }
+    
     private func showConnectionWindow() {
         if connectionWindowController == nil {
             connectionWindowController = ConnectionWindowController(windowNibName: NSNib.Name("ConnectionWindowController"))

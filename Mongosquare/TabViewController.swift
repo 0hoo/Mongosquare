@@ -64,6 +64,14 @@ final class TabViewController: NSViewController {
         tabBar?.needsLayout = true
         tabBar?.layoutSubtreeIfNeeded()
     }
+    
+    func nextTab() {
+        tabView?.selectNextTabViewItem(self)
+    }
+    
+    func previousTab() {
+        tabView?.selectPreviousTabViewItem(self)
+    }
 }
 
 extension TabViewController: MMTabBarViewDelegate {
