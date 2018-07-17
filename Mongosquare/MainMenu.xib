@@ -105,7 +105,8 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
-                            <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
+                            <menuItem title="Close" id="DVo-aG-piG">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="performClose:" target="-1" id="HmO-Ls-i7Q"/>
                                 </connections>
@@ -648,6 +649,11 @@
                                 <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
                                 <connections>
                                     <action selector="previousTab:" target="-1" id="Kvy-bc-bWD"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Close Tab" keyEquivalent="w" id="khk-II-9qy">
+                                <connections>
+                                    <action selector="closeTab:" target="-1" id="mQO-g1-THp"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="hB3-LF-h0Y"/>

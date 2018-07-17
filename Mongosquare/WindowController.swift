@@ -163,6 +163,10 @@ final class WindowController: NSWindowController {
         self.tabViewController.previousTab()
     }
     
+    @IBAction func closeTab(_ sender: Any?) {
+        self.tabViewController.closeTab()
+    }
+    
     private func showConnectionWindow() {
         if connectionWindowController == nil {
             connectionWindowController = ConnectionWindowController(windowNibName: NSNib.Name("ConnectionWindowController"))

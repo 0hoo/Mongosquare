@@ -72,6 +72,12 @@ final class TabViewController: NSViewController {
     func previousTab() {
         tabView?.selectPreviousTabViewItem(self)
     }
+    
+    func closeTab() {
+        guard let selectedTabViewItem = tabView?.selectedTabViewItem else { return }
+        tabView?.removeTabViewItem(selectedTabViewItem)
+        adjustTabBarHeight(closing: true)
+    }
 }
 
 extension TabViewController: MMTabBarViewDelegate {
