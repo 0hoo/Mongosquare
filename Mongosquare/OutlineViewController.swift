@@ -51,10 +51,16 @@ final class OutlineViewController: NSViewController {
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let selectedRow = outlineView?.selectedRow else { return false }
         guard let item = outlineView?.item(atRow: selectedRow) as? OutlineItem else { return false }
-        if menuItem.title.lowercased().contains("database") {
+        
+        let menuTitle = menuItem.title.lowercased()        
+        if menuTitle.contains("add database") {
             return item.isHeader && !item.isDatabase
-        } else if menuItem.title.lowercased().contains("collection") {
+        } else if menuTitle.contains("add collection") {
             return item.isDatabase
+        } else if menuTitle.contains("drop database") {
+            return item.isDatabase
+        } else if menuTitle.contains("drop collection") {
+            return !item.isHeader && !item.isDatabase
         }
         return true
     }
@@ -100,6 +106,7 @@ final class OutlineViewController: NSViewController {
                 databaseItem.items.append(collectionItem)
                 databaseItem.count += 1
             }
+            unsavedCollections.removeAll()
         }
         outlineView?.reloadData()
         outlineView?.expandItem(local, expandChildren: true)
@@ -173,6 +180,38 @@ extension OutlineViewController {
             let newCollection = database[input.stringValue]
             unsavedCollections.append(newCollection)
             reloadItems()
+        }
+    }
+    
+    @IBAction func dropDatabase(_ sender: NSMenuItem) {
+        guard let selectedRow = outlineView?.selectedRow else { return }
+        guard let item = outlineView?.item(atRow: selectedRow) as? OutlineItem else { return }
+        guard let database = item.database, item.isDatabase else { return }
+        
+        if dialogOKCancel(question: "Drop Database?", text: "Are you sure to drop this database?") {
+            do {
+                try database.database.drop()
+                unsavedCollections.removeAll()
+                reloadDatabases()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    @IBAction func dropCollection(_ sender: NSMenuItem) {
+        guard let selectedRow = outlineView?.selectedRow else { return }
+        guard let item = outlineView?.item(atRow: selectedRow) as? OutlineItem else { return }
+        guard let collection = item.collection, !item.isDatabase && !item.isHeader else { return }
+        
+        if dialogOKCancel(question: "Drop Collection?", text: "Are you sure to drop this collection?") {
+            do {
+                try collection.collection.drop()
+                unsavedCollections.removeAll()
+                reloadDatabases()
+            } catch {
+                print(error)
+            }
         }
     }
 }

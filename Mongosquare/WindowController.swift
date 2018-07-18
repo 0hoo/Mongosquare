@@ -142,7 +142,7 @@ final class WindowController: NSWindowController {
     }
     
     @IBAction func deleteDocument(_ sender: Any?) {
-        if dialogOKCancel(question: "Delete this document?", text: "Are you sure delete this document?") {
+        if dialogOKCancel(question: "Delete this document?", text: "Are you sure to delete this document?") {
             self.tabViewController.activeCollectionViewController?.deleteDocument()
         }
     }
