@@ -94,6 +94,17 @@ final class WindowController: NSWindowController {
         //showConnectionWindow()
     }
     
+    @IBAction func switchOutlineTableView(_ sender: Any?) {
+        if let collectionViewModeSegmentedControl = collectionViewModeSegmentedControl {
+            if collectionViewModeSegmentedControl.selectedSegment == 0 {
+                collectionViewModeSegmentedControl.selectedSegment = 1
+            } else {
+                collectionViewModeSegmentedControl.selectedSegment = 0
+            }
+            collectionViewModeChanged(collectionViewModeSegmentedControl)
+        }
+    }
+    
     @IBAction func collectionViewModeChanged(_ sender: NSSegmentedControl) {
 //        let unselected = sender.selectedSegment == 0 ? 1 : 0
 //
