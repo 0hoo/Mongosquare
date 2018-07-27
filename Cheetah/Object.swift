@@ -162,11 +162,19 @@ public struct JSONObject : Value, ExpressibleByDictionaryLiteral, Equatable, Seq
         return true
     }
     
-    /// Serializes this JSON Object to a binary representation of the JSON text format
     public func serialize() -> [UInt8] {
+        return serialize(bringIDTop: false)
+    }
+    /// Serializes this JSON Object to a binary representation of the JSON text format
+    public func serialize(bringIDTop: Bool) -> [UInt8] {
         var serializedData: [UInt8] = [SpecialCharacters.objectOpen]
+        var arrayRepresentation: [SupportedValue] = storage.map { ($0, $1) }
+        if bringIDTop, let idIndex = arrayRepresentation.index(where: { $0.0 == "_id"}) {
+            let idObject = arrayRepresentation.remove(at: idIndex)
+            arrayRepresentation.insert(idObject, at: 0)
+        }
         
-        for (position, pair) in storage.enumerated() {
+        for (position, pair) in arrayRepresentation.enumerated() {
             if position > 0 {
                 serializedData.append(SpecialCharacters.comma)
             }

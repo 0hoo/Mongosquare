@@ -119,7 +119,7 @@ fileprivate func regexOptions(fromString s: String) -> NSRegularExpression.Optio
 
 /// Parses an NSRegularExpression.Options into Regex options String from MongoDB
 extension NSRegularExpression.Options {
-    func makeOptionString() -> String {
+    public func makeOptionString() -> String {
         var options = ""
         
         if self.contains(.caseInsensitive) {

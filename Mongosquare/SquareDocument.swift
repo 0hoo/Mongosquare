@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cheetah
 
 typealias DocumentIndexIterationElement = (key: String, value: Any, type: SquareDocument.ElementType?)
 
@@ -177,6 +178,10 @@ struct SquareDocument: Swift.Collection, SquareModel {
 
 extension SquareDocument: CustomDebugStringConvertible {
     var debugDescription: String {
-        return document.makeExtendedJSON().serializedString()
+        let json = document.makeExtendedJSON()
+        if let object = json as? JSONObject {
+            return String(bytes: object.serialize(bringIDTop: true), encoding: .utf8) ?? ""
+        }
+        return json.serializedString()
     }
 }
