@@ -66,11 +66,25 @@ final class TabViewController: NSViewController {
     }
     
     func nextTab() {
-        tabView?.selectNextTabViewItem(self)
+        guard let tabView = tabView else { return }
+        if let selectedTabViewItem = tabView.selectedTabViewItem, tabView.tabViewItems.count > 1 {
+            if tabView.indexOfTabViewItem(selectedTabViewItem) == (tabView.tabViewItems.count - 1) {
+                tabView.selectFirstTabViewItem(self)
+                return
+            }
+        }
+        tabView.selectNextTabViewItem(self)
     }
     
     func previousTab() {
-        tabView?.selectPreviousTabViewItem(self)
+        guard let tabView = tabView else { return }
+        if let selectedTabViewItem = tabView.selectedTabViewItem, tabView.tabViewItems.count > 1 {
+            if tabView.indexOfTabViewItem(selectedTabViewItem) == 0 {
+                tabView.selectLastTabViewItem(self)
+                return
+            }
+        }
+        tabView.selectPreviousTabViewItem(self)
     }
     
     func closeTab() {
