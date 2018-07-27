@@ -103,14 +103,23 @@ final class CollectionViewController: NSViewController {
         outlineViewController?.collectionViewController = self
         tableViewController = CollectionTableViewController()
         tableViewController?.collectionViewController = self
-        
-        showOutlineViewController()
     }
     
     override func viewWillAppear() {
         super.viewWillAppear()
         
         updateWindowStatusBar()
+        switchOutlineTableIfNeed()
+    }
+    
+    private func switchOutlineTableIfNeed() {
+        guard let segmentedControl = windowController?.collectionViewModeSegmentedControl else { return }
+        
+        if segmentedControl.selectedSegment == 0 && activeViewController != outlineViewController {
+            showOutlineViewController()
+        } else if segmentedControl.selectedSegment == 1 && activeViewController != tableViewController {
+            showTableViewController()
+        }
     }
     
     @IBAction func segmentUpdated(_ sender: NSSegmentedControl) {
@@ -182,7 +191,6 @@ final class CollectionViewController: NSViewController {
     
     private func updateWindowStatusBar() {
         updateSkipLimitSegmentedControl()
-        updateCollectionViewModeSegmentedControl()
     }
     
     private func updateSkipLimitSegmentedControl() {
@@ -196,18 +204,6 @@ final class CollectionViewController: NSViewController {
         
         let label = "\(skipLimit.skip) - \(limitToDisplay) of \(count)"
         skipLimitSegmentedControl.setLabel(label, forSegment: 1)
-    }
-    
-    private func updateCollectionViewModeSegmentedControl() {
-        guard let collectionViewModeSegmentedControl = windowController?.collectionViewModeSegmentedControl else { return }
-
-        if activeViewController == outlineViewController && collectionViewModeSegmentedControl.selectedSegment != 0 {
-            collectionViewModeSegmentedControl.selectedSegment = 0
-            windowController?.collectionViewModeChanged(collectionViewModeSegmentedControl)
-        } else if activeViewController == tableViewController && collectionViewModeSegmentedControl.selectedSegment != 1 {
-            collectionViewModeSegmentedControl.selectedSegment = 1
-            windowController?.collectionViewModeChanged(collectionViewModeSegmentedControl)
-        }
     }
     
     func deleteDocument() {
