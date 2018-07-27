@@ -81,7 +81,11 @@ final class CollectionViewController: NSViewController {
         if queryOption.projectingFields.count > 0 {
             return queryOption.projectingFields
         } else {
-            return queriedDocuments.max(by: { $0.keys.count < $1.keys.count })?.keys ?? queriedDocuments[0].keys
+            var keys: Set<String> = []
+            for document in queriedDocuments {
+                document.keys.forEach { keys.insert($0) }
+            }
+            return Array(keys)
         }
     }
     
