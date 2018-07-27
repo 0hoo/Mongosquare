@@ -81,11 +81,12 @@ final class CollectionViewController: NSViewController {
         if queryOption.projectingFields.count > 0 {
             return queryOption.projectingFields
         } else {
-            var keys: Set<String> = []
-            for document in queriedDocuments {
-                document.keys.forEach { keys.insert($0) }
+            var keys = Array(Set<String>(queriedDocuments.reduce([String]()) { $0 + $1.keys }))
+            if let idIndex = keys.index(of: "_id"), idIndex > 0 {
+                keys.remove(at: idIndex)
+                keys.insert("_id", at: 0)
             }
-            return Array(keys)
+            return keys
         }
     }
     

@@ -79,6 +79,10 @@ final class CollectionOutlineViewController: NSViewController {
         super.viewDidLoad()
         
         reload(fieldsUpdated: true)
+        if let outlineView = outlineView, items.count > 0 {
+            outlineView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: true)
+            let _ = self.outlineView(outlineView, shouldSelectItem: items[0])
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(documentUpdated(_:)), name: SquareDocument.didUpdate, object: nil)
     }
