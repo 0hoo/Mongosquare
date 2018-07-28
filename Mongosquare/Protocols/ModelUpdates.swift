@@ -12,10 +12,6 @@ protocol ModelSubscriber {
     var subscriptionKey: String { get }
 }
 
-extension ModelSubscriber {
-    var subscriptionKey: String { return "" }
-}
-
 protocol SquareModel {
     var subscriptionKey: String { get }
 }

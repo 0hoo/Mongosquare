@@ -32,6 +32,11 @@ final class CollectionViewController: NSViewController {
         didSet {
             guard let collection = collection else { return }
             title = collection.name
+            
+            if let oldCollection = oldValue {
+                SquareStore.unregister(subscriber: self, for: oldCollection)
+            }
+            SquareStore.register(subscriber: self, for: collection)
         }
     }
     
@@ -240,8 +245,24 @@ final class CollectionViewController: NSViewController {
         reload()
         AppDelegate.shared.windowController.jsonViewController.documentDeleted()
     }
+    
+    deinit {
+        SquareStore.unregister(subscriber: self)
+    }
 }
-
+extension CollectionViewController: CollectionSubscriber {
+    var subscriptionKey: String {
+        return "\(type(of: self))-\(ObjectIdentifier(self).hashValue)"
+    }
+    
+    func didUpdate(collection: SquareCollection, isSubtreeUpdated: Bool) {
+        if isSubtreeUpdated {
+            // just refresh subtrees
+        } else {
+            
+        }
+    }
+}
 extension CollectionViewController: MMTabBarItem {
     
 }

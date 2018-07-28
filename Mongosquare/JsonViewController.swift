@@ -82,7 +82,7 @@ final class JsonViewController: NSViewController {
                 let result = collectionViewController?.collection?.update(updated)
                 print("update?: \(String(describing: result))")
             }
-            collectionViewController?.reload()
+            //collectionViewController?.reload()
         } catch {
             print(error)
         }
@@ -104,6 +104,10 @@ final class JsonViewController: NSViewController {
 }
 
 extension JsonViewController: DocumentSubscriber {
+    var subscriptionKey: String {
+        return "\(type(of: self))-\(ObjectIdentifier(self).hashValue)"
+    }
+    
     func didUpdate(document: SquareDocument) {
         self.document = document
     }
