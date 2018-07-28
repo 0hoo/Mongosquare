@@ -80,6 +80,15 @@ struct SquareDocument: Swift.Collection, SquareModel {
         self.document = document
     }
     
+    init(string: String) throws {
+        do {
+            self.init(document: Document(try JSONObject(from: string)))
+        } catch {
+            print(error)
+            throw error 
+        }
+    }
+    
     func type(at key: Int) -> ElementType? {
         if let type = document.type(at: key) {
             return ElementType(rawValue: type.rawValue)

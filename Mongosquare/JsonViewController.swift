@@ -7,13 +7,12 @@
 //
 
 import Cocoa
-import Cheetah
 import WebKit
 
 extension String {
     func javascriptEscaped() -> String? {
         let str = self.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
-                        .replacingOccurrences(of: "\u{2029}", with: "\\u2029")
+            .replacingOccurrences(of: "\u{2029}", with: "\\u2029")
         // Because escaping JavaScript is a non-trivial task (https://github.com/johnezang/JSONKit/blob/master/JSONKit.m#L1423)
         // we proceed to hax instead:
         if let data = try? JSONSerialization.data(withJSONObject: [str], options: []),
@@ -25,7 +24,7 @@ extension String {
 }
 
 final class JsonViewController: NSViewController {
-
+    
     @IBOutlet weak var webView: WebView!
     
     weak var collectionViewController: CollectionViewController?
@@ -74,15 +73,16 @@ final class JsonViewController: NSViewController {
     func save() {
         guard let content = webView?.stringByEvaluatingJavaScript(from: "editor.getValue()") else { return }
         do {
-            let updated = SquareDocument(document: Document(try JSONObject(from: content)))
+            let updated = try SquareDocument(string: content)
             if updated["_id"] == nil {
+                
                 let result = try collectionViewController?.collection?.insert(updated)
                 print("insert?: \(String(describing: result))")
+                
             } else {
                 let result = collectionViewController?.collection?.update(updated)
                 print("update?: \(String(describing: result))")
             }
-            //collectionViewController?.reload()
         } catch {
             print(error)
         }
