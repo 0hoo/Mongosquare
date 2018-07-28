@@ -85,9 +85,10 @@ final class SquareConnection: Codable, SquareModel {
         guard let server = server else { return false }
         
         let newDatabase = Database(named: name, atServer: server)
-        databases.append(SquareDatabase(database: newDatabase, saved: false))
+        let squareDatabase = SquareDatabase(database: newDatabase, saved: false)
+        databases.append(squareDatabase)
         
-        SquareStore.modelUpdated(self, isSubtreeUpdated: true)
+        SquareStore.modelUpdated(self, submodels: [squareDatabase], updateType: .inserted)
         return true
     }
     

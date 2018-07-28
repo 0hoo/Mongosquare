@@ -252,12 +252,13 @@ final class CollectionViewController: NSViewController {
     }
 }
 extension CollectionViewController: CollectionSubscriber {
+    
     var subscriptionKey: String {
         return "\(type(of: self))-\(ObjectIdentifier(self).hashValue)"
     }
     
-    func didUpdate(collection: SquareCollection, isSubtreeUpdated: Bool) {
-        if isSubtreeUpdated {
+    func didUpdate(collection: SquareCollection, updatedDocuments: [SquareDocument]?, updateType: ModelUpdateType) {
+        if let updatedDocuments = updatedDocuments {
             // just refresh subtrees
         } else {
             

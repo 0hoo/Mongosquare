@@ -20,6 +20,12 @@ extension SquareModel {
     var subscriptionKey: String { return "" }
 }
 
+enum ModelUpdateType {
+    case updated
+    case inserted
+    case deleted
+}
+
 final class SquareStore { // maybe we need to create separate instances which belong to each connection
     private static var connectionSubscribers: [String: ConnectionSubscriber] = [:]
     private static var databaseSubscribers: [String: DatabaseSubscriber] = [:]
@@ -109,23 +115,23 @@ final class SquareStore { // maybe we need to create separate instances which be
     }
     
     // model update propagation
-    static func modelUpdated(_ model: SquareModel, isSubtreeUpdated: Bool = false) {
+    static func modelUpdated(_ model: SquareModel, submodels: [SquareModel] = [], updateType: ModelUpdateType = .updated) {
         switch model {
         case let model as SquareConnection:
             connectionSubscribers.filter({ $0.key.hasPrefix(model.subscriptionKey)}).forEach {
-                $0.value.didUpdate(connection: model, isSubtreeUpdated: isSubtreeUpdated)
+                $0.value.didUpdate(connection: model, updatedDatabases: submodels as? [SquareDatabase], updateType: updateType)
             }
         case let model as SquareDatabase:
             databaseSubscribers.filter({ $0.key.hasPrefix(model.subscriptionKey)}).forEach {
-                $0.value.didUpdate(database: model, isSubtreeUpdated: isSubtreeUpdated)
+                $0.value.didUpdate(database: model, updatedCollections: submodels as? [SquareCollection], updateType: updateType)
             }
         case let model as SquareCollection:
             collectionSubscribers.filter({ $0.key.hasPrefix(model.subscriptionKey)}).forEach {
-                $0.value.didUpdate(collection: model, isSubtreeUpdated: isSubtreeUpdated)
+                $0.value.didUpdate(collection: model, updatedDocuments: submodels as? [SquareDocument], updateType: updateType)
             }
         case let model as SquareDocument:
             documentSubscribers.filter({ $0.key.hasPrefix(model.subscriptionKey)}).forEach {
-                $0.value.didUpdate(document: model)
+                $0.value.didUpdate(document: model, updateType: updateType)
             }
         default:
             break
@@ -138,17 +144,17 @@ final class SquareStore { // maybe we need to create separate instances which be
 }
 
 protocol ConnectionSubscriber: ModelSubscriber {
-    func didUpdate(connection: SquareConnection, isSubtreeUpdated: Bool)
+    func didUpdate(connection: SquareConnection, updatedDatabases: [SquareDatabase]?, updateType: ModelUpdateType)
 }
 
 protocol DatabaseSubscriber: ModelSubscriber {
-    func didUpdate(database: SquareDatabase, isSubtreeUpdated: Bool)
+    func didUpdate(database: SquareDatabase, updatedCollections: [SquareCollection]?, updateType: ModelUpdateType)
 }
 
 protocol CollectionSubscriber: ModelSubscriber {
-    func didUpdate(collection: SquareCollection, isSubtreeUpdated: Bool)
+    func didUpdate(collection: SquareCollection, updatedDocuments: [SquareDocument]?, updateType: ModelUpdateType)
 }
 
 protocol DocumentSubscriber: ModelSubscriber {
-    func didUpdate(document: SquareDocument)
+    func didUpdate(document: SquareDocument, updateType: ModelUpdateType)
 }
