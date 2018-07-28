@@ -656,6 +656,12 @@
                                     <action selector="closeTab:" target="-1" id="mQO-g1-THp"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="7i1-j2-Nmx"/>
+                            <menuItem title="Switch Outline-Table View" keyEquivalent="l" id="q5i-cE-mqN">
+                                <connections>
+                                    <action selector="switchOutlineTableView:" target="-1" id="d2x-57-QsV"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="hB3-LF-h0Y"/>
                             <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
@@ -710,6 +716,7 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="141" y="166"/>
         </menu>
         <customObject id="4CF-39-s5c" customClass="AppDelegate" customModule="Mongosquare" customModuleProvider="target"/>
     </objects>

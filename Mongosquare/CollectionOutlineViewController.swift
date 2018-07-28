@@ -83,6 +83,15 @@ final class CollectionOutlineViewController: NSViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(documentUpdated(_:)), name: SquareDocument.didUpdate, object: nil)
     }
     
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        
+        if let outlineView = outlineView, items.count > 0 {
+            outlineView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: true)
+            let _ = self.outlineView(outlineView, shouldSelectItem: items[0])
+        }
+    }
+    
     @objc func documentUpdated(_ notification: Notification) {
         guard let document = notification.object as? SquareDocument else { return }
         guard let documentId = ObjectId(document["_id"] as? Primitive) else { return }

@@ -15,7 +15,7 @@ final class DocumentItem {
     var document: SquareDocument
     
     var types: [SquareDocument.ElementType] {
-        return document.keys.flatMap { document.type(at: $0) }
+        return document.keys.compactMap { document.type(at: $0) }
     }
     
     init(document: SquareDocument) {
