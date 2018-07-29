@@ -51,6 +51,8 @@ extension CollectionTableViewController: DocumentSkippable {
         guard let tableView = tableView else { return }
         guard let collectionViewController = collectionViewController else { return }
         
+        let previousSelectedRow: Int = tableView.selectedRow
+        
         if fieldsUpdated {
             while tableView.tableColumns.last != nil {
                 if let last = tableView.tableColumns.last {
@@ -81,6 +83,7 @@ extension CollectionTableViewController: DocumentSkippable {
         
         items = collectionViewController.queriedDocuments.map { DocumentItem(document: $0) }
         tableView.reloadData()
+        tableView.selectRowIndexes(IndexSet(integer: previousSelectedRow), byExtendingSelection: false)
     }
 }
 
