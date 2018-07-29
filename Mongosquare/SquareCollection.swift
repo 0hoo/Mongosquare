@@ -53,21 +53,24 @@ struct SquareCollection: SquareModel {
     
     @discardableResult
     public func insert(_ document: SquareDocument, stoppingOnError ordered: Bool? = nil, writeConcern: WriteConcern? = nil, timingOut afterTimeout: DispatchTimeInterval? = nil) throws -> BSON.Primitive {
-        return try collection.insert(document.document, stoppingOnError: ordered, writeConcern: writeConcern, timingOut: afterTimeout)
+        do {
+            let result = try collection.insert(document.document, stoppingOnError: ordered, writeConcern: writeConcern, timingOut: afterTimeout)
+            
+            SquareStore.modelUpdated(document, updateType: .inserted)
+            SquareStore.modelUpdated(self, submodels: [document], updateType: .inserted)
+            return result
+        } catch {
+            print(error)
+        }
+        return false
     }
     
     func update(_ document: SquareDocument) -> Int {
-        print("org:\(document)")
-        var updated = document
-        let query = Query(["_id": updated.id])
         do {
-            print("before:\(updated)")
-            
-            let r = try update(query, to: updated, stoppingOnError: true)
-            
-            print("after:\(updated)")
-            print("after org:\(document)")
-            SquareStore.modelUpdated(updated)
+            let query = Query(["_id": document.id])
+            let r = try update(query, to: document, stoppingOnError: true)
+            SquareStore.modelUpdated(document)
+            SquareStore.modelUpdated(self, submodels: [document], updateType: .updated)
             return r
         } catch {
             print(error)

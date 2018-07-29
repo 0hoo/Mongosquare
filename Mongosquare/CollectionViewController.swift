@@ -135,8 +135,8 @@ final class CollectionViewController: NSViewController {
         }
     }
     
-    func reload() {
-        activeViewController?.reload(fieldsUpdated: true)
+    func reload(fieldsUpdated: Bool = false) {
+        activeViewController?.reload(fieldsUpdated: fieldsUpdated)
     }
     
     func previous() {
@@ -259,7 +259,12 @@ extension CollectionViewController: CollectionSubscriber {
     
     func didUpdate(collection: SquareCollection, updatedDocuments: [SquareDocument]?, updateType: ModelUpdateType) {
         if let updatedDocuments = updatedDocuments {
-            // just refresh subtrees
+            switch updateType {
+            case .inserted, .deleted:
+                reload()
+            case .updated:
+                reload(fieldsUpdated: true)
+            }
         } else {
             
         }

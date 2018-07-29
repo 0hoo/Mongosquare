@@ -65,6 +65,7 @@ final class CollectionOutlineViewController: NSViewController {
         guard let row = outlineView?.selectedRow, let item = outlineView?.item(atRow: row) as? DocumentOutlineItem else {
             return nil
         }
+        
         return item.document
     }
     
@@ -111,18 +112,48 @@ final class CollectionOutlineViewController: NSViewController {
 
 extension CollectionOutlineViewController: DocumentSkippable {
     func reload(fieldsUpdated: Bool) {
-        guard let collectionViewController = collectionViewController else { return }
+        guard let collectionViewController = collectionViewController, let outlineView = outlineView else { return }
+        
+        // is expanded
+        let previousSelectedRow: Int = outlineView.selectedRow
+        var wasExpanded = false
+        var previousID: String?
+        
+        if fieldsUpdated, let item = outlineView.item(atRow: previousSelectedRow) as? DocumentOutlineItem {
+            previousID = item.document.idString
+            if outlineView.parent(forItem: item) as? DocumentOutlineItem != nil {
+                wasExpanded = true
+            }
+        }
         
         items.removeAll()
-
+        
+        var previousItem: DocumentOutlineItem?
         for (i, document) in collectionViewController.queriedDocuments.enumerated() {
             let fields = "\(document.keys.count) fields"
             let item = DocumentOutlineItem(key: "\(i + collectionViewController.skipLimit.skip)", value: fields, type: .document, document: document, isDocument: true)
             item.fillFields()
             items.append(item)
+            
+            if let id = previousID, let docID = document.idString, id == docID {
+                previousItem = item
+            }
         }
         
-        outlineView?.reloadData()
+        outlineView.reloadData()
+        
+        if let previousItem = previousItem { // 기존에 선택한 아이템이 지금도 있는 경우
+            if wasExpanded { // 기존에 펼쳐진 아이템 선택했던 경우
+                outlineView.expandItem(previousItem)
+                if let item = outlineView.item(atRow: previousSelectedRow) as? DocumentOutlineItem, item.document.idString == previousItem.document.idString {
+                    outlineView.selectItem(item)
+                } else {
+                    outlineView.selectItem(previousItem)
+                }
+            } else { // 기존에 그냥 아이템 선택했던 경우
+                outlineView.selectItem(previousItem)
+            }
+        }
     }
 }
 
