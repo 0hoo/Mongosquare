@@ -105,10 +105,9 @@ final class JsonViewController: NSViewController {
     }
     
     func newDocument() {
-        var unsaved = SquareDocument(document: Document())
-        unsaved.isUnsavedDocument = true
-        document = unsaved
-        let _ = webView?.stringByEvaluatingJavaScript(from: "editor.setValue('')")
+        if let document = collectionViewController?.newDocument() {
+            self.document = document
+        }
     }
     
     func documentDeleted() {

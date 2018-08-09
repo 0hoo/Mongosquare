@@ -100,6 +100,38 @@ final class CollectionViewController: NSViewController {
     var outlineViewController: CollectionOutlineViewController?
     var tableViewController: CollectionTableViewController?
     var activeViewController: (NSViewController & DocumentSkippable)?
+    
+    func newDocument() -> SquareDocument {
+        var doc = Document()
+        var templateDocument: SquareDocument? = nil
+        if queriedDocuments.count > 0 {
+            templateDocument = queriedDocuments[0]
+        }
+        for key in visibleFieldsKey {
+            if key == "_id" {
+                continue
+            }
+            if let valueType = templateDocument?.type(at: key) {
+                switch valueType {
+                case .boolean:
+                    doc[key] = false
+                case .int32:
+                    doc[key] = 0
+                case .int64:
+                    doc[key] = 0
+                case .double:
+                    doc[key] = 0.0
+                default:
+                    doc[key] = ""
+                }
+            } else {
+                doc[key] = ""
+            }
+        }
+        var document = SquareDocument(document: doc)
+        document.isUnsavedDocument = true
+        return document
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
