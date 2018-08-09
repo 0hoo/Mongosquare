@@ -59,6 +59,10 @@ struct SquareDocument: Swift.Collection, SquareModel {
         }
     }
     
+    var serverName: String?
+    var databaseName: String?
+    var collectionName: String?
+    
     var collectionKey: String = ""
     var subscriptionKey: String {
         if let leafID = id {

@@ -150,6 +150,7 @@
 		C52D228920FA3A0400474FDA /* editor.html in Resources */ = {isa = PBXBuildFile; fileRef = C52D228820FA3A0400474FDA /* editor.html */; };
 		C54D57641FDA61E1006DBF37 /* QueryTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D57631FDA61E1006DBF37 /* QueryTableCellView.swift */; };
 		C54D57661FDA6301006DBF37 /* QueryTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */; };
+		C5794794211BF52B00182A9F /* String+Mongosquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5794793211BF52B00182A9F /* String+Mongosquare.swift */; };
 		C584D936208703B700CAD61A /* NSOutlineView+Mongosquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C584D935208703B700CAD61A /* NSOutlineView+Mongosquare.swift */; };
 		C59ED1611F89C3FA00EA1F26 /* QueryWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59ED15F1F89C3FA00EA1F26 /* QueryWindowController.swift */; };
 		C59ED1621F89C3FA00EA1F26 /* QueryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59ED1601F89C3FA00EA1F26 /* QueryWindowController.xib */; };
@@ -561,6 +562,7 @@
 		C54391932005A5B500F08511 /* Package.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Package.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54D57631FDA61E1006DBF37 /* QueryTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableCellView.swift; sourceTree = "<group>"; };
 		C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableViewDataSource.swift; sourceTree = "<group>"; };
+		C5794793211BF52B00182A9F /* String+Mongosquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Mongosquare.swift"; sourceTree = "<group>"; };
 		C584D935208703B700CAD61A /* NSOutlineView+Mongosquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSOutlineView+Mongosquare.swift"; sourceTree = "<group>"; };
 		C59ED15F1F89C3FA00EA1F26 /* QueryWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryWindowController.swift; sourceTree = "<group>"; };
 		C59ED1601F89C3FA00EA1F26 /* QueryWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryWindowController.xib; sourceTree = "<group>"; };
@@ -783,6 +785,7 @@
 			children = (
 				C51E420B1F698E9B009C8ED5 /* NSImage+Mongosquare.swift */,
 				C584D935208703B700CAD61A /* NSOutlineView+Mongosquare.swift */,
+				C5794793211BF52B00182A9F /* String+Mongosquare.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1931,6 +1934,7 @@
 				CE63965620CA71200031D83B /* Collection+Geospatial.swift in Sources */,
 				C5298EF91F5BA77A00908D4C /* CollectionTableViewController.swift in Sources */,
 				C54D57641FDA61E1006DBF37 /* QueryTableCellView.swift in Sources */,
+				C5794794211BF52B00182A9F /* String+Mongosquare.swift in Sources */,
 				C5BF0A191F584DCC00C95EA8 /* OutlineViewController.swift in Sources */,
 				CE63965820CA71200031D83B /* SCRAM.swift in Sources */,
 				CE63967820CA71200031D83B /* DeserializationHelpers.swift in Sources */,

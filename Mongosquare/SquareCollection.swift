@@ -43,6 +43,9 @@ struct SquareCollection: SquareModel {
         return documents.map {
             var document = SquareDocument(document: $0)
             document.collectionKey = subscriptionKey
+            document.serverName = collection.database.server.hostname
+            document.databaseName = databaseName
+            document.collectionName = name
             return document
         }
     }

@@ -9,23 +9,13 @@
 import Cocoa
 import WebKit
 
-extension String {
-    func javascriptEscaped() -> String? {
-        let str = self.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
-            .replacingOccurrences(of: "\u{2029}", with: "\\u2029")
-        // Because escaping JavaScript is a non-trivial task (https://github.com/johnezang/JSONKit/blob/master/JSONKit.m#L1423)
-        // we proceed to hax instead:
-        if let data = try? JSONSerialization.data(withJSONObject: [str], options: []),
-            let encodedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-            return encodedString.substring(with: NSMakeRange(1, encodedString.length - 2))
-        }
-        return nil
-    }
-}
-
 final class JsonViewController: NSViewController {
     
     @IBOutlet weak var webView: WebView!
+    @IBOutlet weak var statusView: NSView!
+    @IBOutlet weak var connectionLabel: NSTextField!
+    @IBOutlet weak var databaseLabel: NSTextField!
+    @IBOutlet weak var collectionLabel: NSTextField!
     
     weak var collectionViewController: CollectionViewController?
     
@@ -34,8 +24,20 @@ final class JsonViewController: NSViewController {
     var document: SquareDocument? {
         didSet {
             guard let document = document else {
+                statusView.isHidden = true
                 return
             }
+
+            statusView.isHidden = false
+            if let serverName = document.serverName {
+                if serverName.hasPrefix("mongodb://") {
+                    connectionLabel.stringValue = String(serverName[serverName.index(serverName.startIndex, offsetBy: "mongodb://".count)...])
+                } else {
+                    connectionLabel.stringValue = document.serverName ?? ""
+                }
+            }
+            databaseLabel.stringValue = document.databaseName ?? ""
+            collectionLabel.stringValue = document.collectionName ?? ""
             
             var documentString = "\(document)"
             documentString =  "\(documentString)".javascriptEscaped() ?? ""
@@ -53,6 +55,8 @@ final class JsonViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        statusView.isHidden = true
         
         if let path = Bundle.main.path(forResource: "editor", ofType: "html") {
             do {
