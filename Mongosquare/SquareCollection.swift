@@ -15,8 +15,12 @@ struct SquareCollection: SquareModel {
     let collection: Collection // use MongoKitten Collection till CollectionQueryable is implemented
     var saved: Bool
     
+    var hostName: String {
+        return collection.database.server.hostname
+    }
+    
     var subscriptionKey: String {
-        return "\(collection.database.server.hostname)/\(fullName)"
+        return "\(hostName)/\(fullName)"
     }
     
     var path: String {
@@ -43,9 +47,6 @@ struct SquareCollection: SquareModel {
         return documents.map {
             var document = SquareDocument(document: $0)
             document.collectionKey = subscriptionKey
-            document.serverName = collection.database.server.hostname
-            document.databaseName = databaseName
-            document.collectionName = name
             return document
         }
     }

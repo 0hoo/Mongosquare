@@ -59,9 +59,7 @@ struct SquareDocument: Swift.Collection, SquareModel {
         }
     }
     
-    var serverName: String?
-    var databaseName: String?
-    var collectionName: String?
+    var isUnsavedDocument = false
     
     var collectionKey: String = ""
     var subscriptionKey: String {

@@ -27,18 +27,9 @@ final class JsonViewController: NSViewController {
                 statusView.isHidden = true
                 return
             }
-
-            statusView.isHidden = false
-            if let serverName = document.serverName {
-                if serverName.hasPrefix("mongodb://") {
-                    connectionLabel.stringValue = String(serverName[serverName.index(serverName.startIndex, offsetBy: "mongodb://".count)...])
-                } else {
-                    connectionLabel.stringValue = document.serverName ?? ""
-                }
-            }
-            databaseLabel.stringValue = document.databaseName ?? ""
-            collectionLabel.stringValue = document.collectionName ?? ""
             
+            updateStatusView(document: document)
+
             var documentString = "\(document)"
             documentString =  "\(documentString)".javascriptEscaped() ?? ""
             let call = "editor.setValue(\(documentString))"
@@ -50,6 +41,26 @@ final class JsonViewController: NSViewController {
                 SquareStore.unregister(subscriber: self, for: oldDocument)
             }
             SquareStore.register(subscriber: self, for: document)
+        }
+    }
+    
+    func updateStatusView(document: SquareDocument) {
+        //TODO: collectionViewController를 열지 않고 문서를 열 가능성이 있는지 확인 / 일단 없는 것으로 간주
+        if let collection = collectionViewController?.collection {
+            statusView.isHidden = false
+            if collection.hostName.hasPrefix("mongodb://") {
+                let serverName = collection.hostName
+                connectionLabel.stringValue = String(serverName[serverName.index(serverName.startIndex, offsetBy: "mongodb://".count)...])
+            } else {
+                connectionLabel.stringValue = collection.hostName
+            }
+            databaseLabel.stringValue = collection.databaseName
+            
+            if document.isUnsavedDocument == true {
+                collectionLabel.stringValue = "\(collection.name) (New)"
+            } else {
+                collectionLabel.stringValue = collection.name
+            }
         }
     }
     
@@ -77,9 +88,9 @@ final class JsonViewController: NSViewController {
     func save() {
         guard let content = webView?.stringByEvaluatingJavaScript(from: "editor.getValue()") else { return }
         do {
-            let updated = try SquareDocument(string: content)
+            var updated = try SquareDocument(string: content)
+            updated.isUnsavedDocument = false
             if updated["_id"] == nil {
-                
                 let result = try collectionViewController?.collection?.insert(updated)
                 print("insert?: \(String(describing: result))")
                 
@@ -87,13 +98,16 @@ final class JsonViewController: NSViewController {
                 let result = collectionViewController?.collection?.update(updated)
                 print("update?: \(String(describing: result))")
             }
+            updateStatusView(document: updated)
         } catch {
             print(error)
         }
     }
     
     func newDocument() {
-        document = SquareDocument(document: Document())
+        var unsaved = SquareDocument(document: Document())
+        unsaved.isUnsavedDocument = true
+        document = unsaved
         let _ = webView?.stringByEvaluatingJavaScript(from: "editor.setValue('')")
     }
     
