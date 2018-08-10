@@ -34,9 +34,11 @@ final class JsonViewController: NSViewController {
             documentString =  "\(documentString)".javascriptEscaped() ?? ""
             let call = "editor.setValue(\(documentString))"
             let _ = webView?.stringByEvaluatingJavaScript(from: call)
+            
             ignoreFocus = true
             let formatCall = "editor.getAction('editor.action.formatDocument').run()"
             let _ = webView?.stringByEvaluatingJavaScript(from: formatCall)
+            
             if let oldDocument = oldValue {
                 SquareStore.unregister(subscriber: self, for: oldDocument)
             }
@@ -107,6 +109,7 @@ final class JsonViewController: NSViewController {
     func newDocument() {
         if let document = collectionViewController?.newDocument() {
             self.document = document
+            AppDelegate.shared.windowController.window?.makeFirstResponder(webView)
         }
     }
     
