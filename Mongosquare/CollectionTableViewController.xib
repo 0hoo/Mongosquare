@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -45,21 +45,40 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView identifier="DocumentCellView" id="Gwk-AN-wvp">
+                                            <tableCellView identifier="DocumentCellView" id="Gwk-AN-wvp" customClass="DocumentCellView" customModule="Mongosquare" customModuleProvider="target">
                                                 <rect key="frame" x="1" y="1" width="116" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UDR-0s-Jca">
-                                                        <rect key="frame" x="0.0" y="5" width="116" height="17"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="UDR-0s-Jca">
+                                                        <rect key="frame" x="22" y="4" width="96" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="jM7-Za-KYv">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Exk-n6-C3t">
+                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="05S-11-7PA"/>
+                                                            <constraint firstAttribute="width" constant="24" id="5ib-f1-lho"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icons8-new_document" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="WjJ-jp-32P">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Exk-n6-C3t" firstAttribute="leading" secondItem="Gwk-AN-wvp" secondAttribute="leading" id="2uE-Zx-Utk"/>
+                                                    <constraint firstItem="Exk-n6-C3t" firstAttribute="centerY" secondItem="Gwk-AN-wvp" secondAttribute="centerY" id="DQ9-bz-1a4"/>
+                                                    <constraint firstItem="UDR-0s-Jca" firstAttribute="centerY" secondItem="Gwk-AN-wvp" secondAttribute="centerY" id="KHx-Mb-4t3"/>
+                                                    <constraint firstItem="UDR-0s-Jca" firstAttribute="leading" secondItem="Exk-n6-C3t" secondAttribute="trailing" id="KVo-at-7bD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="UDR-0s-Jca" secondAttribute="trailing" id="Q6h-8j-UgA"/>
+                                                </constraints>
                                                 <connections>
+                                                    <outlet property="iconButton" destination="Exk-n6-C3t" id="7Ly-cz-6jq"/>
+                                                    <outlet property="iconWidthConstraint" destination="5ib-f1-lho" id="MWl-6E-J6s"/>
                                                     <outlet property="textField" destination="UDR-0s-Jca" id="a91-oS-AsP"/>
                                                 </connections>
                                             </tableCellView>
@@ -89,4 +108,7 @@
             </subviews>
         </customView>
     </objects>
+    <resources>
+        <image name="icons8-new_document" width="32" height="32"/>
+    </resources>
 </document>

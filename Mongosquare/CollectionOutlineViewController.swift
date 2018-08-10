@@ -224,8 +224,13 @@ extension CollectionOutlineViewController: NSOutlineViewDataSource {
             view.textField?.isEditable = documentItem.key != "_id"
             view.textField?.stringValue = documentItem.key
         } else if tableColumn.identifier.rawValue == "DocumentColumnValue" {
-            view.textField?.isEditable = documentItem.key != "_id"
-            view.textField?.stringValue = documentItem.value
+            if documentItem.key == "_id" {
+                view.textField?.stringValue = documentItem.value.stripObjectId()
+                view.textField?.isEditable = false
+            } else {
+                view.textField?.stringValue = documentItem.value
+                view.textField?.isEditable = true
+            }
         } else if tableColumn.identifier.rawValue == "DocumentColumnType" {
             view.textField?.isEditable = false
             view.textField?.stringValue = documentItem.typeString

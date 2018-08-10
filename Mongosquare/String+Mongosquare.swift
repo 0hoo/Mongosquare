@@ -20,4 +20,12 @@ extension String {
         }
         return nil
     }
+    
+    func stripObjectId() -> String {
+        if self.hasPrefix("ObjectId(") {
+            let idStr = String(self[self.index(self.startIndex, offsetBy: "ObjectId(".count)...])
+            return String(idStr.dropLast().dropLast().dropFirst())
+        }
+        return self
+    }
 }

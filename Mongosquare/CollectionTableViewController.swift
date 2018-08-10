@@ -11,6 +11,11 @@ import Cocoa
 final class DocumentHeaderView: NSTableHeaderView {
 }
 
+final class DocumentCellView: NSTableCellView {
+    @IBOutlet weak var iconButton: NSButton!
+    @IBOutlet weak var iconWidthConstraint: NSLayoutConstraint!
+}
+
 final class DocumentItem {
     var document: SquareDocument
     
@@ -95,15 +100,20 @@ extension CollectionTableViewController: NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let item = items[row]
         for (key, val, _) in item.document where key == tableColumn?.identifier.rawValue {
-            if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("DocumentCellView"), owner: self) as? NSTableCellView {
+            if let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("DocumentCellView"), owner: self) as? DocumentCellView {
                 view.textField?.delegate = self
                 view.textField?.isEditable = false
                 if let subDocument = val as? SquareDocument {
                     view.textField?.stringValue = "{ \(subDocument.keys.count) fields }"
                 } else {
-                    view.textField?.stringValue = "\(val)"
-                    if key != "_id" {
+                    if key == "_id" {
+                        view.textField?.stringValue = "\(val)".stripObjectId()
+                        view.textField?.isEditable = false
+                        view.iconWidthConstraint?.constant = 24
+                    } else {
+                        view.textField?.stringValue = "\(val)"
                         view.textField?.isEditable = true
+                        view.iconWidthConstraint?.constant = 0
                     }
                 }
                 return view

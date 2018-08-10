@@ -8,6 +8,9 @@
 
 import Cocoa
 
+let kOpenedTabKeys = "kOpenedTabKeys"
+let kSelectedTabIndex = "kSelectedTabIndex"
+
 func dialogOKCancel(question: String, text: String) -> Bool {
     let alert = NSAlert()
     alert.messageText = question
@@ -91,7 +94,7 @@ final class WindowController: NSWindowController {
             collectionViewModeChanged(collectionViewModeSegmentedControl)
         }
         
-        if let openedTabKeys = UserDefaults.standard.stringArray(forKey: "kOpenedTabKeys") {
+        if let openedTabKeys = UserDefaults.standard.stringArray(forKey: kOpenedTabKeys) {
             for key in openedTabKeys {
                 if let collection = self.sidebarController.findCollection(key) {
                     let collectionViewController = CollectionViewController()
@@ -100,7 +103,7 @@ final class WindowController: NSWindowController {
                     self.tabViewController.add(viewController: collectionViewController)
                 }
             }
-            let selectedTabIndex = UserDefaults.standard.integer(forKey: "kSelectedTabIndex")
+            let selectedTabIndex = UserDefaults.standard.integer(forKey: kSelectedTabIndex)
             self.tabViewController.tabView?.selectTabViewItem(at: selectedTabIndex)
         }
         
