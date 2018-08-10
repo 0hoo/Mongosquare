@@ -82,11 +82,25 @@ final class OutlineViewController: NSViewController {
         reloadItems()
     }
     
+    func findCollection(_ key: String) -> SquareCollection? {
+        var collectionToReturn: SquareCollection? = nil
+        databases.forEach { db in
+            let collections = db.collections
+            for collection in collections {
+                if collection.subscriptionKey == key {
+                    collectionToReturn = collection
+                }
+            }
+        }
+        return collectionToReturn
+    }
+    
     func reloadItems() {
         
         items.removeAll()
         let local = OutlineItem(title: "Local", isHeader: true, isDatabase: false, count: databases.count)
         items.append(local)
+        
         databases.forEach { db in
             let collections = db.collections
             let databaseItem = OutlineItem(title: db.name, isHeader: false, isDatabase: true)

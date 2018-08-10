@@ -21,5 +21,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
+        if let tabView = windowController.tabViewController.tabView {
+            let viewControllers = (0..<tabView.numberOfTabViewItems).compactMap { tabView.tabViewItem(at: $0 ).viewController as? CollectionViewController }
+            let keys = viewControllers.compactMap { $0.collection?.subscriptionKey }
+            UserDefaults.standard.set(keys, forKey: "kOpenedTabKeys")
+            if let selectedTabViewItem = tabView.selectedTabViewItem {
+                UserDefaults.standard.set(tabView.indexOfTabViewItem(selectedTabViewItem), forKey: "kSelectedTabIndex")
+            }
+        }
     }
 }

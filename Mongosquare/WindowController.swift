@@ -75,7 +75,7 @@ final class WindowController: NSWindowController {
     func didSelectDocument(collectionViewController: CollectionViewController?, document: SquareDocument) {
         jsonViewController.document = document
     }
-    
+        
     override func windowDidLoad() {
         super.windowDidLoad()
 
@@ -89,6 +89,19 @@ final class WindowController: NSWindowController {
         
         if let collectionViewModeSegmentedControl = collectionViewModeSegmentedControl {
             collectionViewModeChanged(collectionViewModeSegmentedControl)
+        }
+        
+        if let openedTabKeys = UserDefaults.standard.stringArray(forKey: "kOpenedTabKeys") {
+            for key in openedTabKeys {
+                if let collection = self.sidebarController.findCollection(key) {
+                    let collectionViewController = CollectionViewController()
+                    collectionViewController.collection = collection
+                    collectionViewController.windowController = self
+                    self.tabViewController.add(viewController: collectionViewController)
+                }
+            }
+            let selectedTabIndex = UserDefaults.standard.integer(forKey: "kSelectedTabIndex")
+            self.tabViewController.tabView?.selectTabViewItem(at: selectedTabIndex)
         }
         
         //showConnectionWindow()
