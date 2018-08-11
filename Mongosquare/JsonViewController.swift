@@ -108,6 +108,7 @@ final class JsonViewController: NSViewController {
     
     func newDocument() {
         if let document = collectionViewController?.newDocument() {
+            collectionViewController?.deselectAll()
             self.document = document
             AppDelegate.shared.windowController.window?.makeFirstResponder(webView)
         }

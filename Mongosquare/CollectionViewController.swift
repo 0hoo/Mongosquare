@@ -28,6 +28,11 @@ final class CollectionViewController: NSViewController {
     
     @IBOutlet var collectionView: NSView?
     
+    func deselectAll() {
+        outlineViewController?.outlineView?.deselectAll(self)
+        tableViewController?.tableView?.deselectAll(self)
+    }
+    
     var collection: SquareCollection? {
         didSet {
             guard let collection = collection else { return }
