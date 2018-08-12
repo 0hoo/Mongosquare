@@ -8,8 +8,11 @@
 
 import Cocoa
 
-let kOpenedTabKeys = "kOpenedTabKeys"
-let kSelectedTabIndex = "kSelectedTabIndex"
+class UserDefaultKey {
+    static let openedTabKeys = "openedTabKeys"
+    static let selectedTabIndex = "selectedTabIndex"
+    static let queryLimit = "queryLimit"
+}
 
 func dialogOKCancel(question: String, text: String) -> Bool {
     let alert = NSAlert()
@@ -94,7 +97,7 @@ final class WindowController: NSWindowController {
             collectionViewModeChanged(collectionViewModeSegmentedControl)
         }
         
-        if let openedTabKeys = UserDefaults.standard.stringArray(forKey: kOpenedTabKeys) {
+        if let openedTabKeys = UserDefaults.standard.stringArray(forKey: UserDefaultKey.openedTabKeys) {
             for key in openedTabKeys {
                 if let collection = self.sidebarController.findCollection(key) {
                     let collectionViewController = CollectionViewController()
@@ -103,7 +106,7 @@ final class WindowController: NSWindowController {
                     self.tabViewController.add(viewController: collectionViewController)
                 }
             }
-            let selectedTabIndex = UserDefaults.standard.integer(forKey: kSelectedTabIndex)
+            let selectedTabIndex = UserDefaults.standard.integer(forKey: UserDefaultKey.selectedTabIndex)
             self.tabViewController.tabView?.selectTabViewItem(at: selectedTabIndex)
         }
         
@@ -139,8 +142,30 @@ final class WindowController: NSWindowController {
     }
     
     @IBAction func skipLimitedChanged(_ sender: NSSegmentedControl) {
+        guard let window = self.window else { return }
         if sender.selectedSegment == 0 {
             self.tabViewController.activeCollectionViewController?.previous()
+        } else if sender.selectedSegment == 1 {
+            let alert = NSAlert()
+            alert.addButton(withTitle: "OK")
+            alert.addButton(withTitle: "Cancel")
+            alert.messageText = "Change Limit count"
+            
+            let input = NSTextField(frame: CGRect(x: 0, y: 0, width: 360, height: 24))
+            input.placeholderString = "Limit"
+            alert.accessoryView = input
+            alert.beginSheetModal(for: window) { (response) in
+                if response == .alertFirstButtonReturn {
+                    if var limit = Int(input.stringValue) {
+                        if limit == 0 {
+                            limit = 50
+                        }
+                        UserDefaults.standard.set(limit, forKey: UserDefaultKey.queryLimit)
+                        self.tabViewController.activeCollectionViewController?.skipLimit.limit = limit
+                        self.tabViewController.activeCollectionViewController?.reload()
+                    }
+                }
+            }
         } else if sender.selectedSegment == 2 {
             self.tabViewController.activeCollectionViewController?.next()
         }

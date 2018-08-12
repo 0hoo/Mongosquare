@@ -47,9 +47,7 @@ final class CollectionViewController: NSViewController {
     
     var queryOption: QueryOption = QueryOption() {
         didSet {
-            outlineViewController?.reload(fieldsUpdated: true)
-            tableViewController?.reload(fieldsUpdated: true)
-            updateWindowStatusBar()
+            reload()
         }
     }
     
@@ -149,9 +147,22 @@ final class CollectionViewController: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
+
+        var limitChanged = false
+        let limit = UserDefaults.standard.integer(forKey: UserDefaultKey.queryLimit)
+        limitChanged = skipLimit.limit != limit
+        if limit > 0 {
+            skipLimit.limit = limit
+        } else {
+            skipLimit.limit = 50
+        }
         
         updateWindowStatusBar()
         switchOutlineTableIfNeed()
+        
+        if limitChanged {
+            reload()
+        }
     }
     
     private func switchOutlineTableIfNeed() {
@@ -174,6 +185,7 @@ final class CollectionViewController: NSViewController {
     
     func reload(fieldsUpdated: Bool = false) {
         activeViewController?.reload(fieldsUpdated: fieldsUpdated)
+        updateWindowStatusBar()
     }
     
     func previous() {
