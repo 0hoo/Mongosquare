@@ -69,25 +69,12 @@
                             <action selector="skipLimitedChanged:" target="-2" id="q88-qg-tV7"/>
                         </connections>
                     </segmentedControl>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ns1-fY-3NG">
-                        <rect key="frame" x="2" y="-2" width="70" height="33"/>
-                        <buttonCell key="cell" type="push" title="Logs" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kbC-Uh-mV6">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="openLogs:" target="-1" id="7NR-fx-vbp"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="R1q-Sz-GAb" firstAttribute="top" secondItem="F52-Ri-S7a" secondAttribute="bottom" constant="5" id="3KH-pH-hw1"/>
-                    <constraint firstItem="ns1-fY-3NG" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="HqZ-UW-BuM"/>
                     <constraint firstAttribute="trailing" secondItem="F52-Ri-S7a" secondAttribute="trailing" id="QAK-vX-y8o"/>
                     <constraint firstAttribute="bottom" secondItem="1ps-Gz-56W" secondAttribute="bottom" constant="5" id="SLW-og-26a"/>
-                    <constraint firstItem="ns1-fY-3NG" firstAttribute="top" secondItem="F52-Ri-S7a" secondAttribute="bottom" constant="5" id="ZSj-j7-HVq"/>
                     <constraint firstItem="R1q-Sz-GAb" firstAttribute="leading" secondItem="E49-Hy-Ei3" secondAttribute="trailing" constant="8" id="iwx-Ex-4Tr"/>
-                    <constraint firstAttribute="bottom" secondItem="ns1-fY-3NG" secondAttribute="bottom" constant="5" id="n1r-gM-Bk9"/>
                     <constraint firstAttribute="bottom" secondItem="R1q-Sz-GAb" secondAttribute="bottom" constant="5" id="pff-PY-rQr"/>
                     <constraint firstItem="F52-Ri-S7a" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="qTc-P3-iSb"/>
                     <constraint firstAttribute="trailing" secondItem="1ps-Gz-56W" secondAttribute="trailing" constant="14" id="s0u-uR-tFC"/>
@@ -132,7 +119,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="78BCEEE8-3B55-4065-8CB5-408E1C2A4C65" label="Log" paletteLabel="Log" tag="-1" image="icons8-edit_file" id="FAa-g6-l8U">
                         <connections>
-                            <action selector="sample:" target="-2" id="jTV-ol-iwh"/>
+                            <action selector="openLogs:" target="-1" id="ykO-Mr-EzR"/>
                         </connections>
                     </toolbarItem>
                 </allowedToolbarItems>

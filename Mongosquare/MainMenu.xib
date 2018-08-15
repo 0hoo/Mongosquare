@@ -656,6 +656,12 @@
                                     <action selector="closeTab:" target="-1" id="mQO-g1-THp"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Show Logs" id="Gn4-d7-UxW">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openLogs:" target="-1" id="JZC-CH-k4z"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="7i1-j2-Nmx"/>
                             <menuItem title="Switch Outline-Table View" keyEquivalent="l" id="q5i-cE-mqN">
                                 <connections>
