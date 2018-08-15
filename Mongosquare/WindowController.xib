@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="WindowController" customModule="Mongosquare" customModuleProvider="target">
             <connections>
                 <outlet property="collectionViewModeSegmentedControl" destination="1ps-Gz-56W" id="p4I-NP-JRJ"/>
+                <outlet property="logTextView" destination="b8K-Rg-L1p" id="pc7-I9-qqY"/>
+                <outlet property="logWindow" destination="4BA-kj-pjN" id="Kpx-Ta-Tao"/>
                 <outlet property="skipLimitSegmentedControl" destination="R1q-Sz-GAb" id="6H3-y3-cpK"/>
                 <outlet property="splitWrapperView" destination="F52-Ri-S7a" id="iaD-J5-ezI"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -67,12 +69,25 @@
                             <action selector="skipLimitedChanged:" target="-2" id="q88-qg-tV7"/>
                         </connections>
                     </segmentedControl>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ns1-fY-3NG">
+                        <rect key="frame" x="2" y="-2" width="70" height="33"/>
+                        <buttonCell key="cell" type="push" title="Logs" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kbC-Uh-mV6">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openLogs:" target="-1" id="7NR-fx-vbp"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="R1q-Sz-GAb" firstAttribute="top" secondItem="F52-Ri-S7a" secondAttribute="bottom" constant="5" id="3KH-pH-hw1"/>
+                    <constraint firstItem="ns1-fY-3NG" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="HqZ-UW-BuM"/>
                     <constraint firstAttribute="trailing" secondItem="F52-Ri-S7a" secondAttribute="trailing" id="QAK-vX-y8o"/>
                     <constraint firstAttribute="bottom" secondItem="1ps-Gz-56W" secondAttribute="bottom" constant="5" id="SLW-og-26a"/>
+                    <constraint firstItem="ns1-fY-3NG" firstAttribute="top" secondItem="F52-Ri-S7a" secondAttribute="bottom" constant="5" id="ZSj-j7-HVq"/>
                     <constraint firstItem="R1q-Sz-GAb" firstAttribute="leading" secondItem="E49-Hy-Ei3" secondAttribute="trailing" constant="8" id="iwx-Ex-4Tr"/>
+                    <constraint firstAttribute="bottom" secondItem="ns1-fY-3NG" secondAttribute="bottom" constant="5" id="n1r-gM-Bk9"/>
                     <constraint firstAttribute="bottom" secondItem="R1q-Sz-GAb" secondAttribute="bottom" constant="5" id="pff-PY-rQr"/>
                     <constraint firstItem="F52-Ri-S7a" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="qTc-P3-iSb"/>
                     <constraint firstAttribute="trailing" secondItem="1ps-Gz-56W" secondAttribute="trailing" constant="14" id="s0u-uR-tFC"/>
@@ -136,6 +151,46 @@
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
             <point key="canvasLocation" x="363" y="163.5"/>
+        </window>
+        <window title="Logs" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="4BA-kj-pjN">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="163" y="199" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <view key="contentView" id="6wT-Xu-1le">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwf-Nv-EKv">
+                        <rect key="frame" x="-1" y="-1" width="482" height="272"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <clipView key="contentView" ambiguous="YES" id="HV0-wX-2OA">
+                            <rect key="frame" x="0.0" y="0.0" width="482" height="272"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="b8K-Rg-L1p">
+                                    <rect key="frame" x="0.0" y="0.0" width="482" height="272"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="482" height="272"/>
+                                    <size key="maxSize" width="482" height="10000000"/>
+                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="m4n-MJ-QdF">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="4Wc-ry-2Fb">
+                            <rect key="frame" x="466" y="0.0" width="16" height="272"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="193" y="685"/>
         </window>
     </objects>
     <resources>

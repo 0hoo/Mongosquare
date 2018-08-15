@@ -30,6 +30,8 @@ final class WindowController: NSWindowController {
     @IBOutlet weak var splitWrapperView: NSView?
     @IBOutlet weak var collectionViewModeSegmentedControl: NSSegmentedControl?
     @IBOutlet weak var skipLimitSegmentedControl: NSSegmentedControl?
+    @IBOutlet weak var logWindow: NSWindow?
+    @IBOutlet weak var logTextView: NSTextView?
     
     var queryWindowController: QueryWindowController?
     var connectionWindowController: ConnectionWindowController?
@@ -111,6 +113,10 @@ final class WindowController: NSWindowController {
         }
         
         //showConnectionWindow()
+    }
+    
+    @IBAction func openLogs(_ sender: Any?) {
+        logWindow?.makeKeyAndOrderFront(sender)
     }
     
     @IBAction func switchOutlineTableView(_ sender: Any?) {
