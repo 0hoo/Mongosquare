@@ -57,7 +57,7 @@ final class SquareConnection: Codable, SquareModel {
         
         if let clientSettings = try? ClientSettings(host) {
             self.server = try? Server(clientSettings)
-            self.server?.logger = PrintLogger()
+            self.server?.logger = AppDelegate.shared.windowController.makeLogger()
         }
     }
     
