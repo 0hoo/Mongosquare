@@ -94,7 +94,7 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="JSX-Qc-rkO"/>
                     <toolbarItem implicitItemIdentifier="1E4CCF52-3AF4-492B-998F-C642E3FFC8AB" label="Refresh" paletteLabel="Refresh" tag="-1" image="icons8-data_backup" id="1l3-wg-EMR">
                         <connections>
-                            <action selector="sample:" target="-2" id="fju-Oh-xnb"/>
+                            <action selector="refreshCollection:" target="-1" id="pKx-ha-2J1"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="368078EF-A064-48EE-9AE3-B912540B51FF" label="System" paletteLabel="System" tag="-1" image="icons8-system_information" id="h0A-We-C8b">

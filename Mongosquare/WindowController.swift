@@ -199,6 +199,10 @@ final class WindowController: NSWindowController {
         
     }
     
+    @IBAction func refreshCollection(_ sender: Any?) {
+        self.tabViewController.activeCollectionViewController?.reload()
+    }
+    
     @IBAction func saveDocument(_ sender: Any?) {
         self.jsonViewController.save()
     }
