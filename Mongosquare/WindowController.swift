@@ -24,54 +24,6 @@ func dialogOKCancel(question: String, text: String) -> Bool {
     return alert.runModal() == .alertFirstButtonReturn
 }
 
-final class SquareLogger: Logger {
-    var usePrintLogging = true
-    
-    public init() {}
-    
-    public init(textView: NSTextView?) {
-        self.textView = textView
-    }
-    
-    var textView: NSTextView?
-    
-    func printLog(_ message: String) {
-        if usePrintLogging {
-            print(message)
-        }
-    }
-    
-    public func verbose(_ message: String) {
-        printLog(message)
-        textView?.append(message + "\n")
-    }
-    
-    public func debug(_ message: String) {
-        printLog(message)
-        textView?.append(message + "\n")
-    }
-    
-    public func info(_ message: String) {
-        printLog(message)
-        textView?.append(message + "\n")
-    }
-    
-    public func warning(_ message: String) {
-        printLog(message)
-        textView?.append(message + "\n")
-    }
-    
-    public func error(_ message: String) {
-        printLog(message)
-        textView?.append(message + "\n")
-    }
-    
-    public func fatal(_ message: String) {
-        printLog(message)
-        textView?.append(message + "\n")
-    }
-}
-
 final class WindowController: NSWindowController {
     override var windowNibName: NSNib.Name? { return NSNib.Name("WindowController") }
     

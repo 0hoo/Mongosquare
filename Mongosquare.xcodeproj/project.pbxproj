@@ -164,6 +164,7 @@
 		C5D8B1FD1F5716B500AE0E25 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8B1FB1F5716B500AE0E25 /* WindowController.swift */; };
 		C5D8B1FE1F5716B500AE0E25 /* WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D8B1FC1F5716B500AE0E25 /* WindowController.xib */; };
 		C5E2611A2124174D0007A606 /* NSTextView+Mongosquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E261192124174D0007A606 /* NSTextView+Mongosquare.swift */; };
+		C5E2611C21241A380007A606 /* SquareLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E2611B21241A380007A606 /* SquareLogger.swift */; };
 		C5EDC9291F5DBDEE00C46F93 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EDC9271F5DBDEE00C46F93 /* TabViewController.swift */; };
 		C5EDC92A1F5DBDEE00C46F93 /* TabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5EDC9281F5DBDEE00C46F93 /* TabViewController.xib */; };
 		CE2B2D37203689FA00A5392F /* SquareDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B2D36203689FA00A5392F /* SquareDatabase.swift */; };
@@ -580,6 +581,7 @@
 		C5D8B1FB1F5716B500AE0E25 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		C5D8B1FC1F5716B500AE0E25 /* WindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindowController.xib; sourceTree = "<group>"; };
 		C5E261192124174D0007A606 /* NSTextView+Mongosquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Mongosquare.swift"; sourceTree = "<group>"; };
+		C5E2611B21241A380007A606 /* SquareLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareLogger.swift; sourceTree = "<group>"; };
 		C5EDC9271F5DBDEE00C46F93 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		C5EDC9281F5DBDEE00C46F93 /* TabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabViewController.xib; sourceTree = "<group>"; };
 		CE2B2D36203689FA00A5392F /* SquareDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SquareDatabase.swift; path = Models/SquareDatabase.swift; sourceTree = "<group>"; };
@@ -1058,6 +1060,7 @@
 				C5DD77A71F6FBF5600EB8523 /* Library */,
 				C51E420A1F698E82009C8ED5 /* Extensions */,
 				C5D8B1EA1F5715DB00AE0E25 /* AppDelegate.swift */,
+				C5E2611B21241A380007A606 /* SquareLogger.swift */,
 				C5BF0A171F584DCC00C95EA8 /* OutlineViewController.swift */,
 				C5BF0A181F584DCC00C95EA8 /* OutlineViewController.xib */,
 				C5298EFB1F5BAA6800908D4C /* CollectionViewController.swift */,
@@ -1885,6 +1888,7 @@
 				C5233C821F7A56B400B32B16 /* MMTabBarController.m in Sources */,
 				C5233C831F7A56B400B32B16 /* MMTabBarView.m in Sources */,
 				C5233C841F7A56B400B32B16 /* MMTabDragAssistant.m in Sources */,
+				C5E2611C21241A380007A606 /* SquareLogger.swift in Sources */,
 				C5233C851F7A56B400B32B16 /* MMTabDragView.m in Sources */,
 				C5233C861F7A56B400B32B16 /* MMTabDragWindow.m in Sources */,
 				C5233C871F7A56B400B32B16 /* MMTabDragWindowController.m in Sources */,
