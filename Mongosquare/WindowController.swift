@@ -139,15 +139,6 @@ final class WindowController: NSWindowController {
     }
     
     @IBAction func collectionViewModeChanged(_ sender: NSSegmentedControl) {
-//        let unselected = sender.selectedSegment == 0 ? 1 : 0
-//
-//        if let image = sender.image(forSegment: unselected) {
-//            sender.setImage(image.tinted(color: .darkGray), forSegment: unselected)
-//        }
-//        if let image = sender.image(forSegment: sender.selectedSegment) {
-//            sender.setImage(image.tinted(color: .white), forSegment: sender.selectedSegment)
-//        }
-        
         if sender.selectedSegment == 0 {
             self.tabViewController.activeCollectionViewController?.showOutlineViewController()
         } else {

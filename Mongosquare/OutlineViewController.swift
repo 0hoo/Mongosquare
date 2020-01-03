@@ -72,31 +72,17 @@ final class OutlineViewController: NSViewController {
         reloadDatabases()
     }
     
-    func reloadDatabases() {
+    private func reloadDatabases() {
         guard connection.reloadDatabases() else {
             print("reloading DB failed")
             return 
         }
         databases = connection.databases
         
-        reloadItems()
+        updateOutlineView()
     }
     
-    func findCollection(_ key: String) -> SquareCollection? {
-        var collectionToReturn: SquareCollection? = nil
-        databases.forEach { db in
-            let collections = db.collections
-            for collection in collections {
-                if collection.subscriptionKey == key {
-                    collectionToReturn = collection
-                }
-            }
-        }
-        return collectionToReturn
-    }
-    
-    func reloadItems() {
-        
+    private func updateOutlineView() {
         items.removeAll()
         let local = OutlineItem(title: "Local", isHeader: true, isDatabase: false, count: databases.count)
         items.append(local)
@@ -150,8 +136,20 @@ final class OutlineViewController: NSViewController {
                     break
                 }
             }
-            
         } while stack.count > 0
+    }
+    
+    func findCollection(_ key: String) -> SquareCollection? {
+        var collectionToReturn: SquareCollection? = nil
+        databases.forEach { db in
+            let collections = db.collections
+            for collection in collections {
+                if collection.subscriptionKey == key {
+                    collectionToReturn = collection
+                }
+            }
+        }
+        return collectionToReturn
     }
 }
 
@@ -169,7 +167,7 @@ extension OutlineViewController {
         if response == .alertFirstButtonReturn {
             if connection.addDatabase(name: input.stringValue) {
                 reloadDatabases()
-                reloadItems()
+                updateOutlineView()
             } else {
                 print("db add failed")
             }
@@ -193,7 +191,7 @@ extension OutlineViewController {
         if response == .alertFirstButtonReturn {
             let newCollection = database[input.stringValue]
             unsavedCollections.append(newCollection)
-            reloadItems()
+            updateOutlineView()
         }
     }
     
