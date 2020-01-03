@@ -7,8 +7,7 @@
 //
 
 import Cocoa
-import ExtendedJSON
-import Cheetah
+import MongoKitten
 
 protocol DocumentSkippable {
     func reload(fieldsUpdated: Bool)
@@ -54,31 +53,33 @@ final class CollectionViewController: NSViewController {
     var documents: [SquareDocument] {
         guard let collection = collection else { return [] }
        
-        return collection.find(skipping: skipLimit.skip, limitedTo: skipLimit.limit)
+        //return collection.find(skipping: skipLimit.skip, limitedTo: skipLimit.limit)
+        return collection.find()
     }
     
     var queriedDocuments: [SquareDocument] {
         do {
-            var projection: Projection?
-            if queryOption.projectingFields.count > 0 {
-                projection = Projection(Document(dictionaryElements: queryOption.projectingFields.map {
-                    return ($0, true)
-                }).flattened())
-            }
-            
-            var sort: Sort?
-            if queryOption.sortingFields.count > 0 {
-                sort = Sort(Document(dictionaryElements: queryOption.sortingFields.map {
-                    return ($0.name, $0.ordering)
-                }))
-            }
-            
-            var query: Query? = nil
-            if let queryString = queryOption.query, !queryString.isEmpty {
-                query = Query(Document(try JSONObject(from: queryString)))
-            }
-            
-            return collection?.find(query, sortedBy: sort, projecting: projection, skipping: skipLimit.skip, limitedTo: skipLimit.limit) ?? []
+            return collection?.find() ?? []
+//            var projection: Projection?
+//            if queryOption.projectingFields.count > 0 {
+//                projection = Projection(Document(dictionaryElements: queryOption.projectingFields.map {
+//                    return ($0, true)
+//                }).flattened())
+//            }
+//
+//            var sort: Sort?
+//            if queryOption.sortingFields.count > 0 {
+//                sort = Sort(Document(dictionaryElements: queryOption.sortingFields.map {
+//                    return ($0.name, $0.ordering)
+//                }))
+//            }
+//
+//            var query: Query? = nil
+//            if let queryString = queryOption.query, !queryString.isEmpty {
+//                query = Query(Document(try JSONObject(from: queryString)))
+//            }
+//
+//            return collection?.find(query, sortedBy: sort, projecting: projection, skipping: skipLimit.skip, limitedTo: skipLimit.limit) ?? []
         } catch {
             print(error)
             return []
@@ -280,18 +281,18 @@ final class CollectionViewController: NSViewController {
     }
     
     func nullToValue() {
-        if var document = outlineViewController?.selectedDocument, activeViewController == outlineViewController {
-            if let key = outlineViewController?.selectedKey {
-                document[key] = NSNull()
-                let updated = collection?.update(document)
-                print("nullToValue: \(String(describing: updated))")
-                reload()
-            }
-        }
+//        if var document = outlineViewController?.selectedDocument, activeViewController == outlineViewController {
+//            if let key = outlineViewController?.selectedKey {
+//                document[key] = NSNull()
+//                let updated = collection?.update(document)
+//                print("nullToValue: \(String(describing: updated))")
+//                reload()
+//            }
+//        }
     }
     
     private func delete(document: SquareDocument) {
-        let _ = try? collection?.collection.remove(Query(document.document), limitedTo: 1)
+        //let _ = try? collection?.collection.remove(Query(document.document), limitedTo: 1)
         reload()
         AppDelegate.shared.windowController.jsonViewController.documentDeleted()
     }

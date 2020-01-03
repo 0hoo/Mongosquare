@@ -8,7 +8,7 @@
 
 import Cocoa
 
-final class SquareLogger: Logger {
+final class SquareLogger { //: Logger {
     var usePrintLogging = true
     
     public init() {}

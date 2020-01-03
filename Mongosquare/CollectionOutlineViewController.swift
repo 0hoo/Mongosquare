@@ -7,8 +7,6 @@
 //
 
 import Cocoa
-import ExtendedJSON
-import Cheetah
 import BSON
 
 final class DocumentOutlineItem {
@@ -94,19 +92,19 @@ final class CollectionOutlineViewController: NSViewController {
     }
     
     @objc func documentUpdated(_ notification: Notification) {
-        guard let document = notification.object as? SquareDocument else { return }
-        guard let documentId = ObjectId(document["_id"] as? Primitive) else { return }
-        print("documentUpdated:\(document)")
-        for item in items {
-            if let oldId = ObjectId(item.document["_id"] as? Primitive), oldId == documentId {
-                //item.document = document
-            }
-            for fieldItem in item.fields {
-                if let oldId = ObjectId(item.document["_id"] as? Primitive), oldId == documentId {
-                    //fieldItem.document = document
-                }
-            }
-        }
+//        guard let document = notification.object as? SquareDocument else { return }
+//        guard let documentId = ObjectId(document["_id"] as? Primitive) else { return }
+//        print("documentUpdated:\(document)")
+//        for item in items {
+//            if let oldId = ObjectId(item.document["_id"] as? Primitive), oldId == documentId {
+//                //item.document = document
+//            }
+//            for fieldItem in item.fields {
+//                if let oldId = ObjectId(item.document["_id"] as? Primitive), oldId == documentId {
+//                    //fieldItem.document = document
+//                }
+//            }
+//        }
     }
 }
 

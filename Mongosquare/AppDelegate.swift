@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MongoKitten
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
@@ -15,7 +16,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     let windowController = WindowController()
-
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         windowController.showWindow(nil)
     }

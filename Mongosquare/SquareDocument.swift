@@ -7,15 +7,18 @@
 //
 
 import Foundation
-import Cheetah
+import MongoKitten
+import BSON
+import ExtendedJSON
 
-typealias DocumentIndexIterationElement = (key: String, value: Any, type: SquareDocument.ElementType?)
+
+typealias DocumentIndexIterationElement = (key: String, value: Primitive?, type: SquareDocument.ElementType?)
 
 struct SquareDocument: Swift.Collection, SquareModel {
     
     static let didUpdate = Notification.Name(rawValue: "SquareDocument.didUpdate")
     
-    enum ElementType: Byte, CustomStringConvertible {
+    enum ElementType: UInt8, CustomStringConvertible {
         case double = 0x01
         case string = 0x02
         case document = 0x03
@@ -85,50 +88,57 @@ struct SquareDocument: Swift.Collection, SquareModel {
         self.document = document
     }
     
-    init(string: String) throws {
-        do {
-            self.init(document: Document(try JSONObject(from: string)))
-        } catch {
-            print(error)
-            throw error 
-        }
-    }
+//    init(string: String) throws {
+//        do {
+//            self.init(document: Document(try JSONObject(from: string)))
+//        } catch {
+//            print(error)
+//            throw error 
+//        }
+//    }
     
     func type(at key: Int) -> ElementType? {
-        if let type = document.type(at: key) {
+        if let type = document.typeIdentifier(at: key) {
             return ElementType(rawValue: type.rawValue)
         }
+        
         return nil
     }
     
     func type(at key: String) -> ElementType? {
-        if let type = document.type(at: key) {
+        if let type = document.typeIdentifier(of: key) {
             return ElementType(rawValue: type.rawValue)
         }
         return nil
     }
     
-    subscript(key: String) -> Any? {
+    subscript(key: String) -> Primitive? {
         get {
-            let element: Any? = document[key.components(separatedBy: ".")]
-            if let element = element as? Document {
-                return SquareDocument(document: element)
-            }
-            return element
+            return document[key]
         }
         set {
-            if let value = newValue as? Primitive {
-                document[key.components(separatedBy: ".")] = value
-            }
+            document[key] = newValue
         }
+        
+//        get {
+//            let element: Any? = document[key.components(separatedBy: ".")]
+//            if let element = element as? Document {
+//                return SquareDocument(document: element)
+//            }
+//            return element
+//        }
+//        set {
+//            if let value = newValue as? Primitive {
+//                document[key.components(separatedBy: ".")] = value
+//            }
+//        }
     }
     
     func makeIterator() -> AnyIterator<DocumentIndexIterationElement> {
-        let documentIterator = document.makeIterator()
+        var documentIterator = document.makeIterator()
         return AnyIterator {
-            guard let doc = documentIterator.next() else { return nil }
-            
-            return DocumentIndexIterationElement(key: doc.key, value: doc.value, type: self.type(at: doc.key))
+            guard let (key, primitive) = documentIterator.next() else { return nil }
+            return DocumentIndexIterationElement(key: key, value: primitive, type: self.type(at: key))
         }
     }
     
@@ -180,22 +190,24 @@ struct SquareDocument: Swift.Collection, SquareModel {
     }
     
     subscript(position: DocumentIndex) -> DocumentIndexIterationElement {
-        let element = document[position]
-        var elementValue: Any = element.value
-        if let value = elementValue as? Document {
-            elementValue = SquareDocument(document: value)
-        }
+        let (key, primitive) = document[position]
         
-        return DocumentIndexIterationElement(key: element.key, value: elementValue, type: type(at: element.key))
+//        var elementValue: Any = element.value
+//        if let value = elementValue as? Document {
+//            elementValue = SquareDocument(document: value)
+//        }
+        
+        return DocumentIndexIterationElement(key: key, value: primitive, type: type(at: key))
     }
 }
 
 extension SquareDocument: CustomDebugStringConvertible {
     var debugDescription: String {
-        let json = document.makeExtendedJSON()
-        if let object = json as? JSONObject {
-            return String(bytes: object.serialize(bringIDTop: true), encoding: .utf8) ?? ""
-        }
-        return json.serializedString()
+        return ""
+//        let json = document.makeExtendedJSON()
+//        if let object = json as? JSONObject {
+//            return String(bytes: object.serialize(bringIDTop: true), encoding: .utf8) ?? ""
+//        }
+//        return json.serializedString()
     }
 }

@@ -7,22 +7,27 @@
 //
 
 import Foundation
+import MongoKitten
 
 struct SquareDatabase: SquareModel {
     var saved: Bool = false
     var collections: [SquareCollection] = []
-    let database: Database
+    let database: MongoDatabase
     let name: String
     
     var subscriptionKey: String {
-        return "\(database.server.hostname)/\(name)"
+        return database.name
+        //return "\(database.server.hostname)/\(name)"
     }
     
-    init(database: Database, saved: Bool = true) {
+    init(database: MongoDatabase, saved: Bool = true) {
         self.name = database.name
-        self.database = database 
-        let kittenCollections = (try? Array(database.listCollections())) ?? []
-        self.collections = kittenCollections.map { SquareCollection(collection: $0) }
+        self.database = database
+        
+        //let kittenCollections = (try? Array(database.listCollections())) ?? []
+        if let mongoCollections = try? database.listCollections().wait() {
+            self.collections = mongoCollections.map { SquareCollection(collection: $0) }
+        }
         self.saved = saved
     }
     

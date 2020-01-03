@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -154,6 +154,7 @@
 		C584D936208703B700CAD61A /* NSOutlineView+Mongosquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C584D935208703B700CAD61A /* NSOutlineView+Mongosquare.swift */; };
 		C59ED1611F89C3FA00EA1F26 /* QueryWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59ED15F1F89C3FA00EA1F26 /* QueryWindowController.swift */; };
 		C59ED1621F89C3FA00EA1F26 /* QueryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59ED1601F89C3FA00EA1F26 /* QueryWindowController.xib */; };
+		C5B0EB2023BF072F005A49CC /* MongoKitten in Frameworks */ = {isa = PBXBuildFile; productRef = C5B0EB1F23BF072F005A49CC /* MongoKitten */; };
 		C5BF0A191F584DCC00C95EA8 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF0A171F584DCC00C95EA8 /* OutlineViewController.swift */; };
 		C5BF0A1A1F584DCC00C95EA8 /* OutlineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5BF0A181F584DCC00C95EA8 /* OutlineViewController.xib */; };
 		C5BF0A211F584F2E00C95EA8 /* CollectionOutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF0A1F1F584F2E00C95EA8 /* CollectionOutlineViewController.swift */; };
@@ -169,129 +170,6 @@
 		C5EDC92A1F5DBDEE00C46F93 /* TabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5EDC9281F5DBDEE00C46F93 /* TabViewController.xib */; };
 		CE2B2D37203689FA00A5392F /* SquareDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B2D36203689FA00A5392F /* SquareDatabase.swift */; };
 		CE50D84520563F9F003BA8F9 /* SquareDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50D84420563F9F003BA8F9 /* SquareDocument.swift */; };
-		CE53438B20CBFD0F0027DAA1 /* BSON.h in Headers */ = {isa = PBXBuildFile; fileRef = CE53438920CBFD0F0027DAA1 /* BSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE53438E20CBFD0F0027DAA1 /* BSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53438720CBFD0F0027DAA1 /* BSON.framework */; };
-		CE53438F20CBFD0F0027DAA1 /* BSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE53438720CBFD0F0027DAA1 /* BSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CE5343AA20CBFD4F0027DAA1 /* Optional+BSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439320CBFD4C0027DAA1 /* Optional+BSON.swift */; };
-		CE5343AB20CBFD4F0027DAA1 /* Document+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439420CBFD4C0027DAA1 /* Document+Validation.swift */; };
-		CE5343AC20CBFD4F0027DAA1 /* DocumentSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439520CBFD4C0027DAA1 /* DocumentSequence.swift */; };
-		CE5343AE20CBFD4F0027DAA1 /* Document+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439720CBFD4C0027DAA1 /* Document+Conversion.swift */; };
-		CE5343AF20CBFD4F0027DAA1 /* ObjectId.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439820CBFD4C0027DAA1 /* ObjectId.swift */; };
-		CE5343B020CBFD4F0027DAA1 /* Document+Flattening.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439920CBFD4D0027DAA1 /* Document+Flattening.swift */; };
-		CE5343B120CBFD4F0027DAA1 /* Document+Subscripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439A20CBFD4D0027DAA1 /* Document+Subscripts.swift */; };
-		CE5343B220CBFD4F0027DAA1 /* EmbeddedDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439B20CBFD4D0027DAA1 /* EmbeddedDocuments.swift */; };
-		CE5343B320CBFD4F0027DAA1 /* Document+ParsingSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439C20CBFD4D0027DAA1 /* Document+ParsingSupport.swift */; };
-		CE5343B420CBFD4F0027DAA1 /* Interpreting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439D20CBFD4D0027DAA1 /* Interpreting.swift */; };
-		CE5343B520CBFD4F0027DAA1 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439E20CBFD4D0027DAA1 /* RegularExpression.swift */; };
-		CE5343B620CBFD4F0027DAA1 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53439F20CBFD4D0027DAA1 /* Codable.swift */; };
-		CE5343B720CBFD4F0027DAA1 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343A020CBFD4E0027DAA1 /* Document.swift */; };
-		CE5343B820CBFD4F0027DAA1 /* KittenBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343A120CBFD4E0027DAA1 /* KittenBytes.swift */; };
-		CE5343B920CBFD4F0027DAA1 /* Document+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343A220CBFD4E0027DAA1 /* Document+Operators.swift */; };
-		CE5343BA20CBFD4F0027DAA1 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343A320CBFD4E0027DAA1 /* Decimal.swift */; };
-		CE5343BB20CBFD4F0027DAA1 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343A420CBFD4E0027DAA1 /* Error.swift */; };
-		CE5343BC20CBFD4F0027DAA1 /* DeserializationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343A520CBFD4E0027DAA1 /* DeserializationHelpers.swift */; };
-		CE5343BE20CBFD4F0027DAA1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343A720CBFD4E0027DAA1 /* Helpers.swift */; };
-		CE5343C020CBFD4F0027DAA1 /* Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343A920CBFD4F0027DAA1 /* Index.swift */; };
-		CE5343C220CBFDD10027DAA1 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343C120CBFDD00027DAA1 /* Primitive.swift */; };
-		CE5343CC20CBFDFB0027DAA1 /* CryptoKitten.h in Headers */ = {isa = PBXBuildFile; fileRef = CE5343CA20CBFDFB0027DAA1 /* CryptoKitten.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE5343CF20CBFDFB0027DAA1 /* CryptoKitten.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5343C820CBFDFB0027DAA1 /* CryptoKitten.framework */; };
-		CE5343D020CBFDFB0027DAA1 /* CryptoKitten.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE5343C820CBFDFB0027DAA1 /* CryptoKitten.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CE5343DF20CBFE250027DAA1 /* SHA2_64Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343D420CBFE240027DAA1 /* SHA2_64Base.swift */; };
-		CE5343E020CBFE250027DAA1 /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343D520CBFE240027DAA1 /* HMAC.swift */; };
-		CE5343E120CBFE250027DAA1 /* SHA2_64Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343D620CBFE240027DAA1 /* SHA2_64Implementations.swift */; };
-		CE5343E320CBFE250027DAA1 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343D820CBFE240027DAA1 /* Hash.swift */; };
-		CE5343E420CBFE250027DAA1 /* PBKDF2_HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343D920CBFE240027DAA1 /* PBKDF2_HMAC.swift */; };
-		CE5343E520CBFE250027DAA1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343DA20CBFE240027DAA1 /* Helpers.swift */; };
-		CE5343E620CBFE250027DAA1 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343DB20CBFE240027DAA1 /* MD5.swift */; };
-		CE5343E720CBFE250027DAA1 /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343DC20CBFE250027DAA1 /* SHA1.swift */; };
-		CE5343E820CBFE250027DAA1 /* SHA2_32Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343DD20CBFE250027DAA1 /* SHA2_32Base.swift */; };
-		CE5343E920CBFE250027DAA1 /* SHA2_32Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343DE20CBFE250027DAA1 /* SHA2_32Implementations.swift */; };
-		CE5343F320CBFE630027DAA1 /* GeoJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = CE5343F120CBFE630027DAA1 /* GeoJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE5343F620CBFE630027DAA1 /* GeoJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5343EF20CBFE620027DAA1 /* GeoJSON.framework */; };
-		CE5343F720CBFE630027DAA1 /* GeoJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE5343EF20CBFE620027DAA1 /* GeoJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CE53440620CBFE880027DAA1 /* GeoJsonObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343FB20CBFE870027DAA1 /* GeoJsonObjectType.swift */; };
-		CE53440720CBFE880027DAA1 /* CoordinateReferenceSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343FC20CBFE870027DAA1 /* CoordinateReferenceSystem.swift */; };
-		CE53440820CBFE880027DAA1 /* MultiLineString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343FD20CBFE870027DAA1 /* MultiLineString.swift */; };
-		CE53440920CBFE880027DAA1 /* MultiPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343FE20CBFE870027DAA1 /* MultiPolygon.swift */; };
-		CE53440A20CBFE880027DAA1 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5343FF20CBFE870027DAA1 /* Point.swift */; };
-		CE53440B20CBFE880027DAA1 /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53440020CBFE880027DAA1 /* Polygon.swift */; };
-		CE53440C20CBFE880027DAA1 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53440120CBFE880027DAA1 /* Position.swift */; };
-		CE53440D20CBFE880027DAA1 /* ValueConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53440220CBFE880027DAA1 /* ValueConvertible.swift */; };
-		CE53440E20CBFE880027DAA1 /* GeoJSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53440320CBFE880027DAA1 /* GeoJSONError.swift */; };
-		CE53440F20CBFE880027DAA1 /* LineString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53440420CBFE880027DAA1 /* LineString.swift */; };
-		CE53441020CBFE880027DAA1 /* MultiPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53440520CBFE880027DAA1 /* MultiPoint.swift */; };
-		CE53441A20CBFEAA0027DAA1 /* Cheetah.h in Headers */ = {isa = PBXBuildFile; fileRef = CE53441820CBFEAA0027DAA1 /* Cheetah.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE53441D20CBFEAA0027DAA1 /* Cheetah.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53441620CBFEAA0027DAA1 /* Cheetah.framework */; };
-		CE53441E20CBFEAA0027DAA1 /* Cheetah.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE53441620CBFEAA0027DAA1 /* Cheetah.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CE53442B20CBFEC20027DAA1 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53442220CBFEC20027DAA1 /* Parser.swift */; };
-		CE53442D20CBFEC20027DAA1 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53442420CBFEC20027DAA1 /* Array.swift */; };
-		CE53442E20CBFEC20027DAA1 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53442520CBFEC20027DAA1 /* Codable.swift */; };
-		CE53442F20CBFEC20027DAA1 /* InternalHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53442620CBFEC20027DAA1 /* InternalHelpers.swift */; };
-		CE53443020CBFEC20027DAA1 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53442720CBFEC20027DAA1 /* Value.swift */; };
-		CE53443220CBFEC20027DAA1 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53442920CBFEC20027DAA1 /* Object.swift */; };
-		CE53443320CBFEC20027DAA1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53442A20CBFEC20027DAA1 /* Helpers.swift */; };
-		CE53443D20CBFF120027DAA1 /* Schrodinger.h in Headers */ = {isa = PBXBuildFile; fileRef = CE53443B20CBFF120027DAA1 /* Schrodinger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE53444020CBFF120027DAA1 /* Schrodinger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53443920CBFF120027DAA1 /* Schrodinger.framework */; };
-		CE53444120CBFF120027DAA1 /* Schrodinger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE53443920CBFF120027DAA1 /* Schrodinger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CE53444620CBFF2F0027DAA1 /* Schrodinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53444520CBFF2F0027DAA1 /* Schrodinger.swift */; };
-		CE53445020CBFF580027DAA1 /* ExtendedJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = CE53444E20CBFF580027DAA1 /* ExtendedJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE53445320CBFF580027DAA1 /* ExtendedJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53444C20CBFF580027DAA1 /* ExtendedJSON.framework */; };
-		CE53445420CBFF580027DAA1 /* ExtendedJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE53444C20CBFF580027DAA1 /* ExtendedJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CE53445A20CBFF6D0027DAA1 /* ExtendedJSON+EfficientSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53445820CBFF6D0027DAA1 /* ExtendedJSON+EfficientSerialization.swift */; };
-		CE53445B20CBFF6D0027DAA1 /* ExtendedJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53445920CBFF6D0027DAA1 /* ExtendedJSON.swift */; };
-		CE53446520CBFFA00027DAA1 /* MongoSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = CE53446320CBFFA00027DAA1 /* MongoSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE53446820CBFFA00027DAA1 /* MongoSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53446120CBFFA00027DAA1 /* MongoSocket.framework */; };
-		CE53446920CBFFA00027DAA1 /* MongoSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE53446120CBFFA00027DAA1 /* MongoSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CE53446F20CBFFB40027DAA1 /* MongoTCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53446D20CBFFB30027DAA1 /* MongoTCP.swift */; };
-		CE53447020CBFFB40027DAA1 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53446E20CBFFB30027DAA1 /* Socket.swift */; };
-		CE53447120CC00DA0027DAA1 /* BSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53438720CBFD0F0027DAA1 /* BSON.framework */; };
-		CE53447220CC00EB0027DAA1 /* Cheetah.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53441620CBFEAA0027DAA1 /* Cheetah.framework */; };
-		CE53447320CC00FF0027DAA1 /* BSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53438720CBFD0F0027DAA1 /* BSON.framework */; };
-		CE63964F20CA71200031D83B /* Database+Administration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63960920CA71200031D83B /* Database+Administration.swift */; };
-		CE63965020CA71200031D83B /* Database+UserManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63960A20CA71200031D83B /* Database+UserManagement.swift */; };
-		CE63965120CA71200031D83B /* Database+RoleManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63960B20CA71200031D83B /* Database+RoleManagement.swift */; };
-		CE63965220CA71200031D83B /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63960C20CA71200031D83B /* Database.swift */; };
-		CE63965320CA71200031D83B /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63960E20CA71200031D83B /* Options.swift */; };
-		CE63965420CA71200031D83B /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63960F20CA71200031D83B /* Collection.swift */; };
-		CE63965520CA71200031D83B /* CollectionSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961020CA71200031D83B /* CollectionSlice.swift */; };
-		CE63965620CA71200031D83B /* Collection+Geospatial.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961120CA71200031D83B /* Collection+Geospatial.swift */; };
-		CE63965720CA71200031D83B /* Collection+Administration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961220CA71200031D83B /* Collection+Administration.swift */; };
-		CE63965820CA71200031D83B /* SCRAM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961420CA71200031D83B /* SCRAM.swift */; };
-		CE63965920CA71200031D83B /* Base64_temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961520CA71200031D83B /* Base64_temp.swift */; };
-		CE63965A20CA71200031D83B /* Database+Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961620CA71200031D83B /* Database+Authentication.swift */; };
-		CE63965B20CA71200031D83B /* ClientSettings+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961820CA71200031D83B /* ClientSettings+URL.swift */; };
-		CE63965C20CA71200031D83B /* SSLSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961920CA71200031D83B /* SSLSettings.swift */; };
-		CE63965D20CA71200031D83B /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961A20CA71200031D83B /* Server.swift */; };
-		CE63965E20CA71200031D83B /* ClientSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961B20CA71200031D83B /* ClientSettings.swift */; };
-		CE63965F20CA71200031D83B /* MongoDriverInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961D20CA71200031D83B /* MongoDriverInformation.swift */; };
-		CE63966020CA71200031D83B /* Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961E20CA71200031D83B /* Flags.swift */; };
-		CE63966120CA71200031D83B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63961F20CA71200031D83B /* Message.swift */; };
-		CE63966220CA71200031D83B /* OperationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962020CA71200031D83B /* OperationCode.swift */; };
-		CE63966320CA71200031D83B /* CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962220CA71200031D83B /* CRUD.swift */; };
-		CE63966420CA71200031D83B /* GridFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962420CA71200031D83B /* GridFS.swift */; };
-		CE63966520CA71200031D83B /* Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962520CA71200031D83B /* Index.swift */; };
-		CE63966620CA71200031D83B /* PipelineBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962620CA71200031D83B /* PipelineBuilder.swift */; };
-		CE63966720CA71200031D83B /* Explain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962720CA71200031D83B /* Explain.swift */; };
-		CE63966820CA71200031D83B /* DBRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962820CA71200031D83B /* DBRef.swift */; };
-		CE63966920CA71200031D83B /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962920CA71200031D83B /* Sort.swift */; };
-		CE63966A20CA71200031D83B /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962A20CA71200031D83B /* Cursor.swift */; };
-		CE63966B20CA71200031D83B /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962B20CA71200031D83B /* QueryBuilder.swift */; };
-		CE63966C20CA71200031D83B /* Projection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962C20CA71200031D83B /* Projection.swift */; };
-		CE63966D20CA71200031D83B /* HelpfulErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962E20CA71200031D83B /* HelpfulErrors.swift */; };
-		CE63966E20CA71200031D83B /* MongoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63962F20CA71200031D83B /* MongoError.swift */; };
-		CE63966F20CA71200031D83B /* String+MongoKitten.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963120CA71200031D83B /* String+MongoKitten.swift */; };
-		CE63967020CA71200031D83B /* Concern.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963220CA71200031D83B /* Concern.swift */; };
-		CE63967120CA71200031D83B /* Bool+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963320CA71200031D83B /* Bool+String.swift */; };
-		CE63967220CA71200031D83B /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963420CA71200031D83B /* Logging.swift */; };
-		CE63967320CA71200031D83B /* BuildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963520CA71200031D83B /* BuildInfo.swift */; };
-		CE63967420CA71200031D83B /* DocumentHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963620CA71200031D83B /* DocumentHelpers.swift */; };
-		CE63967520CA71200031D83B /* SerializationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963720CA71200031D83B /* SerializationHelpers.swift */; };
-		CE63967620CA71200031D83B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963820CA71200031D83B /* Helpers.swift */; };
-		CE63967720CA71200031D83B /* GeoNearOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963920CA71200031D83B /* GeoNearOption.swift */; };
-		CE63967820CA71200031D83B /* DeserializationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963A20CA71200031D83B /* DeserializationHelpers.swift */; };
-		CE63967920CA71200031D83B /* ValueConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963B20CA71200031D83B /* ValueConvertible.swift */; };
-		CE63967A20CA71200031D83B /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963D20CA71200031D83B /* Connection.swift */; };
-		CE63967B20CA71200031D83B /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63963F20CA71200031D83B /* Deprecated.swift */; };
 		CE76073020FB32F200766C58 /* ModelUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76072F20FB32F200766C58 /* ModelUpdates.swift */; };
 		CE76073220FB33D700766C58 /* SquareCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76073120FB33D700766C58 /* SquareCollection.swift */; };
 		FA0AA2F71FCDA20900DA765D /* ConnectionWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */; };
@@ -299,58 +177,6 @@
 		FA62581B1FD283E300A1BF26 /* SquareConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62581A1FD283E300A1BF26 /* SquareConnection.swift */; };
 		FA6258201FD2D43500A1BF26 /* InteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62581F1FD2D43500A1BF26 /* InteractionView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CE53438C20CBFD0F0027DAA1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5D8B1DF1F5715DB00AE0E25 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE53438620CBFD0F0027DAA1;
-			remoteInfo = BSON;
-		};
-		CE5343CD20CBFDFB0027DAA1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5D8B1DF1F5715DB00AE0E25 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE5343C720CBFDFB0027DAA1;
-			remoteInfo = CryptoKitten;
-		};
-		CE5343F420CBFE630027DAA1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5D8B1DF1F5715DB00AE0E25 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE5343EE20CBFE620027DAA1;
-			remoteInfo = GeoJSON;
-		};
-		CE53441B20CBFEAA0027DAA1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5D8B1DF1F5715DB00AE0E25 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE53441520CBFEAA0027DAA1;
-			remoteInfo = Cheetah;
-		};
-		CE53443E20CBFF120027DAA1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5D8B1DF1F5715DB00AE0E25 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE53443820CBFF120027DAA1;
-			remoteInfo = Schrodinger;
-		};
-		CE53445120CBFF580027DAA1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5D8B1DF1F5715DB00AE0E25 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE53444B20CBFF580027DAA1;
-			remoteInfo = ExtendedJSON;
-		};
-		CE53446620CBFFA00027DAA1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5D8B1DF1F5715DB00AE0E25 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE53446020CBFFA00027DAA1;
-			remoteInfo = MongoSocket;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C5D3F1561F5D6D3600A0C7A7 /* CopyFiles */ = {
@@ -368,13 +194,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CE53444120CBFF120027DAA1 /* Schrodinger.framework in Embed Frameworks */,
-				CE53446920CBFFA00027DAA1 /* MongoSocket.framework in Embed Frameworks */,
-				CE53445420CBFF580027DAA1 /* ExtendedJSON.framework in Embed Frameworks */,
-				CE5343D020CBFDFB0027DAA1 /* CryptoKitten.framework in Embed Frameworks */,
-				CE53438F20CBFD0F0027DAA1 /* BSON.framework in Embed Frameworks */,
-				CE5343F720CBFE630027DAA1 /* GeoJSON.framework in Embed Frameworks */,
-				CE53441E20CBFEAA0027DAA1 /* Cheetah.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +385,8 @@
 		C54D57651FDA6301006DBF37 /* QueryTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTableViewDataSource.swift; sourceTree = "<group>"; };
 		C5794793211BF52B00182A9F /* String+Mongosquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Mongosquare.swift"; sourceTree = "<group>"; };
 		C584D935208703B700CAD61A /* NSOutlineView+Mongosquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSOutlineView+Mongosquare.swift"; sourceTree = "<group>"; };
+		C59DCBB423BF757E00E8928F /* mongokitten */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mongokitten; sourceTree = "<group>"; };
+		C59DCBB523BF757E00E8928F /* bson */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bson; sourceTree = "<group>"; };
 		C59ED15F1F89C3FA00EA1F26 /* QueryWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryWindowController.swift; sourceTree = "<group>"; };
 		C59ED1601F89C3FA00EA1F26 /* QueryWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryWindowController.xib; sourceTree = "<group>"; };
 		C59FFCAE1F87DED600971FCB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -586,126 +407,6 @@
 		C5EDC9281F5DBDEE00C46F93 /* TabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabViewController.xib; sourceTree = "<group>"; };
 		CE2B2D36203689FA00A5392F /* SquareDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SquareDatabase.swift; path = Models/SquareDatabase.swift; sourceTree = "<group>"; };
 		CE50D84420563F9F003BA8F9 /* SquareDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareDocument.swift; sourceTree = "<group>"; };
-		CE53438720CBFD0F0027DAA1 /* BSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE53438920CBFD0F0027DAA1 /* BSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSON.h; sourceTree = "<group>"; };
-		CE53438A20CBFD0F0027DAA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE53439320CBFD4C0027DAA1 /* Optional+BSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+BSON.swift"; sourceTree = "<group>"; };
-		CE53439420CBFD4C0027DAA1 /* Document+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Document+Validation.swift"; sourceTree = "<group>"; };
-		CE53439520CBFD4C0027DAA1 /* DocumentSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentSequence.swift; sourceTree = "<group>"; };
-		CE53439720CBFD4C0027DAA1 /* Document+Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Document+Conversion.swift"; sourceTree = "<group>"; };
-		CE53439820CBFD4C0027DAA1 /* ObjectId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectId.swift; sourceTree = "<group>"; };
-		CE53439920CBFD4D0027DAA1 /* Document+Flattening.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Document+Flattening.swift"; sourceTree = "<group>"; };
-		CE53439A20CBFD4D0027DAA1 /* Document+Subscripts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Document+Subscripts.swift"; sourceTree = "<group>"; };
-		CE53439B20CBFD4D0027DAA1 /* EmbeddedDocuments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddedDocuments.swift; sourceTree = "<group>"; };
-		CE53439C20CBFD4D0027DAA1 /* Document+ParsingSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Document+ParsingSupport.swift"; sourceTree = "<group>"; };
-		CE53439D20CBFD4D0027DAA1 /* Interpreting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interpreting.swift; sourceTree = "<group>"; };
-		CE53439E20CBFD4D0027DAA1 /* RegularExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
-		CE53439F20CBFD4D0027DAA1 /* Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
-		CE5343A020CBFD4E0027DAA1 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		CE5343A120CBFD4E0027DAA1 /* KittenBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KittenBytes.swift; sourceTree = "<group>"; };
-		CE5343A220CBFD4E0027DAA1 /* Document+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Document+Operators.swift"; sourceTree = "<group>"; };
-		CE5343A320CBFD4E0027DAA1 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
-		CE5343A420CBFD4E0027DAA1 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		CE5343A520CBFD4E0027DAA1 /* DeserializationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializationHelpers.swift; sourceTree = "<group>"; };
-		CE5343A720CBFD4E0027DAA1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		CE5343A920CBFD4F0027DAA1 /* Index.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Index.swift; sourceTree = "<group>"; };
-		CE5343C120CBFDD00027DAA1 /* Primitive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
-		CE5343C820CBFDFB0027DAA1 /* CryptoKitten.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CryptoKitten.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE5343CA20CBFDFB0027DAA1 /* CryptoKitten.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptoKitten.h; sourceTree = "<group>"; };
-		CE5343CB20CBFDFB0027DAA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE5343D420CBFE240027DAA1 /* SHA2_64Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA2_64Base.swift; sourceTree = "<group>"; };
-		CE5343D520CBFE240027DAA1 /* HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
-		CE5343D620CBFE240027DAA1 /* SHA2_64Implementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA2_64Implementations.swift; sourceTree = "<group>"; };
-		CE5343D820CBFE240027DAA1 /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
-		CE5343D920CBFE240027DAA1 /* PBKDF2_HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBKDF2_HMAC.swift; sourceTree = "<group>"; };
-		CE5343DA20CBFE240027DAA1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		CE5343DB20CBFE240027DAA1 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
-		CE5343DC20CBFE250027DAA1 /* SHA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
-		CE5343DD20CBFE250027DAA1 /* SHA2_32Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA2_32Base.swift; sourceTree = "<group>"; };
-		CE5343DE20CBFE250027DAA1 /* SHA2_32Implementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA2_32Implementations.swift; sourceTree = "<group>"; };
-		CE5343EF20CBFE620027DAA1 /* GeoJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GeoJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE5343F120CBFE630027DAA1 /* GeoJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeoJSON.h; sourceTree = "<group>"; };
-		CE5343F220CBFE630027DAA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE5343FB20CBFE870027DAA1 /* GeoJsonObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoJsonObjectType.swift; sourceTree = "<group>"; };
-		CE5343FC20CBFE870027DAA1 /* CoordinateReferenceSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateReferenceSystem.swift; sourceTree = "<group>"; };
-		CE5343FD20CBFE870027DAA1 /* MultiLineString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiLineString.swift; sourceTree = "<group>"; };
-		CE5343FE20CBFE870027DAA1 /* MultiPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPolygon.swift; sourceTree = "<group>"; };
-		CE5343FF20CBFE870027DAA1 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
-		CE53440020CBFE880027DAA1 /* Polygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
-		CE53440120CBFE880027DAA1 /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
-		CE53440220CBFE880027DAA1 /* ValueConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueConvertible.swift; sourceTree = "<group>"; };
-		CE53440320CBFE880027DAA1 /* GeoJSONError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoJSONError.swift; sourceTree = "<group>"; };
-		CE53440420CBFE880027DAA1 /* LineString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineString.swift; sourceTree = "<group>"; };
-		CE53440520CBFE880027DAA1 /* MultiPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPoint.swift; sourceTree = "<group>"; };
-		CE53441620CBFEAA0027DAA1 /* Cheetah.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cheetah.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE53441820CBFEAA0027DAA1 /* Cheetah.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cheetah.h; sourceTree = "<group>"; };
-		CE53441920CBFEAA0027DAA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE53442220CBFEC20027DAA1 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		CE53442420CBFEC20027DAA1 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		CE53442520CBFEC20027DAA1 /* Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
-		CE53442620CBFEC20027DAA1 /* InternalHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalHelpers.swift; sourceTree = "<group>"; };
-		CE53442720CBFEC20027DAA1 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
-		CE53442920CBFEC20027DAA1 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
-		CE53442A20CBFEC20027DAA1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		CE53443920CBFF120027DAA1 /* Schrodinger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Schrodinger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE53443B20CBFF120027DAA1 /* Schrodinger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Schrodinger.h; sourceTree = "<group>"; };
-		CE53443C20CBFF120027DAA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE53444520CBFF2F0027DAA1 /* Schrodinger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schrodinger.swift; sourceTree = "<group>"; };
-		CE53444C20CBFF580027DAA1 /* ExtendedJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExtendedJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE53444E20CBFF580027DAA1 /* ExtendedJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtendedJSON.h; sourceTree = "<group>"; };
-		CE53444F20CBFF580027DAA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE53445820CBFF6D0027DAA1 /* ExtendedJSON+EfficientSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExtendedJSON+EfficientSerialization.swift"; sourceTree = "<group>"; };
-		CE53445920CBFF6D0027DAA1 /* ExtendedJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedJSON.swift; sourceTree = "<group>"; };
-		CE53446120CBFFA00027DAA1 /* MongoSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MongoSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE53446320CBFFA00027DAA1 /* MongoSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MongoSocket.h; sourceTree = "<group>"; };
-		CE53446420CBFFA00027DAA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE53446D20CBFFB30027DAA1 /* MongoTCP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MongoTCP.swift; sourceTree = "<group>"; };
-		CE53446E20CBFFB30027DAA1 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
-		CE63960920CA71200031D83B /* Database+Administration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Administration.swift"; sourceTree = "<group>"; };
-		CE63960A20CA71200031D83B /* Database+UserManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+UserManagement.swift"; sourceTree = "<group>"; };
-		CE63960B20CA71200031D83B /* Database+RoleManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+RoleManagement.swift"; sourceTree = "<group>"; };
-		CE63960C20CA71200031D83B /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		CE63960E20CA71200031D83B /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
-		CE63960F20CA71200031D83B /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		CE63961020CA71200031D83B /* CollectionSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionSlice.swift; sourceTree = "<group>"; };
-		CE63961120CA71200031D83B /* Collection+Geospatial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Geospatial.swift"; sourceTree = "<group>"; };
-		CE63961220CA71200031D83B /* Collection+Administration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Administration.swift"; sourceTree = "<group>"; };
-		CE63961420CA71200031D83B /* SCRAM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCRAM.swift; sourceTree = "<group>"; };
-		CE63961520CA71200031D83B /* Base64_temp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base64_temp.swift; sourceTree = "<group>"; };
-		CE63961620CA71200031D83B /* Database+Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+Authentication.swift"; sourceTree = "<group>"; };
-		CE63961820CA71200031D83B /* ClientSettings+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClientSettings+URL.swift"; sourceTree = "<group>"; };
-		CE63961920CA71200031D83B /* SSLSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLSettings.swift; sourceTree = "<group>"; };
-		CE63961A20CA71200031D83B /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
-		CE63961B20CA71200031D83B /* ClientSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientSettings.swift; sourceTree = "<group>"; };
-		CE63961D20CA71200031D83B /* MongoDriverInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MongoDriverInformation.swift; sourceTree = "<group>"; };
-		CE63961E20CA71200031D83B /* Flags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flags.swift; sourceTree = "<group>"; };
-		CE63961F20CA71200031D83B /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		CE63962020CA71200031D83B /* OperationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationCode.swift; sourceTree = "<group>"; };
-		CE63962220CA71200031D83B /* CRUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUD.swift; sourceTree = "<group>"; };
-		CE63962420CA71200031D83B /* GridFS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridFS.swift; sourceTree = "<group>"; };
-		CE63962520CA71200031D83B /* Index.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Index.swift; sourceTree = "<group>"; };
-		CE63962620CA71200031D83B /* PipelineBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipelineBuilder.swift; sourceTree = "<group>"; };
-		CE63962720CA71200031D83B /* Explain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explain.swift; sourceTree = "<group>"; };
-		CE63962820CA71200031D83B /* DBRef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBRef.swift; sourceTree = "<group>"; };
-		CE63962920CA71200031D83B /* Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
-		CE63962A20CA71200031D83B /* Cursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cursor.swift; sourceTree = "<group>"; };
-		CE63962B20CA71200031D83B /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
-		CE63962C20CA71200031D83B /* Projection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projection.swift; sourceTree = "<group>"; };
-		CE63962E20CA71200031D83B /* HelpfulErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpfulErrors.swift; sourceTree = "<group>"; };
-		CE63962F20CA71200031D83B /* MongoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MongoError.swift; sourceTree = "<group>"; };
-		CE63963120CA71200031D83B /* String+MongoKitten.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MongoKitten.swift"; sourceTree = "<group>"; };
-		CE63963220CA71200031D83B /* Concern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Concern.swift; sourceTree = "<group>"; };
-		CE63963320CA71200031D83B /* Bool+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+String.swift"; sourceTree = "<group>"; };
-		CE63963420CA71200031D83B /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
-		CE63963520CA71200031D83B /* BuildInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildInfo.swift; sourceTree = "<group>"; };
-		CE63963620CA71200031D83B /* DocumentHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentHelpers.swift; sourceTree = "<group>"; };
-		CE63963720CA71200031D83B /* SerializationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializationHelpers.swift; sourceTree = "<group>"; };
-		CE63963820CA71200031D83B /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		CE63963920CA71200031D83B /* GeoNearOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoNearOption.swift; sourceTree = "<group>"; };
-		CE63963A20CA71200031D83B /* DeserializationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializationHelpers.swift; sourceTree = "<group>"; };
-		CE63963B20CA71200031D83B /* ValueConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueConvertible.swift; sourceTree = "<group>"; };
-		CE63963D20CA71200031D83B /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
-		CE63963F20CA71200031D83B /* Deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
 		CE76072F20FB32F200766C58 /* ModelUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelUpdates.swift; sourceTree = "<group>"; };
 		CE76073120FB33D700766C58 /* SquareCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareCollection.swift; sourceTree = "<group>"; };
 		FA0AA2F51FCDA20900DA765D /* ConnectionWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionWindowController.swift; sourceTree = "<group>"; };
@@ -719,65 +420,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE5343CF20CBFDFB0027DAA1 /* CryptoKitten.framework in Frameworks */,
-				CE53444020CBFF120027DAA1 /* Schrodinger.framework in Frameworks */,
-				CE53441D20CBFEAA0027DAA1 /* Cheetah.framework in Frameworks */,
-				CE53445320CBFF580027DAA1 /* ExtendedJSON.framework in Frameworks */,
-				CE53438E20CBFD0F0027DAA1 /* BSON.framework in Frameworks */,
-				CE5343F620CBFE630027DAA1 /* GeoJSON.framework in Frameworks */,
-				CE53446820CBFFA00027DAA1 /* MongoSocket.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53438320CBFD0F0027DAA1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE5343C420CBFDFB0027DAA1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE5343EB20CBFE620027DAA1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53447120CC00DA0027DAA1 /* BSON.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53441220CBFEAA0027DAA1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53443520CBFF120027DAA1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53444820CBFF580027DAA1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53447320CC00FF0027DAA1 /* BSON.framework in Frameworks */,
-				CE53447220CC00EB0027DAA1 /* Cheetah.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53445D20CBFFA00027DAA1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				C5B0EB2023BF072F005A49CC /* MongoKitten in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,14 +665,9 @@
 		C5D8B1DE1F5715DB00AE0E25 = {
 			isa = PBXGroup;
 			children = (
+				C59DCBB523BF757E00E8928F /* bson */,
+				C59DCBB423BF757E00E8928F /* mongokitten */,
 				C5D8B1E91F5715DB00AE0E25 /* Mongosquare */,
-				CE53438820CBFD0F0027DAA1 /* BSON */,
-				CE5343C920CBFDFB0027DAA1 /* CryptoKitten */,
-				CE5343F020CBFE630027DAA1 /* GeoJSON */,
-				CE53441720CBFEAA0027DAA1 /* Cheetah */,
-				CE53443A20CBFF120027DAA1 /* Schrodinger */,
-				CE53444D20CBFF580027DAA1 /* ExtendedJSON */,
-				CE53446220CBFFA00027DAA1 /* MongoSocket */,
 				C5D8B1E81F5715DB00AE0E25 /* Products */,
 				C59FFCAD1F87DED500971FCB /* Frameworks */,
 			);
@@ -1039,13 +677,6 @@
 			isa = PBXGroup;
 			children = (
 				C5D8B1E71F5715DB00AE0E25 /* Mongosquare.app */,
-				CE53438720CBFD0F0027DAA1 /* BSON.framework */,
-				CE5343C820CBFDFB0027DAA1 /* CryptoKitten.framework */,
-				CE5343EF20CBFE620027DAA1 /* GeoJSON.framework */,
-				CE53441620CBFEAA0027DAA1 /* Cheetah.framework */,
-				CE53443920CBFF120027DAA1 /* Schrodinger.framework */,
-				CE53444C20CBFF580027DAA1 /* ExtendedJSON.framework */,
-				CE53446120CBFFA00027DAA1 /* MongoSocket.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1095,276 +726,9 @@
 		C5DD77A71F6FBF5600EB8523 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				CE6395F420CA711F0031D83B /* Kitten */,
 				C5233BCC1F7A566B00B32B16 /* MMTabBarView */,
 			);
 			name = Library;
-			sourceTree = "<group>";
-		};
-		CE53438820CBFD0F0027DAA1 /* BSON */ = {
-			isa = PBXGroup;
-			children = (
-				CE53438920CBFD0F0027DAA1 /* BSON.h */,
-				CE53439F20CBFD4D0027DAA1 /* Codable.swift */,
-				CE5343A320CBFD4E0027DAA1 /* Decimal.swift */,
-				CE5343A520CBFD4E0027DAA1 /* DeserializationHelpers.swift */,
-				CE5343A020CBFD4E0027DAA1 /* Document.swift */,
-				CE53439720CBFD4C0027DAA1 /* Document+Conversion.swift */,
-				CE53439920CBFD4D0027DAA1 /* Document+Flattening.swift */,
-				CE5343A220CBFD4E0027DAA1 /* Document+Operators.swift */,
-				CE53439C20CBFD4D0027DAA1 /* Document+ParsingSupport.swift */,
-				CE53439A20CBFD4D0027DAA1 /* Document+Subscripts.swift */,
-				CE53439420CBFD4C0027DAA1 /* Document+Validation.swift */,
-				CE53439520CBFD4C0027DAA1 /* DocumentSequence.swift */,
-				CE53439B20CBFD4D0027DAA1 /* EmbeddedDocuments.swift */,
-				CE5343A420CBFD4E0027DAA1 /* Error.swift */,
-				CE5343A720CBFD4E0027DAA1 /* Helpers.swift */,
-				CE5343C120CBFDD00027DAA1 /* Primitive.swift */,
-				CE5343A920CBFD4F0027DAA1 /* Index.swift */,
-				CE53439D20CBFD4D0027DAA1 /* Interpreting.swift */,
-				CE5343A120CBFD4E0027DAA1 /* KittenBytes.swift */,
-				CE53439820CBFD4C0027DAA1 /* ObjectId.swift */,
-				CE53439320CBFD4C0027DAA1 /* Optional+BSON.swift */,
-				CE53439E20CBFD4D0027DAA1 /* RegularExpression.swift */,
-				CE53438A20CBFD0F0027DAA1 /* Info.plist */,
-			);
-			path = BSON;
-			sourceTree = "<group>";
-		};
-		CE5343C920CBFDFB0027DAA1 /* CryptoKitten */ = {
-			isa = PBXGroup;
-			children = (
-				CE5343CA20CBFDFB0027DAA1 /* CryptoKitten.h */,
-				CE5343CB20CBFDFB0027DAA1 /* Info.plist */,
-				CE5343D820CBFE240027DAA1 /* Hash.swift */,
-				CE5343DA20CBFE240027DAA1 /* Helpers.swift */,
-				CE5343D520CBFE240027DAA1 /* HMAC.swift */,
-				CE5343DB20CBFE240027DAA1 /* MD5.swift */,
-				CE5343D920CBFE240027DAA1 /* PBKDF2_HMAC.swift */,
-				CE5343DC20CBFE250027DAA1 /* SHA1.swift */,
-				CE5343DD20CBFE250027DAA1 /* SHA2_32Base.swift */,
-				CE5343DE20CBFE250027DAA1 /* SHA2_32Implementations.swift */,
-				CE5343D420CBFE240027DAA1 /* SHA2_64Base.swift */,
-				CE5343D620CBFE240027DAA1 /* SHA2_64Implementations.swift */,
-			);
-			path = CryptoKitten;
-			sourceTree = "<group>";
-		};
-		CE5343F020CBFE630027DAA1 /* GeoJSON */ = {
-			isa = PBXGroup;
-			children = (
-				CE5343F120CBFE630027DAA1 /* GeoJSON.h */,
-				CE5343FC20CBFE870027DAA1 /* CoordinateReferenceSystem.swift */,
-				CE53440320CBFE880027DAA1 /* GeoJSONError.swift */,
-				CE5343FB20CBFE870027DAA1 /* GeoJsonObjectType.swift */,
-				CE53440420CBFE880027DAA1 /* LineString.swift */,
-				CE5343FD20CBFE870027DAA1 /* MultiLineString.swift */,
-				CE53440520CBFE880027DAA1 /* MultiPoint.swift */,
-				CE5343FE20CBFE870027DAA1 /* MultiPolygon.swift */,
-				CE5343FF20CBFE870027DAA1 /* Point.swift */,
-				CE53440020CBFE880027DAA1 /* Polygon.swift */,
-				CE53440120CBFE880027DAA1 /* Position.swift */,
-				CE53440220CBFE880027DAA1 /* ValueConvertible.swift */,
-				CE5343F220CBFE630027DAA1 /* Info.plist */,
-			);
-			path = GeoJSON;
-			sourceTree = "<group>";
-		};
-		CE53441720CBFEAA0027DAA1 /* Cheetah */ = {
-			isa = PBXGroup;
-			children = (
-				CE53441820CBFEAA0027DAA1 /* Cheetah.h */,
-				CE53441920CBFEAA0027DAA1 /* Info.plist */,
-				CE53442420CBFEC20027DAA1 /* Array.swift */,
-				CE53442520CBFEC20027DAA1 /* Codable.swift */,
-				CE53442A20CBFEC20027DAA1 /* Helpers.swift */,
-				CE53442620CBFEC20027DAA1 /* InternalHelpers.swift */,
-				CE53442920CBFEC20027DAA1 /* Object.swift */,
-				CE53442220CBFEC20027DAA1 /* Parser.swift */,
-				CE53442720CBFEC20027DAA1 /* Value.swift */,
-			);
-			path = Cheetah;
-			sourceTree = "<group>";
-		};
-		CE53443A20CBFF120027DAA1 /* Schrodinger */ = {
-			isa = PBXGroup;
-			children = (
-				CE53444520CBFF2F0027DAA1 /* Schrodinger.swift */,
-				CE53443B20CBFF120027DAA1 /* Schrodinger.h */,
-				CE53443C20CBFF120027DAA1 /* Info.plist */,
-			);
-			path = Schrodinger;
-			sourceTree = "<group>";
-		};
-		CE53444D20CBFF580027DAA1 /* ExtendedJSON */ = {
-			isa = PBXGroup;
-			children = (
-				CE53444E20CBFF580027DAA1 /* ExtendedJSON.h */,
-				CE53445920CBFF6D0027DAA1 /* ExtendedJSON.swift */,
-				CE53445820CBFF6D0027DAA1 /* ExtendedJSON+EfficientSerialization.swift */,
-				CE53444F20CBFF580027DAA1 /* Info.plist */,
-			);
-			path = ExtendedJSON;
-			sourceTree = "<group>";
-		};
-		CE53446220CBFFA00027DAA1 /* MongoSocket */ = {
-			isa = PBXGroup;
-			children = (
-				CE53446D20CBFFB30027DAA1 /* MongoTCP.swift */,
-				CE53446E20CBFFB30027DAA1 /* Socket.swift */,
-				CE53446320CBFFA00027DAA1 /* MongoSocket.h */,
-				CE53446420CBFFA00027DAA1 /* Info.plist */,
-			);
-			path = MongoSocket;
-			sourceTree = "<group>";
-		};
-		CE6395F420CA711F0031D83B /* Kitten */ = {
-			isa = PBXGroup;
-			children = (
-				CE63960720CA711F0031D83B /* MongoKitten */,
-			);
-			name = Kitten;
-			path = Library/Kitten;
-			sourceTree = "<group>";
-		};
-		CE63960720CA711F0031D83B /* MongoKitten */ = {
-			isa = PBXGroup;
-			children = (
-				CE63960820CA711F0031D83B /* Database */,
-				CE63960D20CA71200031D83B /* Collection */,
-				CE63961320CA71200031D83B /* Auth */,
-				CE63961720CA71200031D83B /* Server */,
-				CE63961C20CA71200031D83B /* Internals */,
-				CE63962120CA71200031D83B /* CRUD */,
-				CE63962320CA71200031D83B /* Querying */,
-				CE63962D20CA71200031D83B /* Error */,
-				CE63963020CA71200031D83B /* Helpers */,
-				CE63963C20CA71200031D83B /* Socket */,
-				CE63963E20CA71200031D83B /* Deprecated */,
-			);
-			path = MongoKitten;
-			sourceTree = "<group>";
-		};
-		CE63960820CA711F0031D83B /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				CE63960920CA71200031D83B /* Database+Administration.swift */,
-				CE63960A20CA71200031D83B /* Database+UserManagement.swift */,
-				CE63960B20CA71200031D83B /* Database+RoleManagement.swift */,
-				CE63960C20CA71200031D83B /* Database.swift */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
-		CE63960D20CA71200031D83B /* Collection */ = {
-			isa = PBXGroup;
-			children = (
-				CE63960E20CA71200031D83B /* Options.swift */,
-				CE63960F20CA71200031D83B /* Collection.swift */,
-				CE63961020CA71200031D83B /* CollectionSlice.swift */,
-				CE63961120CA71200031D83B /* Collection+Geospatial.swift */,
-				CE63961220CA71200031D83B /* Collection+Administration.swift */,
-			);
-			path = Collection;
-			sourceTree = "<group>";
-		};
-		CE63961320CA71200031D83B /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				CE63961420CA71200031D83B /* SCRAM.swift */,
-				CE63961520CA71200031D83B /* Base64_temp.swift */,
-				CE63961620CA71200031D83B /* Database+Authentication.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		CE63961720CA71200031D83B /* Server */ = {
-			isa = PBXGroup;
-			children = (
-				CE63961820CA71200031D83B /* ClientSettings+URL.swift */,
-				CE63961920CA71200031D83B /* SSLSettings.swift */,
-				CE63961A20CA71200031D83B /* Server.swift */,
-				CE63961B20CA71200031D83B /* ClientSettings.swift */,
-			);
-			path = Server;
-			sourceTree = "<group>";
-		};
-		CE63961C20CA71200031D83B /* Internals */ = {
-			isa = PBXGroup;
-			children = (
-				CE63961D20CA71200031D83B /* MongoDriverInformation.swift */,
-				CE63961E20CA71200031D83B /* Flags.swift */,
-				CE63961F20CA71200031D83B /* Message.swift */,
-				CE63962020CA71200031D83B /* OperationCode.swift */,
-			);
-			path = Internals;
-			sourceTree = "<group>";
-		};
-		CE63962120CA71200031D83B /* CRUD */ = {
-			isa = PBXGroup;
-			children = (
-				CE63962220CA71200031D83B /* CRUD.swift */,
-			);
-			path = CRUD;
-			sourceTree = "<group>";
-		};
-		CE63962320CA71200031D83B /* Querying */ = {
-			isa = PBXGroup;
-			children = (
-				CE63962420CA71200031D83B /* GridFS.swift */,
-				CE63962520CA71200031D83B /* Index.swift */,
-				CE63962620CA71200031D83B /* PipelineBuilder.swift */,
-				CE63962720CA71200031D83B /* Explain.swift */,
-				CE63962820CA71200031D83B /* DBRef.swift */,
-				CE63962920CA71200031D83B /* Sort.swift */,
-				CE63962A20CA71200031D83B /* Cursor.swift */,
-				CE63962B20CA71200031D83B /* QueryBuilder.swift */,
-				CE63962C20CA71200031D83B /* Projection.swift */,
-			);
-			path = Querying;
-			sourceTree = "<group>";
-		};
-		CE63962D20CA71200031D83B /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				CE63962E20CA71200031D83B /* HelpfulErrors.swift */,
-				CE63962F20CA71200031D83B /* MongoError.swift */,
-			);
-			path = Error;
-			sourceTree = "<group>";
-		};
-		CE63963020CA71200031D83B /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				CE63963120CA71200031D83B /* String+MongoKitten.swift */,
-				CE63963220CA71200031D83B /* Concern.swift */,
-				CE63963320CA71200031D83B /* Bool+String.swift */,
-				CE63963420CA71200031D83B /* Logging.swift */,
-				CE63963520CA71200031D83B /* BuildInfo.swift */,
-				CE63963620CA71200031D83B /* DocumentHelpers.swift */,
-				CE63963720CA71200031D83B /* SerializationHelpers.swift */,
-				CE63963820CA71200031D83B /* Helpers.swift */,
-				CE63963920CA71200031D83B /* GeoNearOption.swift */,
-				CE63963A20CA71200031D83B /* DeserializationHelpers.swift */,
-				CE63963B20CA71200031D83B /* ValueConvertible.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		CE63963C20CA71200031D83B /* Socket */ = {
-			isa = PBXGroup;
-			children = (
-				CE63963D20CA71200031D83B /* Connection.swift */,
-			);
-			path = Socket;
-			sourceTree = "<group>";
-		};
-		CE63963E20CA71200031D83B /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				CE63963F20CA71200031D83B /* Deprecated.swift */,
-			);
-			path = Deprecated;
 			sourceTree = "<group>";
 		};
 		CE76072E20FB32D500766C58 /* Protocols */ = {
@@ -1396,65 +760,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		CE53438420CBFD0F0027DAA1 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53438B20CBFD0F0027DAA1 /* BSON.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE5343C520CBFDFB0027DAA1 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE5343CC20CBFDFB0027DAA1 /* CryptoKitten.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE5343EC20CBFE620027DAA1 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE5343F320CBFE630027DAA1 /* GeoJSON.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53441320CBFEAA0027DAA1 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53441A20CBFEAA0027DAA1 /* Cheetah.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53443620CBFF120027DAA1 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53443D20CBFF120027DAA1 /* Schrodinger.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53444920CBFF580027DAA1 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53445020CBFF580027DAA1 /* ExtendedJSON.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53445E20CBFFA00027DAA1 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53446520CBFFA00027DAA1 /* MongoSocket.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		C5D8B1E61F5715DB00AE0E25 /* Mongosquare */ = {
 			isa = PBXNativeTarget;
@@ -1469,144 +774,14 @@
 			buildRules = (
 			);
 			dependencies = (
-				CE53438D20CBFD0F0027DAA1 /* PBXTargetDependency */,
-				CE5343CE20CBFDFB0027DAA1 /* PBXTargetDependency */,
-				CE5343F520CBFE630027DAA1 /* PBXTargetDependency */,
-				CE53441C20CBFEAA0027DAA1 /* PBXTargetDependency */,
-				CE53443F20CBFF120027DAA1 /* PBXTargetDependency */,
-				CE53445220CBFF580027DAA1 /* PBXTargetDependency */,
-				CE53446720CBFFA00027DAA1 /* PBXTargetDependency */,
 			);
 			name = Mongosquare;
+			packageProductDependencies = (
+				C5B0EB1F23BF072F005A49CC /* MongoKitten */,
+			);
 			productName = Mongosquare;
 			productReference = C5D8B1E71F5715DB00AE0E25 /* Mongosquare.app */;
 			productType = "com.apple.product-type.application";
-		};
-		CE53438620CBFD0F0027DAA1 /* BSON */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE53439020CBFD0F0027DAA1 /* Build configuration list for PBXNativeTarget "BSON" */;
-			buildPhases = (
-				CE53438220CBFD0F0027DAA1 /* Sources */,
-				CE53438320CBFD0F0027DAA1 /* Frameworks */,
-				CE53438420CBFD0F0027DAA1 /* Headers */,
-				CE53438520CBFD0F0027DAA1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = BSON;
-			productName = BSON;
-			productReference = CE53438720CBFD0F0027DAA1 /* BSON.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CE5343C720CBFDFB0027DAA1 /* CryptoKitten */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE5343D120CBFDFB0027DAA1 /* Build configuration list for PBXNativeTarget "CryptoKitten" */;
-			buildPhases = (
-				CE5343C320CBFDFB0027DAA1 /* Sources */,
-				CE5343C420CBFDFB0027DAA1 /* Frameworks */,
-				CE5343C520CBFDFB0027DAA1 /* Headers */,
-				CE5343C620CBFDFB0027DAA1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CryptoKitten;
-			productName = CryptoKitten;
-			productReference = CE5343C820CBFDFB0027DAA1 /* CryptoKitten.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CE5343EE20CBFE620027DAA1 /* GeoJSON */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE5343F820CBFE630027DAA1 /* Build configuration list for PBXNativeTarget "GeoJSON" */;
-			buildPhases = (
-				CE5343EA20CBFE620027DAA1 /* Sources */,
-				CE5343EB20CBFE620027DAA1 /* Frameworks */,
-				CE5343EC20CBFE620027DAA1 /* Headers */,
-				CE5343ED20CBFE620027DAA1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = GeoJSON;
-			productName = GeoJSON;
-			productReference = CE5343EF20CBFE620027DAA1 /* GeoJSON.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CE53441520CBFEAA0027DAA1 /* Cheetah */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE53441F20CBFEAA0027DAA1 /* Build configuration list for PBXNativeTarget "Cheetah" */;
-			buildPhases = (
-				CE53441120CBFEAA0027DAA1 /* Sources */,
-				CE53441220CBFEAA0027DAA1 /* Frameworks */,
-				CE53441320CBFEAA0027DAA1 /* Headers */,
-				CE53441420CBFEAA0027DAA1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Cheetah;
-			productName = Cheetah;
-			productReference = CE53441620CBFEAA0027DAA1 /* Cheetah.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CE53443820CBFF120027DAA1 /* Schrodinger */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE53444220CBFF120027DAA1 /* Build configuration list for PBXNativeTarget "Schrodinger" */;
-			buildPhases = (
-				CE53443420CBFF120027DAA1 /* Sources */,
-				CE53443520CBFF120027DAA1 /* Frameworks */,
-				CE53443620CBFF120027DAA1 /* Headers */,
-				CE53443720CBFF120027DAA1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Schrodinger;
-			productName = Schrodinger;
-			productReference = CE53443920CBFF120027DAA1 /* Schrodinger.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CE53444B20CBFF580027DAA1 /* ExtendedJSON */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE53445520CBFF580027DAA1 /* Build configuration list for PBXNativeTarget "ExtendedJSON" */;
-			buildPhases = (
-				CE53444720CBFF580027DAA1 /* Sources */,
-				CE53444820CBFF580027DAA1 /* Frameworks */,
-				CE53444920CBFF580027DAA1 /* Headers */,
-				CE53444A20CBFF580027DAA1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ExtendedJSON;
-			productName = ExtendedJSON;
-			productReference = CE53444C20CBFF580027DAA1 /* ExtendedJSON.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CE53446020CBFFA00027DAA1 /* MongoSocket */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE53446A20CBFFA00027DAA1 /* Build configuration list for PBXNativeTarget "MongoSocket" */;
-			buildPhases = (
-				CE53445C20CBFFA00027DAA1 /* Sources */,
-				CE53445D20CBFFA00027DAA1 /* Frameworks */,
-				CE53445E20CBFFA00027DAA1 /* Headers */,
-				CE53445F20CBFFA00027DAA1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MongoSocket;
-			productName = MongoSocket;
-			productReference = CE53446120CBFFA00027DAA1 /* MongoSocket.framework */;
-			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -1622,41 +797,6 @@
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 					};
-					CE53438620CBFD0F0027DAA1 = {
-						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 0940;
-						ProvisioningStyle = Automatic;
-					};
-					CE5343C720CBFDFB0027DAA1 = {
-						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 0940;
-						ProvisioningStyle = Automatic;
-					};
-					CE5343EE20CBFE620027DAA1 = {
-						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 0940;
-						ProvisioningStyle = Automatic;
-					};
-					CE53441520CBFEAA0027DAA1 = {
-						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 0940;
-						ProvisioningStyle = Automatic;
-					};
-					CE53443820CBFF120027DAA1 = {
-						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 0940;
-						ProvisioningStyle = Automatic;
-					};
-					CE53444B20CBFF580027DAA1 = {
-						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 0940;
-						ProvisioningStyle = Automatic;
-					};
-					CE53446020CBFFA00027DAA1 = {
-						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 0940;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = C5D8B1E21F5715DB00AE0E25 /* Build configuration list for PBXProject "Mongosquare" */;
@@ -1669,18 +809,14 @@
 				English,
 			);
 			mainGroup = C5D8B1DE1F5715DB00AE0E25;
+			packageReferences = (
+				C5B0EB1E23BF072F005A49CC /* XCRemoteSwiftPackageReference "MongoKitten" */,
+			);
 			productRefGroup = C5D8B1E81F5715DB00AE0E25 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				C5D8B1E61F5715DB00AE0E25 /* Mongosquare */,
-				CE53438620CBFD0F0027DAA1 /* BSON */,
-				CE5343C720CBFDFB0027DAA1 /* CryptoKitten */,
-				CE5343EE20CBFE620027DAA1 /* GeoJSON */,
-				CE53441520CBFEAA0027DAA1 /* Cheetah */,
-				CE53443820CBFF120027DAA1 /* Schrodinger */,
-				CE53444B20CBFF580027DAA1 /* ExtendedJSON */,
-				CE53446020CBFFA00027DAA1 /* MongoSocket */,
 			);
 		};
 /* End PBXProject section */
@@ -1806,55 +942,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE53438520CBFD0F0027DAA1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE5343C620CBFDFB0027DAA1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE5343ED20CBFE620027DAA1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53441420CBFEAA0027DAA1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53443720CBFF120027DAA1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53444A20CBFF580027DAA1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53445F20CBFFA00027DAA1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1865,26 +952,16 @@
 				C5233C781F7A56B400B32B16 /* MMAttachedTabBarButton.m in Sources */,
 				C5233C791F7A56B400B32B16 /* MMAttachedTabBarButtonCell.m in Sources */,
 				C584D936208703B700CAD61A /* NSOutlineView+Mongosquare.swift in Sources */,
-				CE63966E20CA71200031D83B /* MongoError.swift in Sources */,
 				C523C052200841F2003CA1B0 /* JsonViewController.swift in Sources */,
-				CE63966F20CA71200031D83B /* String+MongoKitten.swift in Sources */,
-				CE63967920CA71200031D83B /* ValueConvertible.swift in Sources */,
 				C5233C7A1F7A56B400B32B16 /* MMOverflowPopUpButton.m in Sources */,
-				CE63967020CA71200031D83B /* Concern.swift in Sources */,
 				C5233C7B1F7A56B400B32B16 /* MMOverflowPopUpButtonCell.m in Sources */,
 				C5233C7C1F7A56B400B32B16 /* MMProgressIndicator.m in Sources */,
 				C5233C7D1F7A56B400B32B16 /* MMRolloverButton.m in Sources */,
 				C5233C7E1F7A56B400B32B16 /* MMRolloverButtonCell.m in Sources */,
 				C5233C7F1F7A56B400B32B16 /* MMSlideButtonsAnimation.m in Sources */,
 				FA0AA2F71FCDA20900DA765D /* ConnectionWindowController.swift in Sources */,
-				CE63966520CA71200031D83B /* Index.swift in Sources */,
-				CE63966820CA71200031D83B /* DBRef.swift in Sources */,
 				C5233C801F7A56B400B32B16 /* MMTabBarButton.m in Sources */,
 				C5233C811F7A56B400B32B16 /* MMTabBarButtonCell.m in Sources */,
-				CE63967520CA71200031D83B /* SerializationHelpers.swift in Sources */,
-				CE63965720CA71200031D83B /* Collection+Administration.swift in Sources */,
-				CE63965F20CA71200031D83B /* MongoDriverInformation.swift in Sources */,
-				CE63967120CA71200031D83B /* Bool+String.swift in Sources */,
 				C5233C821F7A56B400B32B16 /* MMTabBarController.m in Sources */,
 				C5233C831F7A56B400B32B16 /* MMTabBarView.m in Sources */,
 				C5233C841F7A56B400B32B16 /* MMTabDragAssistant.m in Sources */,
@@ -1893,220 +970,44 @@
 				C5233C861F7A56B400B32B16 /* MMTabDragWindow.m in Sources */,
 				C5233C871F7A56B400B32B16 /* MMTabDragWindowController.m in Sources */,
 				C59ED1611F89C3FA00EA1F26 /* QueryWindowController.swift in Sources */,
-				CE63965420CA71200031D83B /* Collection.swift in Sources */,
-				CE63964F20CA71200031D83B /* Database+Administration.swift in Sources */,
-				CE63966B20CA71200031D83B /* QueryBuilder.swift in Sources */,
 				C5233C881F7A56B400B32B16 /* MMTabPasteboardItem.m in Sources */,
-				CE63965D20CA71200031D83B /* Server.swift in Sources */,
 				C5233C891F7A56B400B32B16 /* NSAffineTransform+MMTabBarViewExtensions.m in Sources */,
 				C5233C8A1F7A56B400B32B16 /* NSBezierPath+MMTabBarViewExtensions.m in Sources */,
 				C5233C8B1F7A56B400B32B16 /* NSCell+MMTabBarViewExtensions.m in Sources */,
-				CE63967620CA71200031D83B /* Helpers.swift in Sources */,
 				C5233C8C1F7A56B400B32B16 /* NSString+MMTabBarViewExtensions.m in Sources */,
-				CE63966A20CA71200031D83B /* Cursor.swift in Sources */,
 				C5233C8D1F7A56B400B32B16 /* NSTabViewItem+MMTabBarViewExtensions.m in Sources */,
-				CE63965020CA71200031D83B /* Database+UserManagement.swift in Sources */,
 				C5233C8E1F7A56B400B32B16 /* NSView+MMTabBarViewExtensions.m in Sources */,
-				CE63966020CA71200031D83B /* Flags.swift in Sources */,
 				C54D57661FDA6301006DBF37 /* QueryTableViewDataSource.swift in Sources */,
-				CE63965920CA71200031D83B /* Base64_temp.swift in Sources */,
 				C5233C8F1F7A56B400B32B16 /* MMAdiumTabStyle.m in Sources */,
 				C5233C901F7A56B400B32B16 /* MMAquaTabStyle.m in Sources */,
-				CE63965C20CA71200031D83B /* SSLSettings.swift in Sources */,
 				C5233C911F7A56B400B32B16 /* MMCardTabStyle.m in Sources */,
 				CE2B2D37203689FA00A5392F /* SquareDatabase.swift in Sources */,
 				CE76073020FB32F200766C58 /* ModelUpdates.swift in Sources */,
 				C5233C921F7A56B400B32B16 /* MMLiveChatTabStyle.m in Sources */,
-				CE63965120CA71200031D83B /* Database+RoleManagement.swift in Sources */,
 				CE50D84520563F9F003BA8F9 /* SquareDocument.swift in Sources */,
-				CE63967A20CA71200031D83B /* Connection.swift in Sources */,
-				CE63966720CA71200031D83B /* Explain.swift in Sources */,
 				C5E2611A2124174D0007A606 /* NSTextView+Mongosquare.swift in Sources */,
-				CE63965220CA71200031D83B /* Database.swift in Sources */,
-				CE63966320CA71200031D83B /* CRUD.swift in Sources */,
-				CE63966D20CA71200031D83B /* HelpfulErrors.swift in Sources */,
-				CE63966220CA71200031D83B /* OperationCode.swift in Sources */,
 				C5233C931F7A56B400B32B16 /* MMMetalTabStyle.m in Sources */,
-				CE63965B20CA71200031D83B /* ClientSettings+URL.swift in Sources */,
-				CE63967720CA71200031D83B /* GeoNearOption.swift in Sources */,
-				CE63965320CA71200031D83B /* Options.swift in Sources */,
-				CE63967320CA71200031D83B /* BuildInfo.swift in Sources */,
 				C5233C941F7A56B400B32B16 /* MMUnifiedTabStyle.m in Sources */,
 				C5233C951F7A56B400B32B16 /* MMYosemiteTabStyle.m in Sources */,
-				CE63967420CA71200031D83B /* DocumentHelpers.swift in Sources */,
-				CE63966920CA71200031D83B /* Sort.swift in Sources */,
 				C5233C961F7A56B400B32B16 /* MMSafariTabStyle.m in Sources */,
 				FA62581B1FD283E300A1BF26 /* SquareConnection.swift in Sources */,
-				CE63967B20CA71200031D83B /* Deprecated.swift in Sources */,
 				C5EDC9291F5DBDEE00C46F93 /* TabViewController.swift in Sources */,
-				CE63965620CA71200031D83B /* Collection+Geospatial.swift in Sources */,
 				C5298EF91F5BA77A00908D4C /* CollectionTableViewController.swift in Sources */,
 				C54D57641FDA61E1006DBF37 /* QueryTableCellView.swift in Sources */,
 				C5794794211BF52B00182A9F /* String+Mongosquare.swift in Sources */,
 				C5BF0A191F584DCC00C95EA8 /* OutlineViewController.swift in Sources */,
-				CE63965820CA71200031D83B /* SCRAM.swift in Sources */,
-				CE63967820CA71200031D83B /* DeserializationHelpers.swift in Sources */,
-				CE63966120CA71200031D83B /* Message.swift in Sources */,
-				CE63965520CA71200031D83B /* CollectionSlice.swift in Sources */,
 				C5D8B1FD1F5716B500AE0E25 /* WindowController.swift in Sources */,
 				C51E420C1F698E9B009C8ED5 /* NSImage+Mongosquare.swift in Sources */,
 				FA6258201FD2D43500A1BF26 /* InteractionView.swift in Sources */,
 				C523C04E200841AA003CA1B0 /* SupplementaryViewController.swift in Sources */,
-				CE63965A20CA71200031D83B /* Database+Authentication.swift in Sources */,
 				C5298EFD1F5BAA6800908D4C /* CollectionViewController.swift in Sources */,
-				CE63966420CA71200031D83B /* GridFS.swift in Sources */,
 				CE76073220FB33D700766C58 /* SquareCollection.swift in Sources */,
-				CE63967220CA71200031D83B /* Logging.swift in Sources */,
 				C5D8B1EB1F5715DB00AE0E25 /* AppDelegate.swift in Sources */,
-				CE63965E20CA71200031D83B /* ClientSettings.swift in Sources */,
 				C5BF0A211F584F2E00C95EA8 /* CollectionOutlineViewController.swift in Sources */,
-				CE63966C20CA71200031D83B /* Projection.swift in Sources */,
-				CE63966620CA71200031D83B /* PipelineBuilder.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53438220CBFD0F0027DAA1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE5343BC20CBFD4F0027DAA1 /* DeserializationHelpers.swift in Sources */,
-				CE5343BE20CBFD4F0027DAA1 /* Helpers.swift in Sources */,
-				CE5343B820CBFD4F0027DAA1 /* KittenBytes.swift in Sources */,
-				CE5343B120CBFD4F0027DAA1 /* Document+Subscripts.swift in Sources */,
-				CE5343AE20CBFD4F0027DAA1 /* Document+Conversion.swift in Sources */,
-				CE5343B220CBFD4F0027DAA1 /* EmbeddedDocuments.swift in Sources */,
-				CE5343AF20CBFD4F0027DAA1 /* ObjectId.swift in Sources */,
-				CE5343B320CBFD4F0027DAA1 /* Document+ParsingSupport.swift in Sources */,
-				CE5343AA20CBFD4F0027DAA1 /* Optional+BSON.swift in Sources */,
-				CE5343B020CBFD4F0027DAA1 /* Document+Flattening.swift in Sources */,
-				CE5343C220CBFDD10027DAA1 /* Primitive.swift in Sources */,
-				CE5343B520CBFD4F0027DAA1 /* RegularExpression.swift in Sources */,
-				CE5343B620CBFD4F0027DAA1 /* Codable.swift in Sources */,
-				CE5343BA20CBFD4F0027DAA1 /* Decimal.swift in Sources */,
-				CE5343C020CBFD4F0027DAA1 /* Index.swift in Sources */,
-				CE5343AB20CBFD4F0027DAA1 /* Document+Validation.swift in Sources */,
-				CE5343B920CBFD4F0027DAA1 /* Document+Operators.swift in Sources */,
-				CE5343AC20CBFD4F0027DAA1 /* DocumentSequence.swift in Sources */,
-				CE5343B720CBFD4F0027DAA1 /* Document.swift in Sources */,
-				CE5343BB20CBFD4F0027DAA1 /* Error.swift in Sources */,
-				CE5343B420CBFD4F0027DAA1 /* Interpreting.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE5343C320CBFDFB0027DAA1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE5343E320CBFE250027DAA1 /* Hash.swift in Sources */,
-				CE5343E520CBFE250027DAA1 /* Helpers.swift in Sources */,
-				CE5343E920CBFE250027DAA1 /* SHA2_32Implementations.swift in Sources */,
-				CE5343E620CBFE250027DAA1 /* MD5.swift in Sources */,
-				CE5343E020CBFE250027DAA1 /* HMAC.swift in Sources */,
-				CE5343E120CBFE250027DAA1 /* SHA2_64Implementations.swift in Sources */,
-				CE5343E720CBFE250027DAA1 /* SHA1.swift in Sources */,
-				CE5343DF20CBFE250027DAA1 /* SHA2_64Base.swift in Sources */,
-				CE5343E420CBFE250027DAA1 /* PBKDF2_HMAC.swift in Sources */,
-				CE5343E820CBFE250027DAA1 /* SHA2_32Base.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE5343EA20CBFE620027DAA1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53440C20CBFE880027DAA1 /* Position.swift in Sources */,
-				CE53441020CBFE880027DAA1 /* MultiPoint.swift in Sources */,
-				CE53440920CBFE880027DAA1 /* MultiPolygon.swift in Sources */,
-				CE53440A20CBFE880027DAA1 /* Point.swift in Sources */,
-				CE53440D20CBFE880027DAA1 /* ValueConvertible.swift in Sources */,
-				CE53440F20CBFE880027DAA1 /* LineString.swift in Sources */,
-				CE53440E20CBFE880027DAA1 /* GeoJSONError.swift in Sources */,
-				CE53440B20CBFE880027DAA1 /* Polygon.swift in Sources */,
-				CE53440820CBFE880027DAA1 /* MultiLineString.swift in Sources */,
-				CE53440720CBFE880027DAA1 /* CoordinateReferenceSystem.swift in Sources */,
-				CE53440620CBFE880027DAA1 /* GeoJsonObjectType.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53441120CBFEAA0027DAA1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53442F20CBFEC20027DAA1 /* InternalHelpers.swift in Sources */,
-				CE53442D20CBFEC20027DAA1 /* Array.swift in Sources */,
-				CE53443320CBFEC20027DAA1 /* Helpers.swift in Sources */,
-				CE53442E20CBFEC20027DAA1 /* Codable.swift in Sources */,
-				CE53442B20CBFEC20027DAA1 /* Parser.swift in Sources */,
-				CE53443220CBFEC20027DAA1 /* Object.swift in Sources */,
-				CE53443020CBFEC20027DAA1 /* Value.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53443420CBFF120027DAA1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53444620CBFF2F0027DAA1 /* Schrodinger.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53444720CBFF580027DAA1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53445B20CBFF6D0027DAA1 /* ExtendedJSON.swift in Sources */,
-				CE53445A20CBFF6D0027DAA1 /* ExtendedJSON+EfficientSerialization.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE53445C20CBFFA00027DAA1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE53447020CBFFB40027DAA1 /* Socket.swift in Sources */,
-				CE53446F20CBFFB40027DAA1 /* MongoTCP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CE53438D20CBFD0F0027DAA1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE53438620CBFD0F0027DAA1 /* BSON */;
-			targetProxy = CE53438C20CBFD0F0027DAA1 /* PBXContainerItemProxy */;
-		};
-		CE5343CE20CBFDFB0027DAA1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE5343C720CBFDFB0027DAA1 /* CryptoKitten */;
-			targetProxy = CE5343CD20CBFDFB0027DAA1 /* PBXContainerItemProxy */;
-		};
-		CE5343F520CBFE630027DAA1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE5343EE20CBFE620027DAA1 /* GeoJSON */;
-			targetProxy = CE5343F420CBFE630027DAA1 /* PBXContainerItemProxy */;
-		};
-		CE53441C20CBFEAA0027DAA1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE53441520CBFEAA0027DAA1 /* Cheetah */;
-			targetProxy = CE53441B20CBFEAA0027DAA1 /* PBXContainerItemProxy */;
-		};
-		CE53443F20CBFF120027DAA1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE53443820CBFF120027DAA1 /* Schrodinger */;
-			targetProxy = CE53443E20CBFF120027DAA1 /* PBXContainerItemProxy */;
-		};
-		CE53445220CBFF580027DAA1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE53444B20CBFF580027DAA1 /* ExtendedJSON */;
-			targetProxy = CE53445120CBFF580027DAA1 /* PBXContainerItemProxy */;
-		};
-		CE53446720CBFFA00027DAA1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE53446020CBFFA00027DAA1 /* MongoSocket */;
-			targetProxy = CE53446620CBFFA00027DAA1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C5233BCD1F7A566B00B32B16 /* InfoPlist.strings */ = {
@@ -2167,7 +1068,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -2217,10 +1118,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -2232,8 +1134,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Mongosquare/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0hoo.Mongosquare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mongosquare/Mongosquare-Bridge-Header.h";
@@ -2249,467 +1154,15 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Mongosquare/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0hoo.Mongosquare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mongosquare/Mongosquare-Bridge-Header.h";
 				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		CE53439120CBFD0F0027DAA1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = BSON/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.BSON;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CE53439220CBFD0F0027DAA1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = BSON/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.BSON;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CE5343D220CBFDFB0027DAA1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = CryptoKitten/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.CryptoKitten;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CE5343D320CBFDFB0027DAA1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = CryptoKitten/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.CryptoKitten;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CE5343F920CBFE630027DAA1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = GeoJSON/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.GeoJSON;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CE5343FA20CBFE630027DAA1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = GeoJSON/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.GeoJSON;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CE53442020CBFEAA0027DAA1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Cheetah/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.Cheetah;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CE53442120CBFEAA0027DAA1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Cheetah/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.Cheetah;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CE53444320CBFF120027DAA1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Schrodinger/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.Schrodinger;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CE53444420CBFF120027DAA1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Schrodinger/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.Schrodinger;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CE53445620CBFF580027DAA1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ExtendedJSON/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.ExtendedJSON;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CE53445720CBFF580027DAA1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ExtendedJSON/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.ExtendedJSON;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CE53446B20CBFFA00027DAA1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = MongoSocket/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.MongoSocket;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CE53446C20CBFFA00027DAA1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = MongoSocket/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.MongoSocket;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -2734,70 +1187,26 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE53439020CBFD0F0027DAA1 /* Build configuration list for PBXNativeTarget "BSON" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE53439120CBFD0F0027DAA1 /* Debug */,
-				CE53439220CBFD0F0027DAA1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE5343D120CBFDFB0027DAA1 /* Build configuration list for PBXNativeTarget "CryptoKitten" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE5343D220CBFDFB0027DAA1 /* Debug */,
-				CE5343D320CBFDFB0027DAA1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE5343F820CBFE630027DAA1 /* Build configuration list for PBXNativeTarget "GeoJSON" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE5343F920CBFE630027DAA1 /* Debug */,
-				CE5343FA20CBFE630027DAA1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE53441F20CBFEAA0027DAA1 /* Build configuration list for PBXNativeTarget "Cheetah" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE53442020CBFEAA0027DAA1 /* Debug */,
-				CE53442120CBFEAA0027DAA1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE53444220CBFF120027DAA1 /* Build configuration list for PBXNativeTarget "Schrodinger" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE53444320CBFF120027DAA1 /* Debug */,
-				CE53444420CBFF120027DAA1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE53445520CBFF580027DAA1 /* Build configuration list for PBXNativeTarget "ExtendedJSON" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE53445620CBFF580027DAA1 /* Debug */,
-				CE53445720CBFF580027DAA1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE53446A20CBFFA00027DAA1 /* Build configuration list for PBXNativeTarget "MongoSocket" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE53446B20CBFFA00027DAA1 /* Debug */,
-				CE53446C20CBFFA00027DAA1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C5B0EB1E23BF072F005A49CC /* XCRemoteSwiftPackageReference "MongoKitten" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OpenKitten/MongoKitten.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C5B0EB1F23BF072F005A49CC /* MongoKitten */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5B0EB1E23BF072F005A49CC /* XCRemoteSwiftPackageReference "MongoKitten" */;
+			productName = MongoKitten;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C5D8B1DF1F5715DB00AE0E25 /* Project object */;
 }

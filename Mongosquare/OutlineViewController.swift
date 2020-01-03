@@ -69,7 +69,9 @@ final class OutlineViewController: NSViewController {
         
         super.viewDidLoad()
         
-        reloadDatabases()
+        if connection.connect() {
+            reloadDatabases()
+        }
     }
     
     private func reloadDatabases() {

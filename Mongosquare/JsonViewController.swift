@@ -88,22 +88,22 @@ final class JsonViewController: NSViewController {
     }
     
     func save() {
-        guard let content = webView?.stringByEvaluatingJavaScript(from: "editor.getValue()") else { return }
-        do {
-            var updated = try SquareDocument(string: content)
-            updated.isUnsavedDocument = false
-            if updated["_id"] == nil {
-                let result = try collectionViewController?.collection?.insert(updated)
-                print("insert?: \(String(describing: result))")
-                
-            } else {
-                let result = collectionViewController?.collection?.update(updated)
-                print("update?: \(String(describing: result))")
-            }
-            updateStatusView(document: updated)
-        } catch {
-            print(error)
-        }
+//        guard let content = webView?.stringByEvaluatingJavaScript(from: "editor.getValue()") else { return }
+//        do {
+//            var updated = try SquareDocument(string: content)
+//            updated.isUnsavedDocument = false
+//            if updated["_id"] == nil {
+//                //let result = try collectionViewController?.collection?.insert(updated)
+//                //print("insert?: \(String(describing: result))")
+//                
+//            } else {
+//                let result = collectionViewController?.collection?.update(updated)
+//                print("update?: \(String(describing: result))")
+//            }
+//            updateStatusView(document: updated)
+//        } catch {
+//            print(error)
+//        }
     }
     
     func newDocument() {
