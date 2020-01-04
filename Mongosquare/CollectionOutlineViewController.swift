@@ -40,7 +40,7 @@ final class DocumentOutlineItem {
                     let fields = "{ \(subDocument.keys.count) fields }"
                     fieldItem = DocumentOutlineItem(key: key, value: fields, type: valueType, document: subDocument, isDocument: true)
                 } else {
-                    fieldItem = DocumentOutlineItem(key: key, value: "\(val)", type: valueType, document: document, isDocument: false)
+                    fieldItem = DocumentOutlineItem(key: key, value: primitiveOrEmpty(val), type: valueType, document: document, isDocument: false)
                 }
                 fields.append(fieldItem)
             }

@@ -9,6 +9,14 @@
 import Cocoa
 import MongoKitten
 
+func primitiveOrEmpty(_ value: Primitive?) -> String {
+    if let value = value {
+        return "\(value)"
+    } else{
+        return ""
+    }
+}
+
 protocol DocumentSkippable {
     func reload(fieldsUpdated: Bool)
 }

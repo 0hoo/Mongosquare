@@ -74,7 +74,7 @@ struct SquareDocument: Swift.Collection, SquareModel {
     
     var document: Document
     var id: Primitive? {
-        return self["_id"] as? Primitive
+        return self["_id"]
     }
     var idString: String? {
         return (self["_id"] as? ObjectId)?.hexString

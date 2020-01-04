@@ -107,11 +107,11 @@ extension CollectionTableViewController: NSTableViewDataSource {
                     view.textField?.stringValue = "{ \(subDocument.keys.count) fields }"
                 } else {
                     if key == "_id" {
-                        view.textField?.stringValue = "\(val)".stripObjectId()
+                        view.textField?.stringValue = primitiveOrEmpty(val).stripObjectId()
                         view.textField?.isEditable = false
                         view.iconWidthConstraint?.constant = 24
                     } else {
-                        view.textField?.stringValue = "\(val)"
+                        view.textField?.stringValue = primitiveOrEmpty(val)
                         view.textField?.isEditable = true
                         view.iconWidthConstraint?.constant = 0
                     }
