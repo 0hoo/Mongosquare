@@ -61,13 +61,13 @@ final class CollectionViewController: NSViewController {
     var documents: [SquareDocument] {
         guard let collection = collection else { return [] }
        
-        //return collection.find(skipping: skipLimit.skip, limitedTo: skipLimit.limit)
-        return collection.find()
+        
+        return collection.find(skip: skipLimit.skip, limit: skipLimit.limit)
     }
     
     var queriedDocuments: [SquareDocument] {
         do {
-            return collection?.find() ?? []
+            return collection?.find(skip: skipLimit.skip, limit: skipLimit.limit) ?? []
 //            var projection: Projection?
 //            if queryOption.projectingFields.count > 0 {
 //                projection = Projection(Document(dictionaryElements: queryOption.projectingFields.map {
@@ -87,7 +87,6 @@ final class CollectionViewController: NSViewController {
 //                query = Query(Document(try JSONObject(from: queryString)))
 //            }
 //
-//            return collection?.find(query, sortedBy: sort, projecting: projection, skipping: skipLimit.skip, limitedTo: skipLimit.limit) ?? []
         } catch {
             print(error)
             return []

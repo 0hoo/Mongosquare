@@ -42,8 +42,15 @@ struct SquareCollection: SquareModel {
         self.saved = true
     }
     
-    func find(_ filter: MongoKittenQuery? = nil) -> [SquareDocument] {
-        let documents = try? collection.find().map{ (document) -> SquareDocument in
+    func find(_ filter: MongoKittenQuery? = nil, skip: Int? = nil, limit: Int? = nil) -> [SquareDocument] {
+        var find = collection.find()
+        if let skip = skip {
+            find = find.skip(skip)
+        }
+        if let limit = limit {
+            find = find.limit(limit)
+        }
+        let documents = try? find.map { (document) -> SquareDocument in
             SquareDocument(document: document)
         }.allResults().wait()
         return documents ?? []
@@ -62,9 +69,9 @@ struct SquareCollection: SquareModel {
 //        }
 //    }
 
-    func count(_ filter: MongoKittenQuery? = nil) -> Int {
+    func count(_ filter: MongoKittenQuery? = nil, skip: Int? = nil, limit: Int? = nil) -> Int {
         let value = try? collection.count().wait()
-        return  value ?? 0
+        return value ?? 0
     }
     
 //    func count(_ filter: Query? = nil, limitedTo limit: Int? = nil, skipping skip: Int? = nil, readConcern: ReadConcern? = nil, collation: Collation? = nil) -> Int {

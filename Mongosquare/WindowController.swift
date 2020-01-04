@@ -107,18 +107,18 @@ final class WindowController: NSWindowController {
             collectionViewModeChanged(collectionViewModeSegmentedControl)
         }
         
-        if let openedTabKeys = UserDefaults.standard.stringArray(forKey: UserDefaultKey.openedTabKeys) {
-            for key in openedTabKeys {
-                if let collection = self.sidebarController.findCollection(key) {
-                    let collectionViewController = CollectionViewController()
-                    collectionViewController.collection = collection
-                    collectionViewController.windowController = self
-                    self.tabViewController.add(viewController: collectionViewController)
-                }
-            }
-            let selectedTabIndex = UserDefaults.standard.integer(forKey: UserDefaultKey.selectedTabIndex)
-            self.tabViewController.tabView?.selectTabViewItem(at: selectedTabIndex)
-        }
+//        if let openedTabKeys = UserDefaults.standard.stringArray(forKey: UserDefaultKey.openedTabKeys) {
+//            for key in openedTabKeys {
+//                if let collection = self.sidebarController.findCollection(key) {
+//                    let collectionViewController = CollectionViewController()
+//                    collectionViewController.collection = collection
+//                    collectionViewController.windowController = self
+//                    self.tabViewController.add(viewController: collectionViewController)
+//                }
+//            }
+//            let selectedTabIndex = UserDefaults.standard.integer(forKey: UserDefaultKey.selectedTabIndex)
+//            self.tabViewController.tabView?.selectTabViewItem(at: selectedTabIndex)
+//        }
         
         //showConnectionWindow()
     }
