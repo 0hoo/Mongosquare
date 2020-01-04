@@ -41,10 +41,10 @@ final class OutlineViewController: NSViewController {
     @IBOutlet var outlineView: NSOutlineView?
     
     var didSelectCollection: ((SquareCollection) -> ())?
-
+    
     fileprivate var items: [OutlineItem] = []
 
-    private var connection: SquareConnection = SquareConnection.localConnection
+    private var connection: SquareConnection? // = SquareConnection.localConnection
     private var databases: [SquareDatabase] = []
     private var unsavedCollections: [SquareCollection] = []
     
@@ -72,8 +72,13 @@ final class OutlineViewController: NSViewController {
         reloadDatabases()
     }
     
+    func didConnect(connection: SquareConnection) {
+        self.connection = connection
+        reloadDatabases()
+    }
+    
     func reloadDatabases() {
-        guard connection.reloadDatabases() else {
+        guard let connection = connection, connection.reloadDatabases() else {
             print("reloading DB failed")
             return 
         }
@@ -157,6 +162,7 @@ final class OutlineViewController: NSViewController {
 
 extension OutlineViewController {
     @IBAction func addDatabase(_ sender: NSMenuItem) {
+        guard let connection = connection else { return }
         let alert = NSAlert()
         alert.addButton(withTitle: "OK")
         alert.addButton(withTitle: "Cancel")

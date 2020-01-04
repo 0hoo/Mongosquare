@@ -91,6 +91,10 @@ final class WindowController: NSWindowController {
     func didSelectDocument(collectionViewController: CollectionViewController?, document: SquareDocument) {
         jsonViewController.document = document
     }
+    
+    func didConnect(connection: SquareConnection) {
+        sidebarController.didConnect(connection: connection)
+    }
         
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -120,7 +124,7 @@ final class WindowController: NSWindowController {
             self.tabViewController.tabView?.selectTabViewItem(at: selectedTabIndex)
         }
         
-        //showConnectionWindow()
+        showConnectionWindow()
     }
     
     @IBAction func openLogs(_ sender: Any?) {
