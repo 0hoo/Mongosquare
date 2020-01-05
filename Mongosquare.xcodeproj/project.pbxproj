@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9820048F23C1D10500FB4A3F /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9820048E23C1D10500FB4A3F /* ReSwift */; };
+		9820049223C1D13000FB4A3F /* ReSwift-Thunk in Frameworks */ = {isa = PBXBuildFile; productRef = 9820049123C1D13000FB4A3F /* ReSwift-Thunk */; };
 		C51E420C1F698E9B009C8ED5 /* NSImage+Mongosquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51E420B1F698E9B009C8ED5 /* NSImage+Mongosquare.swift */; };
 		C5233C781F7A56B400B32B16 /* MMAttachedTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C5233C031F7A566B00B32B16 /* MMAttachedTabBarButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C5233C791F7A56B400B32B16 /* MMAttachedTabBarButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5233C051F7A566B00B32B16 /* MMAttachedTabBarButtonCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -721,7 +723,9 @@
 			files = (
 				CE5343CF20CBFDFB0027DAA1 /* CryptoKitten.framework in Frameworks */,
 				CE53444020CBFF120027DAA1 /* Schrodinger.framework in Frameworks */,
+				9820049223C1D13000FB4A3F /* ReSwift-Thunk in Frameworks */,
 				CE53441D20CBFEAA0027DAA1 /* Cheetah.framework in Frameworks */,
+				9820048F23C1D10500FB4A3F /* ReSwift in Frameworks */,
 				CE53445320CBFF580027DAA1 /* ExtendedJSON.framework in Frameworks */,
 				CE53438E20CBFD0F0027DAA1 /* BSON.framework in Frameworks */,
 				CE5343F620CBFE630027DAA1 /* GeoJSON.framework in Frameworks */,
@@ -1478,6 +1482,10 @@
 				CE53446720CBFFA00027DAA1 /* PBXTargetDependency */,
 			);
 			name = Mongosquare;
+			packageProductDependencies = (
+				9820048E23C1D10500FB4A3F /* ReSwift */,
+				9820049123C1D13000FB4A3F /* ReSwift-Thunk */,
+			);
 			productName = Mongosquare;
 			productReference = C5D8B1E71F5715DB00AE0E25 /* Mongosquare.app */;
 			productType = "com.apple.product-type.application";
@@ -1669,6 +1677,10 @@
 				English,
 			);
 			mainGroup = C5D8B1DE1F5715DB00AE0E25;
+			packageReferences = (
+				9820048D23C1D10500FB4A3F /* XCRemoteSwiftPackageReference "ReSwift" */,
+				9820049023C1D13000FB4A3F /* XCRemoteSwiftPackageReference "ReSwift-Thunk" */,
+			);
 			productRefGroup = C5D8B1E81F5715DB00AE0E25 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2220,7 +2232,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -2232,7 +2245,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Mongosquare/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0hoo.Mongosquare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2249,7 +2265,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Mongosquare/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0hoo.Mongosquare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2279,7 +2298,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BSON/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.BSON;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2312,7 +2335,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BSON/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.BSON;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2344,7 +2371,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CryptoKitten/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.CryptoKitten;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2377,7 +2408,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CryptoKitten/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.CryptoKitten;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2409,7 +2444,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = GeoJSON/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.GeoJSON;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2442,7 +2481,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = GeoJSON/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.GeoJSON;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2474,7 +2517,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Cheetah/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.Cheetah;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2507,7 +2554,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Cheetah/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.Cheetah;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2539,7 +2590,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Schrodinger/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.Schrodinger;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2572,7 +2627,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Schrodinger/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.Schrodinger;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2604,7 +2663,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ExtendedJSON/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.ExtendedJSON;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2637,7 +2700,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ExtendedJSON/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.ExtendedJSON;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2669,7 +2736,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MongoSocket/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.MongoSocket;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2702,7 +2773,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MongoSocket/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.idielapps.MongoSocket;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2798,6 +2873,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9820048D23C1D10500FB4A3F /* XCRemoteSwiftPackageReference "ReSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReSwift/ReSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		9820049023C1D13000FB4A3F /* XCRemoteSwiftPackageReference "ReSwift-Thunk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReSwift/ReSwift-Thunk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9820048E23C1D10500FB4A3F /* ReSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9820048D23C1D10500FB4A3F /* XCRemoteSwiftPackageReference "ReSwift" */;
+			productName = ReSwift;
+		};
+		9820049123C1D13000FB4A3F /* ReSwift-Thunk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9820049023C1D13000FB4A3F /* XCRemoteSwiftPackageReference "ReSwift-Thunk" */;
+			productName = "ReSwift-Thunk";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C5D8B1DF1F5715DB00AE0E25 /* Project object */;
 }

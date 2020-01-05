@@ -121,7 +121,9 @@ final class WindowController: NSWindowController {
                 }
             }
             let selectedTabIndex = UserDefaults.standard.integer(forKey: UserDefaultKey.selectedTabIndex)
-            self.tabViewController.tabView?.selectTabViewItem(at: selectedTabIndex)
+            if let tabView = tabViewController.tabView, tabView.tabViewItems.count > selectedTabIndex {
+                tabView.selectTabViewItem(at: selectedTabIndex)
+            }
         }
         
         showConnectionWindow()
