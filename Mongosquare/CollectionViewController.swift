@@ -320,7 +320,8 @@ extension CollectionViewController: CollectionSubscriber {
             case .inserted, .deleted:
                 reload()
             case .updated:
-                reload(fieldsUpdated: true)
+                ()
+                //reload(fieldsUpdated: true)
             }
         } else {
             

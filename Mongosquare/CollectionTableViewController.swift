@@ -153,16 +153,12 @@ extension CollectionTableViewController: NSControlTextEditingDelegate {
         let item = items[row]
         let columnKey = item.document.keys[column]
         let tryUpdate = item.document.set(value: valueToUpdate, forKey: columnKey, type: item.types[column])
-        
-//        if tryUpdate {
-//            if let updatedCount = (try? collectionViewController?.collection?.update(to: item.document)).flatMap({ $0 }), updatedCount > 0 {
-//                print("value updated:\(updatedCount)")
-//                return true
-//            }
-//        }
-//        if let value = item.document[columnKey] {
-//            fieldEditor.string = "\(value)"
-//        }
+        if tryUpdate {
+            try? collectionViewController?.collection?.update(item.document)
+        }
+        if let value = item.document[columnKey] {
+            fieldEditor.string = "\(value)"
+        }
         return true
     }
 }

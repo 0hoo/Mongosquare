@@ -93,20 +93,23 @@ struct SquareCollection: SquareModel {
 //    }
 //
     func update(_ document: SquareDocument) -> Int {
+        update(["_id": document.id ?? ""], to: document)
+        SquareStore.modelUpdated(document)
+        SquareStore.modelUpdated(self, submodels: [document], updateType: .updated)
         return 0
 //        do {
 //            let query = Query(["_id": document.id])
 //            let r = try update(query, to: document, stoppingOnError: true)
-//            SquareStore.modelUpdated(document)
-//            SquareStore.modelUpdated(self, submodels: [document], updateType: .updated)
 //            return r
 //        } catch {
 //            print(error)
 //            return 0
 //        }
     }
-    
-//    @discardableResult
+
+    func update(_ query: Document, to updated: SquareDocument) {
+        collection.updateOne(where: query, to: updated.document)
+    }
 //    func update(_ filter: Query = [:], to updated: SquareDocument, upserting upsert: Bool = false, multiple multi: Bool = false, writeConcern: WriteConcern? = nil, stoppingOnError ordered: Bool? = nil) throws -> Int {
 //
 //
