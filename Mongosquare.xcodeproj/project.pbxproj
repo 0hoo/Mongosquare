@@ -159,6 +159,7 @@
 		C5BF0A1A1F584DCC00C95EA8 /* OutlineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5BF0A181F584DCC00C95EA8 /* OutlineViewController.xib */; };
 		C5BF0A211F584F2E00C95EA8 /* CollectionOutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF0A1F1F584F2E00C95EA8 /* CollectionOutlineViewController.swift */; };
 		C5BF0A221F584F2E00C95EA8 /* CollectionOutlineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5BF0A201F584F2E00C95EA8 /* CollectionOutlineViewController.xib */; };
+		C5C23C6C23C38D98005CAD43 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C5C23C6B23C38D98005CAD43 /* ReSwift */; };
 		C5D8B1EB1F5715DB00AE0E25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8B1EA1F5715DB00AE0E25 /* AppDelegate.swift */; };
 		C5D8B1EF1F5715DB00AE0E25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5D8B1EE1F5715DB00AE0E25 /* Assets.xcassets */; };
 		C5D8B1FA1F57163000AE0E25 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D8B1F91F57163000AE0E25 /* MainMenu.xib */; };
@@ -421,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5B0EB2023BF072F005A49CC /* MongoKitten in Frameworks */,
+				C5C23C6C23C38D98005CAD43 /* ReSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +780,7 @@
 			name = Mongosquare;
 			packageProductDependencies = (
 				C5B0EB1F23BF072F005A49CC /* MongoKitten */,
+				C5C23C6B23C38D98005CAD43 /* ReSwift */,
 			);
 			productName = Mongosquare;
 			productReference = C5D8B1E71F5715DB00AE0E25 /* Mongosquare.app */;
@@ -811,6 +814,7 @@
 			mainGroup = C5D8B1DE1F5715DB00AE0E25;
 			packageReferences = (
 				C5B0EB1E23BF072F005A49CC /* XCRemoteSwiftPackageReference "MongoKitten" */,
+				C5C23C6A23C38D98005CAD43 /* XCRemoteSwiftPackageReference "ReSwift" */,
 			);
 			productRefGroup = C5D8B1E81F5715DB00AE0E25 /* Products */;
 			projectDirPath = "";
@@ -1198,6 +1202,14 @@
 				minimumVersion = 6.0.3;
 			};
 		};
+		C5C23C6A23C38D98005CAD43 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReSwift/ReSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1205,6 +1217,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C5B0EB1E23BF072F005A49CC /* XCRemoteSwiftPackageReference "MongoKitten" */;
 			productName = MongoKitten;
+		};
+		C5C23C6B23C38D98005CAD43 /* ReSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5C23C6A23C38D98005CAD43 /* XCRemoteSwiftPackageReference "ReSwift" */;
+			productName = ReSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

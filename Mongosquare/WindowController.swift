@@ -7,6 +7,16 @@
 //
 
 import Cocoa
+import ReSwift
+
+enum CollectionViewMode {
+    case table
+    case outline
+}
+
+struct AppState: StateType {
+    var collectionViewMode: CollectionViewMode = .outline
+}
 
 class UserDefaultKey {
     static let openedTabKeys = "openedTabKeys"
