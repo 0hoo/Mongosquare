@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		9820048F23C1D10500FB4A3F /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9820048E23C1D10500FB4A3F /* ReSwift */; };
 		9820049223C1D13000FB4A3F /* ReSwift-Thunk in Frameworks */ = {isa = PBXBuildFile; productRef = 9820049123C1D13000FB4A3F /* ReSwift-Thunk */; };
+		98A06FA223C9A4840070124C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A06FA123C9A4840070124C /* AppState.swift */; };
+		98A06FA523C9A49E0070124C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A06FA423C9A49E0070124C /* AppReducer.swift */; };
+		98A06FA823C9C0300070124C /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A06FA723C9C0300070124C /* LoggingMiddleware.swift */; };
+		98A06FAB23C9C4B90070124C /* LoggerAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 98A06FAA23C9C4B90070124C /* LoggerAPI */; };
 		C51E420C1F698E9B009C8ED5 /* NSImage+Mongosquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51E420B1F698E9B009C8ED5 /* NSImage+Mongosquare.swift */; };
 		C5233C781F7A56B400B32B16 /* MMAttachedTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C5233C031F7A566B00B32B16 /* MMAttachedTabBarButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C5233C791F7A56B400B32B16 /* MMAttachedTabBarButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5233C051F7A566B00B32B16 /* MMAttachedTabBarButtonCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -384,6 +388,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		98A06FA123C9A4840070124C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		98A06FA423C9A49E0070124C /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		98A06FA723C9C0300070124C /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
 		C51E420B1F698E9B009C8ED5 /* NSImage+Mongosquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Mongosquare.swift"; sourceTree = "<group>"; };
 		C5233BCB1F7A529900B32B16 /* Mongosquare-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mongosquare-Bridge-Header.h"; sourceTree = "<group>"; };
 		C5233BCE1F7A566B00B32B16 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -730,6 +737,7 @@
 				CE53438E20CBFD0F0027DAA1 /* BSON.framework in Frameworks */,
 				CE5343F620CBFE630027DAA1 /* GeoJSON.framework in Frameworks */,
 				CE53446820CBFFA00027DAA1 /* MongoSocket.framework in Frameworks */,
+				98A06FAB23C9C4B90070124C /* LoggerAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,6 +796,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		98A06FA023C9A4730070124C /* States */ = {
+			isa = PBXGroup;
+			children = (
+				98A06FA123C9A4840070124C /* AppState.swift */,
+			);
+			name = States;
+			sourceTree = "<group>";
+		};
+		98A06FA323C9A48A0070124C /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				98A06FA423C9A49E0070124C /* AppReducer.swift */,
+			);
+			name = Reducers;
+			sourceTree = "<group>";
+		};
+		98A06FA623C9C0200070124C /* Middlewares */ = {
+			isa = PBXGroup;
+			children = (
+				98A06FA723C9C0300070124C /* LoggingMiddleware.swift */,
+			);
+			name = Middlewares;
+			sourceTree = "<group>";
+		};
 		C51E420A1F698E82009C8ED5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1057,6 +1089,9 @@
 		C5D8B1E91F5715DB00AE0E25 /* Mongosquare */ = {
 			isa = PBXGroup;
 			children = (
+				98A06FA623C9C0200070124C /* Middlewares */,
+				98A06FA323C9A48A0070124C /* Reducers */,
+				98A06FA023C9A4730070124C /* States */,
 				CE76072E20FB32D500766C58 /* Protocols */,
 				C54D57621FDA619C006DBF37 /* Cells */,
 				FA62581C1FD2D3FD00A1BF26 /* Views */,
@@ -1485,6 +1520,7 @@
 			packageProductDependencies = (
 				9820048E23C1D10500FB4A3F /* ReSwift */,
 				9820049123C1D13000FB4A3F /* ReSwift-Thunk */,
+				98A06FAA23C9C4B90070124C /* LoggerAPI */,
 			);
 			productName = Mongosquare;
 			productReference = C5D8B1E71F5715DB00AE0E25 /* Mongosquare.app */;
@@ -1680,6 +1716,7 @@
 			packageReferences = (
 				9820048D23C1D10500FB4A3F /* XCRemoteSwiftPackageReference "ReSwift" */,
 				9820049023C1D13000FB4A3F /* XCRemoteSwiftPackageReference "ReSwift-Thunk" */,
+				98A06FA923C9C4B90070124C /* XCRemoteSwiftPackageReference "LoggerAPI" */,
 			);
 			productRefGroup = C5D8B1E81F5715DB00AE0E25 /* Products */;
 			projectDirPath = "";
@@ -1892,6 +1929,7 @@
 				CE63966520CA71200031D83B /* Index.swift in Sources */,
 				CE63966820CA71200031D83B /* DBRef.swift in Sources */,
 				C5233C801F7A56B400B32B16 /* MMTabBarButton.m in Sources */,
+				98A06FA823C9C0300070124C /* LoggingMiddleware.swift in Sources */,
 				C5233C811F7A56B400B32B16 /* MMTabBarButtonCell.m in Sources */,
 				CE63967520CA71200031D83B /* SerializationHelpers.swift in Sources */,
 				CE63965720CA71200031D83B /* Collection+Administration.swift in Sources */,
@@ -1910,6 +1948,7 @@
 				CE63966B20CA71200031D83B /* QueryBuilder.swift in Sources */,
 				C5233C881F7A56B400B32B16 /* MMTabPasteboardItem.m in Sources */,
 				CE63965D20CA71200031D83B /* Server.swift in Sources */,
+				98A06FA523C9A49E0070124C /* AppReducer.swift in Sources */,
 				C5233C891F7A56B400B32B16 /* NSAffineTransform+MMTabBarViewExtensions.m in Sources */,
 				C5233C8A1F7A56B400B32B16 /* NSBezierPath+MMTabBarViewExtensions.m in Sources */,
 				C5233C8B1F7A56B400B32B16 /* NSCell+MMTabBarViewExtensions.m in Sources */,
@@ -1924,6 +1963,7 @@
 				CE63965920CA71200031D83B /* Base64_temp.swift in Sources */,
 				C5233C8F1F7A56B400B32B16 /* MMAdiumTabStyle.m in Sources */,
 				C5233C901F7A56B400B32B16 /* MMAquaTabStyle.m in Sources */,
+				98A06FA223C9A4840070124C /* AppState.swift in Sources */,
 				CE63965C20CA71200031D83B /* SSLSettings.swift in Sources */,
 				C5233C911F7A56B400B32B16 /* MMCardTabStyle.m in Sources */,
 				CE2B2D37203689FA00A5392F /* SquareDatabase.swift in Sources */,
@@ -2891,6 +2931,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		98A06FA923C9C4B90070124C /* XCRemoteSwiftPackageReference "LoggerAPI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/IBM-Swift/LoggerAPI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2903,6 +2951,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9820049023C1D13000FB4A3F /* XCRemoteSwiftPackageReference "ReSwift-Thunk" */;
 			productName = "ReSwift-Thunk";
+		};
+		98A06FAA23C9C4B90070124C /* LoggerAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98A06FA923C9C4B90070124C /* XCRemoteSwiftPackageReference "LoggerAPI" */;
+			productName = LoggerAPI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

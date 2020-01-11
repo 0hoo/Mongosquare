@@ -7,6 +7,16 @@
 //
 
 import Cocoa
+import ReSwift
+import ReSwift_Thunk
+
+let loggingMiddleware: Middleware<AppState> = createLoggingMiddleware()
+let thunkMiddleware: Middleware<AppState> = createThunkMiddleware()
+
+let mainStore = Store<AppState>(reducer: appReducer,
+                                state: AppState(),
+                                middleware: [loggingMiddleware, thunkMiddleware],
+                                automaticallySkipsRepeats: true)
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
