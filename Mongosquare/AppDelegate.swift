@@ -9,6 +9,9 @@
 import Cocoa
 import ReSwift
 import ReSwift_Thunk
+import LoggerAPI
+import Logging
+
 
 let loggingMiddleware: Middleware<AppState> = createLoggingMiddleware()
 let thunkMiddleware: Middleware<AppState> = createThunkMiddleware()
@@ -27,6 +30,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     let windowController = WindowController()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        var logger = Logging.Logger(label: "SqLogger")
+        logger.logLevel = .debug
+        Log.swiftLogger = logger
+        
         windowController.showWindow(nil)
     }
 
