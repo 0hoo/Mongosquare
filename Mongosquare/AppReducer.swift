@@ -10,5 +10,12 @@ import Foundation
 import ReSwift
 
 func appReducer(action: Action, state: AppState?) -> AppState {
-    return state ?? AppState()
+    var state = state ?? AppState()
+    switch action {
+    case let action as ConnectionAction:
+        state.connectionState = connectionReducer(action: action, state: state.connectionState)
+    default:
+        break
+    }
+    return state
 }

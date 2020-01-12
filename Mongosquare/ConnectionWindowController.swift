@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import ReSwift
+import LoggerAPI
 
 final class ConnectionWindowController: NSWindowController {
 
@@ -22,9 +24,7 @@ final class ConnectionWindowController: NSWindowController {
     
     var connection: SquareConnection?
     weak var parentWindow: NSWindow?
-    private var parentController: WindowController? {
-        return parentWindow?.windowController as? WindowController
-    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
 
@@ -39,11 +39,13 @@ final class ConnectionWindowController: NSWindowController {
         connectionView.isEnabled = false
         connection = SquareConnection(username: usernameField.stringValue, password: passwordField.stringValue, host: hostField.stringValue, port: Int(portField.stringValue) ?? 27017, dbName: databaseField.stringValue)
         
-        if let connection = connection, connection.connect(), let window = window {
-            parentWindow?.endSheet(window)
-            parentController?.didConnect(connection: connection)
+        if let connection = connection, connection.connect() {
+            mainStore.dispatch(ConnectionAction.connected(connection))
+            if let window = window {
+                parentWindow?.endSheet(window)
+            }
         } else {
-            
+            Log.debug("connection failed.. do something")
         }
         
         indicator.isHidden = true

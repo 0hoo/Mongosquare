@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ReSwift
 
 final class OutlineTableCellView: NSTableCellView {
     @IBOutlet weak var iconImageView: NSImageView?
@@ -30,7 +31,9 @@ final class OutlineItem {
     }
 }
 
-final class OutlineViewController: NSViewController {
+final class OutlineViewController: NSViewController, StoreSubscriber {
+    typealias StoreSubscriberStateType = AppState
+    
     override var nibName: NSNib.Name? {
         return NSNib.Name("OutlineViewController")
     }
@@ -44,7 +47,15 @@ final class OutlineViewController: NSViewController {
     
     fileprivate var items: [OutlineItem] = []
 
-    private var connection: SquareConnection? // = SquareConnection.localConnection
+    private var connection: SquareConnection? {
+        didSet {
+            guard let connection = connection, oldValue !== connection else {
+                return
+            }
+            reloadDatabases()
+        }
+    }
+    
     private var databases: [SquareDatabase] = []
     private var unsavedCollections: [SquareCollection] = []
     
@@ -70,11 +81,11 @@ final class OutlineViewController: NSViewController {
         super.viewDidLoad()
         
         reloadDatabases()
+        mainStore.subscribe(self)
     }
     
-    func didConnect(connection: SquareConnection) {
-        self.connection = connection
-        reloadDatabases()
+    func newState(state: AppState) {
+        connection = state.connectionState.currentConnection
     }
     
     func reloadDatabases() {

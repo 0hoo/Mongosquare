@@ -13,6 +13,9 @@
 		98A06FA523C9A49E0070124C /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A06FA423C9A49E0070124C /* AppReducer.swift */; };
 		98A06FA823C9C0300070124C /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A06FA723C9C0300070124C /* LoggingMiddleware.swift */; };
 		98A06FAB23C9C4B90070124C /* LoggerAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 98A06FAA23C9C4B90070124C /* LoggerAPI */; };
+		98A06FD423CAF0800070124C /* ConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A06FD323CAF0800070124C /* ConnectionState.swift */; };
+		98A06FD723CAF1430070124C /* ConnectionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A06FD623CAF1430070124C /* ConnectionAction.swift */; };
+		98A06FD923CAF1E00070124C /* ConnectionReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A06FD823CAF1E00070124C /* ConnectionReducer.swift */; };
 		C51E420C1F698E9B009C8ED5 /* NSImage+Mongosquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51E420B1F698E9B009C8ED5 /* NSImage+Mongosquare.swift */; };
 		C5233C781F7A56B400B32B16 /* MMAttachedTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C5233C031F7A566B00B32B16 /* MMAttachedTabBarButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C5233C791F7A56B400B32B16 /* MMAttachedTabBarButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5233C051F7A566B00B32B16 /* MMAttachedTabBarButtonCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -391,6 +394,9 @@
 		98A06FA123C9A4840070124C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		98A06FA423C9A49E0070124C /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		98A06FA723C9C0300070124C /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
+		98A06FD323CAF0800070124C /* ConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionState.swift; sourceTree = "<group>"; };
+		98A06FD623CAF1430070124C /* ConnectionAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionAction.swift; sourceTree = "<group>"; };
+		98A06FD823CAF1E00070124C /* ConnectionReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionReducer.swift; sourceTree = "<group>"; };
 		C51E420B1F698E9B009C8ED5 /* NSImage+Mongosquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Mongosquare.swift"; sourceTree = "<group>"; };
 		C5233BCB1F7A529900B32B16 /* Mongosquare-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mongosquare-Bridge-Header.h"; sourceTree = "<group>"; };
 		C5233BCE1F7A566B00B32B16 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -800,6 +806,7 @@
 			isa = PBXGroup;
 			children = (
 				98A06FA123C9A4840070124C /* AppState.swift */,
+				98A06FD323CAF0800070124C /* ConnectionState.swift */,
 			);
 			name = States;
 			sourceTree = "<group>";
@@ -808,6 +815,7 @@
 			isa = PBXGroup;
 			children = (
 				98A06FA423C9A49E0070124C /* AppReducer.swift */,
+				98A06FD823CAF1E00070124C /* ConnectionReducer.swift */,
 			);
 			name = Reducers;
 			sourceTree = "<group>";
@@ -818,6 +826,14 @@
 				98A06FA723C9C0300070124C /* LoggingMiddleware.swift */,
 			);
 			name = Middlewares;
+			sourceTree = "<group>";
+		};
+		98A06FD523CAF13B0070124C /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				98A06FD623CAF1430070124C /* ConnectionAction.swift */,
+			);
+			name = Actions;
 			sourceTree = "<group>";
 		};
 		C51E420A1F698E82009C8ED5 /* Extensions */ = {
@@ -1089,6 +1105,7 @@
 		C5D8B1E91F5715DB00AE0E25 /* Mongosquare */ = {
 			isa = PBXGroup;
 			children = (
+				98A06FD523CAF13B0070124C /* Actions */,
 				98A06FA623C9C0200070124C /* Middlewares */,
 				98A06FA323C9A48A0070124C /* Reducers */,
 				98A06FA023C9A4730070124C /* States */,
@@ -1960,6 +1977,7 @@
 				C5233C8E1F7A56B400B32B16 /* NSView+MMTabBarViewExtensions.m in Sources */,
 				CE63966020CA71200031D83B /* Flags.swift in Sources */,
 				C54D57661FDA6301006DBF37 /* QueryTableViewDataSource.swift in Sources */,
+				98A06FD423CAF0800070124C /* ConnectionState.swift in Sources */,
 				CE63965920CA71200031D83B /* Base64_temp.swift in Sources */,
 				C5233C8F1F7A56B400B32B16 /* MMAdiumTabStyle.m in Sources */,
 				C5233C901F7A56B400B32B16 /* MMAquaTabStyle.m in Sources */,
@@ -1992,6 +2010,7 @@
 				CE63967B20CA71200031D83B /* Deprecated.swift in Sources */,
 				C5EDC9291F5DBDEE00C46F93 /* TabViewController.swift in Sources */,
 				CE63965620CA71200031D83B /* Collection+Geospatial.swift in Sources */,
+				98A06FD723CAF1430070124C /* ConnectionAction.swift in Sources */,
 				C5298EF91F5BA77A00908D4C /* CollectionTableViewController.swift in Sources */,
 				C54D57641FDA61E1006DBF37 /* QueryTableCellView.swift in Sources */,
 				C5794794211BF52B00182A9F /* String+Mongosquare.swift in Sources */,
@@ -2013,6 +2032,7 @@
 				CE63965E20CA71200031D83B /* ClientSettings.swift in Sources */,
 				C5BF0A211F584F2E00C95EA8 /* CollectionOutlineViewController.swift in Sources */,
 				CE63966C20CA71200031D83B /* Projection.swift in Sources */,
+				98A06FD923CAF1E00070124C /* ConnectionReducer.swift in Sources */,
 				CE63966620CA71200031D83B /* PipelineBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

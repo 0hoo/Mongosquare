@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ReSwift
 
 class UserDefaultKey {
     static let openedTabKeys = "openedTabKeys"
@@ -24,7 +25,9 @@ func dialogOKCancel(question: String, text: String) -> Bool {
     return alert.runModal() == .alertFirstButtonReturn
 }
 
-final class WindowController: NSWindowController {
+final class WindowController: NSWindowController, StoreSubscriber {
+    typealias StoreSubscriberStateType = AppState
+    
     override var windowNibName: NSNib.Name? { return NSNib.Name("WindowController") }
     
     @IBOutlet weak var splitWrapperView: NSView?
@@ -91,10 +94,6 @@ final class WindowController: NSWindowController {
     func didSelectDocument(collectionViewController: CollectionViewController?, document: SquareDocument) {
         jsonViewController.document = document
     }
-    
-    func didConnect(connection: SquareConnection) {
-        sidebarController.didConnect(connection: connection)
-    }
         
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -127,6 +126,19 @@ final class WindowController: NSWindowController {
         }
         
         showConnectionWindow()
+        mainStore.subscribe(self)
+    }
+    
+    func newState(state: AppState) {
+        connection = state.connectionState.currentConnection
+    }
+    
+    private var connection: SquareConnection? {
+        didSet {
+            guard let connection = connection, oldValue !== connection else {
+                return
+            }
+        }
     }
     
     @IBAction func openLogs(_ sender: Any?) {
